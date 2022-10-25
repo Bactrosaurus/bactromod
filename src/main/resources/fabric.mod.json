@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "bactromod",
+  "authors": ["Bactrosaurus"],
+  "description": "A lightweight mod with some game optimizations and features.",
+  "version": "1.0",
+  "name": "BactroMod",
+  "environment": "client",
+  "license": "LGPL-3.0-only",
+  "icon": "assets/bactromod/icon.png",
+  "entrypoints": {
+    "client": ["de.daniel.bactromod.BactroModKt::init"],
+    "modmenu": [ "de.daniel.bactromod.impl.ModMenuIntegration"]
+  },
+  "mixins": [
+    "bactromod.mixins.json"
+  ],
+  "depends": {
+    "cloth-config": ">=8.2.88",
+    "fabricloader": ">=0.14.9",
+    "fabric-language-kotlin": ">=1.8.5+kotlin.1.7.20",
+    "minecraft": ">=1.19.2"
+  }
+}
