@@ -15,7 +15,7 @@ object Config {
     private val configPath: Path = FabricLoader.getInstance().configDir.resolve("bactromod.json")
     private lateinit var configObject: ConfigObject
 
-        fun init() = runBlocking {
+    fun init() = runBlocking {
         withContext(Dispatchers.IO) {
             if (!Files.exists(configPath)) {
                 Files.createFile(configPath)
