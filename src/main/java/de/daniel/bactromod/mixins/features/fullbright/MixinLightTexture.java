@@ -16,6 +16,8 @@ public class MixinLightTexture {
         return d.floatValue() * Config.INSTANCE.load().getGammaMultiplier();
     }
 
+    /*
+
     @Inject(method = "getDarknessGamma", at = @At(value = "RETURN"), cancellable = true)
     private void getDarknessGamma(float f, CallbackInfoReturnable<Float> cir) {
         if (Config.INSTANCE.load().getDisableDarkness()) {
@@ -23,4 +25,5 @@ public class MixinLightTexture {
         }
     }
 
+     */
 }
