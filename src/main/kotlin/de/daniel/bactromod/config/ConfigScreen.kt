@@ -81,16 +81,16 @@ object ConfigScreen {
             )
             .addEntry(
                 entryBuilder
-                    .startBooleanToggle(Component.literal("Disable thick fog"), Config.load().disableThickFog)
-                    .setTooltip(Component.literal("Disables thick fog."))
-                    .setSaveConsumer { Config.save(Config.load().copy(disableThickFog = it)) }
+                    .startBooleanToggle(Component.literal("Disable sky fog"), Config.load().disableSkyFog)
+                    .setTooltip(Component.literal("Disables sky fog."))
+                    .setSaveConsumer { Config.save(Config.load().copy(disableSkyFog = it)) }
                     .build()
             )
             .addEntry(
                 entryBuilder
-                    .startBooleanToggle(Component.literal("Disable sky fog"), Config.load().disableSkyFog)
-                    .setTooltip(Component.literal("Disables sky fog."))
-                    .setSaveConsumer { Config.save(Config.load().copy(disableSkyFog = it)) }
+                    .startBooleanToggle(Component.literal("Disable thick fog"), Config.load().disableThickFog)
+                    .setTooltip(Component.literal("Disables thick fog."))
+                    .setSaveConsumer { Config.save(Config.load().copy(disableThickFog = it)) }
                     .build()
             )
             .addEntry(

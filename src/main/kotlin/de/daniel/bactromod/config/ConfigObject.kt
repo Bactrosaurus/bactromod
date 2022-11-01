@@ -13,8 +13,8 @@ data class ConfigObject(
     var disableDarknessFog: Boolean = true,
     var disableLavaFog: Boolean = true,
     var disablePowderSnowFog: Boolean = true,
+    var disableWaterFog: Boolean = true,
     var disableSkyFog: Boolean = true,
     var disableTerrainFog: Boolean = true,
-    var disableThickFog: Boolean = true,
-    var disableWaterFog: Boolean = true
+    var disableThickFog: Boolean = true
 )
