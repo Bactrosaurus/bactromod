@@ -18,7 +18,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinFogRenderer {
 
     @Inject(method = "setupFog", at = @At(value = "RETURN"))
-    private static void setupFog(Camera camera, FogRenderer.FogMode fogMode, float viewDistance, boolean thickFog, float tickDelta, CallbackInfo ci) {
+    private static void setupFog(Camera camera, FogRenderer.FogMode fogMode, float f, boolean thickFog, float g, CallbackInfo ci) {
         FogType fogType = camera.getFluidInCamera();
         Entity entity = camera.getEntity();
 
@@ -30,20 +30,26 @@ public class MixinFogRenderer {
         boolean skyFog = fogMode == FogRenderer.FogMode.FOG_SKY;
         boolean terrainFog = !(lavaFog || powderSnowFog || blindnessFog || darknessFog || waterFog || thickFog || skyFog);
 
-        if (lavaFog && Config.INSTANCE.load().getDisableLavaFog()) renderSystemDisableFog();
-        if (powderSnowFog && Config.INSTANCE.load().getDisablePowderSnowFog()) renderSystemDisableFog();
-        if (blindnessFog && Config.INSTANCE.load().getDisableBlindnessFog()) renderSystemDisableFog();
-        if (darknessFog && Config.INSTANCE.load().getDisableDarknessFog()) renderSystemDisableFog();
-        if (waterFog && Config.INSTANCE.load().getDisableWaterFog()) renderSystemDisableFog();
-        if (thickFog && Config.INSTANCE.load().getDisableThickFog()) renderSystemDisableFog();
-        if (skyFog && Config.INSTANCE.load().getDisableSkyFog()) renderSystemDisableFog();
-        if (terrainFog && Config.INSTANCE.load().getDisableTerrainFog()) renderSystemDisableFog();
-    }
+        boolean disableLavaFog = lavaFog && Config.INSTANCE.load().getDisableLavaFog();
+        boolean disablePowderSnowFog = powderSnowFog && Config.INSTANCE.load().getDisablePowderSnowFog();
+        boolean disableDarknessFog = darknessFog && Config.INSTANCE.load().getDisableDarknessFog();
+        boolean disableWaterFog = waterFog && Config.INSTANCE.load().getDisableWaterFog();
+        boolean disableThickFog = thickFog && Config.INSTANCE.load().getDisableThickFog();
+        boolean disableSkyFog = skyFog && Config.INSTANCE.load().getDisableSkyFog();
+        boolean disableTerrainFog = terrainFog && Config.INSTANCE.load().getDisableTerrainFog();
 
-    private static void renderSystemDisableFog() {
-        RenderSystem.setShaderFogStart(-8.0F);
-        RenderSystem.setShaderFogEnd(1e6F);
-        RenderSystem.setShaderFogShape(FogShape.CYLINDER);
+        if (
+                disableLavaFog ||
+                disablePowderSnowFog ||
+                disableDarknessFog ||
+                disableWaterFog ||
+                disableThickFog ||
+                disableSkyFog ||
+                disableTerrainFog
+        ) {
+            RenderSystem.setShaderFogStart(-8F);
+            RenderSystem.setShaderFogEnd(1e6F);
+            RenderSystem.setShaderFogShape(FogShape.CYLINDER);
+        }
     }
-
 }
