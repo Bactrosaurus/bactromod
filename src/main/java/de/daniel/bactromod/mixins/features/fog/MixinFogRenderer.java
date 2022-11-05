@@ -3,6 +3,7 @@ package de.daniel.bactromod.mixins.features.fog;
 import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
 import de.daniel.bactromod.config.Config;
+import de.daniel.bactromod.config.ConfigObject;
 import net.minecraft.client.Camera;
 import net.minecraft.client.renderer.FogRenderer;
 import net.minecraft.world.effect.MobEffects;
@@ -30,13 +31,15 @@ public class MixinFogRenderer {
         boolean skyFog = fogMode == FogRenderer.FogMode.FOG_SKY;
         boolean terrainFog = !(lavaFog || powderSnowFog || blindnessFog || darknessFog || waterFog || thickFog || skyFog);
 
-        boolean disableLavaFog = lavaFog && Config.INSTANCE.load().getDisableLavaFog();
-        boolean disablePowderSnowFog = powderSnowFog && Config.INSTANCE.load().getDisablePowderSnowFog();
-        boolean disableDarknessFog = darknessFog && Config.INSTANCE.load().getDisableDarknessFog();
-        boolean disableWaterFog = waterFog && Config.INSTANCE.load().getDisableWaterFog();
-        boolean disableThickFog = thickFog && Config.INSTANCE.load().getDisableThickFog();
-        boolean disableSkyFog = skyFog && Config.INSTANCE.load().getDisableSkyFog();
-        boolean disableTerrainFog = terrainFog && Config.INSTANCE.load().getDisableTerrainFog();
+        ConfigObject config = Config.INSTANCE.load();
+        
+        boolean disableLavaFog = lavaFog && config.getDisableLavaFog();
+        boolean disablePowderSnowFog = powderSnowFog && config.getDisablePowderSnowFog();
+        boolean disableDarknessFog = darknessFog && config.getDisableDarknessFog();
+        boolean disableWaterFog = waterFog && config.getDisableWaterFog();
+        boolean disableThickFog = thickFog && config.getDisableThickFog();
+        boolean disableSkyFog = skyFog && config.getDisableSkyFog();
+        boolean disableTerrainFog = terrainFog && config.getDisableTerrainFog();
 
         if (
                 disableLavaFog ||
