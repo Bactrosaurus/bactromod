@@ -1,6 +1,6 @@
 # BactroMod
 
-BactroMod is an utility mod written in Kotlin that adds new possibilities of customizing your in-game experience while providing some additional features.
+BactroMod is an utility mod written in Kotlin that adds new possibilities of customizing your in-game experience while providing some additional features. Check it out on Modrinth: https://modrinth.com/mod/bactromod
 
 ## Features
 
