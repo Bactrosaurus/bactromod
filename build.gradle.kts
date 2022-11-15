@@ -1,13 +1,13 @@
 plugins {
-    kotlin("jvm") version "1.7.20"
-    kotlin("plugin.serialization") version "1.7.20"
+    kotlin("jvm") version "1.7.21"
+    kotlin("plugin.serialization") version "1.7.21"
     id("fabric-loom") version "1.0-SNAPSHOT"
     id("io.github.juuxel.loom-quiltflower") version "1.7.4"
     id("org.quiltmc.quilt-mappings-on-loom") version "4.2.1"
 }
 
 group = "de.daniel"
-version = "1.1"
+version = "1.2"
 
 repositories {
     mavenCentral()
@@ -26,10 +26,10 @@ dependencies {
     })
 
     modImplementation("net.fabricmc:fabric-loader:0.14.10")
-    modImplementation("net.fabricmc.fabric-api:fabric-api:0.64.0+1.19.2")
-    modImplementation("net.fabricmc:fabric-language-kotlin:1.8.5+kotlin.1.7.20")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:0.66.0+1.19.2")
+    modImplementation("net.fabricmc:fabric-language-kotlin:1.8.6+kotlin.1.7.21")
 
-    modApi("com.terraformersmc:modmenu:4.0.6")
+    modApi("com.terraformersmc:modmenu:4.1.0")
     modApi("me.shedaniel.cloth:cloth-config-fabric:8.2.88") {
         exclude(group= "net.fabricmc.fabric-api")
     }
