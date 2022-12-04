@@ -1,13 +1,13 @@
 plugins {
-    kotlin("jvm") version "1.7.21"
-    kotlin("plugin.serialization") version "1.7.21"
+    kotlin("jvm") version "1.7.22"
+    kotlin("plugin.serialization") version "1.7.22"
     id("fabric-loom") version "1.0-SNAPSHOT"
-    id("io.github.juuxel.loom-quiltflower") version "1.7.4"
+    id("io.github.juuxel.loom-quiltflower") version "1.8.0"
     id("org.quiltmc.quilt-mappings-on-loom") version "4.2.1"
 }
 
 group = "de.daniel"
-version = "1.2"
+version = "1.3"
 
 repositories {
     mavenCentral()
@@ -25,9 +25,9 @@ dependencies {
         officialMojangMappings()
     })
 
-    modImplementation("net.fabricmc:fabric-loader:0.14.10")
-    modImplementation("net.fabricmc.fabric-api:fabric-api:0.66.0+1.19.2")
-    modImplementation("net.fabricmc:fabric-language-kotlin:1.8.6+kotlin.1.7.21")
+    modImplementation("net.fabricmc:fabric-loader:0.14.11")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:0.68.0+1.19.2")
+    modImplementation("net.fabricmc:fabric-language-kotlin:1.8.7+kotlin.1.7.22")
 
     modApi("com.terraformersmc:modmenu:4.1.0")
     modApi("me.shedaniel.cloth:cloth-config-fabric:8.2.88") {
