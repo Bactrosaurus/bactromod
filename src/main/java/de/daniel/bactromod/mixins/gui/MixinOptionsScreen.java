@@ -1,32 +1,28 @@
 package de.daniel.bactromod.mixins.gui;
 
 import de.daniel.bactromod.gui.CustomAccessibilityOptionsScreen;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.Options;
-import net.minecraft.client.gui.components.Button;
-import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.screens.OptionsScreen;
-import net.minecraft.network.chat.Component;
+import net.minecraft.client.gui.screens.Screen;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
+import java.util.function.Supplier;
+
 @Mixin(OptionsScreen.class)
-public class MixinOptionsScreen {
+public abstract class MixinOptionsScreen {
 
     @Shadow
     @Final
     private Options options;
 
-    @ModifyArg(method = "init", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screens/OptionsScreen;addRenderableWidget(Lnet/minecraft/client/gui/components/events/GuiEventListener;)Lnet/minecraft/client/gui/components/events/GuiEventListener;", ordinal = 11))
-    public GuiEventListener changeScreen(GuiEventListener par1) {
-        Minecraft mc = Minecraft.getInstance();
+    @ModifyArg(method = "init", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screens/OptionsScreen;openScreenButton(Lnet/minecraft/network/chat/Component;Ljava/util/function/Supplier;)Lnet/minecraft/client/gui/components/Button;", ordinal = 7), index = 1)
+    private Supplier<Screen> injected(Supplier<Screen> supplier) {
         OptionsScreen instance = ((OptionsScreen) (Object) this);
-        return new Button(instance.width / 2 + 5, instance.height / 6 + 120 - 6, 150, 20,
-                Component.translatable("options.accessibility.title"),
-                (button) -> mc.setScreen(new CustomAccessibilityOptionsScreen(instance, options)));
+        return () -> new CustomAccessibilityOptionsScreen(instance, this.options);
     }
 
 }

@@ -11,12 +11,12 @@ class CustomAccessibilityOptionsScreen(screen: Screen, options: Options) : Acces
 
     @Override
     override fun init() {
-        addRenderableWidget(Button(
-            width / 2 + 5,
-            height / 6 + 120 + 7, 150, 20,
-            Component.literal("BactroMod Settings")
+        addRenderableWidget(
+            Button.builder(
+                Component.literal("BactroMod Settings")
+            ) { minecraft!!.setScreen(ConfigScreen.getConfigScreen(this)) }
+                .bounds(this.width / 2 - 155, height / 6 + 152, 150, 20).build()
         )
-        { minecraft!!.setScreen(ConfigScreen.getConfigScreen(this)) })
         super.init()
     }
 
