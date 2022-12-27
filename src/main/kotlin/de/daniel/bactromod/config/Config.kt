@@ -16,27 +16,23 @@ object Config {
     private lateinit var configObject: ConfigObject
 
     fun init() = runBlocking {
-        withContext(Dispatchers.IO) {
-            if (!Files.exists(configPath)) {
-                Files.createFile(configPath)
-                save(ConfigObject())
-            }
-            launch {
-                withContext(Dispatchers.IO) {
-                    configObject = Json.decodeFromStream(Files.newInputStream(configPath))
+        launch {
+            withContext(Dispatchers.IO) {
+                if (!Files.exists(configPath)) {
+                    Files.createFile(configPath)
+                    save(ConfigObject())
                 }
+                configObject = Json.decodeFromStream(Files.newInputStream(configPath))
             }
         }
     }
 
     fun save(configObj: ConfigObject) = runBlocking {
-        withContext(Dispatchers.IO) {
-            launch {
-                withContext(Dispatchers.IO) {
-                    Json.encodeToStream(configObj, Files.newOutputStream(configPath))
-                }
+        launch {
+            withContext(Dispatchers.IO) {
+                Json.encodeToStream(configObj, Files.newOutputStream(configPath))
+                configObject = configObj
             }
-            configObject = configObj
         }
     }
 
