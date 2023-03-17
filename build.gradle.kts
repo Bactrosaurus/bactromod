@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "de.daniel"
-version = "1.4"
+version = "1.5"
 
 repositories {
     mavenCentral()
@@ -16,21 +16,21 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
 
-    minecraft("com.mojang:minecraft:1.19.3")
+    minecraft("com.mojang:minecraft:1.19.4")
     mappings(loom.layered {
-        mappings("org.quiltmc:quilt-mappings:1.19.3+build.23:intermediary-v2")
+        mappings("org.quiltmc:quilt-mappings:1.19.4+build.3:intermediary-v2")
         officialMojangMappings()
     })
 
-    modImplementation("net.fabricmc:fabric-loader:0.14.14")
-    modImplementation("net.fabricmc.fabric-api:fabric-api:0.73.2+1.19.3")
-    modImplementation("net.fabricmc:fabric-language-kotlin:1.9.1+kotlin.1.8.10")
+    modImplementation("net.fabricmc:fabric-loader:0.14.17")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:0.76.0+1.19.4")
+    modImplementation("net.fabricmc:fabric-language-kotlin:1.9.2+kotlin.1.8.10")
 
-    modApi("com.terraformersmc:modmenu:5.0.2")
-    modApi("me.shedaniel.cloth:cloth-config-fabric:9.0.94") {
+    modApi("com.terraformersmc:modmenu:6.1.0-rc.4")
+    modApi("me.shedaniel.cloth:cloth-config-fabric:10.0.96") {
         exclude(group = "net.fabricmc.fabric-api")
     }
 }

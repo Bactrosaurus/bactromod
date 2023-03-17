@@ -15,7 +15,7 @@ class CustomAccessibilityOptionsScreen(screen: Screen, options: Options) : Acces
             Button.builder(
                 Component.literal("BactroMod Settings")
             ) { minecraft!!.setScreen(ConfigScreen.getConfigScreen(this)) }
-                .bounds(this.width / 2 - 155, height / 6 + 152, 150, 20).build()
+                .bounds(this.width / 2 + 5, height / 6 + 202, 150, 20).build()
         )
         super.init()
     }
