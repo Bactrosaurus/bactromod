@@ -36,18 +36,18 @@ class BetterSkyRenderer : SkyRenderer {
         fun make(bufferBuilder: BufferBuilder, minSize: Double, maxSize: Double, count: Int, seed: Long)
     }
 
-    private var nebula1: VertexBuffer? = null
-    private var nebula2: VertexBuffer? = null
-    private var horizon: VertexBuffer? = null
-    private var stars1: VertexBuffer? = null
-    private var stars2: VertexBuffer? = null
-    private var stars3: VertexBuffer? = null
-    private var stars4: VertexBuffer? = null
-    private var fog: VertexBuffer? = null
-    private var axis1: Vector3f? = null
-    private var axis2: Vector3f? = null
-    private var axis3: Vector3f? = null
-    private var axis4: Vector3f? = null
+    private lateinit var nebula1: VertexBuffer
+    private lateinit var nebula2: VertexBuffer
+    private lateinit var horizon: VertexBuffer
+    private lateinit var stars1: VertexBuffer
+    private lateinit var stars2: VertexBuffer
+    private lateinit var stars3: VertexBuffer
+    private lateinit var stars4: VertexBuffer
+    private lateinit var fog: VertexBuffer
+    private lateinit var axis1: Vector3f
+    private lateinit var axis2: Vector3f
+    private lateinit var axis3: Vector3f
+    private lateinit var axis4: Vector3f
     private var initialised = false
 
     private fun initialise() {
@@ -58,10 +58,10 @@ class BetterSkyRenderer : SkyRenderer {
             axis2 = Vector3f(random.nextFloat(), random.nextFloat(), random.nextFloat())
             axis3 = Vector3f(random.nextFloat(), random.nextFloat(), random.nextFloat())
             axis4 = Vector3f(random.nextFloat(), random.nextFloat(), random.nextFloat())
-            axis1!!.normalize()
-            axis2!!.normalize()
-            axis3!!.normalize()
-            axis4!!.normalize()
+            axis1.normalize()
+            axis2.normalize()
+            axis3.normalize()
+            axis4.normalize()
             initialised = true
         }
     }
@@ -115,13 +115,13 @@ class BetterSkyRenderer : SkyRenderer {
             matrices.popPose()
             RenderSystem.setShaderTexture(0, starsTexture)
             matrices.pushPose()
-            matrices.mulPose(Quaternionf().setAngleAxis(time, axis3!!.x, axis3!!.y, axis3!!.z))
+            matrices.mulPose(Quaternionf().setAngleAxis(time, axis3.x, axis3.y, axis3.z))
             renderBuffer(
                 matrices, projectionMatrix, stars3, DefaultVertexFormat.POSITION_TEX, 0.77f, 0.31f, 0.73f, blind06
             )
             matrices.popPose()
             matrices.pushPose()
-            matrices.mulPose(Quaternionf().setAngleAxis(time2, axis4!!.x, axis4!!.y, axis4!!.z))
+            matrices.mulPose(Quaternionf().setAngleAxis(time2, axis4.x, axis4.y, axis4.z))
             renderBuffer(matrices, projectionMatrix, stars4, DefaultVertexFormat.POSITION_TEX, 1f, 1f, 1f, blind06)
             matrices.popPose()
         }
@@ -142,11 +142,11 @@ class BetterSkyRenderer : SkyRenderer {
         }
         if (blindA > 0) {
             matrices.pushPose()
-            matrices.mulPose(Quaternionf().setAngleAxis(time3, axis1!!.x, axis1!!.y, axis1!!.z))
+            matrices.mulPose(Quaternionf().setAngleAxis(time3, axis1.x, axis1.y, axis1.z))
             renderBuffer(matrices, projectionMatrix, stars1, DefaultVertexFormat.POSITION, 1f, 1f, 1f, blind06)
             matrices.popPose()
             matrices.pushPose()
-            matrices.mulPose(Quaternionf().setAngleAxis(time2, axis2!!.x, axis2!!.y, axis2!!.z))
+            matrices.mulPose(Quaternionf().setAngleAxis(time2, axis2.x, axis2.y, axis2.z))
             renderBuffer(
                 matrices, projectionMatrix, stars2, DefaultVertexFormat.POSITION, 0.95f, 0.64f, 0.93f, blind06
             )
