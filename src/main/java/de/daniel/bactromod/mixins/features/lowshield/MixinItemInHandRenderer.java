@@ -4,7 +4,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import de.daniel.bactromod.config.Config;
 import net.minecraft.client.renderer.ItemInHandRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.entity.LivingEntity;
@@ -30,7 +29,7 @@ public class MixinItemInHandRenderer {
         if (itemStack.is(Items.SHIELD) && displayContext.firstPerson()) {
             if (!itemStack.isEmpty()) {
                 poseStack.translate(0.0D, Config.INSTANCE.load().getShieldOffset() / 100F, 0.0D);
-                this.itemRenderer.renderStatic(livingEntity, itemStack, displayContext, bl, poseStack, multiBufferSource, livingEntity.level, i, OverlayTexture.NO_OVERLAY, livingEntity.getId() + displayContext.ordinal());
+                this.itemRenderer.renderStatic(livingEntity, itemStack, displayContext, bl, poseStack, multiBufferSource, livingEntity.level(), i, OverlayTexture.NO_OVERLAY, livingEntity.getId() + displayContext.ordinal());
                 ci.cancel();
             }
         }

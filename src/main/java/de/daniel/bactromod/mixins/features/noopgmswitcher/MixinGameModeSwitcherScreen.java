@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 @Mixin(GameModeSwitcherScreen.class)
 public class MixinGameModeSwitcherScreen {
 
-    @ModifyConstant(method = "switchToHoveredGameMode(Lnet/minecraft/client/Minecraft;Ljava/util/Optional;)V", constant = @Constant(intValue = 2))
+    @ModifyConstant(method = "switchToHoveredGameMode(Lnet/minecraft/client/Minecraft;Lnet/minecraft/client/gui/screens/debug/GameModeSwitcherScreen$GameModeIcon;)V", constant = @Constant(intValue = 2))
     private static int injectedPermissionLevel(int injectedPermissionLevel) {
         return 0;
     }
