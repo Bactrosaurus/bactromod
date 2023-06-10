@@ -44,19 +44,16 @@ tasks {
 }
 
 modrinth {
-    token.set(System.getenv("MODRINTH_TOKEN")) // This is the default. Remember to have the MODRINTH_TOKEN environment variable set or else this will fail, or set it to whatever you want - just make sure it stays private!
-    projectId.set("bactromod") // This can be the project ID or the slug. Either will work!
-    // versionNumber.set("1.6") // You don't need to set this manually. Will fail if Modrinth has this version already
-    versionType.set("release") // This is the default -- can also be `beta` or `alpha`
-    uploadFile.set(tasks.remapJar) // With Loom, this MUST be set to `remapJar` instead of `jar`!
-    gameVersions.addAll("1.20") // Must be an array, even with only one version
-    // loaders.add("fabric") // Must also be an array - no need to specify this if you're using Loom or ForgeGradle
-    dependencies { // A special DSL for creating dependencies
-        // scope.type
-        // The scope can be `required`, `optional`, `incompatible`, or `embedded`
-        // The type can either be `project` or `version`
+    token.set(System.getenv("MODRINTH_TOKEN"))
+    projectId.set("bactromod")
+    // versionNumber.set("1.6")
+    versionType.set("release")
+    uploadFile.set(tasks.remapJar)
+    gameVersions.addAll("1.20")
+    // loaders.add("fabric")
+    dependencies {
         required.project("fabric-language-kotlin")
         required.project("cloth-config")
-        optional.version("modmenu")
+        optional.project("modmenu")
     }
 }
