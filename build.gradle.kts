@@ -2,11 +2,10 @@ plugins {
     kotlin("jvm") version "1.8.22"
     kotlin("plugin.serialization") version "1.8.22"
     id("fabric-loom") version "1.2-SNAPSHOT"
-    id("com.modrinth.minotaur") version "2.+"
 }
 
 group = "de.daniel"
-version = "1.6"
+version = "1.7"
 
 repositories {
     mavenCentral()
@@ -19,14 +18,14 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
 
-    minecraft("com.mojang:minecraft:1.20")
+    minecraft("com.mojang:minecraft:1.20.1")
     mappings(loom.officialMojangMappings())
 
     modImplementation("net.fabricmc:fabric-loader:0.14.21")
-    modImplementation("net.fabricmc.fabric-api:fabric-api:0.83.0+1.20")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:0.83.1+1.20.1")
     modImplementation("net.fabricmc:fabric-language-kotlin:1.9.5+kotlin.1.8.22")
 
-    modApi("com.terraformersmc:modmenu:7.0.1")
+    modApi("com.terraformersmc:modmenu:7.1.0")
     modApi("me.shedaniel.cloth:cloth-config-fabric:11.0.99") {
         exclude(group = "net.fabricmc.fabric-api")
     }
@@ -40,20 +39,5 @@ tasks {
     compileJava {
         options.encoding = "UTF-8"
         options.release.set(17)
-    }
-}
-
-modrinth {
-    token.set(System.getenv("MODRINTH_TOKEN"))
-    projectId.set("bactromod")
-    // versionNumber.set("1.6")
-    versionType.set("release")
-    uploadFile.set(tasks.remapJar)
-    gameVersions.addAll("1.20")
-    // loaders.add("fabric")
-    dependencies {
-        required.project("fabric-language-kotlin")
-        required.project("cloth-config")
-        optional.project("modmenu")
     }
 }
