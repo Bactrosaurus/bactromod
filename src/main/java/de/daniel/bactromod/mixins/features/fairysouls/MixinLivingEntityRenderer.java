@@ -13,6 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
@@ -22,6 +23,7 @@ import java.util.Arrays;
 @Mixin(ArmorStandRenderer.class)
 public abstract class MixinLivingEntityRenderer {
 
+    @Unique
     private static boolean isEntityFairySoulArmorStand(LivingEntity livingEntity) {
         if (livingEntity.getType() == EntityType.ARMOR_STAND) {
             if (livingEntity.getItemBySlot(EquipmentSlot.HEAD).is(Items.PLAYER_HEAD)) {
