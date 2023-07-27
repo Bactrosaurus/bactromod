@@ -22,11 +22,13 @@ public class MixinFogRenderer {
     private static void setupFog(Camera camera, FogRenderer.FogMode fogMode, float f, boolean thickFog, float g, CallbackInfo ci) {
         FogType fogType = camera.getFluidInCamera();
         Entity entity = camera.getEntity();
+        LivingEntity livingEntity = entity instanceof LivingEntity ? (LivingEntity) entity : null;
+        if (livingEntity == null) return;
 
         boolean lavaFog = fogType == FogType.LAVA;
         boolean powderSnowFog = fogType == FogType.POWDER_SNOW;
-        boolean blindnessFog = entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(MobEffects.BLINDNESS);
-        boolean darknessFog = entity instanceof LivingEntity && ((LivingEntity) entity).hasEffect(MobEffects.DARKNESS);
+        boolean blindnessFog = livingEntity.hasEffect(MobEffects.BLINDNESS);
+        boolean darknessFog = livingEntity.hasEffect(MobEffects.DARKNESS);
         boolean waterFog = fogType == FogType.WATER;
         boolean skyFog = fogMode == FogRenderer.FogMode.FOG_SKY;
         boolean terrainFog = !(lavaFog || powderSnowFog || blindnessFog || darknessFog || waterFog || thickFog || skyFog);
@@ -35,6 +37,7 @@ public class MixinFogRenderer {
         
         boolean disableLavaFog = lavaFog && config.getDisableLavaFog();
         boolean disablePowderSnowFog = powderSnowFog && config.getDisablePowderSnowFog();
+        boolean disableBlindnessFog = blindnessFog && config.getDisableBlindnessFog();
         boolean disableDarknessFog = darknessFog && config.getDisableDarknessFog();
         boolean disableWaterFog = waterFog && config.getDisableWaterFog();
         boolean disableThickFog = thickFog && config.getDisableThickFog();
@@ -42,13 +45,14 @@ public class MixinFogRenderer {
         boolean disableTerrainFog = terrainFog && config.getDisableTerrainFog();
 
         if (
-                disableLavaFog ||
-                disablePowderSnowFog ||
-                disableDarknessFog ||
-                disableWaterFog ||
-                disableThickFog ||
-                disableSkyFog ||
-                disableTerrainFog
+            disableLavaFog ||
+            disablePowderSnowFog ||
+            disableBlindnessFog ||
+            disableDarknessFog ||
+            disableWaterFog ||
+            disableThickFog ||
+            disableSkyFog ||
+            disableTerrainFog
         ) {
             RenderSystem.setShaderFogStart(-8F);
             RenderSystem.setShaderFogEnd(1e6F);
