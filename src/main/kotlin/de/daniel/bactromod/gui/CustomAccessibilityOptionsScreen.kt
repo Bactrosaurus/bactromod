@@ -14,7 +14,7 @@ class CustomAccessibilityOptionsScreen(screen: Screen, options: Options) : Acces
         addRenderableWidget(
             Button.builder(
                 Component.literal("BactroMod Settings")
-            ) { minecraft!!.setScreen(ConfigScreen.getConfigScreen(this)) }
+            ) { minecraft!!.setScreen(ConfigScreen(this)) }
                 .bounds(this.width / 2 + 5, height / 6 + 202, 150, 20).build()
         )
         super.init()

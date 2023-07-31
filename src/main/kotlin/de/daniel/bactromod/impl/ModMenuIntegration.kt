@@ -9,7 +9,7 @@ class ModMenuIntegration : ModMenuApi {
 
     override fun getModConfigScreenFactory(): ConfigScreenFactory<*> {
         return ConfigScreenFactory { parent: Screen ->
-            ConfigScreen.getConfigScreen(parent)
+            ConfigScreen(parent)
         }
     }
 
