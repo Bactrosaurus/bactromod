@@ -22,13 +22,10 @@ dependencies {
     mappings(loom.officialMojangMappings())
 
     modImplementation("net.fabricmc:fabric-loader:0.14.21")
-    modImplementation("net.fabricmc.fabric-api:fabric-api:0.86.0+1.20.1")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:0.86.1+1.20.1")
     modImplementation("net.fabricmc:fabric-language-kotlin:1.10.8+kotlin.1.9.0")
 
     modApi("com.terraformersmc:modmenu:7.2.1")
-    modApi("me.shedaniel.cloth:cloth-config-fabric:11.1.106") {
-        exclude(group = "net.fabricmc.fabric-api")
-    }
 }
 
 kotlin {
