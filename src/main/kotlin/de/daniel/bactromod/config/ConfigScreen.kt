@@ -10,14 +10,13 @@ import net.minecraft.network.chat.CommonComponents
 import net.minecraft.network.chat.Component
 
 private fun options(): Array<OptionInstance<*>> {
-    return arrayOf(
-        OptionInstance(
-            "Gamma multiplier",
-            OptionInstance.cachedConstantTooltip(Component.literal("Multiplies in-game gamma (brightness) by set number.")),
-            Options::genericValueLabel,
-            OptionInstance.IntRange(0, 15),
-            Config.load().gammaMultiplier
-        ) { Config.save(Config.load().copy(gammaMultiplier = it)) },
+    return arrayOf(OptionInstance(
+        "Gamma multiplier",
+        OptionInstance.cachedConstantTooltip(Component.literal("Multiplies in-game gamma (brightness) by set number.")),
+        Options::genericValueLabel,
+        OptionInstance.IntRange(0, 15),
+        Config.load().gammaMultiplier
+    ) { Config.save(Config.load().copy(gammaMultiplier = it)) },
 
         OptionInstance.createBoolean(
             "Disable pumpkin blur",
@@ -98,15 +97,16 @@ private fun options(): Array<OptionInstance<*>> {
     )
 }
 
-class ConfigScreen(screen: Screen) :
-    SimpleOptionsSubScreen(screen, Minecraft.getInstance().options, Component.literal("BactroMod Settings"), options()) {
+class ConfigScreen(screen: Screen) : SimpleOptionsSubScreen(
+    screen, Minecraft.getInstance().options, Component.literal("BactroMod Settings"), options()
+) {
 
     override fun createFooter() {
         addRenderableWidget(
             Button.builder(
                 CommonComponents.GUI_DONE
-            ) { minecraft!!.setScreen(lastScreen) }
-                .bounds(width / 2 - 75, height - 27, 150, 20).build())
+            ) { minecraft!!.setScreen(lastScreen) }.bounds(width / 2 - 75, height - 27, 150, 20).build()
+        )
     }
 
 }
