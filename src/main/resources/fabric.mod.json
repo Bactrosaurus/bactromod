@@ -15,6 +15,7 @@
   "mixins": [
     "bactromod.mixins.json"
   ],
+  "accessWidener" : "bactromod.accesswidener",
   "depends": {
     "fabricloader": ">=0.14.21",
     "fabric-language-kotlin": ">=1.10.8+kotlin.1.9.0",

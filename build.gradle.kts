@@ -25,6 +25,10 @@ dependencies {
     modApi("com.terraformersmc:modmenu:7.2.1")
 }
 
+loom {
+    accessWidenerPath = file("src/main/resources/bactromod.accesswidener")
+}
+
 kotlin {
     jvmToolchain(17)
 }
