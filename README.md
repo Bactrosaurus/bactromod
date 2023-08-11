@@ -17,4 +17,4 @@ BactroMod is an utility mod written in Kotlin that adds new possibilities of cus
 
 ![](https://i.imgur.com/CIdyeb7.png)
 
-![](https://i.imgur.com/HmwqHnd.png)
+![](https://i.imgur.com/07NFlrz.png)
