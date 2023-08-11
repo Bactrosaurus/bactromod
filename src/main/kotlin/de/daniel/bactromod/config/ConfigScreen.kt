@@ -49,6 +49,12 @@ class ConfigScreen(screen: Screen) : SimpleOptionsSubScreen(
                 ) { Config.save(Config.load().copy(shieldOffset = it)) },
 
                 OptionInstance.createBoolean(
+                    "Show map in boat",
+                    OptionInstance.cachedConstantTooltip(Component.literal("Allows maps to always be shown when moving in boat.")),
+                    Config.load().showMapWhileInBoat
+                ) { Config.save(Config.load().copy(showMapWhileInBoat = it)) },
+
+                OptionInstance.createBoolean(
                     "Disable lava fog",
                     OptionInstance.cachedConstantTooltip(Component.literal("Disables fog caused by diving into lava.")),
                     Config.load().disableLavaFog

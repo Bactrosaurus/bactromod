@@ -3,6 +3,7 @@
   "minVersion": "0.8",
   "package": "de.daniel.bactromod.mixins",
   "client": [
+    "features.boatmap.MixinItemInHandRenderer",
     "features.fairysouls.MixinLivingEntityRenderer",
     "features.fog.MixinFogRenderer",
     "features.fullbright.MixinLightTexture",
