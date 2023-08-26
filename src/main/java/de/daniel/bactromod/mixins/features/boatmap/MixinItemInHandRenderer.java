@@ -3,37 +3,72 @@ package de.daniel.bactromod.mixins.features.boatmap;
 import de.daniel.bactromod.config.Config;
 import de.daniel.bactromod.config.ConfigObject;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.ItemInHandRenderer;
 import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionHand;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(ItemInHandRenderer.class)
 public class MixinItemInHandRenderer {
 
-    @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/Mth;clamp(FFF)F", ordinal = 0))
-    public float floatValue(float f, float g, float h) {
-        Minecraft mc = Minecraft.getInstance();
+    @Shadow
+    @Final
+    private Minecraft minecraft;
+
+    @Shadow
+    private float mainHandHeight;
+
+    @Shadow
+    private float offHandHeight;
+
+    @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/LocalPlayer;isHandsBusy()Z", ordinal = 0))
+    public boolean isHandsBusy(LocalPlayer instance) {
         ConfigObject config = Config.INSTANCE.load();
-        if (!config.getShowMapWhileInBoat()) return Mth.clamp(f, g, h);
-        if (mc.player == null) return Mth.clamp(f, g, h);
-        if (mc.player.getItemInHand(InteractionHand.MAIN_HAND).is(Items.FILLED_MAP)) {
-            return 1.0F;
-        } else return Mth.clamp(f, g, h);
+        if (!config.getShowMapWhileInBoat()) return instance.isHandsBusy();
+        ItemStack mainHandItem = instance.getMainHandItem();
+        ItemStack offHandItem = instance.getOffhandItem();
+        if (mainHandItem.is(Items.FILLED_MAP) || offHandItem.is(Items.FILLED_MAP)) {
+            return false;
+        }
+        return instance.isHandsBusy();
     }
 
-    @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/Mth;clamp(FFF)F", ordinal = 1))
-    public float floatValue1(float f, float g, float h) {
-        Minecraft mc = Minecraft.getInstance();
-        ConfigObject config = Config.INSTANCE.load();
-        if (!config.getShowMapWhileInBoat()) return Mth.clamp(f, g, h);
-        if (mc.player == null) return Mth.clamp(f, g, h);
-        if (mc.player.getItemInHand(InteractionHand.OFF_HAND).is(Items.FILLED_MAP)) {
-            return 1.0F;
-        } else return Mth.clamp(f, g, h);
+    @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/Mth;clamp(FFF)F", ordinal = 2))
+    public float clamp1(float f, float g, float h) {
+        assert minecraft.player != null;
+        if (minecraft.player.isHandsBusy()) {
+            ItemStack mainHandItem = minecraft.player.getMainHandItem();
+            ItemStack offHandItem = minecraft.player.getOffhandItem();
+            if (mainHandItem.is(Items.FILLED_MAP) && offHandItem.is(Items.FILLED_MAP)) {
+                return Mth.clamp(f, g, h);
+            }
+            if (offHandItem.is(Items.FILLED_MAP)) {
+                return Mth.clamp(mainHandHeight - 0.4f, 0.0f, 1.0f) - mainHandHeight;
+            }
+        }
+        return Mth.clamp(f, g, h);
+    }
+
+    @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/Mth;clamp(FFF)F", ordinal = 3))
+    public float clamp2(float f, float g, float h) {
+        assert minecraft.player != null;
+        if (minecraft.player.isHandsBusy()) {
+            ItemStack mainHandItem = minecraft.player.getMainHandItem();
+            ItemStack offHandItem = minecraft.player.getOffhandItem();
+            if (mainHandItem.is(Items.FILLED_MAP) && offHandItem.is(Items.FILLED_MAP)) {
+                return Mth.clamp(f, g, h);
+            }
+            if (mainHandItem.is(Items.FILLED_MAP)) {
+                return Mth.clamp(offHandHeight - 0.4f, 0.0f, 1.0f) - offHandHeight;
+            }
+        }
+        return Mth.clamp(f, g, h);
     }
 
 }
