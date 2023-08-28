@@ -25,11 +25,16 @@ public class MixinAccessibilityOptionsScreen extends SimpleOptionsSubScreen {
     private void init(CallbackInfo ci) {
         AccessibilityOptionsScreen instance = ((AccessibilityOptionsScreen) (Object) this);
 
+        int y0 = 32;
+        int itemHeight = 25;
+
+        int rowTop = y0 + 4 + 10 * itemHeight;
+
         addRenderableWidget(Button.builder(
                 Component.literal("BactroMod Settings"),
                 (button) ->
                         Minecraft.getInstance().setScreen(new ConfigScreen(instance)))
-                .bounds(width / 2 + 5, height / 6 + 202, 150, 20).build());
+                .bounds(width / 2 + 5, rowTop, 150, 20).build());
     }
 
 }
