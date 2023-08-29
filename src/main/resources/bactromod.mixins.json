@@ -12,9 +12,13 @@
     "features.noopgmswitcher.MixinGameModeSwitcherScreen",
     "features.noopgmswitcher.MixinKeyboardHandler",
     "features.nopumpkinblur.MixinGui",
+<<<<<<< HEAD
     "hooks.settingsbutton.MixinAccessibilityOnboardingScreen",
     "hooks.settingsbutton.MixinOptionsScreen",
     "hooks.settingsbutton.MixinTitleScreen"
+=======
+    "hooks.gui.MixinOptionsScreen"
+>>>>>>> edb15081a8fe957df547711693ff406bf1978a52
   ],
   "compatibilityLevel": "JAVA_17",
   "injectors": {
