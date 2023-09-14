@@ -14,7 +14,6 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 @Mixin(TitleScreen.class)
 public class MixinTitleScreen extends Screen {
 
-
     protected MixinTitleScreen(Component component) {
         super(component);
     }
