@@ -14,6 +14,8 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
+import java.util.Collections;
+
 @Mixin(ItemInHandRenderer.class)
 public class MixinItemInHandRenderer {
 
@@ -26,7 +28,7 @@ public class MixinItemInHandRenderer {
 
     @Shadow
     private float offHandHeight;
-
+    
     @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/LocalPlayer;isHandsBusy()Z", ordinal = 0))
     public boolean isHandsBusy(LocalPlayer instance) {
         ConfigObject config = Config.INSTANCE.load();

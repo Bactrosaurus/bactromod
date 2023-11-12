@@ -17,5 +17,6 @@ data class ConfigObject(
     var disableSkyFog: Boolean = false,
     var disableTerrainFog: Boolean = true,
     var disableThickFog: Boolean = true,
-    var showMapWhileInBoat: Boolean = true
+    var showMapWhileInBoat: Boolean = true,
+    var showNiceWindowBorders: Boolean = true
 )

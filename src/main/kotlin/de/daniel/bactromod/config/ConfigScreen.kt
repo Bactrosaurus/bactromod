@@ -1,5 +1,6 @@
 package de.daniel.bactromod.config
 
+import de.daniel.bactromod.windowborder.DwmApi
 import net.minecraft.client.Minecraft
 import net.minecraft.client.OptionInstance
 import net.minecraft.client.Options
@@ -106,8 +107,16 @@ class ConfigScreen(screen: Screen) : SimpleOptionsSubScreen(
                     "Show Hypixel fairy souls",
                     OptionInstance.cachedConstantTooltip(Component.literal("Just a feature I needed and decided to add to this mod. Shows locations of Fairy Souls in Hypixel Skyblock.")),
                     Config.load().showHypixelFairySouls
-                ) { Config.save(Config.load().copy(showHypixelFairySouls = it)) }
+                ) { Config.save(Config.load().copy(showHypixelFairySouls = it)) },
 
+                OptionInstance.createBoolean(
+                    "Nice window borders",
+                    OptionInstance.cachedConstantTooltip(Component.literal("Enables modern window border in Minecraft (only on Windows 11).")),
+                    Config.load().showNiceWindowBorders
+                ) {
+                    Config.save(Config.load().copy(showNiceWindowBorders = it))
+                    DwmApi.updateDwm(Minecraft.getInstance().window.window)
+                }
             )
         }
 

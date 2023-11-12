@@ -12,6 +12,7 @@
     "features.noopgmswitcher.MixinGameModeSwitcherScreen",
     "features.noopgmswitcher.MixinKeyboardHandler",
     "features.nopumpkinblur.MixinGui",
+    "features.windowborder.MixinWindow",
     "settingsbutton.MixinCreditsAndAttributionScreen"
   ],
   "compatibilityLevel": "JAVA_17",
