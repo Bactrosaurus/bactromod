@@ -14,11 +14,15 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(CreditsAndAttributionScreen.class)
 public class MixinCreditsAndAttributionScreen {
 
+    @SuppressWarnings("unchecked")
     @Redirect(method = "init", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/layouts/LinearLayout;addChild(Lnet/minecraft/client/gui/layouts/LayoutElement;)Lnet/minecraft/client/gui/layouts/LayoutElement;", ordinal = 2))
     public <T extends LayoutElement> T addChildAlt(LinearLayout instance, T layoutElement) {
         CreditsAndAttributionScreen inst = ((CreditsAndAttributionScreen) (Object) this);
         instance.addChild(layoutElement, instance.newCellSettings());
-        return (T) instance.addChild(Button.builder(Component.literal("BactroMod Settings"), (button) -> Minecraft.getInstance().setScreen(new ConfigScreen(inst))).width(210).build());
+        Button settingsButton = Button.builder(
+                Component.literal("BactroMod Settings"),
+                (button) -> Minecraft.getInstance().setScreen(new ConfigScreen(inst))).width(210).build();
+        return (T) instance.addChild(settingsButton);
     }
 
 }
