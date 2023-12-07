@@ -9,5 +9,4 @@ public final class WindowUtil {
     public static boolean checkCompatibility() {
         return (majorVersion >= 10 && buildNumber >= MINIMUM_BUILD_NUM);
     }
-
 }

@@ -13,6 +13,7 @@ import org.lwjgl.system.NativeType;
 
 public interface DwmApi extends Library {
     DwmApi INSTANCE = Native.load("dwmapi", DwmApi.class);
+
     int INT_SIZE = 4;
     int DWMWA_USE_IMMERSIVE_DARK_MODE = 20;
     int DWMWA_WINDOW_CORNER_PREFERENCE = 33;
