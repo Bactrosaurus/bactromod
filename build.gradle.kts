@@ -22,7 +22,7 @@ dependencies {
     modImplementation("net.fabricmc:fabric-loader:0.15.0")
     modImplementation("net.fabricmc:fabric-language-kotlin:1.10.16+kotlin.1.9.21")
 
-    modApi("com.terraformersmc:modmenu:9.0.0-pre.1")
+    modApi("com.terraformersmc:modmenu:9.0.0")
 }
 
 loom {
