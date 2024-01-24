@@ -11,112 +11,111 @@ import net.minecraft.network.chat.CommonComponents
 import net.minecraft.network.chat.Component
 
 class ConfigScreen(screen: Screen) : SimpleOptionsSubScreen(
-    screen, Minecraft.getInstance().options, Component.literal("BactroMod Settings"), options()
+    screen, Minecraft.getInstance().options, Component.translatable("bactromod.options.title"), options()
 ) {
 
     companion object {
 
         private fun options(): Array<OptionInstance<*>> {
             return arrayOf(
-
                 OptionInstance(
-                "Gamma multiplier",
-                OptionInstance.cachedConstantTooltip(Component.literal("Multiplies in-game gamma (brightness) by set number.")),
+                "bactromod.options.gamma",
+                OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.gamma.description")),
                 Options::genericValueLabel,
                 OptionInstance.IntRange(0, 15),
                 Config.load().gammaMultiplier
                 ) { Config.save(Config.load().copy(gammaMultiplier = it)) },
 
                 OptionInstance.createBoolean(
-                    "Disable pumpkin blur",
-                    OptionInstance.cachedConstantTooltip(Component.literal("Disables black texture overlay that strongly limits view when player wears a carved pumpkin")),
+                    "bactromod.options.pumpkinblur",
+                    OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.pumpkinblur.description")),
                     Config.load().disablePumpkinBlur
                 ) { Config.save(Config.load().copy(disablePumpkinBlur = it)) },
 
                 OptionInstance(
-                    "Fire offset",
-                    OptionInstance.cachedConstantTooltip(Component.literal("Moves fire texture in height. Usually you would select a negative value to move fire texture down and free up your view.")),
+                    "bactromod.options.fireoffset",
+                    OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.fireoffset.description")),
                     Options::genericValueLabel,
                     OptionInstance.IntRange(-100, 100),
                     Config.load().fireOffset
                 ) { Config.save(Config.load().copy(fireOffset = it)) },
 
                 OptionInstance(
-                    "Shield offset",
-                    OptionInstance.cachedConstantTooltip(Component.literal("Moves shield in height when in first person perspective. Usually you would select a negative value to move shield down and free up your view.")),
+                    "bactromod.options.shieldoffset",
+                    OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.shieldoffset.description")),
                     Options::genericValueLabel,
                     OptionInstance.IntRange(-100, 100),
                     Config.load().shieldOffset
                 ) { Config.save(Config.load().copy(shieldOffset = it)) },
 
                 OptionInstance.createBoolean(
-                    "Show map in boat",
-                    OptionInstance.cachedConstantTooltip(Component.literal("Allows maps to always be shown when moving in boat.")),
+                    "bactromod.options.boatmap",
+                    OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.boatmap.description")),
                     Config.load().showMapWhileInBoat
                 ) { Config.save(Config.load().copy(showMapWhileInBoat = it)) },
 
                 OptionInstance.createBoolean(
-                    "Disable lava fog",
-                    OptionInstance.cachedConstantTooltip(Component.literal("Disables fog caused by diving into lava.")),
+                    "bactromod.options.lavafog",
+                    OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.lavafog.description")),
                     Config.load().disableLavaFog
                 ) { Config.save(Config.load().copy(disableLavaFog = it)) },
 
                 OptionInstance.createBoolean(
-                    "Disable powder snow fog",
-                    OptionInstance.cachedConstantTooltip(Component.literal("Disables fog caused by diving into powder snow.")),
+                    "bactromod.options.snowfog",
+                    OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.snowfog.description")),
                     Config.load().disablePowderSnowFog
                 ) { Config.save(Config.load().copy(disablePowderSnowFog = it)) },
 
                 OptionInstance.createBoolean(
-                    "Disable blindness fog",
-                    OptionInstance.cachedConstantTooltip(Component.literal("Disables fog caused by blindness effect.")),
+                    "bactromod.options.blindnessfog",
+                    OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.blindnessfog.description")),
                     Config.load().disableBlindnessFog
                 ) { Config.save(Config.load().copy(disableBlindnessFog = it)) },
 
                 OptionInstance.createBoolean(
-                    "Disable darkness fog",
-                    OptionInstance.cachedConstantTooltip(Component.literal("Disables fog caused by darkness effect.")),
+                    "bactromod.options.darknessfog",
+                    OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.darknessfog.description")),
                     Config.load().disableDarknessFog
                 ) { Config.save(Config.load().copy(disableDarknessFog = it)) },
 
                 OptionInstance.createBoolean(
-                    "Disable water fog",
-                    OptionInstance.cachedConstantTooltip(Component.literal("Disables fog caused by diving into water.")),
+                    "bactromod.options.waterfog",
+                    OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.waterfog.description")),
                     Config.load().disableWaterFog
                 ) { Config.save(Config.load().copy(disableWaterFog = it)) },
 
                 OptionInstance.createBoolean(
-                    "Disable sky fog",
-                    OptionInstance.cachedConstantTooltip(Component.literal("Disables sky fog.")),
+                    "bactromod.options.skyfog",
+                    OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.skyfog.description")),
                     Config.load().disableSkyFog
                 ) { Config.save(Config.load().copy(disableSkyFog = it)) },
 
                 OptionInstance.createBoolean(
-                    "Disable thick fog",
-                    OptionInstance.cachedConstantTooltip(Component.literal("Disables thick fog.")),
+                    "bactromod.options.thickfog",
+                    OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.thickfog.description")),
                     Config.load().disableThickFog
                 ) { Config.save(Config.load().copy(disableThickFog = it)) },
 
                 OptionInstance.createBoolean(
-                    "Disable terrain fog",
-                    OptionInstance.cachedConstantTooltip(Component.literal("Disables terrain fog.")),
+                    "bactromod.options.terrainfog",
+                    OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.terrainfog.description")),
                     Config.load().disableTerrainFog
                 ) { Config.save(Config.load().copy(disableTerrainFog = it)) },
 
                 OptionInstance.createBoolean(
-                    "Show Hypixel fairy souls",
-                    OptionInstance.cachedConstantTooltip(Component.literal("Just a feature I needed and decided to add to this mod. Shows locations of Fairy Souls in Hypixel Skyblock.")),
-                    Config.load().showHypixelFairySouls
-                ) { Config.save(Config.load().copy(showHypixelFairySouls = it)) },
-
-                OptionInstance.createBoolean(
-                    "Nice window borders",
-                    OptionInstance.cachedConstantTooltip(Component.literal("Enables modern window border in Minecraft (only on Windows 11).")),
+                    "bactromod.options.windowborders",
+                    OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.windowborders.description")),
                     Config.load().showNiceWindowBorders
                 ) {
                     Config.save(Config.load().copy(showNiceWindowBorders = it))
                     DwmApi.updateDwm(Minecraft.getInstance().window.window)
-                }
+                },
+
+                OptionInstance.createBoolean(
+                    "bactromod.options.fairysouls",
+                    OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.fairysouls.description")),
+                    Config.load().showHypixelFairySouls
+                ) { Config.save(Config.load().copy(showHypixelFairySouls = it)) }
             )
         }
 

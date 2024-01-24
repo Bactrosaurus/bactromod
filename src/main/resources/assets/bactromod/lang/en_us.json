@@ -1,0 +1,48 @@
+{
+  "bactromod.options.title": "BactroMod Settings",
+
+  "bactromod.options.gamma": "Gamma multiplier",
+  "bactromod.options.gamma.description": "Multiplies in-game gamma (brightness) by set number.",
+
+  "bactromod.options.pumpkinblur": "Disable pumpkin blur",
+  "bactromod.options.pumpkinblur.description": "Disables black texture overlay that strongly limits view when player wears a carved pumpkin.",
+
+  "bactromod.options.fireoffset": "Fire offset",
+  "bactromod.options.fireoffset.description": "Moves fire texture in height. Usually you would select a negative value to move fire texture down and free up your view.",
+
+  "bactromod.options.shieldoffset": "Shield offset",
+  "bactromod.options.shieldoffset.description": "Moves shield in height when in first-person perspective. Usually you would select a negative value to move shield down and free up your view.",
+
+  "bactromod.options.boatmap": "Show map in boat",
+  "bactromod.options.boatmap.description": "Allows maps to always be shown when moving in boat.",
+
+  "bactromod.options.lavafog": "Disable lava fog",
+  "bactromod.options.lavafog.description": "Disables fog caused by diving into lava.",
+
+  "bactromod.options.snowfog": "Disable powder snow fog",
+  "bactromod.options.snowfog.description": "Disables fog caused by diving into powder snow.",
+
+  "bactromod.options.blindnessfog": "Disable blindness fog",
+  "bactromod.options.blindnessfog.description": "Disables fog caused by blindness effect.",
+
+  "bactromod.options.darknessfog": "Disable darkness fog",
+  "bactromod.options.darknessfog.description": "Disables fog caused by darkness effect.",
+
+  "bactromod.options.waterfog": "Disable water fog",
+  "bactromod.options.waterfog.description": "Disables fog caused by diving into water.",
+
+  "bactromod.options.skyfog": "Disable sky fog",
+  "bactromod.options.skyfog.description": "Disables sky fog.",
+
+  "bactromod.options.thickfog": "Disable thick fog",
+  "bactromod.options.thickfog.description": "Disables thick fog.",
+
+  "bactromod.options.terrainfog": "Disable terrain fog",
+  "bactromod.options.terrainfog.description": "Disables terrain fog.",
+
+  "bactromod.options.windowborders": "Nice window borders",
+  "bactromod.options.windowborders.description": "Enables modern window border in Minecraft (only on Windows 11).",
+
+  "bactromod.options.fairysouls": "Show Hypixel fairy souls",
+  "bactromod.options.fairysouls.description": "Just a feature I needed and decided to add to this mod. Shows locations of Fairy Souls in Hypixel Skyblock."
+}

@@ -9,12 +9,12 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 public class MixinKeyboardHandler {
 
     @ModifyConstant(method = "handleDebugKeys", constant = @Constant(intValue = 2, ordinal = 2))
-    private static int injectedPermissionLevel2(int injectedPermissionLevel) {
+    private int injectedPermissionLevel2(int injectedPermissionLevel) {
         return 0;
     }
 
     @ModifyConstant(method = "handleDebugKeys", constant = @Constant(intValue = 2, ordinal = 1))
-    private static int injectedPermissionLevel1(int injectedPermissionLevel) {
+    private int injectedPermissionLevel1(int injectedPermissionLevel) {
         return 0;
     }
 
