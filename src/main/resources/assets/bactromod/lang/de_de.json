@@ -1,19 +1,19 @@
 {
-  "bactromod.options.title": "BactroMod Settings",
+  "bactromod.options.title": "BactroMod Einstellungen",
 
-  "bactromod.options.gamma": "Brightness boost",
-  "bactromod.options.gamma.description": "Boosts in-game brightness by set factor.",
+  "bactromod.options.gamma": "Helligkeitsverstärkung",
+  "bactromod.options.gamma.description": "Erhöht die Helligkeit im Spiel um den eingestellten Faktor.",
 
-  "bactromod.options.pumpkinblur": "Disable pumpkin-blur",
-  "bactromod.options.pumpkinblur.description": "Disables black texture overlay that strongly limits view when player wears a carved pumpkin.",
+  "bactromod.options.pumpkinblur": "Deaktiviere Kürbis-Maske",
+  "bactromod.options.pumpkinblur.description": "Deaktiviert die Textur, welche beim Tragen eines geschnitzten Kürbis das Sichtfeld des Spielers einschränkt.",
 
-  "bactromod.options.fireoffset": "Fire offset",
-  "bactromod.options.fireoffset.description": "Moves fire texture in height. Usually you would select a negative value to move fire texture down and free up your view.",
+  "bactromod.options.fireoffset": "Feuer-Höhe",
+  "bactromod.options.fireoffset.description": "Verschiebt die Feuer-Textur, welche man in der ersten Person sieht wenn man brennt, in der Höhe. Normalerweise wird ein negativer Wert gewählt, um das Sichtfeld zu erweitern.",
 
-  "bactromod.options.shieldoffset": "Shield offset",
-  "bactromod.options.shieldoffset.description": "Moves shield in height when in first-person perspective. Usually you would select a negative value to move shield down and free up your view.",
+  "bactromod.options.shieldoffset": "Schild-Höhe",
+  "bactromod.options.shieldoffset.description": "Verschiebt den Schild in der ersten Person in der Höhe. Normalerweise wird ein negativer Wert gewählt, um das Sichtfeld zu erweitern.",
 
-  "bactromod.options.boatmap": "Show map in boat",
+  "bactromod.options.boatmap": "Zeige Karte in Boot",
   "bactromod.options.boatmap.description": "Allows maps to always be shown when moving in boat.",
 
   "bactromod.options.lavafog": "Disable lava fog",

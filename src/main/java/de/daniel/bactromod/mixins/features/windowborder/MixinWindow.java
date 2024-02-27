@@ -8,7 +8,6 @@ import de.daniel.bactromod.config.Config;
 import de.daniel.bactromod.config.ConfigObject;
 import de.daniel.bactromod.windowborder.DwmApi;
 import de.daniel.bactromod.windowborder.NtDll;
-import net.minecraft.Util;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
