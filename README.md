@@ -12,7 +12,6 @@ Download on Modrinth: https://modrinth.com/mod/bactromod
 * Show map while moving in boat
 * Disable various kinds of fogs (customizable)
 * F3-F4 Shortcut for switching gamemodes without op (only permissions required)
-* (Hypixel Fairy Souls Waypoints)
 
 ## Screenshots
 
