@@ -4,7 +4,6 @@
   "package": "de.daniel.bactromod.mixins",
   "client": [
     "features.boatmap.MixinItemInHandRenderer",
-    "features.fairysouls.MixinLivingEntityRenderer",
     "features.fog.MixinFogRenderer",
     "features.fullbright.MixinLightTexture",
     "features.lowfire.MixinScreenEffectRenderer",

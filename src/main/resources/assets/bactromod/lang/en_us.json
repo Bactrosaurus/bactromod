@@ -35,14 +35,11 @@
   "bactromod.options.skyfog.description": "Disables sky fog.",
 
   "bactromod.options.thickfog": "Disable thick fog",
-  "bactromod.options.thickfog.description": "Disables thick fog.",
+  "bactromod.options.thickfog.description": "Disables thick fog (e.g. in Nether).",
 
   "bactromod.options.terrainfog": "Disable terrain fog",
   "bactromod.options.terrainfog.description": "Disables terrain fog.",
 
-  "bactromod.options.windowborders": "Nice window borders",
-  "bactromod.options.windowborders.description": "Enables modern window border in Minecraft (only on Windows 11).",
-
-  "bactromod.options.fairysouls": "Show Hypixel fairy souls",
-  "bactromod.options.fairysouls.description": "Just a feature I needed and decided to add to this mod. Shows locations of Fairy Souls in Hypixel Skyblock."
+  "bactromod.options.windowborders": "Dark window borders",
+  "bactromod.options.windowborders.description": "Enables dark window border in Minecraft (only on Windows 11)."
 }

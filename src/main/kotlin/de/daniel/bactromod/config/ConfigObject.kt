@@ -8,7 +8,6 @@ data class ConfigObject(
     var disablePumpkinBlur: Boolean = true,
     var fireOffset: Int = -30,
     var shieldOffset: Int = -20,
-    var showHypixelFairySouls: Boolean = false,
     var disableBlindnessFog: Boolean = true,
     var disableDarknessFog: Boolean = true,
     var disableLavaFog: Boolean = true,

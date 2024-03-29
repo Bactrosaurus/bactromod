@@ -1,5 +1,6 @@
 package de.daniel.bactromod.config
 
+import de.daniel.bactromod.impl.SystemInfo
 import de.daniel.bactromod.windowborder.DwmApi
 import net.minecraft.client.Minecraft
 import net.minecraft.client.OptionInstance
@@ -108,14 +109,8 @@ class ConfigScreen(screen: Screen) : SimpleOptionsSubScreen(
                     Config.load().showNiceWindowBorders
                 ) {
                     Config.save(Config.load().copy(showNiceWindowBorders = it))
-                    DwmApi.updateDwm(Minecraft.getInstance().window.window)
-                },
-
-                OptionInstance.createBoolean(
-                    "bactromod.options.fairysouls",
-                    OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.fairysouls.description")),
-                    Config.load().showHypixelFairySouls
-                ) { Config.save(Config.load().copy(showHypixelFairySouls = it)) }
+                    if (SystemInfo.systemIsWindows11) DwmApi.updateDwm(Minecraft.getInstance().window.window)
+                }
             )
         }
 

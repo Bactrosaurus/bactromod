@@ -14,35 +14,32 @@
   "bactromod.options.shieldoffset.description": "Verschiebt den Schild in der ersten Person in der Höhe. Normalerweise wird ein negativer Wert gewählt, um das Sichtfeld zu erweitern.",
 
   "bactromod.options.boatmap": "Zeige Karte in Boot",
-  "bactromod.options.boatmap.description": "Allows maps to always be shown when moving in boat.",
+  "bactromod.options.boatmap.description": "Zeigt Schatzkarten, obwohl man sich mit einem Boot in Bewegung befindet.",
 
-  "bactromod.options.lavafog": "Disable lava fog",
-  "bactromod.options.lavafog.description": "Disables fog caused by diving into lava.",
+  "bactromod.options.lavafog": "Deaktiviere Lava-Nebel",
+  "bactromod.options.lavafog.description": "Deaktiviert Nebel, welcher beim Eintauchen in Lava angezeigt wird.",
 
-  "bactromod.options.snowfog": "Disable powder snow fog",
-  "bactromod.options.snowfog.description": "Disables fog caused by diving into powder snow.",
+  "bactromod.options.snowfog": "Deaktiviere Pulverschnee-Nebel",
+  "bactromod.options.snowfog.description": "Deaktiviert Nebel, welcher beim Eintauchen in Pulverschnee angezeigt wird.",
 
-  "bactromod.options.blindnessfog": "Disable blindness fog",
-  "bactromod.options.blindnessfog.description": "Disables fog caused by blindness effect.",
+  "bactromod.options.blindnessfog": "Deaktiviere Blindheitseffekt",
+  "bactromod.options.blindnessfog.description": "Deaktiviert Nebel, welcher angezeigt wird, wenn der Spieler Blindheit als Effekt hat.",
 
-  "bactromod.options.darknessfog": "Disable darkness fog",
-  "bactromod.options.darknessfog.description": "Disables fog caused by darkness effect.",
+  "bactromod.options.darknessfog": "Deaktiviere Dunkelheitseffekt",
+  "bactromod.options.darknessfog.description": "Deaktiviert Nebel, welcher angezeigt wird, wenn der Spieler Dunkelheit als Effekt hat.",
 
-  "bactromod.options.waterfog": "Disable water fog",
-  "bactromod.options.waterfog.description": "Disables fog caused by diving into water.",
+  "bactromod.options.waterfog": "Deaktiviere Wasser-Nebel",
+  "bactromod.options.waterfog.description": "Deaktiviert Nebel, welcher beim Eintauchen in Wasser angezeigt wird.",
 
-  "bactromod.options.skyfog": "Disable sky fog",
-  "bactromod.options.skyfog.description": "Disables sky fog.",
+  "bactromod.options.skyfog": "Deaktiviere Horizontnebel",
+  "bactromod.options.skyfog.description": "Deaktiviert Nebel, welcher im entfernten Horizont angezeigt wird.",
 
-  "bactromod.options.thickfog": "Disable thick fog",
-  "bactromod.options.thickfog.description": "Disables thick fog.",
+  "bactromod.options.thickfog": "Deaktiviere dichten Nebel",
+  "bactromod.options.thickfog.description": "Deaktiviert dichten Nebel (z.B. Nether-Nebel).",
 
-  "bactromod.options.terrainfog": "Disable terrain fog",
-  "bactromod.options.terrainfog.description": "Disables terrain fog.",
+  "bactromod.options.terrainfog": "Deaktiviere Geländenebel",
+  "bactromod.options.terrainfog.description": "Deaktiviert Nebel im Gelände.",
 
-  "bactromod.options.windowborders": "Nice window borders",
-  "bactromod.options.windowborders.description": "Enables modern window border in Minecraft (only on Windows 11).",
-
-  "bactromod.options.fairysouls": "Show Hypixel fairy souls",
-  "bactromod.options.fairysouls.description": "Just a feature I needed and decided to add to this mod. Shows locations of Fairy Souls in Hypixel Skyblock."
+  "bactromod.options.windowborders": "Dunkle Fensterrahmen",
+  "bactromod.options.windowborders.description": "Aktiviert dunkle Fensterrahmen für Minecraft-Instanzen (nur unter Windows 11)."
 }
