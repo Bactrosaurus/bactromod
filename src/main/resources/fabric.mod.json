@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "bactromod",
-  "authors": ["Bactrosaurus"],
+  "authors": ["Bactrosaurus", "FurnyGo"],
   "description": "A lightweight mod with some game optimizations and features.",
   "version": "2.1",
   "name": "BactroMod",
