@@ -5,17 +5,17 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class ConfigObject(
     var gammaMultiplier: Int = 15,
-    var disablePumpkinBlur: Boolean = true,
+    var pumpkinBlur: Boolean = false,
     var fireOffset: Int = -30,
     var shieldOffset: Int = -20,
-    var disableBlindnessFog: Boolean = true,
-    var disableDarknessFog: Boolean = true,
-    var disableLavaFog: Boolean = true,
-    var disablePowderSnowFog: Boolean = true,
-    var disableWaterFog: Boolean = true,
-    var disableSkyFog: Boolean = false,
-    var disableTerrainFog: Boolean = true,
-    var disableThickFog: Boolean = true,
+    var blindnessFog: Boolean = false,
+    var darknessFog: Boolean = false,
+    var lavaFog: Boolean = false,
+    var powderSnowFog: Boolean = false,
+    var waterFog: Boolean = false,
+    var skyFog: Boolean = true,
+    var terrainFog: Boolean = false,
+    var thickFog: Boolean = false,
     var showMapWhileInBoat: Boolean = true,
-    var showNiceWindowBorders: Boolean = true
+    var darkWindowBorders: Boolean = true
 )

@@ -35,14 +35,14 @@ public class MixinFogRenderer {
 
         ConfigObject config = Config.INSTANCE.load();
         
-        boolean disableLavaFog = lavaFog && config.getDisableLavaFog();
-        boolean disablePowderSnowFog = powderSnowFog && config.getDisablePowderSnowFog();
-        boolean disableBlindnessFog = blindnessFog && config.getDisableBlindnessFog();
-        boolean disableDarknessFog = darknessFog && config.getDisableDarknessFog();
-        boolean disableWaterFog = waterFog && config.getDisableWaterFog();
-        boolean disableThickFog = thickFog && config.getDisableThickFog();
-        boolean disableSkyFog = skyFog && config.getDisableSkyFog();
-        boolean disableTerrainFog = terrainFog && config.getDisableTerrainFog();
+        boolean disableLavaFog = lavaFog && config.getLavaFog();
+        boolean disablePowderSnowFog = powderSnowFog && config.getPowderSnowFog();
+        boolean disableBlindnessFog = blindnessFog && config.getBlindnessFog();
+        boolean disableDarknessFog = darknessFog && config.getDarknessFog();
+        boolean disableWaterFog = waterFog && config.getWaterFog();
+        boolean disableThickFog = thickFog && config.getThickFog();
+        boolean disableSkyFog = skyFog && config.getSkyFog();
+        boolean disableTerrainFog = terrainFog && config.getTerrainFog();
 
         if (
             disableLavaFog ||

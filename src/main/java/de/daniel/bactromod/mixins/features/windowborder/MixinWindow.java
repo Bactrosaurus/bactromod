@@ -26,7 +26,7 @@ public class MixinWindow {
     @Inject(method = "<init>", at = @At(value = "TAIL"))
     private void init(WindowEventHandler handler, ScreenManager manager, DisplayData display, String videoMode, String title, CallbackInfo ci) {
         ConfigObject config = Config.INSTANCE.load();
-        if (!config.getShowNiceWindowBorders() || !SystemInfo.INSTANCE.getSystemIsWindows11()) return;
+        if (!config.getDarkWindowBorders() || !SystemInfo.INSTANCE.getSystemIsWindows11()) return;
         NtDll.getBuildNumber();
         DwmApi.updateDwm(this.window);
     }

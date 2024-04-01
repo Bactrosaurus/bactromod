@@ -62,7 +62,7 @@ public interface DwmApi extends Library {
         ConfigObject config = Config.INSTANCE.load();
 
         INSTANCE.DwmSetWindowAttribute(hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, new IntByReference(
-                config.getShowNiceWindowBorders() ? 1 : 0
+                config.getDarkWindowBorders() ? 1 : 0
         ), INT_SIZE);
 
         if (WindowUtil.buildNumber >= WindowUtil.BACKDROP_BUILD_NUM) {

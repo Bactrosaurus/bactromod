@@ -14,7 +14,7 @@ public class MixinGui {
 
     @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;is(Lnet/minecraft/world/item/Item;)Z"))
     public boolean is(ItemStack itemStack, Item item) {
-        if (Config.INSTANCE.load().getDisablePumpkinBlur()) {
+        if (Config.INSTANCE.load().getPumpkinBlur()) {
             return false;
         } else {
             return itemStack.is(Blocks.CARVED_PUMPKIN.asItem());

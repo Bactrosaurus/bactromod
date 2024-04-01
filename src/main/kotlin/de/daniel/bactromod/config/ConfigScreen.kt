@@ -30,8 +30,8 @@ class ConfigScreen(screen: Screen) : SimpleOptionsSubScreen(
                 OptionInstance.createBoolean(
                     "bactromod.options.pumpkinblur",
                     OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.pumpkinblur.description")),
-                    Config.load().disablePumpkinBlur
-                ) { Config.save(Config.load().copy(disablePumpkinBlur = it)) },
+                    Config.load().pumpkinBlur
+                ) { Config.save(Config.load().copy(pumpkinBlur = it)) },
 
                 OptionInstance(
                     "bactromod.options.fireoffset",
@@ -58,57 +58,57 @@ class ConfigScreen(screen: Screen) : SimpleOptionsSubScreen(
                 OptionInstance.createBoolean(
                     "bactromod.options.lavafog",
                     OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.lavafog.description")),
-                    Config.load().disableLavaFog
-                ) { Config.save(Config.load().copy(disableLavaFog = it)) },
+                    Config.load().lavaFog
+                ) { Config.save(Config.load().copy(lavaFog = it)) },
 
                 OptionInstance.createBoolean(
                     "bactromod.options.snowfog",
                     OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.snowfog.description")),
-                    Config.load().disablePowderSnowFog
-                ) { Config.save(Config.load().copy(disablePowderSnowFog = it)) },
+                    Config.load().powderSnowFog
+                ) { Config.save(Config.load().copy(powderSnowFog = it)) },
 
                 OptionInstance.createBoolean(
                     "bactromod.options.blindnessfog",
                     OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.blindnessfog.description")),
-                    Config.load().disableBlindnessFog
-                ) { Config.save(Config.load().copy(disableBlindnessFog = it)) },
+                    Config.load().blindnessFog
+                ) { Config.save(Config.load().copy(blindnessFog = it)) },
 
                 OptionInstance.createBoolean(
                     "bactromod.options.darknessfog",
                     OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.darknessfog.description")),
-                    Config.load().disableDarknessFog
-                ) { Config.save(Config.load().copy(disableDarknessFog = it)) },
+                    Config.load().darknessFog
+                ) { Config.save(Config.load().copy(darknessFog = it)) },
 
                 OptionInstance.createBoolean(
                     "bactromod.options.waterfog",
                     OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.waterfog.description")),
-                    Config.load().disableWaterFog
-                ) { Config.save(Config.load().copy(disableWaterFog = it)) },
+                    Config.load().waterFog
+                ) { Config.save(Config.load().copy(waterFog = it)) },
 
                 OptionInstance.createBoolean(
                     "bactromod.options.skyfog",
                     OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.skyfog.description")),
-                    Config.load().disableSkyFog
-                ) { Config.save(Config.load().copy(disableSkyFog = it)) },
+                    Config.load().skyFog
+                ) { Config.save(Config.load().copy(skyFog = it)) },
 
                 OptionInstance.createBoolean(
                     "bactromod.options.thickfog",
                     OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.thickfog.description")),
-                    Config.load().disableThickFog
-                ) { Config.save(Config.load().copy(disableThickFog = it)) },
+                    Config.load().thickFog
+                ) { Config.save(Config.load().copy(thickFog = it)) },
 
                 OptionInstance.createBoolean(
                     "bactromod.options.terrainfog",
                     OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.terrainfog.description")),
-                    Config.load().disableTerrainFog
-                ) { Config.save(Config.load().copy(disableTerrainFog = it)) },
+                    Config.load().terrainFog
+                ) { Config.save(Config.load().copy(terrainFog = it)) },
 
                 OptionInstance.createBoolean(
                     "bactromod.options.windowborders",
                     OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.windowborders.description")),
-                    Config.load().showNiceWindowBorders
+                    Config.load().darkWindowBorders
                 ) {
-                    Config.save(Config.load().copy(showNiceWindowBorders = it))
+                    Config.save(Config.load().copy(darkWindowBorders = it))
                     if (SystemInfo.systemIsWindows11) DwmApi.updateDwm(Minecraft.getInstance().window.window)
                 }
             )

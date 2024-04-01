@@ -4,42 +4,45 @@
   "bactromod.options.gamma": "Helligkeitsverstärkung",
   "bactromod.options.gamma.description": "Erhöht die Helligkeit im Spiel um den eingestellten Faktor.",
 
-  "bactromod.options.pumpkinblur": "Deaktiviere Kürbis-Maske",
+  "bactromod.options.pumpkinblur": "Kürbismaske",
   "bactromod.options.pumpkinblur.description": "Deaktiviert die Textur, welche beim Tragen eines geschnitzten Kürbis das Sichtfeld des Spielers einschränkt.",
 
-  "bactromod.options.fireoffset": "Feuer-Höhe",
+  "bactromod.options.fireoffset": "Feuerhöhe",
   "bactromod.options.fireoffset.description": "Verschiebt die Feuer-Textur, welche man in der ersten Person sieht wenn man brennt, in der Höhe. Normalerweise wird ein negativer Wert gewählt, um das Sichtfeld zu erweitern.",
 
-  "bactromod.options.shieldoffset": "Schild-Höhe",
+  "bactromod.options.shieldoffset": "Schildhöhe",
   "bactromod.options.shieldoffset.description": "Verschiebt den Schild in der ersten Person in der Höhe. Normalerweise wird ein negativer Wert gewählt, um das Sichtfeld zu erweitern.",
 
   "bactromod.options.boatmap": "Zeige Karte in Boot",
   "bactromod.options.boatmap.description": "Zeigt Schatzkarten, obwohl man sich mit einem Boot in Bewegung befindet.",
 
-  "bactromod.options.lavafog": "Deaktiviere Lava-Nebel",
+  "bactromod.options.lavafog": "Lavanebel",
   "bactromod.options.lavafog.description": "Deaktiviert Nebel, welcher beim Eintauchen in Lava angezeigt wird.",
 
-  "bactromod.options.snowfog": "Deaktiviere Pulverschnee-Nebel",
+  "bactromod.options.snowfog": "Pulverschneenebel",
   "bactromod.options.snowfog.description": "Deaktiviert Nebel, welcher beim Eintauchen in Pulverschnee angezeigt wird.",
 
-  "bactromod.options.blindnessfog": "Deaktiviere Blindheitseffekt",
+  "bactromod.options.blindnessfog": "Blindheitseffekt",
   "bactromod.options.blindnessfog.description": "Deaktiviert Nebel, welcher angezeigt wird, wenn der Spieler Blindheit als Effekt hat.",
 
-  "bactromod.options.darknessfog": "Deaktiviere Dunkelheitseffekt",
+  "bactromod.options.darknessfog": "Dunkelheitseffekt",
   "bactromod.options.darknessfog.description": "Deaktiviert Nebel, welcher angezeigt wird, wenn der Spieler Dunkelheit als Effekt hat.",
 
-  "bactromod.options.waterfog": "Deaktiviere Wasser-Nebel",
+  "bactromod.options.waterfog": "Wassernebel",
   "bactromod.options.waterfog.description": "Deaktiviert Nebel, welcher beim Eintauchen in Wasser angezeigt wird.",
 
-  "bactromod.options.skyfog": "Deaktiviere Horizontnebel",
+  "bactromod.options.skyfog": "Horizontnebel",
   "bactromod.options.skyfog.description": "Deaktiviert Nebel, welcher im entfernten Horizont angezeigt wird.",
 
-  "bactromod.options.thickfog": "Deaktiviere dichten Nebel",
+  "bactromod.options.thickfog": "Dichter Nebel",
   "bactromod.options.thickfog.description": "Deaktiviert dichten Nebel (z.B. Nether-Nebel).",
 
-  "bactromod.options.terrainfog": "Deaktiviere Geländenebel",
+  "bactromod.options.terrainfog": "Geländenebel",
   "bactromod.options.terrainfog.description": "Deaktiviert Nebel im Gelände.",
 
   "bactromod.options.windowborders": "Dunkle Fensterrahmen",
-  "bactromod.options.windowborders.description": "Aktiviert dunkle Fensterrahmen für Minecraft-Instanzen (nur unter Windows 11)."
+  "bactromod.options.windowborders.description": "Aktiviert dunkle Fensterrahmen für Minecraft-Instanzen (nur unter Windows 11).",
+
+  "modmenu.summaryTranslation.bactromod": "Eine kleine Mod mit nützlichen Spieloptimierungen.",
+  "modmenu.descriptionTranslation.bactromod": "Eine kleine Mod mit nützlichen Spieloptimierungen."
 }
