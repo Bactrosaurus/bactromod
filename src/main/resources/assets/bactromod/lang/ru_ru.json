@@ -4,7 +4,7 @@
   "bactromod.options.gamma": "Усиление яркости",
   "bactromod.options.gamma.description": "Усиливает яркость в несколько раз.",
 
-  "bactromod.options.pumpkinblur": "Откл. текстуру тыквы",
+  "bactromod.options.pumpkinblur": "текстуру тыквы",
   "bactromod.options.pumpkinblur.description": "Отключает чёрную текстуру, которая накладывается при надевании тыквы.",
 
   "bactromod.options.fireoffset": "Расположение огня",
@@ -16,28 +16,28 @@
   "bactromod.options.boatmap": "Карта в лодке",
   "bactromod.options.boatmap.description": "Позволяет видеть карты во время движения на лодке.",
 
-  "bactromod.options.lavafog": "Откл. туман в лаве",
+  "bactromod.options.lavafog": "туман в лаве",
   "bactromod.options.lavafog.description": "Отключает затуманенность при погружении в лаву.",
 
-  "bactromod.options.snowfog": "Откл. туман в рыхлом снеге",
+  "bactromod.options.snowfog": "туман в рыхлом снеге",
   "bactromod.options.snowfog.description": "Отключает затуманенность при погружении в рыхлый снег.",
 
-  "bactromod.options.blindnessfog": "Откл. туман от слепоты",
+  "bactromod.options.blindnessfog": "туман от слепоты",
   "bactromod.options.blindnessfog.description": "Отключает затуманенность от эффекта слепоты",
 
-  "bactromod.options.darknessfog": "Откл. туман от тьмы",
+  "bactromod.options.darknessfog": "туман от тьмы",
   "bactromod.options.darknessfog.description": "Отключает затуманенность от эффекта тьмы.",
 
-  "bactromod.options.waterfog": "Откл. туман в воде",
+  "bactromod.options.waterfog": "туман в воде",
   "bactromod.options.waterfog.description": "Отключает затуманенность при погружении в воду.",
 
-  "bactromod.options.skyfog": "Откл. туман в небе",
+  "bactromod.options.skyfog": "туман в небе",
   "bactromod.options.skyfog.description": "Отключает затуманенность в небе",
 
-  "bactromod.options.thickfog": "Откл. густой туман",
+  "bactromod.options.thickfog": "густой туман",
   "bactromod.options.thickfog.description": "Отключает густой туман (например в Незере).",
 
-  "bactromod.options.terrainfog": "Откл. туман на повехности",
+  "bactromod.options.terrainfog": "туман на повехности",
   "bactromod.options.terrainfog.description": "Отключает туман на повехности.",
 
   "bactromod.options.windowborders": "Тёмные рамки окна",
