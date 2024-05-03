@@ -21,7 +21,6 @@ dependencies {
 
     modImplementation("net.fabricmc:fabric-loader:0.15.11")
     modImplementation("net.fabricmc:fabric-language-kotlin:1.10.19+kotlin.1.9.23")
-    modImplementation("net.fabricmc.fabric-api:fabric-api:0.97.8+1.20.6")
 
     modApi("com.terraformersmc:modmenu:10.0.0-beta.1")
 }
