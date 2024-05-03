@@ -116,7 +116,7 @@ class ConfigScreen(screen: Screen) : SimpleOptionsSubScreen(
 
     }
 
-    override fun createFooter() {
+    override fun addFooter() {
         addRenderableWidget(
             Button.builder(
                 CommonComponents.GUI_DONE

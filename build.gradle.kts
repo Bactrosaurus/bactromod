@@ -16,13 +16,14 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
 
-    minecraft("com.mojang:minecraft:1.20.4")
+    minecraft("com.mojang:minecraft:1.20.6")
     mappings(loom.officialMojangMappings())
 
-    modImplementation("net.fabricmc:fabric-loader:0.15.7")
+    modImplementation("net.fabricmc:fabric-loader:0.15.10")
     modImplementation("net.fabricmc:fabric-language-kotlin:1.10.19+kotlin.1.9.23")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:0.97.8+1.20.6")
 
-    modApi("com.terraformersmc:modmenu:9.0.0")
+    modApi("com.terraformersmc:modmenu:10.0.0-beta.1")
 }
 
 loom {
@@ -30,12 +31,12 @@ loom {
 }
 
 kotlin {
-    jvmToolchain(17)
+    jvmToolchain(21)
 }
 
 tasks {
     compileJava {
         options.encoding = "UTF-8"
-        options.release.set(17)
+        options.release.set(21)
     }
 }
