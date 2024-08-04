@@ -40,7 +40,7 @@
   "bactromod.options.terrainfog": "Geländenebel",
   "bactromod.options.terrainfog.description": "Deaktiviert Nebel im Gelände.",
 
-  "bactromod.options.fixShieldRiptideTrident": "Behebe Schild mit Sog-Dreizack",
+  "bactromod.options.fixShieldRiptideTrident": "Schildposition Sog-Dreizack",
   "bactromod.options.fixShieldRiptideTrident.description": "Behebt fehlerhafte Schildposition bei Nutzung eines Sog-Dreizacks in Wasser oder Regen.",
 
   "bactromod.options.windowborders": "Dunkle Fensterrahmen",
