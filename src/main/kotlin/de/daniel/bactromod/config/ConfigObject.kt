@@ -17,5 +17,6 @@ data class ConfigObject(
     var terrainFog: Boolean = false,
     var thickFog: Boolean = false,
     var showMapWhileInBoat: Boolean = true,
+    var fixShieldRiptideTrident: Boolean = true,
     var darkWindowBorders: Boolean = true
 )

@@ -100,6 +100,12 @@ class ConfigScreen(screen: Screen) : OptionsSubScreen(
             ) { Config.save(Config.load().copy(terrainFog = it)) },
 
             OptionInstance.createBoolean(
+                "bactromod.options.fixShieldRiptideTrident",
+                OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.fixShieldRiptideTrident.description")),
+                Config.load().fixShieldRiptideTrident
+            ) { Config.save(Config.load().copy(fixShieldRiptideTrident = it)) },
+
+            OptionInstance.createBoolean(
                 "bactromod.options.windowborders",
                 OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.windowborders.description")),
                 Config.load().darkWindowBorders

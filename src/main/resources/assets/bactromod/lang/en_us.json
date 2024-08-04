@@ -40,6 +40,9 @@
   "bactromod.options.terrainfog": "Terrain fog",
   "bactromod.options.terrainfog.description": "Disables terrain fog.",
 
+  "bactromod.options.fixShieldRiptideTrident": "Fix riptide-trident shield",
+  "bactromod.options.fixShieldRiptideTrident.description": "Fixes the position of shield in offhand while using riptide trident in water or rain.",
+
   "bactromod.options.windowborders": "Dark window borders",
   "bactromod.options.windowborders.description": "Enables dark window border in Minecraft (only on Windows 11).",
 

@@ -40,6 +40,9 @@
   "bactromod.options.terrainfog": "Туман на повехности",
   "bactromod.options.terrainfog.description": "Отключает туман на повехности.",
 
+  "bactromod.options.fixShieldRiptideTrident": "Fix riptide trident shield",
+  "bactromod.options.fixShieldRiptideTrident.description": "Fixes the position of shield in offhand while using riptide trident in water or rain.",
+
   "bactromod.options.windowborders": "Тёмные рамки окна",
   "bactromod.options.windowborders.description": "Включает тёмные рамки окна Майнкрафта (только для Windows 11).",
 
