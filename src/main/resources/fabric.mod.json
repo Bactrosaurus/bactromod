@@ -3,7 +3,7 @@
   "id": "bactromod",
   "authors": ["Bactrosaurus", "FurnyGo"],
   "description": "A lightweight mod with some game optimizations and features.",
-  "version": "2.3",
+  "version": "2.4",
   "name": "BactroMod",
   "environment": "client",
   "license": "LGPL-3.0-only",

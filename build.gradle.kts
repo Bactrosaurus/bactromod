@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "de.daniel"
-version = "2.3"
+version = "2.4"
 
 repositories {
     mavenCentral()
@@ -20,10 +20,10 @@ dependencies {
     mappings(loom.officialMojangMappings())
 
     modImplementation("net.fabricmc:fabric-loader:0.15.11")
-    modImplementation("net.fabricmc.fabric-api:fabric-api:0.100.7+1.21")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:0.100.8+1.21")
     modImplementation("net.fabricmc:fabric-language-kotlin:1.11.0+kotlin.2.0.0")
 
-    modApi("com.terraformersmc:modmenu:11.0.0")
+    modApi("com.terraformersmc:modmenu:11.0.1")
 }
 
 loom {

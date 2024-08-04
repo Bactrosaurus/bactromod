@@ -11,6 +11,7 @@
     "features.noopgmswitcher.MixinGameModeSwitcherScreen",
     "features.noopgmswitcher.MixinKeyboardHandler",
     "features.nopumpkinblur.MixinGui",
+    "features.riptidetridentshield.MixinItemInHandRenderer",
     "features.windowborder.MixinWindow",
     "settingsbutton.MixinCreditsAndAttributionScreen"
   ],
