@@ -1,6 +1,6 @@
 package de.daniel.bactromod.config
 
-import de.daniel.bactromod.impl.SystemInfo
+import de.daniel.bactromod.systemIsWindows11
 import de.daniel.bactromod.windowborder.DwmApi
 import net.minecraft.client.Minecraft
 import net.minecraft.client.OptionInstance
@@ -111,7 +111,7 @@ class ConfigScreen(screen: Screen) : OptionsSubScreen(
                 Config.load().darkWindowBorders
             ) {
                 Config.save(Config.load().copy(darkWindowBorders = it))
-                if (SystemInfo.systemIsWindows11) DwmApi.updateDwm(Minecraft.getInstance().window.window)
+                if (systemIsWindows11) DwmApi.updateDwm(Minecraft.getInstance().window.window)
             }
         )
     }

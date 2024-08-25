@@ -3,7 +3,7 @@ package de.daniel.bactromod.mixins.features.fog;
 import com.mojang.blaze3d.shaders.FogShape;
 import com.mojang.blaze3d.systems.RenderSystem;
 import de.daniel.bactromod.config.Config;
-import de.daniel.bactromod.config.ConfigObject;
+import de.daniel.bactromod.config.ConfigData;
 import net.minecraft.client.Camera;
 import net.minecraft.client.renderer.FogRenderer;
 import net.minecraft.world.effect.MobEffects;
@@ -33,7 +33,7 @@ public class MixinFogRenderer {
         boolean skyFog = fogMode == FogRenderer.FogMode.FOG_SKY;
         boolean terrainFog = !(lavaFog || powderSnowFog || blindnessFog || darknessFog || waterFog || thickFog || skyFog);
 
-        ConfigObject config = Config.INSTANCE.load();
+        ConfigData config = Config.INSTANCE.load();
         
         boolean disableLavaFog = lavaFog && !config.getLavaFog();
         boolean disablePowderSnowFog = powderSnowFog && !config.getPowderSnowFog();
