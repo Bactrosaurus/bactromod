@@ -1,5 +1,6 @@
 package de.daniel.bactromod.mixins.features.boatmap;
 
+import de.daniel.bactromod.BactroModKt;
 import de.daniel.bactromod.config.Config;
 import de.daniel.bactromod.config.ConfigData;
 import net.minecraft.client.player.LocalPlayer;

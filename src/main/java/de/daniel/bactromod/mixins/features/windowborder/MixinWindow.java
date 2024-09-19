@@ -7,6 +7,7 @@ import com.mojang.blaze3d.platform.WindowEventHandler;
 import de.daniel.bactromod.BactroModKt;
 import de.daniel.bactromod.config.Config;
 import de.daniel.bactromod.config.ConfigData;
+import de.daniel.bactromod.utils.SystemInfo;
 import de.daniel.bactromod.windowborder.DwmApi;
 import de.daniel.bactromod.windowborder.NtDll;
 import org.spongepowered.asm.mixin.Final;
@@ -26,7 +27,7 @@ public class MixinWindow {
     @Inject(method = "<init>", at = @At(value = "TAIL"))
     private void init(WindowEventHandler handler, ScreenManager manager, DisplayData display, String videoMode, String title, CallbackInfo ci) {
         ConfigData config = Config.INSTANCE.load();
-        if (!config.getDarkWindowBorders() || !BactroModKt.getSystemIsWindows11()) return;
+        if (!config.getDarkWindowBorders() || !SystemInfo.INSTANCE.isWindows11()) return;
         NtDll.getBuildNumber();
         DwmApi.updateDwm(this.window);
     }
