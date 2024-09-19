@@ -6,5 +6,5 @@ import org.slf4j.LoggerFactory
 val LOGGER: Logger = LoggerFactory.getLogger("BactroMod")
 
 fun init() {
-    println("Initializing BactroMod...")
+    LOGGER.info("Initializing BactroMod...")
 }
