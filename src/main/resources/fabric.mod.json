@@ -17,8 +17,8 @@
   ],
   "accessWidener" : "bactromod.accesswidener",
   "depends": {
-    "fabricloader": ">=0.16.5",
-    "fabric-language-kotlin": ">=1.12.2+kotlin.2.0.20",
-    "minecraft": ">=1.21.1"
+    "fabricloader": ">=0.16.7",
+    "fabric-language-kotlin": ">=1.12.3+kotlin.2.0.21",
+    "minecraft": ">=1.21.3"
   }
 }

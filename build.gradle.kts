@@ -15,7 +15,7 @@ repositories {
 dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
 
-    minecraft("com.mojang:minecraft:1.21.2")
+    minecraft("com.mojang:minecraft:1.21.3")
     mappings(loom.officialMojangMappings())
 
     modImplementation("net.fabricmc:fabric-loader:0.16.7")
