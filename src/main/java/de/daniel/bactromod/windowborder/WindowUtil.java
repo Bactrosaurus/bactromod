@@ -1,6 +1,7 @@
 package de.daniel.bactromod.windowborder;
 
 public final class WindowUtil {
+
     public static final int MINIMUM_BUILD_NUM = 22000;
     public static final int BACKDROP_BUILD_NUM = 22621;
     public static int majorVersion = Integer.MIN_VALUE;

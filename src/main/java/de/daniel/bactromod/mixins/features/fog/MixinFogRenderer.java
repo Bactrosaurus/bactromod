@@ -34,8 +34,7 @@ public class MixinFogRenderer {
         boolean darknessFog = livingEntity.hasEffect(MobEffects.DARKNESS);
         boolean waterFog = fogType == FogType.WATER;
         boolean skyFog = fogMode == FogRenderer.FogMode.FOG_SKY;
-        // boolean terrainFog = !(lavaFog || powderSnowFog || blindnessFog || darknessFog || waterFog || thickFog || skyFog);
-        boolean terrainFog = fogMode == FogRenderer.FogMode.FOG_TERRAIN;
+        boolean terrainFog = !(lavaFog || powderSnowFog || blindnessFog || darknessFog || waterFog || thickFog || skyFog);
 
         ConfigData config = Config.INSTANCE.load();
         

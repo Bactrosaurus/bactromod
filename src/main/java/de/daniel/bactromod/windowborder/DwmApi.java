@@ -47,10 +47,10 @@ public interface DwmApi extends Library {
 
     @NativeType("HRESULT")
     void DwmSetWindowAttribute(
-            HWND hwnd,
-            int dwAttribute,
-            PointerType pvAttribute,
-            int cbAttribute
+        HWND hwnd,
+        int dwAttribute,
+        PointerType pvAttribute,
+        int cbAttribute
     );
 
     static void updateDwm(final long window) {
@@ -58,21 +58,55 @@ public interface DwmApi extends Library {
             return;
         }
 
-        final HWND hwnd = new HWND(Pointer.createConstant(GLFWNativeWin32.glfwGetWin32Window(window)));
+        final HWND hwnd = new HWND(
+            Pointer.createConstant(GLFWNativeWin32.glfwGetWin32Window(window))
+        );
 
         ConfigData config = Config.INSTANCE.load();
 
-        INSTANCE.DwmSetWindowAttribute(hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, new IntByReference(
-                config.getDarkWindowBorders() ? 1 : 0
-        ), INT_SIZE);
+        INSTANCE.DwmSetWindowAttribute(
+            hwnd,
+            DWMWA_USE_IMMERSIVE_DARK_MODE,
+            new IntByReference(config.getDarkWindowBorders() ? 1 : 0),
+            INT_SIZE
+        );
 
         if (WindowUtil.buildNumber >= WindowUtil.BACKDROP_BUILD_NUM) {
-            INSTANCE.DwmSetWindowAttribute(hwnd, DWMWA_SYSTEMBACKDROP_TYPE, new IntByReference(DWM_SYSTEMBACKDROP_TYPE.DWMSBT_AUTO.ordinal()), INT_SIZE);
+            INSTANCE.DwmSetWindowAttribute(
+                hwnd,
+                DWMWA_SYSTEMBACKDROP_TYPE,
+                new IntByReference(
+                    DWM_SYSTEMBACKDROP_TYPE.DWMSBT_AUTO.ordinal()
+                ),
+                INT_SIZE
+            );
         }
 
-        INSTANCE.DwmSetWindowAttribute(hwnd, DWMWA_WINDOW_CORNER_PREFERENCE, new IntByReference(DWM_WINDOW_CORNER_PREFERENCE.DWMWCP_DEFAULT.ordinal()), INT_SIZE);
-        INSTANCE.DwmSetWindowAttribute(hwnd, DWMWA_BORDER_COLOR, new IntByReference(DWMWA_COLOR_DEFAULT), INT_SIZE);
-        INSTANCE.DwmSetWindowAttribute(hwnd, DWMWA_CAPTION_COLOR, new IntByReference(DWMWA_COLOR_DEFAULT), INT_SIZE);
-        INSTANCE.DwmSetWindowAttribute(hwnd, DWMWA_TEXT_COLOR, new IntByReference(DWMWA_COLOR_DEFAULT), INT_SIZE);
+        INSTANCE.DwmSetWindowAttribute(
+            hwnd,
+            DWMWA_WINDOW_CORNER_PREFERENCE,
+            new IntByReference(
+                DWM_WINDOW_CORNER_PREFERENCE.DWMWCP_DEFAULT.ordinal()
+            ),
+            INT_SIZE
+        );
+        INSTANCE.DwmSetWindowAttribute(
+            hwnd,
+            DWMWA_BORDER_COLOR,
+            new IntByReference(DWMWA_COLOR_DEFAULT),
+            INT_SIZE
+        );
+        INSTANCE.DwmSetWindowAttribute(
+            hwnd,
+            DWMWA_CAPTION_COLOR,
+            new IntByReference(DWMWA_COLOR_DEFAULT),
+            INT_SIZE
+        );
+        INSTANCE.DwmSetWindowAttribute(
+            hwnd,
+            DWMWA_TEXT_COLOR,
+            new IntByReference(DWMWA_COLOR_DEFAULT),
+            INT_SIZE
+        );
     }
 }
