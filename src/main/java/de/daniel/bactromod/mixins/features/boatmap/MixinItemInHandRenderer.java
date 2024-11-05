@@ -16,7 +16,7 @@ public class MixinItemInHandRenderer {
     @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/LocalPlayer;isHandsBusy()Z"))
     private boolean isHandsBusy(LocalPlayer player) {
         ConfigData config = Config.INSTANCE.load();
-        if (!config.getShowMapWhileInBoat()) player.isHandsBusy();
+        if (!config.getShowMapWhileInBoat()) return player.isHandsBusy();
         ItemStack mainHandItem = player.getMainHandItem();
         ItemStack offHandItem = player.getOffhandItem();
         if (mainHandItem.is(Items.FILLED_MAP) || offHandItem.is(Items.FILLED_MAP)) {
