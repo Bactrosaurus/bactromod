@@ -1,12 +1,13 @@
 # BactroMod
 
-BactroMod is an utility mod written in Kotlin that adds new possibilities of customizing your visual in-game experience while providing some additional features.
+BactroMod is an utility mod that adds new possibilities of customizing your visual in-game experience while providing some additional features.
 Download on Modrinth: https://modrinth.com/mod/bactromod
 
 ## Features
 
 * Gamma Modifier (Fullbright)
 * Disable Pumpkin Blur
+* Fix shield position while using riptide-trident in water or rain
 * Customizable Fire Offset (Low fire)
 * Customizable Shield Offset (Low shield)
 * Show map while moving in boat
