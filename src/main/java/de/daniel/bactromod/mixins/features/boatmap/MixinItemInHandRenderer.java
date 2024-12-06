@@ -16,20 +16,20 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(ItemInHandRenderer.class)
 public class MixinItemInHandRenderer {
-    @Shadow 
-    @Final 
+    @Final
+    @Shadow
     private Minecraft minecraft;
 
-    @Shadow 
+    @Shadow
     private ItemStack mainHandItem;
 
-    @Shadow 
+    @Shadow
     private float mainHandHeight;
 
-    @Shadow 
+    @Shadow
     private float offHandHeight;
 
-    @Shadow 
+    @Shadow
     private ItemStack offHandItem;
 
     @Unique
