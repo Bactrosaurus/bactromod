@@ -24,13 +24,13 @@ public class MixinItemInHandRenderer {
     private ItemStack mainHandItem;
 
     @Shadow
+    private ItemStack offHandItem;
+    
+    @Shadow
     private float mainHandHeight;
 
     @Shadow
     private float offHandHeight;
-
-    @Shadow
-    private ItemStack offHandItem;
 
     @Unique
     private boolean isOptionDisabled() {
