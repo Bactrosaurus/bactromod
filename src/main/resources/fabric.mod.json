@@ -3,7 +3,7 @@
   "id": "bactromod",
   "authors": ["Bactrosaurus", "FurnyGo"],
   "description": "A lightweight mod with some game optimizations and features.",
-  "version": "2.6",
+  "version": "2.7",
   "name": "BactroMod",
   "environment": "client",
   "license": "LGPL-3.0-only",
@@ -19,6 +19,6 @@
   "depends": {
     "fabricloader": ">=0.16.9",
     "fabric-language-kotlin": ">=1.12.3+kotlin.2.0.21",
-    "minecraft": ">=1.21.3"
+    "minecraft": ">=1.21.4"
   }
 }

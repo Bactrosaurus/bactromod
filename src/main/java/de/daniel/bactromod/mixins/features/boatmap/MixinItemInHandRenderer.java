@@ -16,21 +16,15 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(ItemInHandRenderer.class)
 public class MixinItemInHandRenderer {
-    @Final
-    @Shadow
-    private Minecraft minecraft;
+    @Shadow @Final private Minecraft minecraft;
 
-    @Shadow
-    private ItemStack mainHandItem;
+    @Shadow private ItemStack mainHandItem;
 
-    @Shadow
-    private ItemStack offHandItem;
+    @Shadow private float mainHandHeight;
 
-    @Shadow
-    private float mainHandHeight;
+    @Shadow private float offHandHeight;
 
-    @Shadow
-    private float offHandHeight;
+    @Shadow private ItemStack offHandItem;
 
     @Unique
     private boolean isOptionDisabled() {
@@ -48,7 +42,7 @@ public class MixinItemInHandRenderer {
         ItemStack itemStack = getLocalPlayer().getMainHandItem();
         boolean mapInMainHand = this.mainHandItem.is(Items.FILLED_MAP);
         if (isOptionDisabled() || !mapInMainHand) return Mth.clamp(f, g, h);
-        float i = getLocalPlayer().getAttackStrengthScale(1.0F);
+        float i = getLocalPlayer().getAttackAnim(1.0F);
         return this.mainHandHeight +
                 Mth.clamp((this.mainHandItem == itemStack ? i * i * i : 0.0F) - this.mainHandHeight, -0.4F, 0.4F);
     }

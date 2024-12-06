@@ -6,7 +6,6 @@ import com.sun.jna.Pointer;
 import com.sun.jna.PointerType;
 import com.sun.jna.platform.win32.WinDef.HWND;
 import com.sun.jna.ptr.IntByReference;
-import de.daniel.bactromod.BactroModKt;
 import de.daniel.bactromod.config.Config;
 import de.daniel.bactromod.config.ConfigData;
 import org.lwjgl.glfw.GLFWNativeWin32;

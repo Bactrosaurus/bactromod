@@ -19,7 +19,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ItemInHandRenderer.class)
 public class MixinItemInHandRenderer {
-
     @Shadow
     @Final
     private ItemRenderer itemRenderer;
