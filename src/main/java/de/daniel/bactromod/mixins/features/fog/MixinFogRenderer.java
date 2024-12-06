@@ -54,8 +54,8 @@ public class MixinFogRenderer {
             disableTerrainFog
         ) {
             FogParameters parameters = cir.getReturnValue();
-            float fogStart = f * 125.0F * 0.01F;
-            float fogEnd = f * 125.0F * 0.01F;
+            float fogStart = f * 200.0F * 0.01F;
+            float fogEnd = f * Float.MAX_VALUE * 0.01F;
             cir.setReturnValue(new FogParameters(fogStart, fogEnd, parameters.shape(), parameters.red(), parameters.green(), parameters.blue(), parameters.alpha()));
         }
     }
