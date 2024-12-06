@@ -25,7 +25,7 @@ public class MixinItemInHandRenderer {
 
     @Shadow
     private ItemStack offHandItem;
-    
+
     @Shadow
     private float mainHandHeight;
 
