@@ -42,7 +42,7 @@ public class MixinItemInHandRenderer {
         ItemStack itemStack = getLocalPlayer().getMainHandItem();
         boolean mapInMainHand = this.mainHandItem.is(Items.FILLED_MAP);
         if (isOptionDisabled() || !mapInMainHand) return Mth.clamp(f, g, h);
-        float i = getLocalPlayer().getAttackAnim(1.0F);
+        float i = getLocalPlayer().getAttackStrengthScale(1.0F);
         return this.mainHandHeight +
                 Mth.clamp((this.mainHandItem == itemStack ? i * i * i : 0.0F) - this.mainHandHeight, -0.4F, 0.4F);
     }

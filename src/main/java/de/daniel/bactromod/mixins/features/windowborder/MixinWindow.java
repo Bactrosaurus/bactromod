@@ -24,7 +24,7 @@ public class MixinWindow {
     private long window;
 
     @Inject(method = "<init>", at = @At(value = "TAIL"))
-    private void init(WindowEventHandler windowEventHandler, ScreenManager screenManager, DisplayData displayData, String string, String string2, CallbackInfo ci) {
+    private void init(WindowEventHandler handler, ScreenManager manager, DisplayData display, String videoMode, String title, CallbackInfo ci) {
         ConfigData config = Config.INSTANCE.load();
         if (!config.getDarkWindowBorders() || !SystemInfo.INSTANCE.isWindows11()) return;
         NtDll.getBuildNumber();
