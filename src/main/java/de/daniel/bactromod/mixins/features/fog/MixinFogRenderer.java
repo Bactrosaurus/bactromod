@@ -1,7 +1,5 @@
 package de.daniel.bactromod.mixins.features.fog;
 
-import com.mojang.blaze3d.shaders.FogShape;
-import com.mojang.blaze3d.systems.RenderSystem;
 import de.daniel.bactromod.config.Config;
 import de.daniel.bactromod.config.ConfigData;
 import net.minecraft.client.Camera;
@@ -15,12 +13,10 @@ import org.joml.Vector4f;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(FogRenderer.class)
 public class MixinFogRenderer {
-
     @Inject(method = "setupFog", at = @At(value = "RETURN"), cancellable = true)
     private static void setupFog(Camera camera, FogRenderer.FogMode fogMode, Vector4f vector4f, float f, boolean thickFog, float g, CallbackInfoReturnable<FogParameters> cir) {
         FogType fogType = camera.getFluidInCamera();
@@ -57,7 +53,10 @@ public class MixinFogRenderer {
             disableSkyFog ||
             disableTerrainFog
         ) {
-            cir.setReturnValue(FogParameters.NO_FOG);
+            FogParameters parameters = cir.getReturnValue();
+            float fogStart = f * 200.0F * 0.01F;
+            float fogEnd = f * Float.MAX_VALUE * 0.01F;
+            cir.setReturnValue(new FogParameters(fogStart, fogEnd, parameters.shape(), parameters.red(), parameters.green(), parameters.blue(), parameters.alpha()));
         }
     }
 }

@@ -23,19 +23,13 @@ public class MixinCreditsAndAttributionScreen {
             ordinal = 2
         )
     )
-    public <T extends LayoutElement> T addChildAlt(
-        LinearLayout instance,
-        T layoutElement
-    ) {
+    public LayoutElement addChildAlt(LinearLayout instance, LayoutElement layoutElement) {
         CreditsAndAttributionScreen inst =
             ((CreditsAndAttributionScreen) (Object) this);
         instance.addChild(layoutElement, instance.newCellSettings());
         Button settingsButton = Button.builder(
             Component.translatable("bactromod.options.title"),
-            button -> Minecraft.getInstance().setScreen(new ConfigScreen(inst))
-        )
-            .width(210)
-            .build();
-        return (T) instance.addChild(settingsButton);
+            button -> Minecraft.getInstance().setScreen(new ConfigScreen(inst))).width(210).build();
+        return instance.addChild(settingsButton);
     }
 }

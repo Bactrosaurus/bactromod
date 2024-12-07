@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ItemInHandRenderer.class)
-public class MixinItemInHandRenderer {
+public abstract class MixinItemInHandRenderer {
 
     @Shadow
     public void renderItem(LivingEntity livingEntity, ItemStack itemStack, ItemDisplayContext itemDisplayContext, boolean bl, PoseStack poseStack, MultiBufferSource multiBufferSource, int i) {}
@@ -31,9 +31,9 @@ public class MixinItemInHandRenderer {
             HumanoidArm humanoidArm = bl ? abstractClientPlayer.getMainArm() : abstractClientPlayer.getMainArm().getOpposite();
             boolean bl2 = humanoidArm == HumanoidArm.RIGHT;
             poseStack.translate(0.0F, 0.0F, 0.0F);
-            poseStack.mulPose(Axis.YP.rotationDegrees(0.0F));
+            poseStack.mulPose(Axis.XP.rotationDegrees(0.0F));
             poseStack.mulPose(Axis.ZP.rotationDegrees(0.0F));
-            this.renderItem(abstractClientPlayer, itemStack, bl2 ? ItemDisplayContext.FIRST_PERSON_RIGHT_HAND : ItemDisplayContext.FIRST_PERSON_LEFT_HAND, !bl2, poseStack, multiBufferSource, j);
+            renderItem(abstractClientPlayer, itemStack, bl2 ? ItemDisplayContext.FIRST_PERSON_RIGHT_HAND : ItemDisplayContext.FIRST_PERSON_LEFT_HAND, !bl2, poseStack, multiBufferSource, j);
             poseStack.popPose();
             ci.cancel();
         }
