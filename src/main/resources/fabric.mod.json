@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "bactromod",
-  "authors": ["Bactrosaurus", "FurnyGo"],
+  "authors": ["Bactrosaurus", "FurnyGo", "Libreh"],
   "description": "A lightweight mod with some game optimizations and features.",
   "version": "2.7",
   "name": "BactroMod",
@@ -18,7 +18,7 @@
   "accessWidener" : "bactromod.accesswidener",
   "depends": {
     "fabricloader": ">=0.16.9",
-    "fabric-language-kotlin": ">=1.12.3+kotlin.2.0.21",
+    "fabric-language-kotlin": ">=1.13.0+kotlin.2.1.0",
     "minecraft": ">=1.21.4"
   }
 }
