@@ -16,15 +16,21 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(ItemInHandRenderer.class)
 public class MixinItemInHandRenderer {
-    @Shadow @Final private Minecraft minecraft;
+    @Final
+    @Shadow
+    private Minecraft minecraft;
 
-    @Shadow private ItemStack mainHandItem;
+    @Shadow
+    private ItemStack mainHandItem;
 
-    @Shadow private float mainHandHeight;
+    @Shadow
+    private ItemStack offHandItem;
 
-    @Shadow private float offHandHeight;
+    @Shadow
+    private float mainHandHeight;
 
-    @Shadow private ItemStack offHandItem;
+    @Shadow
+    private float offHandHeight;
 
     @Unique
     private boolean isOptionDisabled() {
