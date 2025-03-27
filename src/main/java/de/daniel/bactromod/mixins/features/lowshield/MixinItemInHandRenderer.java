@@ -25,11 +25,11 @@ public class MixinItemInHandRenderer {
     private ItemRenderer itemRenderer;
 
     @Inject(method = "renderItem", at = @At(value = "HEAD"), cancellable = true)
-    public void renderItem(LivingEntity livingEntity, ItemStack itemStack, ItemDisplayContext displayContext, boolean bl, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, CallbackInfo ci) {
+    public void renderItem(LivingEntity livingEntity, ItemStack itemStack, ItemDisplayContext displayContext, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, CallbackInfo ci) {
         if (itemStack.is(Items.SHIELD) && displayContext.firstPerson()) {
             if (!itemStack.isEmpty()) {
                 poseStack.translate(0.0D, Config.INSTANCE.load().getShieldOffset() / 100F, 0.0D);
-                this.itemRenderer.renderStatic(livingEntity, itemStack, displayContext, bl, poseStack, multiBufferSource, livingEntity.level(), i, OverlayTexture.NO_OVERLAY, livingEntity.getId() + displayContext.ordinal());
+                this.itemRenderer.renderStatic(livingEntity, itemStack, displayContext, poseStack, multiBufferSource, livingEntity.level(), i, OverlayTexture.NO_OVERLAY, livingEntity.getId() + displayContext.ordinal());
                 ci.cancel();
             }
         }
