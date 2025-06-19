@@ -31,9 +31,6 @@
   "bactromod.options.waterfog": "Water fog",
   "bactromod.options.waterfog.description": "Disables fog caused by diving into water.",
 
-  "bactromod.options.skyfog": "Sky fog",
-  "bactromod.options.skyfog.description": "Disables sky fog.",
-
   "bactromod.options.thickfog": "Thick fog",
   "bactromod.options.thickfog.description": "Disables thick fog (e.g. in Nether).",
 

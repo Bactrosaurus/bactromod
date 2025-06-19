@@ -4,7 +4,7 @@
   "authors": ["Bactrosaurus"],
   "contributors": ["FurnyGo", "Libreh"],
   "description": "A lightweight mod with some game optimizations and features.",
-  "version": "2.8",
+  "version": "2.9",
   "name": "BactroMod",
   "environment": "client",
   "license": "LGPL-3.0-only",
@@ -18,8 +18,8 @@
   ],
   "accessWidener" : "bactromod.accesswidener",
   "depends": {
-    "fabricloader": ">=0.16.10",
-    "fabric-language-kotlin": ">=1.13.2+kotlin.2.1.20",
-    "minecraft": ">=1.21.5"
+    "fabricloader": ">=0.16.14",
+    "fabric-language-kotlin": ">=1.13.3+kotlin.2.1.21",
+    "minecraft": ">=1.21.6"
   }
 }

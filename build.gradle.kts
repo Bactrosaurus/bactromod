@@ -1,11 +1,11 @@
 plugins {
-    kotlin("jvm") version "2.1.20"
+    kotlin("jvm") version "2.1.21"
     id("fabric-loom") version "1.10-SNAPSHOT"
-    kotlin("plugin.serialization") version "2.1.20"
+    kotlin("plugin.serialization") version "2.1.21"
 }
 
 group = "de.daniel"
-version = "2.8"
+version = "2.9"
 
 repositories {
     mavenCentral()
@@ -13,15 +13,15 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
 
-    minecraft("com.mojang:minecraft:1.21.5")
+    minecraft("com.mojang:minecraft:1.21.6")
     mappings(loom.officialMojangMappings())
 
-    modImplementation("net.fabricmc:fabric-loader:0.16.10")
-    modImplementation("net.fabricmc:fabric-language-kotlin:1.13.2+kotlin.2.1.20")
+    modImplementation("net.fabricmc:fabric-loader:0.16.14")
+    modImplementation("net.fabricmc:fabric-language-kotlin:1.13.3+kotlin.2.1.21")
 
-    modApi("com.terraformersmc:modmenu:14.0.0-rc.2")
+    modApi("com.terraformersmc:modmenu:15.0.0-beta.2")
 }
 
 loom {

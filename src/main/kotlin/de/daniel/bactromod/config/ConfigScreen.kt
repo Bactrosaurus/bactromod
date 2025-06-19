@@ -82,12 +82,6 @@ class ConfigScreen(screen: Screen) : OptionsSubScreen(
             ) { Config.save(Config.load().copy(waterFog = it)) },
 
             OptionInstance.createBoolean(
-                "bactromod.options.skyfog",
-                OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.skyfog.description")),
-                Config.load().skyFog
-            ) { Config.save(Config.load().copy(skyFog = it)) },
-
-            OptionInstance.createBoolean(
                 "bactromod.options.thickfog",
                 OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.thickfog.description")),
                 Config.load().thickFog

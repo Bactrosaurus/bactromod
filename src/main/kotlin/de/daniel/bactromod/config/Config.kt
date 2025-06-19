@@ -23,7 +23,6 @@ data class ConfigData(
     val lavaFog: Boolean = false,
     val powderSnowFog: Boolean = false,
     val waterFog: Boolean = false,
-    val skyFog: Boolean = true,
     val terrainFog: Boolean = false,
     val thickFog: Boolean = false,
     val showMapWhileInBoat: Boolean = true,

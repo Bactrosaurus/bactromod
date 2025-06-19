@@ -31,9 +31,6 @@
   "bactromod.options.waterfog": "Туман в воде",
   "bactromod.options.waterfog.description": "Отключает затуманенность при погружении в воду.",
 
-  "bactromod.options.skyfog": "Туман в небе",
-  "bactromod.options.skyfog.description": "Отключает затуманенность в небе",
-
   "bactromod.options.thickfog": "Густой туман",
   "bactromod.options.thickfog.description": "Отключает густой туман (например в Незере).",
 
