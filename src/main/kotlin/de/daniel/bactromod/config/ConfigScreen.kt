@@ -2,110 +2,110 @@ package de.daniel.bactromod.config
 
 import de.daniel.bactromod.utils.SystemInfo
 import de.daniel.bactromod.windowborder.DwmApi
-import net.minecraft.client.Minecraft
-import net.minecraft.client.OptionInstance
-import net.minecraft.client.Options
-import net.minecraft.client.gui.screens.Screen
-import net.minecraft.client.gui.screens.options.OptionsSubScreen
-import net.minecraft.network.chat.Component
+import net.minecraft.client.MinecraftClient
+import net.minecraft.client.gui.screen.Screen
+import net.minecraft.client.gui.screen.option.GameOptionsScreen
+import net.minecraft.client.option.GameOptions
+import net.minecraft.client.option.SimpleOption
+import net.minecraft.text.Text
 
-class ConfigScreen(screen: Screen) : OptionsSubScreen(
-    screen, Minecraft.getInstance().options, Component.translatable("bactromod.options.title")
+class ConfigScreen(screen: Screen) : GameOptionsScreen(
+    screen, MinecraftClient.getInstance().options, Text.translatable("bactromod.options.title")
 ) {
 
     override fun addOptions() {
-        this.list?.addSmall(
-            OptionInstance(
+        this.body?.addAll(
+            SimpleOption(
                 "bactromod.options.gamma",
-                OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.gamma.description")),
-                Options::genericValueLabel,
-                OptionInstance.IntRange(0, 15),
+                SimpleOption.constantTooltip(Text.translatable("bactromod.options.gamma.description")),
+                GameOptions::getGenericValueText,
+                SimpleOption.ValidatingIntSliderCallbacks(0, 15),
                 Config.load().gammaMultiplier
             ) { Config.save(Config.load().copy(gammaMultiplier = it)) },
 
-            OptionInstance.createBoolean(
+            SimpleOption.ofBoolean(
                 "bactromod.options.pumpkinblur",
-                OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.pumpkinblur.description")),
+                SimpleOption.constantTooltip(Text.translatable("bactromod.options.pumpkinblur.description")),
                 Config.load().pumpkinBlur
             ) { Config.save(Config.load().copy(pumpkinBlur = it)) },
 
-            OptionInstance(
+            SimpleOption(
                 "bactromod.options.fireoffset",
-                OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.fireoffset.description")),
-                Options::genericValueLabel,
-                OptionInstance.IntRange(-100, 100),
+                SimpleOption.constantTooltip(Text.translatable("bactromod.options.fireoffset.description")),
+                GameOptions::getGenericValueText,
+                SimpleOption.ValidatingIntSliderCallbacks(-100, 100),
                 Config.load().fireOffset
             ) { Config.save(Config.load().copy(fireOffset = it)) },
 
-            OptionInstance(
+            SimpleOption(
                 "bactromod.options.shieldoffset",
-                OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.shieldoffset.description")),
-                Options::genericValueLabel,
-                OptionInstance.IntRange(-100, 100),
+                SimpleOption.constantTooltip(Text.translatable("bactromod.options.shieldoffset.description")),
+                GameOptions::getGenericValueText,
+                SimpleOption.ValidatingIntSliderCallbacks(-100, 100),
                 Config.load().shieldOffset
             ) { Config.save(Config.load().copy(shieldOffset = it)) },
 
-            OptionInstance.createBoolean(
+            SimpleOption.ofBoolean(
                 "bactromod.options.boatmap",
-                OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.boatmap.description")),
+                SimpleOption.constantTooltip(Text.translatable("bactromod.options.boatmap.description")),
                 Config.load().showMapWhileInBoat
             ) { Config.save(Config.load().copy(showMapWhileInBoat = it)) },
 
-            OptionInstance.createBoolean(
+            SimpleOption.ofBoolean(
                 "bactromod.options.lavafog",
-                OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.lavafog.description")),
+                SimpleOption.constantTooltip(Text.translatable("bactromod.options.lavafog.description")),
                 Config.load().lavaFog
             ) { Config.save(Config.load().copy(lavaFog = it)) },
 
-            OptionInstance.createBoolean(
+            SimpleOption.ofBoolean(
                 "bactromod.options.snowfog",
-                OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.snowfog.description")),
+                SimpleOption.constantTooltip(Text.translatable("bactromod.options.snowfog.description")),
                 Config.load().powderSnowFog
             ) { Config.save(Config.load().copy(powderSnowFog = it)) },
 
-            OptionInstance.createBoolean(
+            SimpleOption.ofBoolean(
                 "bactromod.options.blindnessfog",
-                OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.blindnessfog.description")),
+                SimpleOption.constantTooltip(Text.translatable("bactromod.options.blindnessfog.description")),
                 Config.load().blindnessFog
             ) { Config.save(Config.load().copy(blindnessFog = it)) },
 
-            OptionInstance.createBoolean(
+            SimpleOption.ofBoolean(
                 "bactromod.options.darknessfog",
-                OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.darknessfog.description")),
+                SimpleOption.constantTooltip(Text.translatable("bactromod.options.darknessfog.description")),
                 Config.load().darknessFog
             ) { Config.save(Config.load().copy(darknessFog = it)) },
 
-            OptionInstance.createBoolean(
+            SimpleOption.ofBoolean(
                 "bactromod.options.waterfog",
-                OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.waterfog.description")),
+                SimpleOption.constantTooltip(Text.translatable("bactromod.options.waterfog.description")),
                 Config.load().waterFog
             ) { Config.save(Config.load().copy(waterFog = it)) },
 
-            OptionInstance.createBoolean(
+            SimpleOption.ofBoolean(
                 "bactromod.options.thickfog",
-                OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.thickfog.description")),
+                SimpleOption.constantTooltip(Text.translatable("bactromod.options.thickfog.description")),
                 Config.load().thickFog
             ) { Config.save(Config.load().copy(thickFog = it)) },
 
-            OptionInstance.createBoolean(
+            SimpleOption.ofBoolean(
                 "bactromod.options.terrainfog",
-                OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.terrainfog.description")),
+                SimpleOption.constantTooltip(Text.translatable("bactromod.options.terrainfog.description")),
                 Config.load().terrainFog
             ) { Config.save(Config.load().copy(terrainFog = it)) },
 
-            OptionInstance.createBoolean(
+            SimpleOption.ofBoolean(
                 "bactromod.options.fixShieldRiptideTrident",
-                OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.fixShieldRiptideTrident.description")),
+                SimpleOption.constantTooltip(Text.translatable("bactromod.options.fixShieldRiptideTrident.description")),
                 Config.load().fixShieldRiptideTrident
             ) { Config.save(Config.load().copy(fixShieldRiptideTrident = it)) },
 
-            OptionInstance.createBoolean(
+            SimpleOption.ofBoolean(
                 "bactromod.options.windowborders",
-                OptionInstance.cachedConstantTooltip(Component.translatable("bactromod.options.windowborders.description")),
+                SimpleOption.constantTooltip(Text.translatable("bactromod.options.windowborders.description")),
                 Config.load().darkWindowBorders
             ) {
                 Config.save(Config.load().copy(darkWindowBorders = it))
-                if (SystemInfo.isWindows11()) DwmApi.updateDwm(Minecraft.getInstance().window.window)
+                if (SystemInfo.isWindows11()) DwmApi.updateDwm(MinecraftClient.getInstance().window.handle)
             }
         )
     }

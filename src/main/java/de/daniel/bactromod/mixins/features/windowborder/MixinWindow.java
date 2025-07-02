@@ -1,14 +1,14 @@
 package de.daniel.bactromod.mixins.features.windowborder;
 
-import com.mojang.blaze3d.platform.DisplayData;
-import com.mojang.blaze3d.platform.ScreenManager;
-import com.mojang.blaze3d.platform.Window;
-import com.mojang.blaze3d.platform.WindowEventHandler;
 import de.daniel.bactromod.config.Config;
 import de.daniel.bactromod.config.ConfigData;
 import de.daniel.bactromod.utils.SystemInfo;
 import de.daniel.bactromod.windowborder.DwmApi;
 import de.daniel.bactromod.windowborder.NtDll;
+import net.minecraft.client.WindowEventHandler;
+import net.minecraft.client.WindowSettings;
+import net.minecraft.client.util.MonitorTracker;
+import net.minecraft.client.util.Window;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -21,14 +21,14 @@ public class MixinWindow {
 
     @Shadow
     @Final
-    private long window;
+    private long handle;
 
     @Inject(method = "<init>", at = @At(value = "TAIL"))
-    private void init(WindowEventHandler handler, ScreenManager manager, DisplayData display, String videoMode, String title, CallbackInfo ci) {
+    private void init(WindowEventHandler windowEventHandler, MonitorTracker monitorTracker, WindowSettings windowSettings, String string, String string2, CallbackInfo ci) {
         ConfigData config = Config.INSTANCE.load();
         if (!config.getDarkWindowBorders() || !SystemInfo.INSTANCE.isWindows11()) return;
         NtDll.getBuildNumber();
-        DwmApi.updateDwm(this.window);
+        DwmApi.updateDwm(this.handle);
     }
 
 }

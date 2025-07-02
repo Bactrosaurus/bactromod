@@ -1,6 +1,6 @@
 package de.daniel.bactromod.mixins.features.noopgmswitcher;
 
-import net.minecraft.client.gui.screens.debug.GameModeSwitcherScreen;
+import net.minecraft.client.gui.screen.GameModeSwitcherScreen;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 @Mixin(GameModeSwitcherScreen.class)
 public class MixinGameModeSwitcherScreen {
 
-    @ModifyConstant(method = "switchToHoveredGameMode(Lnet/minecraft/client/Minecraft;Lnet/minecraft/client/gui/screens/debug/GameModeSwitcherScreen$GameModeIcon;)V", constant = @Constant(intValue = 2))
+    @ModifyConstant(method = "apply(Lnet/minecraft/client/MinecraftClient;Lnet/minecraft/client/gui/screen/GameModeSwitcherScreen$GameModeSelection;)V", constant = @Constant(intValue = 2))
     private static int injectedPermissionLevel(int injectedPermissionLevel) {
         return 0;
     }

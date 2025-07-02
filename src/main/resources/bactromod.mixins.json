@@ -3,14 +3,14 @@
   "minVersion": "0.8",
   "package": "de.daniel.bactromod.mixins",
   "client": [
-    "features.boatmap.MixinItemInHandRenderer",
+    "features.boatmap.MixinHeldItemRenderer",
     "features.fog.MixinFogRenderer",
-    "features.fullbright.MixinLightTexture",
-    "features.lowfire.MixinScreenEffectRenderer",
+    "features.fullbright.MixinLightmapTextureManager",
+    "features.lowfire.MixinInGameOverlayRenderer",
     "features.lowshield.MixinItemInHandRenderer",
     "features.noopgmswitcher.MixinGameModeSwitcherScreen",
     "features.noopgmswitcher.MixinKeyboardHandler",
-    "features.nopumpkinblur.MixinGui",
+    "features.nopumpkinblur.MixinInGameHud",
     "features.riptidetridentshield.MixinItemInHandRenderer",
     "features.windowborder.MixinWindow",
     "settingsbutton.MixinCreditsAndAttributionScreen"

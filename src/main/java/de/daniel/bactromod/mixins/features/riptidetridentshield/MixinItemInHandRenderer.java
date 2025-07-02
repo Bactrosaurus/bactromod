@@ -1,40 +1,40 @@
 package de.daniel.bactromod.mixins.features.riptidetridentshield;
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
 import de.daniel.bactromod.config.Config;
-import net.minecraft.client.player.AbstractClientPlayer;
-import net.minecraft.client.renderer.ItemInHandRenderer;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.HumanoidArm;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.client.network.AbstractClientPlayerEntity;
+import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.item.HeldItemRenderer;
+import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemDisplayContext;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.util.Arm;
+import net.minecraft.util.Hand;
+import net.minecraft.util.math.RotationAxis;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(ItemInHandRenderer.class)
+@Mixin(HeldItemRenderer.class)
 public class MixinItemInHandRenderer {
 
     @Shadow
-    public void renderItem(LivingEntity livingEntity, ItemStack itemStack, ItemDisplayContext itemDisplayContext, PoseStack poseStack, MultiBufferSource multiBufferSource, int i) {}
+    public void renderItem(LivingEntity livingEntity, ItemStack itemStack, ItemDisplayContext itemDisplayContext, MatrixStack poseStack, VertexConsumerProvider multiBufferSource, int i) {}
 
-    @Inject(method = "renderArmWithItem", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/vertex/PoseStack;translate(FFF)V", ordinal = 11), cancellable = true)
-    public void shieldTransformAutoSpinAttack(AbstractClientPlayer abstractClientPlayer, float f, float g, InteractionHand interactionHand, float h, ItemStack itemStack, float i, PoseStack poseStack, MultiBufferSource multiBufferSource, int j, CallbackInfo ci) {
-        if (itemStack.is(Items.SHIELD) && Config.INSTANCE.load().getFixShieldRiptideTrident()) {
-            boolean bl = interactionHand == InteractionHand.MAIN_HAND;
-            HumanoidArm humanoidArm = bl ? abstractClientPlayer.getMainArm() : abstractClientPlayer.getMainArm().getOpposite();
-            boolean bl2 = humanoidArm == HumanoidArm.RIGHT;
-            poseStack.translate(0.0F, 0.0F, 0.0F);
-            poseStack.mulPose(Axis.XP.rotationDegrees(0.0F));
-            poseStack.mulPose(Axis.ZP.rotationDegrees(0.0F));
-            renderItem(abstractClientPlayer, itemStack, bl2 ? ItemDisplayContext.FIRST_PERSON_RIGHT_HAND : ItemDisplayContext.FIRST_PERSON_LEFT_HAND, poseStack, multiBufferSource, j);
-            poseStack.popPose();
+    @Inject(method = "renderFirstPersonItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/math/MatrixStack;translate(FFF)V", ordinal = 11), cancellable = true)
+    public void shieldTransformAutoSpinAttack(AbstractClientPlayerEntity abstractClientPlayerEntity, float f, float g, Hand hand, float h, ItemStack itemStack, float i, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int j, CallbackInfo ci) {
+        if (itemStack.isOf(Items.SHIELD) && Config.INSTANCE.load().getFixShieldRiptideTrident()) {
+            boolean bl = hand == Hand.MAIN_HAND;
+            Arm humanoidArm = bl ? abstractClientPlayerEntity.getMainArm() : abstractClientPlayerEntity.getMainArm().getOpposite();
+            boolean bl2 = humanoidArm == Arm.RIGHT;
+            matrixStack.translate(0.0F, 0.0F, 0.0F);
+            matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(0.0F));
+            matrixStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(0.0F));
+            renderItem(abstractClientPlayerEntity, itemStack, bl2 ? ItemDisplayContext.FIRST_PERSON_RIGHT_HAND : ItemDisplayContext.FIRST_PERSON_LEFT_HAND, matrixStack, vertexConsumerProvider, j);
+            matrixStack.pop();
             ci.cancel();
         }
     }

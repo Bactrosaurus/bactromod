@@ -1,4 +1,4 @@
 accessWidener v1 named
 
-accessible class net/minecraft/client/OptionInstance$ValueSet
-extendable class net/minecraft/client/OptionInstance
+accessible class net/minecraft/client/option/SimpleOption$Callbacks
+extendable class net/minecraft/client/option/SimpleOption
