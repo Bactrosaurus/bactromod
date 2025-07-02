@@ -19,7 +19,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(HeldItemRenderer.class)
-public class MixinItemInHandRenderer {
+public class MixinHeldItemRenderer {
 
     @Shadow
     public void renderItem(LivingEntity livingEntity, ItemStack itemStack, ItemDisplayContext itemDisplayContext, MatrixStack poseStack, VertexConsumerProvider multiBufferSource, int i) {}

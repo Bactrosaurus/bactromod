@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 @Mixin(Keyboard.class)
-public class MixinKeyboardHandler {
+public class MixinKeyboard {
 
     @ModifyConstant(method = "processF3", constant = @Constant(intValue = 2, ordinal = 2))
     private int injectedPermissionLevel2(int injectedPermissionLevel) {

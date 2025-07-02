@@ -3,6 +3,10 @@
   "id": "bactromod",
   "authors": ["Bactrosaurus"],
   "contributors": ["FurnyGo", "Libreh"],
+  "contact": {
+    "issues": "https://github.com/Bactrosaurus/bactromod/issues",
+    "sources": "https://github.com/Bactrosaurus/bactromod"
+  },
   "description": "A lightweight mod with some game optimizations and features.",
   "version": "2.9",
   "name": "BactroMod",
@@ -19,7 +23,7 @@
   "accessWidener" : "bactromod.accesswidener",
   "depends": {
     "fabricloader": ">=0.16.14",
-    "fabric-language-kotlin": ">=1.13.3+kotlin.2.1.21",
-    "minecraft": ">=1.21.6"
+    "fabric-language-kotlin": ">=1.13.4+kotlin.2.2.0",
+    "minecraft": ">=1.21.7"
   }
 }
