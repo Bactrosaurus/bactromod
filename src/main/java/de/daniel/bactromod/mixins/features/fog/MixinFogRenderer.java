@@ -32,7 +32,12 @@ public abstract class MixinFogRenderer {
     public void applyFog_applyStartEndModifier(FogModifier fogModifier, FogData fogData, Entity entity, BlockPos blockPos, ClientWorld clientWorld, float viewDistance, RenderTickCounter renderTickCounter, Operation<Void> original) {
         ConfigData config = Config.INSTANCE.load();
 
-        if (fogModifier.equals(FOG_MODIFIERS.get(0)) && !config.getLavaFog() || fogModifier.equals(FOG_MODIFIERS.get(1)) && !config.getPowderSnowFog() || fogModifier.equals(FOG_MODIFIERS.get(2)) && !config.getBlindnessFog() || fogModifier.equals(FOG_MODIFIERS.get(3)) && !config.getDarknessFog() || fogModifier.equals(FOG_MODIFIERS.get(4)) && !config.getWaterFog() || fogModifier.equals(FOG_MODIFIERS.get(5)) && !config.getDimensionBossFog()) {
+        if (fogModifier.equals(FOG_MODIFIERS.get(0)) && !config.getLavaFog() ||
+                fogModifier.equals(FOG_MODIFIERS.get(1)) && !config.getPowderSnowFog() ||
+                fogModifier.equals(FOG_MODIFIERS.get(2)) && !config.getBlindnessFog() ||
+                fogModifier.equals(FOG_MODIFIERS.get(3)) && !config.getDarknessFog() ||
+                fogModifier.equals(FOG_MODIFIERS.get(4)) && !config.getWaterFog() ||
+                fogModifier.equals(FOG_MODIFIERS.get(5)) && !config.getDimensionBossFog()) {
             fogData.environmentalStart = Float.MAX_VALUE;
             fogData.environmentalEnd = Float.MAX_VALUE;
             fogData.skyEnd = Float.MAX_VALUE;
