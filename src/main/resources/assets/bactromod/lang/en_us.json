@@ -31,11 +31,14 @@
   "bactromod.options.waterfog": "Water fog",
   "bactromod.options.waterfog.description": "Disables fog caused by diving into water.",
 
-  "bactromod.options.thickfog": "Thick fog",
-  "bactromod.options.thickfog.description": "Disables thick fog (e.g. in Nether).",
+  "bactromod.options.dimensionBossFog": "Dimension or boss fog",
+  "bactromod.options.dimensionBossFog.description": "Disables dimension fog (e.g. in Nether) or fog caused by bosses.",
 
-  "bactromod.options.terrainfog": "Terrain fog",
-  "bactromod.options.terrainfog.description": "Disables terrain fog.",
+  "bactromod.options.atmosphericFog": "Atmospheric fog",
+  "bactromod.options.atmosphericFog.description": "Disables atmospheric fog.",
+
+  "bactromod.options.renderDistanceFog": "Render-distance fog",
+  "bactromod.options.renderDistanceFog.description": "Disables fog at render-distance border.",
 
   "bactromod.options.fixShieldRiptideTrident": "Fix riptide trident shield",
   "bactromod.options.fixShieldRiptideTrident.description": "Fixes the position of shield in offhand while using riptide trident in water or rain.",

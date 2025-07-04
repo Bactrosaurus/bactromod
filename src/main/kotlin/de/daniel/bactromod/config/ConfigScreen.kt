@@ -82,16 +82,22 @@ class ConfigScreen(screen: Screen) : GameOptionsScreen(
             ) { Config.save(Config.load().copy(waterFog = it)) },
 
             SimpleOption.ofBoolean(
-                "bactromod.options.thickfog",
-                SimpleOption.constantTooltip(Text.translatable("bactromod.options.thickfog.description")),
-                Config.load().thickFog
-            ) { Config.save(Config.load().copy(thickFog = it)) },
+                "bactromod.options.dimensionBossFog",
+                SimpleOption.constantTooltip(Text.translatable("bactromod.options.dimensionBossFog.description")),
+                Config.load().dimensionBossFog
+            ) { Config.save(Config.load().copy(dimensionBossFog = it)) },
 
             SimpleOption.ofBoolean(
-                "bactromod.options.terrainfog",
-                SimpleOption.constantTooltip(Text.translatable("bactromod.options.terrainfog.description")),
-                Config.load().terrainFog
-            ) { Config.save(Config.load().copy(terrainFog = it)) },
+                "bactromod.options.atmosphericFog",
+                SimpleOption.constantTooltip(Text.translatable("bactromod.options.atmosphericFog.description")),
+                Config.load().atmosphericFog
+            ) { Config.save(Config.load().copy(atmosphericFog = it)) },
+
+            SimpleOption.ofBoolean(
+                "bactromod.options.renderDistanceFog",
+                SimpleOption.constantTooltip(Text.translatable("bactromod.options.renderDistanceFog.description")),
+                Config.load().renderDistanceFog
+            ) { Config.save(Config.load().copy(renderDistanceFog = it)) },
 
             SimpleOption.ofBoolean(
                 "bactromod.options.fixShieldRiptideTrident",

@@ -23,8 +23,9 @@ data class ConfigData(
     val lavaFog: Boolean = false,
     val powderSnowFog: Boolean = false,
     val waterFog: Boolean = false,
-    val terrainFog: Boolean = false,
-    val thickFog: Boolean = false,
+    val atmosphericFog: Boolean = false,
+    val dimensionBossFog: Boolean = false,
+    val renderDistanceFog: Boolean = false,
     val showMapWhileInBoat: Boolean = true,
     val fixShieldRiptideTrident: Boolean = true,
     val darkWindowBorders: Boolean = true

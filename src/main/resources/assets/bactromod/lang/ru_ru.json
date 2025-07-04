@@ -31,11 +31,14 @@
   "bactromod.options.waterfog": "Туман в воде",
   "bactromod.options.waterfog.description": "Отключает затуманенность при погружении в воду.",
 
-  "bactromod.options.thickfog": "Густой туман",
-  "bactromod.options.thickfog.description": "Отключает густой туман (например в Незере).",
+  "bactromod.options.dimensionBossFog": "Густой туман",
+  "bactromod.options.dimensionBossFog.description": "Отключает густой туман (например в Незере).",
 
-  "bactromod.options.terrainfog": "Туман на повехности",
-  "bactromod.options.terrainfog.description": "Отключает туман на повехности.",
+  "bactromod.options.atmosphericFog": "Туман на повехности",
+  "bactromod.options.atmosphericFog.description": "Отключает туман на повехности.",
+
+  "bactromod.options.renderDistanceFog": "Render-distance fog",
+  "bactromod.options.renderDistanceFog.description": "Disables fog at render-distance border.",
 
   "bactromod.options.fixShieldRiptideTrident": "Исправить неправильно тягун-трезубец щит положение.",
   "bactromod.options.fixShieldRiptideTrident.description": "Исправить неправильно тягун-трезубец щит положение в воде или дожде.",

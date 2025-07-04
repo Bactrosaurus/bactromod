@@ -1,5 +1,7 @@
 package de.daniel.bactromod.mixins.features.fog;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import de.daniel.bactromod.config.Config;
 import de.daniel.bactromod.config.ConfigData;
 import net.minecraft.client.MinecraftClient;
@@ -14,8 +16,8 @@ import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.Constant;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 import java.util.List;
 
@@ -26,47 +28,33 @@ public abstract class MixinFogRenderer {
     @Final
     private static List<FogModifier> FOG_MODIFIERS;
 
-    @Redirect(method = "applyFog(Lnet/minecraft/client/render/Camera;IZLnet/minecraft/client/render/RenderTickCounter;FLnet/minecraft/client/world/ClientWorld;)Lorg/joml/Vector4f;", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/fog/FogModifier;applyStartEndModifier(Lnet/minecraft/client/render/fog/FogData;Lnet/minecraft/entity/Entity;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/client/world/ClientWorld;FLnet/minecraft/client/render/RenderTickCounter;)V"))
-    public void applyFog_applyStartEndModifier(FogModifier fogModifier, FogData fogData, Entity entity, BlockPos blockPos, ClientWorld clientWorld, float viewDistance, RenderTickCounter renderTickCounter) {
+    @WrapOperation(method = "applyFog(Lnet/minecraft/client/render/Camera;IZLnet/minecraft/client/render/RenderTickCounter;FLnet/minecraft/client/world/ClientWorld;)Lorg/joml/Vector4f;", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/fog/FogModifier;applyStartEndModifier(Lnet/minecraft/client/render/fog/FogData;Lnet/minecraft/entity/Entity;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/client/world/ClientWorld;FLnet/minecraft/client/render/RenderTickCounter;)V"))
+    public void applyFog_applyStartEndModifier(FogModifier fogModifier, FogData fogData, Entity entity, BlockPos blockPos, ClientWorld clientWorld, float viewDistance, RenderTickCounter renderTickCounter, Operation<Void> original) {
         ConfigData config = Config.INSTANCE.load();
 
-        if (fogModifier.equals(FOG_MODIFIERS.get(0)) && !config.getLavaFog() ||
-                fogModifier.equals(FOG_MODIFIERS.get(1)) && !config.getPowderSnowFog() ||
-                fogModifier.equals(FOG_MODIFIERS.get(2)) && !config.getWaterFog() ||
-                fogModifier.equals(FOG_MODIFIERS.get(5)) && !config.getThickFog()
-        ) {
-            fogData.environmentalStart = -8.0F;
-            fogData.environmentalEnd = viewDistance;
-            fogData.skyEnd = viewDistance;
-            fogData.cloudEnd = viewDistance;
-        } else if (fogModifier.equals(FOG_MODIFIERS.get(3)) && !config.getBlindnessFog() ||
-                fogModifier.equals(FOG_MODIFIERS.get(4)) && !config.getDarknessFog()
-        ) {
-            fogData.environmentalStart = -8.0F;
-            fogData.environmentalEnd = 1_000_000.0F;
-            fogData.skyEnd = viewDistance;
-            fogData.cloudEnd = viewDistance;
-        } else if (fogModifier.equals(FOG_MODIFIERS.get(6)) && !config.getTerrainFog()) {
-            fogData.environmentalStart = -8.0F;
-            fogData.environmentalEnd = 1_000_000.0F;
+        if (fogModifier.equals(FOG_MODIFIERS.get(0)) && !config.getLavaFog() || fogModifier.equals(FOG_MODIFIERS.get(1)) && !config.getPowderSnowFog() || fogModifier.equals(FOG_MODIFIERS.get(2)) && !config.getBlindnessFog() || fogModifier.equals(FOG_MODIFIERS.get(3)) && !config.getDarknessFog() || fogModifier.equals(FOG_MODIFIERS.get(4)) && !config.getWaterFog() || fogModifier.equals(FOG_MODIFIERS.get(5)) && !config.getDimensionBossFog()) {
+            fogData.environmentalStart = Float.MAX_VALUE;
+            fogData.environmentalEnd = Float.MAX_VALUE;
+            fogData.skyEnd = Float.MAX_VALUE;
+            fogData.cloudEnd = Float.MAX_VALUE;
+        } else if (fogModifier.equals(FOG_MODIFIERS.get(6)) && !config.getAtmosphericFog()) {
+            fogData.environmentalStart = Float.MAX_VALUE;
+            fogData.environmentalEnd = Float.MAX_VALUE;
             fogData.skyEnd = viewDistance;
             fogData.cloudEnd = MinecraftClient.getInstance().options.getCloudRenderDistance().getValue() * 16;
         } else {
-            fogModifier.applyStartEndModifier(fogData, entity, blockPos, clientWorld, viewDistance, renderTickCounter);
+            original.call(fogModifier, fogData, entity, blockPos, clientWorld, viewDistance, renderTickCounter);
         }
     }
 
-    // Set render distance start and end to disable terrain fog
-    @ModifyVariable(at = @At("HEAD"), method = "applyFog(Ljava/nio/ByteBuffer;ILorg/joml/Vector4f;FFFFFF)V", ordinal = 2, argsOnly = true)
-    private float getRenderDistanceStart(float renderDistanceStart) {
-        if (Config.INSTANCE.load().getTerrainFog()) return renderDistanceStart;
-        return -8.0F;
-    }
+    @ModifyConstant(method = "applyFog(Lnet/minecraft/client/render/Camera;IZLnet/minecraft/client/render/RenderTickCounter;FLnet/minecraft/client/world/ClientWorld;)Lorg/joml/Vector4f;", constant = @Constant(intValue = 16))
+    private int applyFog_modifyH(int value) {
+        ConfigData config = Config.INSTANCE.load();
+        if (!config.getRenderDistanceFog()) {
+            value *= 2;
+        }
 
-    @ModifyVariable(at = @At("HEAD"), method = "applyFog(Ljava/nio/ByteBuffer;ILorg/joml/Vector4f;FFFFFF)V", ordinal = 3, argsOnly = true)
-    private float getRenderDistanceEnd(float renderDistanceEnd) {
-        if (Config.INSTANCE.load().getTerrainFog()) return renderDistanceEnd;
-        return 1_000_000.0F;
+        return value;
     }
 
 }
