@@ -31,6 +31,7 @@ public abstract class MixinFogRenderer {
     @WrapOperation(method = "applyFog(Lnet/minecraft/client/render/Camera;IZLnet/minecraft/client/render/RenderTickCounter;FLnet/minecraft/client/world/ClientWorld;)Lorg/joml/Vector4f;", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/fog/FogModifier;applyStartEndModifier(Lnet/minecraft/client/render/fog/FogData;Lnet/minecraft/entity/Entity;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/client/world/ClientWorld;FLnet/minecraft/client/render/RenderTickCounter;)V"))
     public void applyFog_applyStartEndModifier(FogModifier fogModifier, FogData fogData, Entity entity, BlockPos blockPos, ClientWorld clientWorld, float viewDistance, RenderTickCounter renderTickCounter, Operation<Void> original) {
         ConfigData config = Config.INSTANCE.load();
+        viewDistance /= 2;
 
         if (fogModifier.equals(FOG_MODIFIERS.get(0)) && !config.getLavaFog() ||
                 fogModifier.equals(FOG_MODIFIERS.get(1)) && !config.getPowderSnowFog() ||
