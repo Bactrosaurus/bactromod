@@ -5,7 +5,8 @@
   "contributors": ["FurnyGo", "Libreh"],
   "contact": {
     "issues": "https://github.com/Bactrosaurus/bactromod/issues",
-    "sources": "https://github.com/Bactrosaurus/bactromod"
+    "sources": "https://github.com/Bactrosaurus/bactromod",
+    "homepage": "https://modrinth.com/mod/bactromod"
   },
   "description": "A lightweight mod with some game optimizations and features.",
   "version": "3.0",
