@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "de.daniel"
-version = "3.0"
+version = "3.1"
 
 repositories {
     mavenCentral()
@@ -13,8 +13,8 @@ repositories {
 }
 
 dependencies {
-    minecraft("com.mojang:minecraft:1.21.7")
-    mappings("net.fabricmc:yarn:1.21.7+build.2")
+    minecraft("com.mojang:minecraft:1.21.8")
+    mappings("net.fabricmc:yarn:1.21.8+build.1")
 
     modImplementation("net.fabricmc:fabric-loader:0.16.14")
     modImplementation("net.fabricmc:fabric-language-kotlin:1.13.4+kotlin.2.2.0")

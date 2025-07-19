@@ -9,7 +9,7 @@
     "homepage": "https://modrinth.com/mod/bactromod"
   },
   "description": "A lightweight mod with some game optimizations and features.",
-  "version": "3.0",
+  "version": "3.1",
   "name": "BactroMod",
   "environment": "client",
   "license": "LGPL-3.0-only",
@@ -25,6 +25,6 @@
   "depends": {
     "fabricloader": ">=0.16.14",
     "fabric-language-kotlin": ">=1.13.4+kotlin.2.2.0",
-    "minecraft": ">=1.21.7"
+    "minecraft": ">=1.21.8"
   }
 }
