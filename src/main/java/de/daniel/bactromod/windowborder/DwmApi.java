@@ -7,7 +7,6 @@ import com.sun.jna.PointerType;
 import com.sun.jna.platform.win32.WinDef.HWND;
 import com.sun.jna.ptr.IntByReference;
 import de.daniel.bactromod.config.Config;
-import de.daniel.bactromod.config.ConfigData;
 import org.lwjgl.glfw.GLFWNativeWin32;
 import org.lwjgl.system.NativeType;
 
@@ -54,9 +53,9 @@ public interface DwmApi extends Library {
 
         final HWND hwnd = new HWND(Pointer.createConstant(GLFWNativeWin32.glfwGetWin32Window(window)));
 
-        ConfigData config = Config.INSTANCE.load();
+        Config.ConfigData config = Config.load();
 
-        INSTANCE.DwmSetWindowAttribute(hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, new IntByReference(config.getDarkWindowBorders() ? 1 : 0), INT_SIZE);
+        INSTANCE.DwmSetWindowAttribute(hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE, new IntByReference(config.darkWindowBorders() ? 1 : 0), INT_SIZE);
 
         if (WindowUtil.buildNumber >= WindowUtil.BACKDROP_BUILD_NUM) {
             INSTANCE.DwmSetWindowAttribute(hwnd, DWMWA_SYSTEMBACKDROP_TYPE, new IntByReference(DWM_SYSTEMBACKDROP_TYPE.DWMSBT_AUTO.ordinal()), INT_SIZE);

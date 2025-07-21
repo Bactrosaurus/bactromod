@@ -3,7 +3,6 @@ package de.daniel.bactromod.mixins.features.fog;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import de.daniel.bactromod.config.Config;
-import de.daniel.bactromod.config.ConfigData;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.client.render.fog.FogData;
@@ -30,20 +29,20 @@ public abstract class MixinFogRenderer {
 
     @WrapOperation(method = "applyFog(Lnet/minecraft/client/render/Camera;IZLnet/minecraft/client/render/RenderTickCounter;FLnet/minecraft/client/world/ClientWorld;)Lorg/joml/Vector4f;", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/fog/FogModifier;applyStartEndModifier(Lnet/minecraft/client/render/fog/FogData;Lnet/minecraft/entity/Entity;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/client/world/ClientWorld;FLnet/minecraft/client/render/RenderTickCounter;)V"))
     public void applyFog_applyStartEndModifier(FogModifier fogModifier, FogData fogData, Entity entity, BlockPos blockPos, ClientWorld clientWorld, float viewDistance, RenderTickCounter renderTickCounter, Operation<Void> original) {
-        ConfigData config = Config.INSTANCE.load();
+        Config.ConfigData config = Config.load();
         viewDistance /= 2;
 
-        if (fogModifier.equals(FOG_MODIFIERS.get(0)) && !config.getLavaFog() ||
-                fogModifier.equals(FOG_MODIFIERS.get(1)) && !config.getPowderSnowFog() ||
-                fogModifier.equals(FOG_MODIFIERS.get(2)) && !config.getBlindnessFog() ||
-                fogModifier.equals(FOG_MODIFIERS.get(3)) && !config.getDarknessFog() ||
-                fogModifier.equals(FOG_MODIFIERS.get(4)) && !config.getWaterFog() ||
-                fogModifier.equals(FOG_MODIFIERS.get(5)) && !config.getDimensionBossFog()) {
+        if (fogModifier.equals(FOG_MODIFIERS.get(0)) && !config.lavaFog() ||
+                fogModifier.equals(FOG_MODIFIERS.get(1)) && !config.powderSnowFog() ||
+                fogModifier.equals(FOG_MODIFIERS.get(2)) && !config.blindnessFog() ||
+                fogModifier.equals(FOG_MODIFIERS.get(3)) && !config.darknessFog() ||
+                fogModifier.equals(FOG_MODIFIERS.get(4)) && !config.waterFog() ||
+                fogModifier.equals(FOG_MODIFIERS.get(5)) && !config.dimensionBossFog()) {
             fogData.environmentalStart = Float.MAX_VALUE;
             fogData.environmentalEnd = Float.MAX_VALUE;
             fogData.skyEnd = Float.MAX_VALUE;
             fogData.cloudEnd = Float.MAX_VALUE;
-        } else if (fogModifier.equals(FOG_MODIFIERS.get(6)) && !config.getAtmosphericFog()) {
+        } else if (fogModifier.equals(FOG_MODIFIERS.get(6)) && !config.atmosphericFog()) {
             fogData.environmentalStart = Float.MAX_VALUE;
             fogData.environmentalEnd = Float.MAX_VALUE;
             fogData.skyEnd = viewDistance;
@@ -55,8 +54,8 @@ public abstract class MixinFogRenderer {
 
     @ModifyConstant(method = "applyFog(Lnet/minecraft/client/render/Camera;IZLnet/minecraft/client/render/RenderTickCounter;FLnet/minecraft/client/world/ClientWorld;)Lorg/joml/Vector4f;", constant = @Constant(intValue = 16))
     private int applyFog_modifyH(int value) {
-        ConfigData config = Config.INSTANCE.load();
-        if (!config.getRenderDistanceFog()) {
+        Config.ConfigData config = Config.load();
+        if (!config.renderDistanceFog()) {
             value *= 2;
         }
 

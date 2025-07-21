@@ -14,7 +14,7 @@ public class MixinInGameOverlayRenderer {
     
     @Inject(method = "renderFireOverlay", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/math/MatrixStack;push()V", shift = At.Shift.AFTER))
     private static void renderFire(MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, CallbackInfo ci) {
-        matrixStack.translate(0, Config.INSTANCE.load().getFireOffset() / 100F, 0);
+        matrixStack.translate(0, Config.load().fireOffset() / 100F, 0);
     }
 
 }

@@ -11,7 +11,7 @@ public class MixinLightmapTextureManager {
 
     @Redirect(method = "update", at = @At(value = "INVOKE", target = "Ljava/lang/Double;floatValue()F", ordinal = 1))
     public float floatValue(Double d) {
-        return d.floatValue() * Config.INSTANCE.load().getGammaMultiplier();
+        return d.floatValue() * Config.load().gammaMultiplier();
     }
 
 }

@@ -28,7 +28,7 @@ public class MixinHeldItemRenderer {
     public void renderItem(LivingEntity livingEntity, ItemStack itemStack, ItemDisplayContext displayContext, MatrixStack matrixStack, VertexConsumerProvider multiBufferSource, int i, CallbackInfo ci) {
         if (itemStack.isOf(Items.SHIELD) && displayContext.isFirstPerson()) {
             if (!itemStack.isEmpty()) {
-                matrixStack.translate(0.0D, Config.INSTANCE.load().getShieldOffset() / 100F, 0.0D);
+                matrixStack.translate(0.0D, Config.load().shieldOffset() / 100F, 0.0D);
                 this.itemRenderer.renderItem(livingEntity, itemStack, displayContext, matrixStack, multiBufferSource, livingEntity.getWorld(), i, OverlayTexture.DEFAULT_UV, livingEntity.getId() + displayContext.ordinal());
                 ci.cancel();
             }

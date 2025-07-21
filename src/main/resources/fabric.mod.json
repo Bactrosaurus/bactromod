@@ -15,7 +15,7 @@
   "license": "LGPL-3.0-only",
   "icon": "assets/bactromod/icon.png",
   "entrypoints": {
-    "client": ["de.daniel.bactromod.BactroModKt::init"],
+    "client": ["de.daniel.bactromod.BactroMod::init"],
     "modmenu": [ "de.daniel.bactromod.impl.ModMenuIntegration"]
   },
   "mixins": [
@@ -24,7 +24,6 @@
   "accessWidener" : "bactromod.accesswidener",
   "depends": {
     "fabricloader": ">=0.16.14",
-    "fabric-language-kotlin": ">=1.13.4+kotlin.2.2.0",
     "minecraft": ">=1.21.8"
   }
 }
