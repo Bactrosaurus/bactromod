@@ -3,6 +3,7 @@ package de.daniel.bactromod.mixins.features.fog;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import de.daniel.bactromod.config.Config;
+import de.daniel.bactromod.config.ConfigData;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.RenderTickCounter;
 import net.minecraft.client.render.fog.FogData;
@@ -29,7 +30,7 @@ public abstract class MixinFogRenderer {
 
     @WrapOperation(method = "applyFog(Lnet/minecraft/client/render/Camera;IZLnet/minecraft/client/render/RenderTickCounter;FLnet/minecraft/client/world/ClientWorld;)Lorg/joml/Vector4f;", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/fog/FogModifier;applyStartEndModifier(Lnet/minecraft/client/render/fog/FogData;Lnet/minecraft/entity/Entity;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/client/world/ClientWorld;FLnet/minecraft/client/render/RenderTickCounter;)V"))
     public void applyFog_applyStartEndModifier(FogModifier fogModifier, FogData fogData, Entity entity, BlockPos blockPos, ClientWorld clientWorld, float viewDistance, RenderTickCounter renderTickCounter, Operation<Void> original) {
-        Config.ConfigData config = Config.load();
+        ConfigData config = Config.load();
         viewDistance /= 2;
 
         if (fogModifier.equals(FOG_MODIFIERS.get(0)) && !config.lavaFog() ||
@@ -54,7 +55,7 @@ public abstract class MixinFogRenderer {
 
     @ModifyConstant(method = "applyFog(Lnet/minecraft/client/render/Camera;IZLnet/minecraft/client/render/RenderTickCounter;FLnet/minecraft/client/world/ClientWorld;)Lorg/joml/Vector4f;", constant = @Constant(intValue = 16))
     private int applyFog_modifyH(int value) {
-        Config.ConfigData config = Config.load();
+        ConfigData config = Config.load();
         if (!config.renderDistanceFog()) {
             value *= 2;
         }

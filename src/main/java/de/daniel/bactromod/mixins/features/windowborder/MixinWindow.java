@@ -1,6 +1,7 @@
 package de.daniel.bactromod.mixins.features.windowborder;
 
 import de.daniel.bactromod.config.Config;
+import de.daniel.bactromod.config.ConfigData;
 import de.daniel.bactromod.utils.SystemInfo;
 import de.daniel.bactromod.windowborder.DwmApi;
 import de.daniel.bactromod.windowborder.NtDll;
@@ -24,7 +25,7 @@ public class MixinWindow {
 
     @Inject(method = "<init>", at = @At(value = "TAIL"))
     private void init(WindowEventHandler windowEventHandler, MonitorTracker monitorTracker, WindowSettings windowSettings, String string, String string2, CallbackInfo ci) {
-        Config.ConfigData config = Config.load();
+        ConfigData config = Config.load();
         if (!config.darkWindowBorders() || !SystemInfo.isWindows11) return;
         NtDll.getBuildNumber();
         DwmApi.updateDwm(this.handle);
