@@ -1,51 +1,51 @@
 {
   "bactromod.options.title": "BactroMod Einstellungen",
 
-  "bactromod.options.gamma": "Helligkeitsverstärkung",
-  "bactromod.options.gamma.description": "Erhöht die Helligkeit im Spiel um den eingestellten Faktor.",
+  "bactromod.options.gammaMultiplier": "Helligkeitsverstärkung",
+  "bactromod.options.gammaMultiplier.desc": "Erhöht die Helligkeit im Spiel um den eingestellten Faktor.",
 
-  "bactromod.options.pumpkinblur": "Kürbismaske",
-  "bactromod.options.pumpkinblur.description": "Deaktiviert die Textur, welche beim Tragen eines geschnitzten Kürbis das Sichtfeld des Spielers einschränkt.",
+  "bactromod.options.pumpkinBlur": "Kürbismaske",
+  "bactromod.options.pumpkinBlur.desc": "Deaktiviert die Textur, welche beim Tragen eines geschnitzten Kürbis das Sichtfeld des Spielers einschränkt.",
 
-  "bactromod.options.fireoffset": "Feuerhöhe",
-  "bactromod.options.fireoffset.description": "Verschiebt die Feuer-Textur, welche man in der ersten Person sieht wenn man brennt, in der Höhe. Normalerweise wird ein negativer Wert gewählt, um das Sichtfeld zu erweitern.",
+  "bactromod.options.fireOffset": "Feuerhöhe",
+  "bactromod.options.fireOffset.desc": "Verschiebt die Feuer-Textur, welche man in der ersten Person sieht wenn man brennt, in der Höhe. Normalerweise wird ein negativer Wert gewählt, um das Sichtfeld zu erweitern.",
 
-  "bactromod.options.shieldoffset": "Schildhöhe",
-  "bactromod.options.shieldoffset.description": "Verschiebt den Schild in der ersten Person in der Höhe. Normalerweise wird ein negativer Wert gewählt, um das Sichtfeld zu erweitern.",
+  "bactromod.options.shieldOffset": "Schildhöhe",
+  "bactromod.options.shieldOffset.desc": "Verschiebt den Schild in der ersten Person in der Höhe. Normalerweise wird ein negativer Wert gewählt, um das Sichtfeld zu erweitern.",
 
-  "bactromod.options.boatmap": "Zeige Karte in Boot",
-  "bactromod.options.boatmap.description": "Zeigt Schatzkarten, obwohl man sich mit einem Boot in Bewegung befindet.",
+  "bactromod.options.showMapWhileInBoat": "Zeige Karte in Boot",
+  "bactromod.options.showMapWhileInBoat.desc": "Zeigt Schatzkarten, obwohl man sich mit einem Boot in Bewegung befindet.",
 
-  "bactromod.options.lavafog": "Lavanebel",
-  "bactromod.options.lavafog.description": "Deaktiviert Nebel, welcher beim Eintauchen in Lava angezeigt wird.",
+  "bactromod.options.lavaFog": "Lavanebel",
+  "bactromod.options.lavaFog.desc": "Deaktiviert Nebel, welcher beim Eintauchen in Lava angezeigt wird.",
 
-  "bactromod.options.snowfog": "Pulverschneenebel",
-  "bactromod.options.snowfog.description": "Deaktiviert Nebel, welcher beim Eintauchen in Pulverschnee angezeigt wird.",
+  "bactromod.options.powderSnowFog": "Pulverschneenebel",
+  "bactromod.options.powderSnowFog.desc": "Deaktiviert Nebel, welcher beim Eintauchen in Pulverschnee angezeigt wird.",
 
-  "bactromod.options.blindnessfog": "Blindheitseffekt",
-  "bactromod.options.blindnessfog.description": "Deaktiviert Nebel, welcher angezeigt wird, wenn der Spieler Blindheit als Effekt hat.",
+  "bactromod.options.blindnessFog": "Blindheitseffekt",
+  "bactromod.options.blindnessFog.desc": "Deaktiviert Nebel, welcher angezeigt wird, wenn der Spieler Blindheit als Effekt hat.",
 
-  "bactromod.options.darknessfog": "Dunkelheitseffekt",
-  "bactromod.options.darknessfog.description": "Deaktiviert Nebel, welcher angezeigt wird, wenn der Spieler Dunkelheit als Effekt hat.",
+  "bactromod.options.darknessFog": "Dunkelheitseffekt",
+  "bactromod.options.darknessFog.desc": "Deaktiviert Nebel, welcher angezeigt wird, wenn der Spieler Dunkelheit als Effekt hat.",
 
-  "bactromod.options.waterfog": "Wassernebel",
-  "bactromod.options.waterfog.description": "Deaktiviert Nebel, welcher beim Eintauchen in Wasser angezeigt wird.",
+  "bactromod.options.waterFog": "Wassernebel",
+  "bactromod.options.waterFog.desc": "Deaktiviert Nebel, welcher beim Eintauchen in Wasser angezeigt wird.",
 
   "bactromod.options.dimensionBossFog": "Dimensions- oder Boss-Nebel",
-  "bactromod.options.dimensionBossFog.description": "Deaktiviert Dimensionsnebel (z.B. Nether-Nebel) oder Nebel der durch Bosse verursacht wird.",
+  "bactromod.options.dimensionBossFog.desc": "Deaktiviert Dimensionsnebel (z.B. Nether-Nebel) oder Nebel der durch Bosse verursacht wird.",
 
   "bactromod.options.atmosphericFog": "Atmosphärischer Nebel",
-  "bactromod.options.atmosphericFog.description": "Deaktiviert atmosphärischen Nebel.",
+  "bactromod.options.atmosphericFog.desc": "Deaktiviert atmosphärischen Nebel.",
 
   "bactromod.options.renderDistanceFog": "Sichtweitennebel",
-  "bactromod.options.renderDistanceFog.description": "Deaktiviert Nebel an der Sichtweitengrenze.",
+  "bactromod.options.renderDistanceFog.desc": "Deaktiviert Nebel an der Sichtweitengrenze.",
 
   "bactromod.options.fixShieldRiptideTrident": "Schildposition Sog-Dreizack",
-  "bactromod.options.fixShieldRiptideTrident.description": "Behebt fehlerhafte Schildposition bei Nutzung eines Sog-Dreizacks in Wasser oder Regen.",
+  "bactromod.options.fixShieldRiptideTrident.desc": "Behebt fehlerhafte Schildposition bei Nutzung eines Sog-Dreizacks in Wasser oder Regen.",
 
-  "bactromod.options.windowborders": "Dunkle Fensterrahmen",
-  "bactromod.options.windowborders.description": "Aktiviert dunkle Fensterrahmen für Minecraft-Instanzen (nur unter Windows 11).",
+  "bactromod.options.darkWindowBorders": "Dunkle Fensterrahmen",
+  "bactromod.options.darkWindowBorders.desc": "Aktiviert dunkle Fensterrahmen für Minecraft-Instanzen (nur unter Windows 11).",
 
   "modmenu.summaryTranslation.bactromod": "Eine kleine Mod mit nützlichen Spieloptimierungen.",
-  "modmenu.descriptionTranslation.bactromod": "Eine kleine Mod mit nützlichen Spieloptimierungen."
+  "modmenu.descTranslation.bactromod": "Eine kleine Mod mit nützlichen Spieloptimierungen."
 }

@@ -1,51 +1,51 @@
 {
   "bactromod.options.title": "BactroMod Settings",
 
-  "bactromod.options.gamma": "Brightness boost",
-  "bactromod.options.gamma.description": "Boosts in-game brightness by set factor.",
+  "bactromod.options.gammaMultiplier": "Brightness boost",
+  "bactromod.options.gammaMultiplier.desc": "Boosts in-game brightness by set factor.",
 
-  "bactromod.options.pumpkinblur": "Pumpkin blur",
-  "bactromod.options.pumpkinblur.description": "Disables black texture overlay that strongly limits view when player wears a carved pumpkin.",
+  "bactromod.options.pumpkinBlur": "Pumpkin blur",
+  "bactromod.options.pumpkinBlur.desc": "Disables black texture overlay that strongly limits view when player wears a carved pumpkin.",
 
-  "bactromod.options.fireoffset": "Fire offset",
-  "bactromod.options.fireoffset.description": "Moves fire texture in height. Usually you would select a negative value to move fire texture down and free up your view.",
+  "bactromod.options.fireOffset": "Fire offset",
+  "bactromod.options.fireOffset.desc": "Moves fire texture in height. Usually you would select a negative value to move fire texture down and free up your view.",
 
-  "bactromod.options.shieldoffset": "Shield offset",
-  "bactromod.options.shieldoffset.description": "Moves shield in height when in first-person perspective. Usually you would select a negative value to move shield down and free up your view.",
+  "bactromod.options.shieldOffset": "Shield offset",
+  "bactromod.options.shieldOffset.desc": "Moves shield in height when in first-person perspective. Usually you would select a negative value to move shield down and free up your view.",
 
-  "bactromod.options.boatmap": "Show map in boat",
-  "bactromod.options.boatmap.description": "Allows maps to always be shown when moving in boat.",
+  "bactromod.options.showMapWhileInBoat": "Show map in boat",
+  "bactromod.options.showMapWhileInBoat.desc": "Allows maps to always be shown when moving in boat.",
 
-  "bactromod.options.lavafog": "Lava fog",
-  "bactromod.options.lavafog.description": "Disables fog caused by diving into lava.",
+  "bactromod.options.lavaFog": "Lava fog",
+  "bactromod.options.lavaFog.desc": "Disables fog caused by diving into lava.",
 
-  "bactromod.options.snowfog": "Powder snow fog",
-  "bactromod.options.snowfog.description": "Disables fog caused by diving into powder snow.",
+  "bactromod.options.powderSnowFog": "Powder snow fog",
+  "bactromod.options.powderSnowFog.desc": "Disables fog caused by diving into powder snow.",
 
-  "bactromod.options.blindnessfog": "Blindness fog",
-  "bactromod.options.blindnessfog.description": "Disables fog caused by blindness effect.",
+  "bactromod.options.blindnessFog": "Blindness fog",
+  "bactromod.options.blindnessFog.desc": "Disables fog caused by blindness effect.",
 
-  "bactromod.options.darknessfog": "Darkness fog",
-  "bactromod.options.darknessfog.description": "Disables fog caused by darkness effect.",
+  "bactromod.options.darknessFog": "Darkness fog",
+  "bactromod.options.darknessFog.desc": "Disables fog caused by darkness effect.",
 
-  "bactromod.options.waterfog": "Water fog",
-  "bactromod.options.waterfog.description": "Disables fog caused by diving into water.",
+  "bactromod.options.waterFog": "Water fog",
+  "bactromod.options.waterFog.desc": "Disables fog caused by diving into water.",
 
   "bactromod.options.dimensionBossFog": "Dimension or boss fog",
-  "bactromod.options.dimensionBossFog.description": "Disables dimension fog (e.g. in Nether) or fog caused by bosses.",
+  "bactromod.options.dimensionBossFog.desc": "Disables dimension fog (e.g. in Nether) or fog caused by bosses.",
 
   "bactromod.options.atmosphericFog": "Atmospheric fog",
-  "bactromod.options.atmosphericFog.description": "Disables atmospheric fog.",
+  "bactromod.options.atmosphericFog.desc": "Disables atmospheric fog.",
 
   "bactromod.options.renderDistanceFog": "Render-distance fog",
-  "bactromod.options.renderDistanceFog.description": "Disables fog at render-distance border.",
+  "bactromod.options.renderDistanceFog.desc": "Disables fog at render-distance border.",
 
   "bactromod.options.fixShieldRiptideTrident": "Fix riptide trident shield",
-  "bactromod.options.fixShieldRiptideTrident.description": "Fixes the position of shield in offhand while using riptide trident in water or rain.",
+  "bactromod.options.fixShieldRiptideTrident.desc": "Fixes the position of shield in offhand while using riptide trident in water or rain.",
 
-  "bactromod.options.windowborders": "Dark window borders",
-  "bactromod.options.windowborders.description": "Enables dark window border in Minecraft (only on Windows 11).",
+  "bactromod.options.darkWindowBorders": "Dark window borders",
+  "bactromod.options.darkWindowBorders.desc": "Enables dark window border in Minecraft (only on Windows 11).",
 
   "modmenu.summaryTranslation.bactromod": "A lightweight mod with some game optimizations and features.",
-  "modmenu.descriptionTranslation.bactromod": "A lightweight mod with some game optimizations and features."
+  "modmenu.descTranslation.bactromod": "A lightweight mod with some game optimizations and features."
 }

@@ -15,10 +15,6 @@ dependencies {
     mappings("net.fabricmc:yarn:1.21.8+build.1")
     modImplementation("net.fabricmc:fabric-loader:0.16.14")
     modApi("com.terraformersmc:modmenu:15.0.0-beta.3")
-
-    // Lombok for compile-time annotation processing
-    compileOnly("org.projectlombok:lombok:1.18.38")
-    annotationProcessor("org.projectlombok:lombok:1.18.38")
 }
 
 loom {

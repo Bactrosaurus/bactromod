@@ -34,7 +34,7 @@ public class MixinHeldItemRenderer {
 
     @Unique
     private boolean isOptionDisabled() {
-        return !Config.load().showMapWhileInBoat();
+        return !Config.load().showMapWhileInBoat;
     }
 
     @Unique

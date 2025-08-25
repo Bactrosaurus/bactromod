@@ -1,51 +1,51 @@
 {
   "bactromod.options.title": "Настройки BactroMod",
 
-  "bactromod.options.gamma": "Усиление яркости",
-  "bactromod.options.gamma.description": "Усиливает яркость в несколько раз.",
+  "bactromod.options.gammaMultiplier": "Усиление яркости",
+  "bactromod.options.gammaMultiplier.desc": "Усиливает яркость в несколько раз.",
 
-  "bactromod.options.pumpkinblur": "Текстура тыквы",
-  "bactromod.options.pumpkinblur.description": "Отключает чёрную текстуру, которая накладывается при надевании тыквы.",
+  "bactromod.options.pumpkinBlur": "Текстура тыквы",
+  "bactromod.options.pumpkinBlur.desc": "Отключает чёрную текстуру, которая накладывается при надевании тыквы.",
 
-  "bactromod.options.fireoffset": "Расположение огня",
-  "bactromod.options.fireoffset.description": "Двигает текстуру огня по высоте. Вам нужно поставить отрицательное значение, чтобы опустить текстуру.",
+  "bactromod.options.fireOffset": "Расположение огня",
+  "bactromod.options.fireOffset.desc": "Двигает текстуру огня по высоте. Вам нужно поставить отрицательное значение, чтобы опустить текстуру.",
 
-  "bactromod.options.shieldoffset": "Расположение щита",
-  "bactromod.options.shieldoffset.description": "Двигает текстуру щита от первого лица по высоте. Вам нужно поставить отрицательное значение, чтобы опустить текстуру.",
+  "bactromod.options.shieldOffset": "Расположение щита",
+  "bactromod.options.shieldOffset.desc": "Двигает текстуру щита от первого лица по высоте. Вам нужно поставить отрицательное значение, чтобы опустить текстуру.",
 
-  "bactromod.options.boatmap": "Карта в лодке",
-  "bactromod.options.boatmap.description": "Позволяет видеть карты во время движения на лодке.",
+  "bactromod.options.showMapWhileInBoat": "Карта в лодке",
+  "bactromod.options.showMapWhileInBoat.desc": "Позволяет видеть карты во время движения на лодке.",
 
-  "bactromod.options.lavafog": "Туман в лаве",
-  "bactromod.options.lavafog.description": "Отключает затуманенность при погружении в лаву.",
+  "bactromod.options.lavaFog": "Туман в лаве",
+  "bactromod.options.lavaFog.desc": "Отключает затуманенность при погружении в лаву.",
 
-  "bactromod.options.snowfog": "Туман в рыхлом снеге",
-  "bactromod.options.snowfog.description": "Отключает затуманенность при погружении в рыхлый снег.",
+  "bactromod.options.powderSnowFog": "Туман в рыхлом снеге",
+  "bactromod.options.powderSnowFog.desc": "Отключает затуманенность при погружении в рыхлый снег.",
 
-  "bactromod.options.blindnessfog": "Туман от слепоты",
-  "bactromod.options.blindnessfog.description": "Отключает затуманенность от эффекта слепоты",
+  "bactromod.options.blindnessFog": "Туман от слепоты",
+  "bactromod.options.blindnessFog.desc": "Отключает затуманенность от эффекта слепоты",
 
-  "bactromod.options.darknessfog": "Туман от тьмы",
-  "bactromod.options.darknessfog.description": "Отключает затуманенность от эффекта тьмы.",
+  "bactromod.options.darknessFog": "Туман от тьмы",
+  "bactromod.options.darknessFog.desc": "Отключает затуманенность от эффекта тьмы.",
 
-  "bactromod.options.waterfog": "Туман в воде",
-  "bactromod.options.waterfog.description": "Отключает затуманенность при погружении в воду.",
+  "bactromod.options.waterFog": "Туман в воде",
+  "bactromod.options.waterFog.desc": "Отключает затуманенность при погружении в воду.",
 
   "bactromod.options.dimensionBossFog": "Густой туман",
-  "bactromod.options.dimensionBossFog.description": "Отключает густой туман (например в Незере).",
+  "bactromod.options.dimensionBossFog.desc": "Отключает густой туман (например в Незере).",
 
   "bactromod.options.atmosphericFog": "Туман на повехности",
-  "bactromod.options.atmosphericFog.description": "Отключает туман на повехности.",
+  "bactromod.options.atmosphericFog.desc": "Отключает туман на повехности.",
 
   "bactromod.options.renderDistanceFog": "Render-distance fog",
-  "bactromod.options.renderDistanceFog.description": "Disables fog at render-distance border.",
+  "bactromod.options.renderDistanceFog.desc": "Disables fog at render-distance border.",
 
   "bactromod.options.fixShieldRiptideTrident": "Исправить неправильно тягун-трезубец щит положение.",
-  "bactromod.options.fixShieldRiptideTrident.description": "Исправить неправильно тягун-трезубец щит положение в воде или дожде.",
+  "bactromod.options.fixShieldRiptideTrident.desc": "Исправить неправильно тягун-трезубец щит положение в воде или дожде.",
 
-  "bactromod.options.windowborders": "Тёмные рамки окна",
-  "bactromod.options.windowborders.description": "Включает тёмные рамки окна Майнкрафта (только для Windows 11).",
+  "bactromod.options.darkWindowBorders": "Тёмные рамки окна",
+  "bactromod.options.darkWindowBorders.desc": "Включает тёмные рамки окна Майнкрафта (только для Windows 11).",
 
   "modmenu.summaryTranslation.bactromod": "Небольшой мод с новыми функциями и оптимизациями для игры.",
-  "modmenu.descriptionTranslation.bactromod": "Небольшой мод с новыми функциями и оптимизациями для игры."
+  "modmenu.descTranslation.bactromod": "Небольшой мод с новыми функциями и оптимизациями для игры."
 }

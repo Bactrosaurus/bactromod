@@ -5,7 +5,10 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 import de.daniel.bactromod.BactroMod;
+import de.daniel.bactromod.utils.SystemInfo;
+import de.daniel.bactromod.windowborder.DwmApi;
 import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.client.MinecraftClient;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -24,10 +27,10 @@ public class Config {
             if (!Files.exists(configPath)) {
                 try {
                     Files.createDirectories(configPath.getParent());
-                    save(ConfigData.defaultConfig());
+                    save(ConfigDefaults.createDefaults());
                 } catch (IOException e) {
                     // If creation of config path fails use default config
-                    configData = ConfigData.defaultConfig();
+                    configData = ConfigDefaults.createDefaults();
 
                     BactroMod.LOGGER.error(
                             "Could not create default config file or directory." +
@@ -37,7 +40,7 @@ public class Config {
             } else {
                 try (Reader reader = Files.newBufferedReader(configPath)) {
                     configData = gson.fromJson(reader, ConfigData.class);
-                    if (configData == null) configData = ConfigData.defaultConfig();
+                    if (configData == null) configData = ConfigDefaults.createDefaults();
                 } catch (JsonSyntaxException | JsonIOException | IOException e) {
                     Path backup = configPath.resolveSibling("bactromod_old_" + Instant.now().getEpochSecond() + ".json");
                     Files.move(configPath, backup);
@@ -46,11 +49,11 @@ public class Config {
                             "Existing config file in {} is invalid" +
                                     " and has been replaced with default config. Invalid config file" +
                                     " has been backed up at {}.", configPath, backup);
-                    save(ConfigData.defaultConfig());
+                    save(ConfigDefaults.createDefaults());
                 }
             }
         } catch (IOException e) {
-            configData = ConfigData.defaultConfig();
+            configData = ConfigDefaults.createDefaults();
             BactroMod.LOGGER.error("Could not load default config file or directory.", e);
         }
     }
@@ -62,10 +65,13 @@ public class Config {
         } catch (IOException e) {
             BactroMod.LOGGER.error("Could not save config file or directory.", e);
         }
+
+        // Update DWM whenever settings are saved (for dark window-borders in Windows 11)
+        if (SystemInfo.isWindows11) DwmApi.updateDwm(MinecraftClient.getInstance().getWindow().getHandle());
     }
 
     public static ConfigData load() {
-        return configData != null ? configData : ConfigData.defaultConfig();
+        return configData != null ? configData : ConfigDefaults.createDefaults();
     }
 
 }

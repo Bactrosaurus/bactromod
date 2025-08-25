@@ -1,45 +1,50 @@
 package de.daniel.bactromod.config;
 
-import lombok.With;
+public class ConfigData {
 
-@With
-public record ConfigData(
-        int gammaMultiplier,
-        boolean pumpkinBlur,
-        int fireOffset,
-        int shieldOffset,
-        boolean blindnessFog,
-        boolean darknessFog,
-        boolean lavaFog,
-        boolean powderSnowFog,
-        boolean waterFog,
-        boolean atmosphericFog,
-        boolean dimensionBossFog,
-        boolean renderDistanceFog,
-        boolean showMapWhileInBoat,
-        boolean fixShieldRiptideTrident,
-        boolean darkWindowBorders
-) {
+    @ConfigOption(intMin = 0, intMax = 15, intDefault = 15)
+    public int gammaMultiplier;
 
-    public static ConfigData defaultConfig() {
-        return new ConfigData(
-                15,
-                false,
-                -30,
-                -20,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                true,
-                true,
-                true
-        );
-    }
+    @ConfigOption()
+    public boolean pumpkinBlur;
+
+    @ConfigOption(intMin = -100, intMax = 100, intDefault = -30)
+    public int fireOffset;
+
+    @ConfigOption(intMin = -100, intMax = 100, intDefault = -20)
+    public int shieldOffset;
+
+    @ConfigOption()
+    public boolean blindnessFog;
+
+    @ConfigOption()
+    public boolean darknessFog;
+
+    @ConfigOption()
+    public boolean lavaFog;
+
+    @ConfigOption()
+    public boolean powderSnowFog;
+
+    @ConfigOption()
+    public boolean waterFog;
+
+    @ConfigOption()
+    public boolean atmosphericFog;
+
+    @ConfigOption()
+    public boolean dimensionBossFog;
+
+    @ConfigOption(boolDefault = true)
+    public boolean renderDistanceFog;
+
+    @ConfigOption(boolDefault = true)
+    public boolean showMapWhileInBoat;
+
+    @ConfigOption(boolDefault = true)
+    public boolean fixShieldRiptideTrident;
+
+    @ConfigOption(boolDefault = true)
+    public boolean darkWindowBorders;
 
 }
-

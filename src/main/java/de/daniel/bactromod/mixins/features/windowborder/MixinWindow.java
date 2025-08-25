@@ -26,7 +26,7 @@ public class MixinWindow {
     @Inject(method = "<init>", at = @At(value = "TAIL"))
     private void init(WindowEventHandler windowEventHandler, MonitorTracker monitorTracker, WindowSettings windowSettings, String string, String string2, CallbackInfo ci) {
         ConfigData config = Config.load();
-        if (!config.darkWindowBorders() || !SystemInfo.isWindows11) return;
+        if (!config.darkWindowBorders || !SystemInfo.isWindows11) return;
         NtDll.getBuildNumber();
         DwmApi.updateDwm(this.handle);
     }

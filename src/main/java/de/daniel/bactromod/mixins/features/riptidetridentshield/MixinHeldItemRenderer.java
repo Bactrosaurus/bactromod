@@ -26,7 +26,7 @@ public class MixinHeldItemRenderer {
 
     @Inject(method = "renderFirstPersonItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/math/MatrixStack;translate(FFF)V", ordinal = 11), cancellable = true)
     public void shieldTransformAutoSpinAttack(AbstractClientPlayerEntity abstractClientPlayerEntity, float f, float g, Hand hand, float h, ItemStack itemStack, float i, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int j, CallbackInfo ci) {
-        if (itemStack.isOf(Items.SHIELD) && Config.load().fixShieldRiptideTrident()) {
+        if (itemStack.isOf(Items.SHIELD) && Config.load().fixShieldRiptideTrident) {
             boolean bl = hand == Hand.MAIN_HAND;
             Arm humanoidArm = bl ? abstractClientPlayerEntity.getMainArm() : abstractClientPlayerEntity.getMainArm().getOpposite();
             boolean bl2 = humanoidArm == Arm.RIGHT;

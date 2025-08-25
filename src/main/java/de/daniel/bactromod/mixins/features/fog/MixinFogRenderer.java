@@ -33,17 +33,17 @@ public abstract class MixinFogRenderer {
         ConfigData config = Config.load();
         viewDistance /= 2;
 
-        if (fogModifier.equals(FOG_MODIFIERS.get(0)) && !config.lavaFog() ||
-                fogModifier.equals(FOG_MODIFIERS.get(1)) && !config.powderSnowFog() ||
-                fogModifier.equals(FOG_MODIFIERS.get(2)) && !config.blindnessFog() ||
-                fogModifier.equals(FOG_MODIFIERS.get(3)) && !config.darknessFog() ||
-                fogModifier.equals(FOG_MODIFIERS.get(4)) && !config.waterFog() ||
-                fogModifier.equals(FOG_MODIFIERS.get(5)) && !config.dimensionBossFog()) {
+        if (fogModifier.equals(FOG_MODIFIERS.get(0)) && !config.lavaFog ||
+                fogModifier.equals(FOG_MODIFIERS.get(1)) && !config.powderSnowFog ||
+                fogModifier.equals(FOG_MODIFIERS.get(2)) && !config.blindnessFog ||
+                fogModifier.equals(FOG_MODIFIERS.get(3)) && !config.darknessFog ||
+                fogModifier.equals(FOG_MODIFIERS.get(4)) && !config.waterFog ||
+                fogModifier.equals(FOG_MODIFIERS.get(5)) && !config.dimensionBossFog) {
             fogData.environmentalStart = Float.MAX_VALUE;
             fogData.environmentalEnd = Float.MAX_VALUE;
             fogData.skyEnd = Float.MAX_VALUE;
             fogData.cloudEnd = Float.MAX_VALUE;
-        } else if (fogModifier.equals(FOG_MODIFIERS.get(6)) && !config.atmosphericFog()) {
+        } else if (fogModifier.equals(FOG_MODIFIERS.get(6)) && !config.atmosphericFog) {
             fogData.environmentalStart = Float.MAX_VALUE;
             fogData.environmentalEnd = Float.MAX_VALUE;
             fogData.skyEnd = viewDistance;
@@ -56,7 +56,7 @@ public abstract class MixinFogRenderer {
     @ModifyConstant(method = "applyFog(Lnet/minecraft/client/render/Camera;IZLnet/minecraft/client/render/RenderTickCounter;FLnet/minecraft/client/world/ClientWorld;)Lorg/joml/Vector4f;", constant = @Constant(intValue = 16))
     private int applyFog_modifyH(int value) {
         ConfigData config = Config.load();
-        if (!config.renderDistanceFog()) {
+        if (!config.renderDistanceFog) {
             value *= 2;
         }
 

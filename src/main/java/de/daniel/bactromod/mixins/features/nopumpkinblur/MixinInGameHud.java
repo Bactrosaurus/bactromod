@@ -17,7 +17,7 @@ public class MixinInGameHud {
     @Redirect(method = "renderMiscOverlays", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/ClientPlayerEntity;getEquippedStack(Lnet/minecraft/entity/EquipmentSlot;)Lnet/minecraft/item/ItemStack;"))
     private ItemStack getEquippedStack(ClientPlayerEntity instance, EquipmentSlot equipmentSlot) {
         ConfigData config = Config.load();
-        if (!equipmentSlot.isArmorSlot() || config.pumpkinBlur()) return instance.getEquippedStack(equipmentSlot);
+        if (!equipmentSlot.isArmorSlot() || config.pumpkinBlur) return instance.getEquippedStack(equipmentSlot);
         ItemStack realItem = instance.getEquippedStack(equipmentSlot);
         if (realItem.isOf(Items.CARVED_PUMPKIN)) {
             return ItemStack.EMPTY;
