@@ -23,7 +23,7 @@
   ],
   "accessWidener" : "bactromod.accesswidener",
   "depends": {
-    "fabricloader": ">=0.16.14",
+    "fabricloader": ">=0.17.2",
     "minecraft": ">=1.21.8"
   }
 }

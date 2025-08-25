@@ -2,6 +2,12 @@ package de.daniel.bactromod.config;
 
 public class ConfigData {
 
+    /*
+    Options here must be named like {variableName} in language files with pattern:
+        bactromod.options.{variableName}
+        bactromod.options.{variableName}.desc
+     */
+
     @ConfigOption(intMin = 0, intMax = 15, intDefault = 15)
     public int gammaMultiplier;
 
