@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "de.daniel"
-version = "3.1"
+version = "3.2"
 
 repositories {
     mavenCentral()
@@ -11,10 +11,10 @@ repositories {
 }
 
 dependencies {
-    minecraft("com.mojang:minecraft:1.21.8")
-    mappings("net.fabricmc:yarn:1.21.8+build.1")
+    minecraft("com.mojang:minecraft:1.21.9")
+    mappings("net.fabricmc:yarn:1.21.9+build.1")
     modImplementation("net.fabricmc:fabric-loader:0.17.2")
-    modApi("com.terraformersmc:modmenu:15.0.0-beta.3")
+    modApi("com.terraformersmc:modmenu:15.0.0")
 }
 
 loom {

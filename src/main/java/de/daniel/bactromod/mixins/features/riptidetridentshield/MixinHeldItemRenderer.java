@@ -2,7 +2,7 @@ package de.daniel.bactromod.mixins.features.riptidetridentshield;
 
 import de.daniel.bactromod.config.Config;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
-import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.command.OrderedRenderCommandQueue;
 import net.minecraft.client.render.item.HeldItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
@@ -22,10 +22,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinHeldItemRenderer {
 
     @Shadow
-    public void renderItem(LivingEntity livingEntity, ItemStack itemStack, ItemDisplayContext itemDisplayContext, MatrixStack poseStack, VertexConsumerProvider multiBufferSource, int i) {}
+    public void renderItem(LivingEntity livingEntity, ItemStack itemStack, ItemDisplayContext itemDisplayContext, MatrixStack poseStack, OrderedRenderCommandQueue orderedRenderCommandQueue, int i) {
+    }
 
     @Inject(method = "renderFirstPersonItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/util/math/MatrixStack;translate(FFF)V", ordinal = 11), cancellable = true)
-    public void shieldTransformAutoSpinAttack(AbstractClientPlayerEntity abstractClientPlayerEntity, float f, float g, Hand hand, float h, ItemStack itemStack, float i, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int j, CallbackInfo ci) {
+    public void shieldTransformAutoSpinAttack(AbstractClientPlayerEntity abstractClientPlayerEntity, float f, float g, Hand hand, float h, ItemStack itemStack, float i, MatrixStack matrixStack, OrderedRenderCommandQueue orderedRenderCommandQueue, int j, CallbackInfo ci) {
         if (itemStack.isOf(Items.SHIELD) && Config.load().fixShieldRiptideTrident) {
             boolean bl = hand == Hand.MAIN_HAND;
             Arm humanoidArm = bl ? abstractClientPlayerEntity.getMainArm() : abstractClientPlayerEntity.getMainArm().getOpposite();
@@ -33,7 +34,7 @@ public class MixinHeldItemRenderer {
             matrixStack.translate(0.0F, 0.0F, 0.0F);
             matrixStack.multiply(RotationAxis.POSITIVE_X.rotationDegrees(0.0F));
             matrixStack.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(0.0F));
-            renderItem(abstractClientPlayerEntity, itemStack, bl2 ? ItemDisplayContext.FIRST_PERSON_RIGHT_HAND : ItemDisplayContext.FIRST_PERSON_LEFT_HAND, matrixStack, vertexConsumerProvider, j);
+            renderItem(abstractClientPlayerEntity, itemStack, bl2 ? ItemDisplayContext.FIRST_PERSON_RIGHT_HAND : ItemDisplayContext.FIRST_PERSON_LEFT_HAND, matrixStack, orderedRenderCommandQueue, j);
             matrixStack.pop();
             ci.cancel();
         }
