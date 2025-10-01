@@ -56,8 +56,8 @@ public class MixinHeldItemRenderer {
     @Redirect(method = "updateHeldItems", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/MathHelper;clamp(FFF)F", ordinal = 1))
     private float clampOffHandHeight(float f, float g, float h) {
         assert getLocalPlayer() != null;
-        ItemStack itemStack = getLocalPlayer().getMainHandStack();
-        boolean mapInOffhand = this.mainHand.isOf(Items.FILLED_MAP);
+        ItemStack itemStack = getLocalPlayer().getOffHandStack();
+        boolean mapInOffhand = this.offHand.isOf(Items.FILLED_MAP);
         if (isOptionDisabled() || !mapInOffhand) return MathHelper.clamp(f, g, h);
         return this.equipProgressOffHand +
                 MathHelper.clamp((float) (this.offHand == itemStack ? 1 : 0) - this.equipProgressOffHand, -0.4F, 0.4F);
