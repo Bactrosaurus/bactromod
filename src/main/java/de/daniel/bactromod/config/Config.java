@@ -67,7 +67,9 @@ public class Config {
         }
 
         // Update DWM whenever settings are saved (for dark window-borders in Windows 11)
-        if (SystemInfo.isWindows11) DwmApi.updateDwm(MinecraftClient.getInstance().getWindow().getHandle());
+        // Make sure window is already initialized
+        if (SystemInfo.isWindows11 && MinecraftClient.getInstance().getWindow() != null)
+            DwmApi.updateDwm(MinecraftClient.getInstance().getWindow().getHandle());
     }
 
     public static ConfigData load() {
