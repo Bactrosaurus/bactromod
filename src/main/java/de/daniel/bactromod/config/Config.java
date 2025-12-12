@@ -27,10 +27,10 @@ public class Config {
             if (!Files.exists(configPath)) {
                 try {
                     Files.createDirectories(configPath.getParent());
-                    save(ConfigDefaults.createDefaults());
+                    save(new ConfigData());
                 } catch (IOException e) {
                     // If creation of config path fails use default config
-                    configData = ConfigDefaults.createDefaults();
+                    configData = new ConfigData();
 
                     BactroMod.LOGGER.error(
                             "Could not create default config file or directory." +
@@ -40,7 +40,7 @@ public class Config {
             } else {
                 try (Reader reader = Files.newBufferedReader(configPath)) {
                     configData = gson.fromJson(reader, ConfigData.class);
-                    if (configData == null) configData = ConfigDefaults.createDefaults();
+                    if (configData == null) configData = new ConfigData();
                 } catch (JsonSyntaxException | JsonIOException | IOException e) {
                     Path backup = configPath.resolveSibling("bactromod_old_" + Instant.now().getEpochSecond() + ".json");
                     Files.move(configPath, backup);
@@ -49,11 +49,11 @@ public class Config {
                             "Existing config file in {} is invalid" +
                                     " and has been replaced with default config. Invalid config file" +
                                     " has been backed up at {}.", configPath, backup);
-                    save(ConfigDefaults.createDefaults());
+                    save(new ConfigData());
                 }
             }
         } catch (IOException e) {
-            configData = ConfigDefaults.createDefaults();
+            configData = new ConfigData();
             BactroMod.LOGGER.error("Could not load default config file or directory.", e);
         }
     }
@@ -73,7 +73,10 @@ public class Config {
     }
 
     public static ConfigData load() {
-        return configData != null ? configData : ConfigDefaults.createDefaults();
+        if (configData == null) {
+            configData = new ConfigData();
+        }
+        return configData;
     }
 
 }

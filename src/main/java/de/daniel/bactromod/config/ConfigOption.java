@@ -7,6 +7,4 @@ import java.lang.annotation.RetentionPolicy;
 public @interface ConfigOption {
     int intMin() default Integer.MIN_VALUE;
     int intMax() default Integer.MAX_VALUE;
-    boolean boolDefault() default false;
-    int intDefault() default 0;
 }

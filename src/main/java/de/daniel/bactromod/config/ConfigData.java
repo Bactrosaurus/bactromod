@@ -8,49 +8,43 @@ public class ConfigData {
         bactromod.options.{variableName}.desc
      */
 
-    @ConfigOption(intMin = 0, intMax = 15, intDefault = 15)
-    public int gammaMultiplier;
+    @ConfigOption(intMin = 0, intMax = 15)
+    public int gammaMultiplier = 15;
 
     @ConfigOption()
-    public boolean pumpkinBlur;
+    public boolean pumpkinBlur = false;
 
-    @ConfigOption(intMin = -100, intMax = 100, intDefault = -30)
-    public int fireOffset;
+    @ConfigOption(intMin = -100, intMax = 100)
+    public int fireOffset = -30;
 
-    @ConfigOption(intMin = -100, intMax = 100, intDefault = -20)
-    public int shieldOffset;
-
-    @ConfigOption()
-    public boolean blindnessFog;
+    @ConfigOption(intMin = -100, intMax = 100)
+    public int shieldOffset = -20;
 
     @ConfigOption()
-    public boolean darknessFog;
+    public boolean blindnessFog = false;
 
     @ConfigOption()
-    public boolean lavaFog;
+    public boolean darknessFog = false;
 
     @ConfigOption()
-    public boolean powderSnowFog;
+    public boolean lavaFog = false;
 
     @ConfigOption()
-    public boolean waterFog;
+    public boolean powderSnowFog = false;
 
     @ConfigOption()
-    public boolean atmosphericFog;
+    public boolean waterFog = false;
 
     @ConfigOption()
-    public boolean dimensionBossFog;
+    public boolean atmosphericFog = false;
 
-    @ConfigOption(boolDefault = true)
-    public boolean renderDistanceFog;
+    @ConfigOption()
+    public boolean showMapWhileInBoat = true;
 
-    @ConfigOption(boolDefault = true)
-    public boolean showMapWhileInBoat;
+    @ConfigOption()
+    public boolean fixShieldRiptideTrident = true;
 
-    @ConfigOption(boolDefault = true)
-    public boolean fixShieldRiptideTrident;
-
-    @ConfigOption(boolDefault = true)
-    public boolean darkWindowBorders;
+    @ConfigOption()
+    public boolean darkWindowBorders = true;
 
 }
