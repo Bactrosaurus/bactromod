@@ -10,12 +10,18 @@ import de.daniel.bactromod.windowborder.DwmApi;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.MinecraftClient;
 
+import javax.sound.midi.VoiceStatus;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Instant;
+import java.util.concurrent.Callable;
+import java.util.function.BinaryOperator;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.UnaryOperator;
 
 public class Config {
     private static final Path configPath = FabricLoader.getInstance().getConfigDir().resolve("bactromod.json");
@@ -68,8 +74,9 @@ public class Config {
 
         // Update DWM whenever settings are saved (for dark window-borders in Windows 11)
         // Make sure window is already initialized
-        if (SystemInfo.isWindows11 && MinecraftClient.getInstance().getWindow() != null)
+        if (SystemInfo.isWindows11 && MinecraftClient.getInstance().getWindow() != null) {
             DwmApi.updateDwm(MinecraftClient.getInstance().getWindow().getHandle());
+        }
     }
 
     public static ConfigData load() {

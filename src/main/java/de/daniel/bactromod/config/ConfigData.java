@@ -1,5 +1,8 @@
 package de.daniel.bactromod.config;
 
+import de.daniel.bactromod.config.optiontypes.BooleanOption;
+import de.daniel.bactromod.config.optiontypes.IntegerOption;
+
 public class ConfigData {
 
     /*
@@ -8,43 +11,43 @@ public class ConfigData {
         bactromod.options.{variableName}.desc
      */
 
-    @ConfigOption(intMin = 0, intMax = 15)
+    @IntegerOption(intMin = 0, intMax = 15)
     public int gammaMultiplier = 15;
 
-    @ConfigOption()
+    @BooleanOption()
     public boolean pumpkinBlur = false;
 
-    @ConfigOption(intMin = -100, intMax = 100)
+    @IntegerOption(intMin = -100, intMax = 100)
     public int fireOffset = -30;
 
-    @ConfigOption(intMin = -100, intMax = 100)
+    @IntegerOption(intMin = -100, intMax = 100)
     public int shieldOffset = -20;
 
-    @ConfigOption()
+    @BooleanOption()
     public boolean blindnessFog = false;
 
-    @ConfigOption()
+    @BooleanOption()
     public boolean darknessFog = false;
 
-    @ConfigOption()
+    @BooleanOption()
     public boolean lavaFog = false;
 
-    @ConfigOption()
+    @BooleanOption()
     public boolean powderSnowFog = false;
 
-    @ConfigOption()
+    @BooleanOption()
     public boolean waterFog = false;
 
-    @ConfigOption()
+    @BooleanOption()
     public boolean atmosphericFog = false;
 
-    @ConfigOption()
+    @BooleanOption()
     public boolean showMapWhileInBoat = true;
 
-    @ConfigOption()
+    @BooleanOption()
     public boolean fixShieldRiptideTrident = true;
 
-    @ConfigOption()
+    @BooleanOption()
     public boolean darkWindowBorders = true;
 
 }
