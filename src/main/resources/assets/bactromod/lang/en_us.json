@@ -4,6 +4,9 @@
   "bactromod.options.gammaMultiplier": "Brightness boost",
   "bactromod.options.gammaMultiplier.desc": "Boosts in-game brightness by set factor.",
 
+  "bactromod.options.nightVision": "Night vision",
+  "bactromod.options.nightVision.desc": "Disables the night vision status effect.",
+
   "bactromod.options.pumpkinBlur": "Pumpkin blur",
   "bactromod.options.pumpkinBlur.desc": "Disables black texture overlay that strongly limits view when player wears a carved pumpkin.",
 

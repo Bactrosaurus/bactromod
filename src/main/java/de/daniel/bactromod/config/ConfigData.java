@@ -15,6 +15,9 @@ public class ConfigData {
     public int gammaMultiplier = 15;
 
     @BooleanOption()
+    public boolean nightVision = false;
+
+    @BooleanOption()
     public boolean pumpkinBlur = false;
 
     @IntegerOption(intMin = -100, intMax = 100)

@@ -8,6 +8,7 @@
     "features.fullbright.MixinLightmapTextureManager",
     "features.lowfire.MixinInGameOverlayRenderer",
     "features.lowshield.MixinHeldItemRenderer",
+    "features.nightvision.GameRendererMixin",
     "features.noopgmswitcher.MixinGameModeSwitcherScreen",
     "features.noopgmswitcher.MixinKeyboard",
     "features.nopumpkinblur.MixinInGameHud",
