@@ -1,18 +1,10 @@
 package de.daniel.bactromod.mixins.features.fog;
 
+import com.llamalad7.mixinextras.sugar.Local;
 import de.daniel.bactromod.config.Config;
 import de.daniel.bactromod.config.ConfigData;
-import net.minecraft.block.enums.CameraSubmersionType;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.render.Camera;
-import net.minecraft.client.render.RenderTickCounter;
-import net.minecraft.client.render.fog.FogData;
-import net.minecraft.client.render.fog.FogModifier;
-import net.minecraft.client.render.fog.FogRenderer;
-import net.minecraft.client.world.ClientWorld;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.math.MathHelper;
 import org.joml.Vector4f;
+import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -22,18 +14,28 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 import java.util.List;
+import net.minecraft.client.Camera;
+import net.minecraft.client.DeltaTracker;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.fog.FogData;
+import net.minecraft.client.renderer.fog.FogRenderer;
+import net.minecraft.client.renderer.fog.environment.FogEnvironment;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.material.FogType;
 
 @Mixin(value = FogRenderer.class, priority = 1500)
 public abstract class MixinFogRenderer {
 
     @Shadow
     @Final
-    private static List<FogModifier> FOG_MODIFIERS;
+    private static List<FogEnvironment> FOG_ENVIRONMENTS;
 
-    @Inject(method = "applyFog(Lnet/minecraft/client/render/Camera;ILnet/minecraft/client/render/RenderTickCounter;FLnet/minecraft/client/world/ClientWorld;)Lorg/joml/Vector4f;", at = @At(value = "FIELD", target = "Lnet/minecraft/client/render/fog/FogData;renderDistanceEnd:F", ordinal = 0, shift = At.Shift.AFTER), locals = LocalCapture.CAPTURE_FAILHARD)
-    public void postFogSetup(Camera camera, int renderDistance, RenderTickCounter renderTickCounter, float viewDistance, ClientWorld clientWorld, CallbackInfoReturnable<Vector4f> cir, float g, Vector4f vector4f, float h, CameraSubmersionType cameraSubmersionType, Entity entity, FogData fogData) {
-        for (int i = 0; i < FOG_MODIFIERS.size(); ++i) {
-            if (FOG_MODIFIERS.get(i).shouldApply(cameraSubmersionType, entity)) {
+    @Inject(method = "setupFog", at = @At(value = "FIELD", target = "Lnet/minecraft/client/renderer/fog/FogData;renderDistanceEnd:F", ordinal = 0, shift = At.Shift.AFTER, opcode = Opcodes.PUTFIELD))
+    public void postFogSetup(Camera camera, int renderDistance, DeltaTracker renderTickCounter, float viewDistance, ClientLevel clientWorld, CallbackInfoReturnable<Vector4f> cir, @Local(name = "fog") FogData fogData, @Local(name = "fogType") FogType fogType, @Local(name = "entity") Entity entity, @Local(name = "renderDistanceInBlocks") float renderDistanceInBlocks) {
+        for (int i = 0; i < FOG_ENVIRONMENTS.size(); ++i) {
+            if (FOG_ENVIRONMENTS.get(i).isApplicable(fogType, entity)) {
                 ConfigData config = Config.load();
 
                 boolean fogEnabled = switch (i) {
@@ -53,8 +55,8 @@ public abstract class MixinFogRenderer {
                     fogData.renderDistanceEnd = Float.MAX_VALUE;
 
                     // limit sky end to render distance of 32 chunks
-                    fogData.skyEnd = i == 5 ? MathHelper.clamp(h, 2 * 16, 32 * 16) : Float.MAX_VALUE;
-                    fogData.cloudEnd = i == 5 ? MinecraftClient.getInstance().options.getCloudRenderDistance().getValue() * 16 : Float.MAX_VALUE;
+                    fogData.skyEnd = i == 5 ? Mth.clamp(renderDistanceInBlocks, 2 * 16, 32 * 16) : Float.MAX_VALUE;
+                    fogData.cloudEnd = i == 5 ? Minecraft.getInstance().options.cloudRange().get() * 16 : Float.MAX_VALUE;
                 }
 
                 break;

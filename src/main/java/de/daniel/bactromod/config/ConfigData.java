@@ -50,7 +50,4 @@ public class ConfigData {
     @BooleanOption()
     public boolean fixShieldRiptideTrident = true;
 
-    @BooleanOption()
-    public boolean darkWindowBorders = true;
-
 }

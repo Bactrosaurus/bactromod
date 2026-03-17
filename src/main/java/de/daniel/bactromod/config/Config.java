@@ -5,85 +5,57 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 import de.daniel.bactromod.BactroMod;
-import de.daniel.bactromod.utils.SystemInfo;
-import de.daniel.bactromod.windowborder.DwmApi;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.client.MinecraftClient;
 
-import javax.sound.midi.VoiceStatus;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.Instant;
-import java.util.concurrent.Callable;
-import java.util.function.BinaryOperator;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.UnaryOperator;
 
 public class Config {
-    private static final Path configPath = FabricLoader.getInstance().getConfigDir().resolve("bactromod.json");
-    private static volatile ConfigData configData;
-    private static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    private static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve("bactromod.json");
+    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+    private static volatile ConfigData configData = loadOrCreate();
 
-    static {
+    private static ConfigData loadOrCreate() {
         try {
-            if (!Files.exists(configPath)) {
-                try {
-                    Files.createDirectories(configPath.getParent());
-                    save(new ConfigData());
-                } catch (IOException e) {
-                    // If creation of config path fails use default config
-                    configData = new ConfigData();
-
-                    BactroMod.LOGGER.error(
-                            "Could not create default config file or directory." +
-                                    " Make sure {} is a directory and writable.", configPath.getParent(), e
-                    );
-                }
-            } else {
-                try (Reader reader = Files.newBufferedReader(configPath)) {
-                    configData = gson.fromJson(reader, ConfigData.class);
-                    if (configData == null) configData = new ConfigData();
-                } catch (JsonSyntaxException | JsonIOException | IOException e) {
-                    Path backup = configPath.resolveSibling("bactromod_old_" + Instant.now().getEpochSecond() + ".json");
-                    Files.move(configPath, backup);
-
-                    BactroMod.LOGGER.warn(
-                            "Existing config file in {} is invalid" +
-                                    " and has been replaced with default config. Invalid config file" +
-                                    " has been backed up at {}.", configPath, backup);
-                    save(new ConfigData());
-                }
+            if (!Files.exists(CONFIG_PATH)) {
+                Files.createDirectories(CONFIG_PATH.getParent());
+                ConfigData defaults = new ConfigData();
+                save(defaults);
+                return defaults;
+            }
+            try (Reader reader = Files.newBufferedReader(CONFIG_PATH)) {
+                ConfigData data = GSON.fromJson(reader, ConfigData.class);
+                return data != null ? data : new ConfigData();
+            } catch (JsonSyntaxException | JsonIOException e) {
+                Path backup = CONFIG_PATH.resolveSibling("bactromod_old_" + Instant.now().getEpochSecond() + ".json");
+                Files.move(CONFIG_PATH, backup);
+                BactroMod.LOGGER.warn(
+                        "Config file in {} is invalid; replaced with defaults. Backup at {}.", CONFIG_PATH, backup);
+                ConfigData defaults = new ConfigData();
+                save(defaults);
+                return defaults;
             }
         } catch (IOException e) {
-            configData = new ConfigData();
-            BactroMod.LOGGER.error("Could not load default config file or directory.", e);
+            BactroMod.LOGGER.error("Could not load or create config file.", e);
+            return new ConfigData();
         }
     }
 
     public static void save(ConfigData config) {
-        try (Writer writer = Files.newBufferedWriter(configPath)) {
-            gson.toJson(config, writer);
+        try (Writer writer = Files.newBufferedWriter(CONFIG_PATH)) {
+            GSON.toJson(config, writer);
             configData = config;
         } catch (IOException e) {
-            BactroMod.LOGGER.error("Could not save config file or directory.", e);
-        }
-
-        // Update DWM whenever settings are saved (for dark window-borders in Windows 11)
-        // Make sure window is already initialized
-        if (SystemInfo.isWindows11 && MinecraftClient.getInstance().getWindow() != null) {
-            DwmApi.updateDwm(MinecraftClient.getInstance().getWindow().getHandle());
+            BactroMod.LOGGER.error("Could not save config file.", e);
         }
     }
 
     public static ConfigData load() {
-        if (configData == null) {
-            configData = new ConfigData();
-        }
-        return configData;
+        return configData != null ? configData : new ConfigData();
     }
 
 }

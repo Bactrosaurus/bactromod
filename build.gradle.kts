@@ -1,30 +1,51 @@
 plugins {
-    id("fabric-loom") version "1.15-SNAPSHOT"
+    id("net.fabricmc.fabric-loom")
 }
 
-group = "de.daniel"
-version = "3.5"
+group = providers.gradleProperty("maven_group").get()
+version = providers.gradleProperty("mod_version").get()
+
+base {
+    archivesName = providers.gradleProperty("archives_base_name")
+}
 
 repositories {
-    mavenCentral()
     maven("https://maven.terraformersmc.com/releases/")
 }
 
 dependencies {
-    minecraft("com.mojang:minecraft:1.21.11")
-    mappings("net.fabricmc:yarn:1.21.11+build.4")
-    modImplementation("net.fabricmc:fabric-loader:0.18.4")
-    modImplementation("net.fabricmc.fabric-api:fabric-api:0.141.3+1.21.11")
-    modApi("com.terraformersmc:modmenu:17.0.0-beta.2")
+    minecraft("com.mojang:minecraft:${providers.gradleProperty("minecraft_version").get()}")
+    implementation("net.fabricmc:fabric-loader:${providers.gradleProperty("loader_version").get()}")
+    implementation("net.fabricmc.fabric-api:fabric-api:${providers.gradleProperty("fabric_api_version").get()}")
+    api("com.terraformersmc:modmenu:${providers.gradleProperty("modmenu_version").get()}")
 }
 
 loom {
     accessWidenerPath = file("src/main/resources/bactromod.accesswidener")
 }
 
-tasks {
-    compileJava {
-        options.encoding = "UTF-8"
-        options.release.set(21)
+tasks.processResources {
+    inputs.property("version", version)
+
+    filesMatching("fabric.mod.json") {
+        expand("version" to version)
+    }
+}
+
+tasks.withType<JavaCompile>().configureEach {
+    options.release = 25
+}
+
+java {
+    withSourcesJar()
+    sourceCompatibility = JavaVersion.VERSION_25
+    targetCompatibility = JavaVersion.VERSION_25
+}
+
+tasks.jar {
+    inputs.property("archivesName", base.archivesName)
+
+    from("LICENSE") {
+        rename { "${it}_${base.archivesName.get()}" }
     }
 }

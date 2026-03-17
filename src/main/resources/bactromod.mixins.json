@@ -1,23 +1,24 @@
 {
   "required": true,
-  "minVersion": "0.8",
   "package": "de.daniel.bactromod.mixins",
+  "compatibilityLevel": "JAVA_25",
   "client": [
-    "features.boatmap.MixinHeldItemRenderer",
+    "features.boatmap.MixinItemInHandRenderer",
     "features.fog.MixinFogRenderer",
-    "features.fullbright.MixinLightmapTextureManager",
-    "features.lowfire.MixinInGameOverlayRenderer",
-    "features.lowshield.MixinHeldItemRenderer",
-    "features.nightvision.GameRendererMixin",
+    "features.fullbright.MixinLightTexture",
+    "features.lowfire.MixinScreenEffectRenderer",
+    "features.lowshield.MixinItemInHandRenderer",
+    "features.nightvision.MixinGameRenderer",
     "features.noopgmswitcher.MixinGameModeSwitcherScreen",
-    "features.noopgmswitcher.MixinKeyboard",
-    "features.nopumpkinblur.MixinInGameHud",
-    "features.riptidetridentshield.MixinHeldItemRenderer",
-    "features.windowborder.MixinWindow",
+    "features.noopgmswitcher.MixinKeyboardHandler",
+    "features.nopumpkinblur.MixinGui",
+    "features.riptidetridentshield.MixinItemInHandRenderer",
     "settingsbutton.MixinCreditsAndAttributionScreen"
   ],
-  "compatibilityLevel": "JAVA_21",
   "injectors": {
     "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
   }
 }

@@ -1,6 +1,9 @@
 {
   "schemaVersion": 1,
   "id": "bactromod",
+  "version": "${version}",
+  "name": "BactroMod",
+  "description": "A lightweight mod with some game optimizations and features.",
   "authors": ["Bactrosaurus"],
   "contributors": ["FurnyGo", "Libreh"],
   "contact": {
@@ -8,15 +11,16 @@
     "sources": "https://github.com/Bactrosaurus/bactromod",
     "homepage": "https://modrinth.com/mod/bactromod"
   },
-  "description": "A lightweight mod with some game optimizations and features.",
-  "version": "3.5",
-  "name": "BactroMod",
   "environment": "client",
   "license": "LGPL-3.0-only",
   "icon": "assets/bactromod/icon.png",
   "entrypoints": {
-    "client": ["de.daniel.bactromod.BactroMod::init"],
-    "modmenu": [ "de.daniel.bactromod.impl.ModMenuIntegration"]
+    "client": [
+      "de.daniel.bactromod.BactroMod::init"
+    ],
+    "modmenu": [
+      "de.daniel.bactromod.impl.ModMenuIntegration"
+    ]
   },
   "mixins": [
     "bactromod.mixins.json"
@@ -24,8 +28,8 @@
   "accessWidener" : "bactromod.accesswidener",
   "depends": {
     "fabricloader": ">=0.18.4",
-    "minecraft": "~1.21.11",
-    "java": ">=21",
+    "minecraft": "~26.1-",
+    "java": ">=25",
     "fabric-api": "*"
   },
   "suggests": {
