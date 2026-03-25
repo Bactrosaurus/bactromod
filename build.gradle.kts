@@ -26,9 +26,10 @@ loom {
 
 tasks.processResources {
     inputs.property("version", version)
+    filteringCharset = "UTF-8"
 
     filesMatching("fabric.mod.json") {
-        expand("version" to version)
+        expand(mapOf("version" to version))
     }
 }
 
