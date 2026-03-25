@@ -11,11 +11,11 @@ public class ConfigData {
         bactromod.options.{variableName}.desc
      */
 
-    @IntegerOption(intMin = 0, intMax = 15)
+    @IntegerOption(intMin = 1, intMax = 15)
     public int gammaMultiplier = 15;
 
     @BooleanOption()
-    public boolean nightVision = false;
+    public boolean nightVision = true;
 
     @BooleanOption()
     public boolean pumpkinBlur = false;
