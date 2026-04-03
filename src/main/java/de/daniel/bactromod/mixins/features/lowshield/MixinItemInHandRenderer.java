@@ -26,13 +26,13 @@ public class MixinItemInHandRenderer {
     private ItemModelResolver itemModelResolver;
 
     @Inject(method = "renderItem(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemDisplayContext;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;I)V", at = @At(value = "HEAD"), cancellable = true)
-    public void renderItem(LivingEntity livingEntity, ItemStack itemStack, ItemDisplayContext itemDisplayContext, PoseStack matrixStack, SubmitNodeCollector orderedRenderCommandQueue, int i, CallbackInfo ci) {
-        if (itemStack.is(Items.SHIELD) && itemDisplayContext.firstPerson()) {
+    public void renderItem(LivingEntity mob, ItemStack itemStack, ItemDisplayContext type, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, CallbackInfo ci) {
+        if (itemStack.is(Items.SHIELD) && type.firstPerson()) {
             if (!itemStack.isEmpty()) {
-                matrixStack.translate(0.0D, Config.load().shieldOffset / 100F, 0.0D);
+                poseStack.translate(0.0D, Config.load().shieldOffset / 100F, 0.0D);
                 ItemStackRenderState itemRenderState = new ItemStackRenderState();
-                this.itemModelResolver.updateForTopItem(itemRenderState, itemStack, itemDisplayContext, livingEntity.level(), livingEntity, livingEntity.getId() + itemDisplayContext.ordinal());
-                itemRenderState.submit(matrixStack, orderedRenderCommandQueue, i, OverlayTexture.NO_OVERLAY, 0);
+                this.itemModelResolver.updateForTopItem(itemRenderState, itemStack, type, mob.level(), mob, mob.getId() + type.ordinal());
+                itemRenderState.submit(poseStack, submitNodeCollector, lightCoords, OverlayTexture.NO_OVERLAY, 0);
                 ci.cancel();
             }
         }

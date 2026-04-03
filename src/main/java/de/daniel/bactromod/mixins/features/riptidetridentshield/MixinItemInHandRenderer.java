@@ -22,19 +22,19 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinItemInHandRenderer {
 
     @Shadow
-    public void renderItem(LivingEntity livingEntity, ItemStack itemStack, ItemDisplayContext itemDisplayContext, PoseStack poseStack, SubmitNodeCollector orderedRenderCommandQueue, int i)  {}
+    public void renderItem(LivingEntity mob, ItemStack itemStack, ItemDisplayContext type, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords)  {}
 
     @Inject(method = "renderArmWithItem", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/vertex/PoseStack;translate(FFF)V", ordinal = 12), cancellable = true)
-    public void shieldTransformAutoSpinAttack(AbstractClientPlayer abstractClientPlayerEntity, float f, float g, InteractionHand hand, float h, ItemStack itemStack, float i, PoseStack matrixStack, SubmitNodeCollector orderedRenderCommandQueue, int j, CallbackInfo ci) {
+    public void shieldTransformAutoSpinAttack(AbstractClientPlayer player, float frameInterp, float xRot, InteractionHand hand, float attack, ItemStack itemStack, float inverseArmHeight, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, CallbackInfo ci) {
         if (itemStack.is(Items.SHIELD) && Config.load().fixShieldRiptideTrident) {
             boolean bl = hand == InteractionHand.MAIN_HAND;
-            HumanoidArm humanoidArm = bl ? abstractClientPlayerEntity.getMainArm() : abstractClientPlayerEntity.getMainArm().getOpposite();
+            HumanoidArm humanoidArm = bl ? player.getMainArm() : player.getMainArm().getOpposite();
             boolean bl2 = humanoidArm == HumanoidArm.RIGHT;
-            matrixStack.translate(0.0F, 0.0F, 0.0F);
-            matrixStack.mulPose(Axis.XP.rotationDegrees(0.0F));
-            matrixStack.mulPose(Axis.ZP.rotationDegrees(0.0F));
-            renderItem(abstractClientPlayerEntity, itemStack, bl2 ? ItemDisplayContext.FIRST_PERSON_RIGHT_HAND : ItemDisplayContext.FIRST_PERSON_LEFT_HAND, matrixStack, orderedRenderCommandQueue, j);
-            matrixStack.popPose();
+            poseStack.translate(0.0F, 0.0F, 0.0F);
+            poseStack.mulPose(Axis.XP.rotationDegrees(0.0F));
+            poseStack.mulPose(Axis.ZP.rotationDegrees(0.0F));
+            renderItem(player, itemStack, bl2 ? ItemDisplayContext.FIRST_PERSON_RIGHT_HAND : ItemDisplayContext.FIRST_PERSON_LEFT_HAND, poseStack, submitNodeCollector, lightCoords);
+            poseStack.popPose();
             ci.cancel();
         }
     }

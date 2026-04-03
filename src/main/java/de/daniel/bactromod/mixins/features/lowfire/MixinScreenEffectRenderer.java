@@ -14,8 +14,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinScreenEffectRenderer {
     
     @Inject(method = "renderFire", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/vertex/PoseStack;pushPose()V", shift = At.Shift.AFTER))
-    private static void renderFire(PoseStack matrixStack, MultiBufferSource vertexConsumerProvider, TextureAtlasSprite sprite, CallbackInfo ci) {
-        matrixStack.translate(0, Config.load().fireOffset / 100F, 0);
+    private static void renderFire(PoseStack poseStack, MultiBufferSource bufferSource, TextureAtlasSprite sprite, CallbackInfo ci) {
+        poseStack.translate(0, Config.load().fireOffset / 100F, 0);
     }
 
 }

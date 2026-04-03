@@ -11,7 +11,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 import java.util.List;
 import net.minecraft.client.Camera;
@@ -33,7 +32,7 @@ public abstract class MixinFogRenderer {
     private static List<FogEnvironment> FOG_ENVIRONMENTS;
 
     @Inject(method = "setupFog", at = @At(value = "FIELD", target = "Lnet/minecraft/client/renderer/fog/FogData;renderDistanceEnd:F", ordinal = 0, shift = At.Shift.AFTER, opcode = Opcodes.PUTFIELD))
-    public void postFogSetup(Camera camera, int renderDistance, DeltaTracker renderTickCounter, float viewDistance, ClientLevel clientWorld, CallbackInfoReturnable<Vector4f> cir, @Local(name = "fog") FogData fogData, @Local(name = "fogType") FogType fogType, @Local(name = "entity") Entity entity, @Local(name = "renderDistanceInBlocks") float renderDistanceInBlocks) {
+    public void postFogSetup(Camera camera, int renderDistanceInChunks, DeltaTracker deltaTracker, float darkenWorldAmount, ClientLevel level, CallbackInfoReturnable<Vector4f> cir, @Local(name = "fog") FogData fog, @Local(name = "fogType") FogType fogType, @Local(name = "entity") Entity entity, @Local(name = "renderDistanceInBlocks") float renderDistanceInBlocks) {
         for (int i = 0; i < FOG_ENVIRONMENTS.size(); ++i) {
             if (FOG_ENVIRONMENTS.get(i).isApplicable(fogType, entity)) {
                 ConfigData config = Config.load();
@@ -49,14 +48,14 @@ public abstract class MixinFogRenderer {
                 };
 
                 if (!fogEnabled) {
-                    fogData.environmentalStart = Float.MAX_VALUE;
-                    fogData.environmentalEnd = Float.MAX_VALUE;
-                    fogData.renderDistanceStart = Float.MAX_VALUE;
-                    fogData.renderDistanceEnd = Float.MAX_VALUE;
+                    fog.environmentalStart = Float.MAX_VALUE;
+                    fog.environmentalEnd = Float.MAX_VALUE;
+                    fog.renderDistanceStart = Float.MAX_VALUE;
+                    fog.renderDistanceEnd = Float.MAX_VALUE;
 
                     // limit sky end to render distance of 32 chunks
-                    fogData.skyEnd = i == 5 ? Mth.clamp(renderDistanceInBlocks, 2 * 16, 32 * 16) : Float.MAX_VALUE;
-                    fogData.cloudEnd = i == 5 ? Minecraft.getInstance().options.cloudRange().get() * 16 : Float.MAX_VALUE;
+                    fog.skyEnd = i == 5 ? Mth.clamp(renderDistanceInBlocks, 2 * 16, 32 * 16) : Float.MAX_VALUE;
+                    fog.cloudEnd = i == 5 ? Minecraft.getInstance().options.cloudRange().get() * 16 : Float.MAX_VALUE;
                 }
 
                 break;
