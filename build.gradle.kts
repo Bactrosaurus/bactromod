@@ -29,7 +29,13 @@ tasks.processResources {
     filteringCharset = "UTF-8"
 
     filesMatching("fabric.mod.json") {
-        expand(mapOf("version" to version))
+        expand(
+            mapOf(
+                "version" to version,
+                "loader_version" to providers.gradleProperty("loader_version").get(),
+                "minecraft_version" to providers.gradleProperty("minecraft_version").get()
+            )
+        )
     }
 }
 
