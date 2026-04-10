@@ -7,8 +7,8 @@
   "authors": ["Bactrosaurus"],
   "contributors": ["FurnyGo", "Libreh"],
   "contact": {
-    "issues": "https://github.com/Bactrosaurus/bactromod/issues",
-    "sources": "https://github.com/Bactrosaurus/bactromod",
+    "issues": "https://codeberg.org/Bactrosaurus/bactromod/issues",
+    "sources": "https://codeberg.org/Bactrosaurus/bactromod",
     "homepage": "https://modrinth.com/mod/bactromod"
   },
   "environment": "client",
