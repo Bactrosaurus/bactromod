@@ -2,6 +2,7 @@ package de.daniel.bactromod.mixins.features.noopgmswitcher;
 
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+import de.daniel.bactromod.config.Config;
 import net.minecraft.client.KeyboardHandler;
 import net.minecraft.server.permissions.PermissionCheck;
 import net.minecraft.server.permissions.PermissionSet;
@@ -13,12 +14,20 @@ public class MixinKeyboardHandler {
 
     @WrapOperation(method = "handleDebugKeys", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/permissions/PermissionCheck;check(Lnet/minecraft/server/permissions/PermissionSet;)Z", ordinal = 0))
     private boolean injectedPermissionLevel0(PermissionCheck instance, PermissionSet permissionPredicate, Operation<Boolean> original) {
-        return true;
+        if (Config.load().ignoreOpGamemodeSwitcher) {
+            return true;
+        }
+
+        return original.call(instance, permissionPredicate);
     }
 
     @WrapOperation(method = "handleDebugKeys", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/permissions/PermissionCheck;check(Lnet/minecraft/server/permissions/PermissionSet;)Z", ordinal = 1))
     private boolean injectedPermissionLevel1(PermissionCheck instance, PermissionSet permissionPredicate, Operation<Boolean> original) {
-        return true;
+        if (Config.load().ignoreOpGamemodeSwitcher) {
+            return true;
+        }
+
+        return original.call(instance, permissionPredicate);
     }
 
 }

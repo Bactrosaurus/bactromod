@@ -43,8 +43,11 @@
   "bactromod.options.fixShieldRiptideTrident": "Исправить неправильно тягун-трезубец щит положение.",
   "bactromod.options.fixShieldRiptideTrident.desc": "Исправить неправильно тягун-трезубец щит положение в воде или дожде.",
 
-  "bactromod.options.darkWindowBorders": "Тёмные рамки окна",
-  "bactromod.options.darkWindowBorders.desc": "Включает тёмные рамки окна Майнкрафта (только для Windows 11).",
+  "bactromod.options.ignoreOpGamemodeSwitcher": "F3+F4 OP Ignore",
+  "bactromod.options.ignoreOpGamemodeSwitcher.desc": "Opens game-mode switcher when pressing F3+F4 regardless of OP status.",
+
+  "bactromod.options.nightVision": "Night Vision Effect",
+  "bactromod.options.nightVision.desc": "Toggles the Night Vision status effect.",
 
   "modmenu.summaryTranslation.bactromod": "Небольшой мод с новыми функциями и оптимизациями для игры.",
   "modmenu.descTranslation.bactromod": "Небольшой мод с новыми функциями и оптимизациями для игры."
