@@ -1,202 +1,66 @@
 # AGENTS.md - BactroMod Codebase Guide
 
 ## Project Overview
-BactroMod is a **client-side Fabric mod** for Minecraft **26.1.1** (Java **25**).
-All behavior changes are injected via **Mixins**; there is no server-side code.
-
-Current Gradle properties:
-- `mod_version=3.7`
-- `archives_base_name=bactromod`
-- `minecraft_version=26.1.1`
-- `loader_version=0.18.6`
-- `fabric_api_version=0.145.3+26.1.1`
-- `modmenu_version=18.0.0-alpha.8`
+BactroMod is a **client-side Fabric mod** for Minecraft (Java **25**). All behavior changes are injected via **Mixins**; there is no server-side code. Versions live in `gradle.properties` (source of truth).
 
 ## Build & Run
 ```bash
-./gradlew build      # produces build/libs/bactromod-3.7.jar (+ sources jar)
+./gradlew build      # produces build/libs/bactromod-<version>.jar (+ sources jar)
 ./gradlew runClient  # launches a dev Minecraft instance under run/
 ```
+**No test suite exists.** `./gradlew build` is the only verification step.
 
-The project uses the Gradle wrapper. Current Gradle heap cap is `-Xmx1G` (`gradle.properties`).
+Gradle quirks: `configuration-cache=false` (IntelliJ incompatibility), `parallel=true`, heap cap `-Xmx1G` — all in `gradle.properties`.
 
 ## Architecture
-
 ```
-BactroMod (entry point: BactroMod::init)
-|- config/  - JSON config via Gson + annotation-driven settings UI
-|  |- ConfigData - annotated settings fields
-|  |- Config - load/save/cached config at <gameDir>/config/bactromod.json
-|  `- ConfigScreenHelper - reflects ConfigData fields into OptionInstance widgets
-|- mixins/
-|  |- features/ - feature mixins (listed below)
-|  `- settingsbutton/ - injects a BactroMod settings button in Credits screen
-`- impl/
-   `- ModMenuIntegration - optional ModMenu config entrypoint
+de.daniel.bactromod (entry point: BactroMod::init)
+├── config/            — JSON config via Gson + annotation-driven settings UI
+│   ├── ConfigData     — POJO (settings fields + itemScalingFactors Map)
+│   ├── Config         — load/save/cached config at <gameDir>/config/bactromod.json
+│   ├── ConfigScreen   — builds the main settings screen + item scaling sub-screen
+│   ├── ConfigScreenUtils — OptionInstance factories for both annotation fields and Map-based entries
+│   └── optiontypes/   — @BooleanOption, @IntegerOption runtime annotations
+├── mixins/
+│   ├── features/      — one subdirectory per feature, each with a Mixin<TargetClass>
+│   └── settingsbutton/ — injects "BactroMod Settings" button into Credits screen
+└── impl/
+    └── ModMenuIntegration — optional ModMenu config entrypoint (implements ModMenuApi)
 ```
 
-## Implemented Feature Mixins (Registered)
+## Config Screen: Two Different Approaches
 
-From `src/main/resources/bactromod.mixins.json`:
+- **Annotation-driven fields** (booleans + integers): `ConfigScreen` uses `@BooleanOption`/`@IntegerOption` + reflection to auto-discover ConfigData fields and build widgets. Adding a field + lang keys is enough; no screen code change needed.
+- **Map-based item scaling**: `ConfigData.itemScalingFactors` is a `Map<String, Integer>`. Wired manually in `ConfigScreen` + `ConfigScreenUtils.createItemScalingOption()`. Entries are NOT annotation-discovered — you must add them to the `Map.of(...)` default in ConfigData.
+- **Item scaling button**: Added as a `Button` widget in the main screen's `init()` override via `addRenderableWidget()`. Not pushed through the options layout.
 
-- `features.boatmap.MixinItemInHandRenderer`
-- `features.fog.MixinFogRenderer`
-- `features.fullbright.MixinLightTexture`
-- `features.lowfire.MixinScreenEffectRenderer`
-- `features.lowshield.MixinItemInHandRenderer`
-- `features.nightvision.MixinGameRenderer`
-- `features.noopgmswitcher.MixinGameModeSwitcherScreen`
-- `features.noopgmswitcher.MixinKeyboardHandler`
-- `features.nopumpkinblur.MixinGui`
-- `features.riptidetridentshield.MixinItemInHandRenderer`
-- `settingsbutton.MixinCreditsAndAttributionScreen`
+## Key Conventions
 
-## Config System - How It Works
+- **Mixin class naming**: `Mixin<ExactVanillaClassName>` in package `features/<featurename>/`.
+- **Config access**: In mixins, always read config inline: `Config.load().<field>`. This respects runtime changes. Avoid calling `Config.load()` twice in the same method — cache locally.
+- **Lang keys**: `bactromod.options.<fieldName>` (title) and `bactromod.options.<fieldName>.desc` (tooltip). The field name in `ConfigData` **must** match the lang key suffix. Update **all three** lang files: `en_us.json`, `de_de.json`, `ru_ru.json`.
+- **All mixins are client-side only** (registered under `"client"` in `bactromod.mixins.json`).
+- **`requireAnnotations: true`** in `bactromod.mixins.json` — every mixin class **must** carry an `@Mixin` annotation or the build fails.
+- **ModMenu is an `api` dependency** (compile classpath), but optional at runtime (`suggests` in `fabric.mod.json`).
+- **`fabric.mod.json` uses Gradle expansion**: `version`, `loader_version`, and `minecraft_version` are injected by `processResources` from `gradle.properties`. Don't edit them directly in the JSON.
 
-`ConfigScreenHelper` iterates `ConfigData.class.getDeclaredFields()` at runtime and builds options from `@BooleanOption` and `@IntegerOption`.
+## Adding a New Feature (annotation-driven)
+1. Add a field in `ConfigData.java` with `@BooleanOption` or `@IntegerOption(intMin=..., intMax=...)`.
+2. Add lang keys in all three lang files under `assets/bactromod/lang/`.
+3. Create a mixin class at `mixins/features/<featurename>/Mixin<TargetClass>.java`.
+4. Register it in `bactromod.mixins.json` under the `"client"` array.
+5. If the mixin needs access to private/protected members, add entries to `bactromod.accesswidener`.
 
-`Config.load()` returns a cached `volatile` `ConfigData` instance.
+Adding a Map-based feature (like item scaling) requires manually wiring the screen in `ConfigScreen` + `ConfigScreenUtils`.
 
-`Config.save()` writes to `config/bactromod.json` and updates the in-memory cache.
+## ConfigData Fields (current)
+Boolean: `pumpkinBlur`, `blindnessFog`, `darknessFog`, `lavaFog`, `powderSnowFog`, `waterFog`, `atmosphericFog`, `showMapWhileInBoat`, `fixShieldRiptideTrident`, `nightVision`, `ignoreOpGamemodeSwitcher`
+Integer: `gammaMultiplier` (1–15), `fireOffset` (−100–100), `shieldOffset` (−100–100)
+Map: `itemScalingFactors` — keys are `Items` registry names in CONSTANT_CASE, values are percentages 1–100.
 
-If JSON parsing fails, `Config` backs up the broken file to `bactromod_old_<epoch>.json`, logs a warning, and recreates defaults.
+`Map.of(...)` returns an **immutable map**. If the config screen needs to add/update entries at runtime, wrap in `new HashMap<>(Map.of(...))` in ConfigData.
 
-### Current ConfigData fields
+## Registered Mixins (from `bactromod.mixins.json`)
+`features.boatmap`, `features.fog`, `features.fullbright`, `features.itemscaling`, `features.lowfire`, `features.lowshield`, `features.nightvision`, `features.noopgmswitcher` (2 mixins), `features.nopumpkinblur`, `features.riptidetridentshield`, `settingsbutton`.
 
-- `gammaMultiplier`
-- `nightVision`
-- `pumpkinBlur`
-- `fireOffset`
-- `shieldOffset`
-- `blindnessFog`
-- `darknessFog`
-- `lavaFog`
-- `powderSnowFog`
-- `waterFog`
-- `atmosphericFog`
-- `showMapWhileInBoat`
-- `fixShieldRiptideTrident`
-
-## Adding a New Feature - Checklist
-
-1. Add a field in `src/main/java/de/daniel/bactromod/config/ConfigData.java` with `@BooleanOption` or `@IntegerOption(intMin=..., intMax=...)`.
-2. Add lang keys in all three files under `src/main/resources/assets/bactromod/lang/`:
-   ```json
-   "bactromod.options.myFeature": "Display Name",
-   "bactromod.options.myFeature.desc": "Tooltip text."
-   ```
-3. Add a mixin class under `src/main/java/de/daniel/bactromod/mixins/features/<featurename>/Mixin<TargetClass>.java`.
-4. Register it in `src/main/resources/bactromod.mixins.json` under `client`.
-5. If required, add access widener entries in `src/main/resources/bactromod.accesswidener`.
-
-## Key Files at a Glance
-
-### Core Java Classes
-
-| File | Purpose | Lines |
-|---|---|---|
-| `src/main/java/de/daniel/bactromod/BactroMod.java` | Main entry point; initializes the mod via `BactroMod::init` entrypoint. Contains a static logger for mod events. | 15 |
-| `src/main/java/de/daniel/bactromod/config/Config.java` | Config I/O manager; uses Gson for JSON serialization. Handles load/save operations at `<gameDir>/config/bactromod.json`. Backs up broken config files to `bactromod_old_<epoch>.json`. | 62 |
-| `src/main/java/de/daniel/bactromod/config/ConfigData.java` | POJO holding all user-facing settings (13 boolean + integer fields). Fields use `@BooleanOption` or `@IntegerOption(intMin=..., intMax=...)` annotations. | 54 |
-| `src/main/java/de/daniel/bactromod/config/ConfigScreenHelper.java` | Reflection-based settings UI builder. Iterates `ConfigData.getDeclaredFields()` to dynamically generate `OptionInstance` widgets for the settings screen. | 96 |
-| `src/main/java/de/daniel/bactromod/config/optiontypes/BooleanOption.java` | Runtime annotation marker for boolean config fields. | 9 |
-| `src/main/java/de/daniel/bactromod/config/optiontypes/IntegerOption.java` | Runtime annotation marker for integer config fields with `intMin()` and `intMax()` bounds. | 11 |
-| `src/main/java/de/daniel/bactromod/impl/ModMenuIntegration.java` | Implements Mod Menu API `ModMenuApi` interface. Returns `ConfigScreenHelper::getConfigScreen` as the mod config factory. | 15 |
-
-### Resource Files
-
-| File | Purpose |
-|---|---|
-| `src/main/resources/fabric.mod.json` | Mod metadata: id, version, entrypoints (`BactroMod::init`, `ModMenuIntegration`), mixin registration, accessWidener file. Declares dependencies on Fabric Loader, Minecraft 26.1.1+, Java 25+. |
-| `src/main/resources/bactromod.mixins.json` | Mixin package configuration: `de.daniel.bactromod.mixins`, Java 25 compatibility, client-side only. Registers 11 mixins (see below). |
-| `src/main/resources/bactromod.accesswidener` | Fabric access widener file. Makes `OptionInstance.ValueSet` class and `OptionInstance` class accessible/extendable. |
-| `src/main/resources/assets/bactromod/lang/en_us.json` | English translations for all config options (titles + descriptions) and Mod Menu summaries. |
-| `src/main/resources/assets/bactromod/lang/de_de.json` | German translations. |
-| `src/main/resources/assets/bactromod/lang/ru_ru.json` | Russian translations. |
-| `src/main/resources/assets/bactromod/icon.png` | Mod icon (displayed in Mod Menu and mod list). |
-
-### Feature Mixins (Feature-Specific)
-
-All mixins are registered in `bactromod.mixins.json` under the `client` array.
-
-#### Boat Map Feature
-| File | Target | Purpose |
-|---|---|---|
-| `src/main/java/de/daniel/bactromod/mixins/features/boatmap/MixinItemInHandRenderer.java` | `ItemInHandRenderer` | Shows map in off-hand while riding a boat (checks `showMapWhileInBoat` config). |
-
-#### Fog Features
-| File | Target | Purpose |
-|---|---|---|
-| `src/main/java/de/daniel/bactromod/mixins/features/fog/MixinFogRenderer.java` | `FogRenderer` | Disables environment fogs (lava, powder snow, blindness, darkness, water, atmospheric) based on config flags. Highest priority (1500) to override other mixins. |
-
-#### Fullbright Feature
-| File | Target | Purpose |
-|---|---|---|
-| `src/main/java/de/daniel/bactromod/mixins/features/fullbright/MixinLightTexture.java` | `Lightmap` | Multiplies gamma by `gammaMultiplier` config field (1–15). |
-
-#### Low Fire Feature
-| File | Target | Purpose |
-|---|---|---|
-| `src/main/java/de/daniel/bactromod/mixins/features/lowfire/MixinScreenEffectRenderer.java` | `ScreenEffectRenderer` | Adjusts fire overlay vertical position by `fireOffset` pixels. |
-
-#### Low Shield Feature
-| File | Target | Purpose |
-|---|---|---|
-| `src/main/java/de/daniel/bactromod/mixins/features/lowshield/MixinItemInHandRenderer.java` | `ItemInHandRenderer` | Adjusts shield vertical position by `shieldOffset` pixels. |
-
-#### Night Vision Feature
-| File | Target | Purpose |
-|---|---|---|
-| `src/main/java/de/daniel/bactromod/mixins/features/nightvision/MixinGameRenderer.java` | `GameRenderer` | Disables night vision visual effect (`nightVision` config). |
-
-#### No OP Gamemode Switcher Feature
-| File | Target | Purpose |
-|---|---|---|
-| `src/main/java/de/daniel/bactromod/mixins/features/noopgmswitcher/MixinGameModeSwitcherScreen.java` | `GameModeSwitcherScreen` | Prevents gamemode switcher screen from opening on OP-only press. |
-| `src/main/java/de/daniel/bactromod/mixins/features/noopgmswitcher/MixinKeyboardHandler.java` | `KeyboardHandler` | Cancels gamemode switcher keybind handling. |
-
-#### No Pumpkin Blur Feature
-| File | Target | Purpose |
-|---|---|---|
-| `src/main/java/de/daniel/bactromod/mixins/features/nopumpkinblur/MixinGui.java` | `Gui` | Disables black pumpkin head overlay (`pumpkinBlur` config). |
-
-#### Riptide Trident Shield Feature
-| File | Target | Purpose |
-|---|---|---|
-| `src/main/java/de/daniel/bactromod/mixins/features/riptidetridentshield/MixinItemInHandRenderer.java` | `ItemInHandRenderer` | Fixes off-hand shield rendering while using riptide trident (`fixShieldRiptideTrident` config). |
-
-### Settings Button Feature
-| File | Target | Purpose |
-|---|---|---|
-| `src/main/java/de/daniel/bactromod/mixins/settingsbutton/MixinCreditsAndAttributionScreen.java` | `CreditsAndAttributionScreen` | Injects "BactroMod Settings" button into the Credits screen (fallback UI for when Mod Menu is unavailable). |
-
-### Build Configuration
-
-| File | Purpose |
-|---|---|
-| `build.gradle.kts` | Gradle build config. Applies Fabric Loom plugin. Defines dependencies (Minecraft, Fabric Loader, Fabric API, ModMenu). Configures access widener path. Processes `fabric.mod.json` to replace version/loader/minecraft properties. Targets Java 25. |
-| `gradle.properties` | Gradle properties and version constants. `mod_version=3.7`, `minecraft_version=26.1.1`, `loader_version=0.18.6`, heap cap `-Xmx1G`. |
-| `settings.gradle.kts` | Project name configuration. |
-
-### Project Root Files
-
-| File | Purpose |
-|---|---|
-| `README.md` | User-facing project documentation. |
-| `.gitignore` | Git ignore patterns. |
-| `gradlew` / `gradlew.bat` | Gradle wrapper scripts (Unix / Windows). |
-
-### Runtime Output Directories
-
-- `build/` — Compiled classes, JAR artifacts, resources
-- `run/` — Test Minecraft instance files (config, saves, mods, logs)
-
-## Conventions
-- Mixin class naming is `Mixin<ExactVanillaClassName>`.
-- Read config inline in mixins via `Config.load().<field>`.
-- Keep `ConfigData` field names aligned with lang keys `bactromod.options.<field>` and `.desc`.
-- ModMenu support is optional (`suggests` in `fabric.mod.json`), and a settings button is injected into `CreditsAndAttributionScreen` as fallback.
-- Lang files are JSON objects mapping keys to localized strings. Add keys for each new config option.
-- All mixins are client-side only; there is no server-side code.
-- All feature mixins read config at injection time via `Config.load()` to respect runtime changes.
-
+Config file is at `<gameDir>/config/bactromod.json`. If JSON parsing fails, Config backs up the broken file to `bactromod_old_<epoch>.json` and recreates defaults.

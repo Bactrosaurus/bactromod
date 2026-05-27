@@ -6,6 +6,7 @@
     "features.boatmap.MixinItemInHandRenderer",
     "features.fog.MixinFogRenderer",
     "features.fullbright.MixinLightTexture",
+    "features.itemscaling.MixinItemInHandRenderer",
     "features.lowfire.MixinScreenEffectRenderer",
     "features.lowshield.MixinItemInHandRenderer",
     "features.nightvision.MixinGameRenderer",

@@ -1,6 +1,10 @@
 {
   "bactromod.options.title": "BactroMod Settings",
 
+  "bactromod.options.itemScalingFactors": "Item scaling",
+  "bactromod.options.itemScalingFactors.desc": "Scales different items in size when rendered in hand to reduce coverage of view.",
+  "bactromod.options.itemScalingFactors.itemDesc": "Scale of item %s in hand in first person.",
+
   "bactromod.options.gammaMultiplier": "Brightness Boost",
   "bactromod.options.gammaMultiplier.desc": "Boosts in-game Brightness by set factor.",
 

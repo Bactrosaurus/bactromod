@@ -21,20 +21,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ItemInHandRenderer.class)
 public class MixinItemInHandRenderer {
 
-    @Shadow
-    @Final
-    private ItemModelResolver itemModelResolver;
-
-    @Inject(method = "renderItem(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemDisplayContext;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;I)V", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(method = "renderItem(Lnet/minecraft/world/entity/LivingEntity;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/item/ItemDisplayContext;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;I)V", at = @At(value = "HEAD"))
     public void renderItem(LivingEntity mob, ItemStack itemStack, ItemDisplayContext type, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, CallbackInfo ci) {
         if (itemStack.is(Items.SHIELD) && type.firstPerson()) {
-            if (!itemStack.isEmpty()) {
-                poseStack.translate(0.0D, Config.load().shieldOffset / 100F, 0.0D);
-                ItemStackRenderState itemRenderState = new ItemStackRenderState();
-                this.itemModelResolver.updateForTopItem(itemRenderState, itemStack, type, mob.level(), mob, mob.getId() + type.ordinal());
-                itemRenderState.submit(poseStack, submitNodeCollector, lightCoords, OverlayTexture.NO_OVERLAY, 0);
-                ci.cancel();
-            }
+            poseStack.translate(0.0D, Config.load().shieldOffset / 100F, 0.0D);
         }
     }
 

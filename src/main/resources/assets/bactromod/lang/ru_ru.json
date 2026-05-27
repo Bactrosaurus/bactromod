@@ -1,6 +1,10 @@
 {
   "bactromod.options.title": "Настройки BactroMod",
 
+  "bactromod.options.itemScalingFactors": "Item scaling",
+  "bactromod.options.itemScalingFactors.desc": "Scales different items in size when rendered in hand to reduce coverage of view.",
+  "bactromod.options.itemScalingFactors.itemDesc": "Scale of item %s in hand in first person.",
+
   "bactromod.options.gammaMultiplier": "Усиление яркости",
   "bactromod.options.gammaMultiplier.desc": "Усиливает яркость в несколько раз.",
 

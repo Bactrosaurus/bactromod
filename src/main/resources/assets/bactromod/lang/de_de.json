@@ -1,6 +1,10 @@
 {
   "bactromod.options.title": "BactroMod Einstellungen",
 
+  "bactromod.options.itemScalingFactors": "Item-Skalierung",
+  "bactromod.options.itemScalingFactors.desc": "Skaliert verschiedene Items in der Hand um das Sichtfeld nicht einzuschränken.",
+  "bactromod.options.itemScalingFactors.itemDesc": "Skalierung des Items %s in der Hand.",
+
   "bactromod.options.gammaMultiplier": "Helligkeit",
   "bactromod.options.gammaMultiplier.desc": "Erhöht die Helligkeit im Spiel um den eingestellten Faktor.",
 

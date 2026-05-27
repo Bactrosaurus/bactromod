@@ -1,6 +1,6 @@
 package de.daniel.bactromod.mixins.settingsbutton;
 
-import de.daniel.bactromod.config.ConfigScreenHelper;
+import de.daniel.bactromod.config.ConfigScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.layouts.LayoutElement;
@@ -20,7 +20,7 @@ public class MixinCreditsAndAttributionScreen {
         instance.addChild(child, instance.newCellSettings());
         Button settingsButton = Button.builder(
                 Component.translatable("bactromod.options.title"),
-                _ -> Minecraft.getInstance().setScreen(ConfigScreenHelper.getConfigScreen(inst))
+                _ -> Minecraft.getInstance().setScreen(ConfigScreen.getConfigScreen(inst))
         ).width(210).build();
         return instance.addChild(settingsButton);
     }

@@ -3,10 +3,13 @@ package de.daniel.bactromod.config;
 import de.daniel.bactromod.config.optiontypes.BooleanOption;
 import de.daniel.bactromod.config.optiontypes.IntegerOption;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ConfigData {
 
     /*
-    Options here must be named like {variableName} in language files with pattern:
+        Options here must be named like {variableName} in language files with pattern:
         bactromod.options.{variableName}
         bactromod.options.{variableName}.desc
      */
@@ -52,5 +55,22 @@ public class ConfigData {
 
     @BooleanOption
     public boolean ignoreOpGamemodeSwitcher = true;
+
+    /*
+        Map containing all item scaling options.
+        Please note that keys must be named exactly like
+     */
+    public Map<String, Integer> itemScalingFactors = new HashMap<>(Map.of(
+            "item.minecraft.totem_of_undying", 100,
+            "item.minecraft.golden_apple", 100,
+            "item.minecraft.potion", 100,
+            "item.minecraft.splash_potion", 100,
+            "item.minecraft.firework_rocket", 100,
+            "item.minecraft.water_bucket", 100,
+            "item.minecraft.lava_bucket", 100,
+            "item.minecraft.ender_pearl", 100,
+            "item.minecraft.end_crystal", 100,
+            "item.minecraft.shield", 100
+    ));
 
 }
