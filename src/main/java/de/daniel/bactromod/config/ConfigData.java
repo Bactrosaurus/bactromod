@@ -2,9 +2,13 @@ package de.daniel.bactromod.config;
 
 import de.daniel.bactromod.config.optiontypes.BooleanOption;
 import de.daniel.bactromod.config.optiontypes.IntegerOption;
+import net.minecraft.network.chat.Component;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ConfigData {
 
@@ -58,19 +62,33 @@ public class ConfigData {
 
     /*
         Map containing all item scaling options.
-        Please note that keys must be named exactly like
+        Please note that keys must be named like their item ids!
      */
-    public Map<String, Integer> itemScalingFactors = new HashMap<>(Map.of(
-            "item.minecraft.totem_of_undying", 100,
-            "item.minecraft.golden_apple", 100,
-            "item.minecraft.potion", 100,
-            "item.minecraft.splash_potion", 100,
-            "item.minecraft.firework_rocket", 100,
-            "item.minecraft.water_bucket", 100,
-            "item.minecraft.lava_bucket", 100,
-            "item.minecraft.ender_pearl", 100,
-            "item.minecraft.end_crystal", 100,
-            "item.minecraft.shield", 100
-    ));
+    public Map<String, Integer> itemScalingFactors =
+            Stream.of(
+                    "totem_of_undying",
+                    "golden_apple",
+                    "enchanted_golden_apple",
+                    "potion",
+                    "splash_potion",
+                    "firework_rocket",
+                    "water_bucket",
+                    "lava_bucket",
+                    "ender_pearl",
+                    "end_crystal",
+                    "golden_carrot",
+                    "bread",
+                    "cooked_beef",
+                    "cooked_porkchop",
+                    "cooked_mutton",
+                    "cooked_chicken",
+                    "cooked_rabbit",
+                    "cooked_cod",
+                    "cooked_salmon",
+                    "pumpkin_pie",
+                    "shield"
+            )
+            .map(s -> "item.minecraft." + s)
+            .collect(Collectors.toMap(Function.identity(), _ -> 100, (a, _) -> a, TreeMap::new));
 
 }

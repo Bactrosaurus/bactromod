@@ -52,7 +52,7 @@ public class ConfigScreen {
     private static OptionsSubScreen getItemScalingScreen(Screen parentScreen) {
         ConfigData data = Config.load();
         Options gameOptions = Minecraft.getInstance().options;
-        List<OptionInstance<?>> configOptions = new ArrayList<>();
+        List<OptionInstance<Integer>> configOptions = new ArrayList<>();
         data.itemScalingFactors.forEach((item, scaling) -> configOptions.add(ConfigScreenUtils.createItemScalingOption(item, scaling, data)));
 
         return new OptionsSubScreen(parentScreen, gameOptions, ConfigScreenUtils.getOptionName("title").append(" - ").append(ConfigScreenUtils.getOptionName("itemScalingFactors"))) {
