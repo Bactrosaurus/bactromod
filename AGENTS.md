@@ -32,7 +32,7 @@ de.daniel.bactromod (entry point: BactroMod::init)
 
 - **Annotation-driven fields** (booleans + integers): `ConfigScreen` uses `@BooleanOption`/`@IntegerOption` + reflection to auto-discover ConfigData fields and build widgets. Adding a field + lang keys is enough; no screen code change needed.
 - **Map-based item scaling**: `ConfigData.itemScalingFactors` is a `Map<String, Integer>`. Wired manually in `ConfigScreen` + `ConfigScreenUtils.createItemScalingOption()`. Entries are NOT annotation-discovered — you must add them to the `Map.of(...)` default in ConfigData.
-- **Item scaling button**: Added as a `Button` widget in the main screen's `init()` override via `addRenderableWidget()`. Not pushed through the options layout.
+- **Item scaling button**: Added as a `Button` widget in the main screen's `addOptions()` via `this.list.addSmall(List.of(...))`.
 
 ## Key Conventions
 
