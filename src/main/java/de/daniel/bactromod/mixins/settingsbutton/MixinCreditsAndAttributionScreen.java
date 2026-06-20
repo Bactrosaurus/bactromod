@@ -20,7 +20,7 @@ public class MixinCreditsAndAttributionScreen {
         instance.addChild(child, instance.newCellSettings());
         Button settingsButton = Button.builder(
                 Component.translatable("bactromod.options.title"),
-                _ -> Minecraft.getInstance().setScreen(ConfigScreen.getConfigScreen(inst))
+                _ -> Minecraft.getInstance().gui.setScreen(ConfigScreen.getConfigScreen(inst))
         ).width(210).build();
         return instance.addChild(settingsButton);
     }

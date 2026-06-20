@@ -42,7 +42,7 @@ public class ConfigScreen {
                 this.list.addSmall(List.of(
                         Button.builder(
                                 ConfigScreenUtils.getOptionName("itemScalingFactors"),
-                                _ -> Minecraft.getInstance().setScreen(getItemScalingScreen(this))
+                                _ -> Minecraft.getInstance().gui.setScreen(getItemScalingScreen(this))
                         ).tooltip(Tooltip.create(ConfigScreenUtils.getOptionDescKey("itemScalingFactors"))).build()
                 ));
             }

@@ -3,7 +3,6 @@ package de.daniel.bactromod.mixins.features.fog;
 import com.llamalad7.mixinextras.sugar.Local;
 import de.daniel.bactromod.config.Config;
 import de.daniel.bactromod.config.ConfigData;
-import org.joml.Vector4f;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -32,7 +31,7 @@ public abstract class MixinFogRenderer {
     private static List<FogEnvironment> FOG_ENVIRONMENTS;
 
     @Inject(method = "setupFog", at = @At(value = "FIELD", target = "Lnet/minecraft/client/renderer/fog/FogData;renderDistanceEnd:F", ordinal = 0, shift = At.Shift.AFTER, opcode = Opcodes.PUTFIELD))
-    public void postFogSetup(Camera camera, int renderDistanceInChunks, DeltaTracker deltaTracker, float darkenWorldAmount, ClientLevel level, CallbackInfoReturnable<Vector4f> cir, @Local(name = "fog") FogData fog, @Local(name = "fogType") FogType fogType, @Local(name = "entity") Entity entity, @Local(name = "renderDistanceInBlocks") float renderDistanceInBlocks) {
+    public void postFogSetup(Camera camera, int renderDistanceInChunks, DeltaTracker deltaTracker, float darkenWorldAmount, ClientLevel level, CallbackInfoReturnable<FogData> cir, @Local(name = "fog") FogData fog, @Local(name = "fogType") FogType fogType, @Local(name = "entity") Entity entity, @Local(name = "renderDistanceInBlocks") float renderDistanceInBlocks) {
         for (int i = 0; i < FOG_ENVIRONMENTS.size(); ++i) {
             if (FOG_ENVIRONMENTS.get(i).isApplicable(fogType, entity)) {
                 ConfigData config = Config.load();

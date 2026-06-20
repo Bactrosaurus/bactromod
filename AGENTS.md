@@ -10,6 +10,8 @@ BactroMod is a **client-side Fabric mod** for Minecraft (Java **25**). All behav
 ```
 **No test suite exists.** `./gradlew build` is the only verification step.
 
+**Java 25 JDK required** on the build PATH (`options.release = 25` in `build.gradle.kts`). System `java` may be older — set `JAVA_HOME` to a Java 25+ JDK if the build fails with "Releaseversion 25 nicht unterstützt".
+
 Gradle quirks: `configuration-cache=false` (IntelliJ incompatibility), `parallel=true`, heap cap `-Xmx1G` — all in `gradle.properties`.
 
 ## Architecture

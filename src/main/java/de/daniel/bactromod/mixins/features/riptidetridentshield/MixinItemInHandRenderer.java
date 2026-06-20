@@ -24,7 +24,7 @@ public class MixinItemInHandRenderer {
     @Shadow
     public void renderItem(LivingEntity mob, ItemStack itemStack, ItemDisplayContext type, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords)  {}
 
-    @Inject(method = "renderArmWithItem", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/vertex/PoseStack;translate(FFF)V", ordinal = 12), cancellable = true)
+    @Inject(method = "submitArmWithItem", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/vertex/PoseStack;translate(FFF)V", ordinal = 12), cancellable = true)
     public void shieldTransformAutoSpinAttack(AbstractClientPlayer player, float frameInterp, float xRot, InteractionHand hand, float attack, ItemStack itemStack, float inverseArmHeight, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, CallbackInfo ci) {
         if (itemStack.is(Items.SHIELD) && Config.load().fixShieldRiptideTrident) {
             boolean bl = hand == InteractionHand.MAIN_HAND;

@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(value = GameRenderer.class)
 public class MixinGameRenderer {
 
-    @ModifyReturnValue(method = "getNightVisionScale", at = @At("RETURN"))
+    @ModifyReturnValue(method = "nightVisionScale", at = @At("RETURN"))
     private static float cleanerNightVision(float original) {
         if (!Config.load().nightVision) return 0F;
         return original;

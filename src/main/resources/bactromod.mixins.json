@@ -12,7 +12,7 @@
     "features.nightvision.MixinGameRenderer",
     "features.noopgmswitcher.MixinGameModeSwitcherScreen",
     "features.noopgmswitcher.MixinKeyboardHandler",
-    "features.nopumpkinblur.MixinGui",
+    "features.nopumpkinblur.MixinHud",
     "features.riptidetridentshield.MixinItemInHandRenderer",
     "settingsbutton.MixinCreditsAndAttributionScreen"
   ],
