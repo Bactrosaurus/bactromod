@@ -1,7 +1,6 @@
 package de.daniel.bactromod.mixins.features.riptidetridentshield;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
 import de.daniel.bactromod.config.Config;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.ItemInHandRenderer;
@@ -30,9 +29,6 @@ public class MixinItemInHandRenderer {
             boolean bl = hand == InteractionHand.MAIN_HAND;
             HumanoidArm humanoidArm = bl ? player.getMainArm() : player.getMainArm().getOpposite();
             boolean bl2 = humanoidArm == HumanoidArm.RIGHT;
-            poseStack.translate(0.0F, 0.0F, 0.0F);
-            poseStack.mulPose(Axis.XP.rotationDegrees(0.0F));
-            poseStack.mulPose(Axis.ZP.rotationDegrees(0.0F));
             renderItem(player, itemStack, bl2 ? ItemDisplayContext.FIRST_PERSON_RIGHT_HAND : ItemDisplayContext.FIRST_PERSON_LEFT_HAND, poseStack, submitNodeCollector, lightCoords);
             poseStack.popPose();
             ci.cancel();

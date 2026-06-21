@@ -23,8 +23,6 @@ public class ConfigScreen {
         List<OptionInstance<?>> configOptions = new ArrayList<>();
 
         for (Field field : ConfigData.class.getDeclaredFields()) {
-            if (!field.isAnnotationPresent(BooleanOption.class) && !field.isAnnotationPresent(IntegerOption.class))
-                continue;
             if (field.isAnnotationPresent(BooleanOption.class)) {
                 configOptions.add(ConfigScreenUtils.createBooleanOption(field, data));
             } else if (field.isAnnotationPresent(IntegerOption.class)) {
@@ -38,7 +36,6 @@ public class ConfigScreen {
                 if (this.list == null) return;
                 this.list.addSmall(configOptions.toArray(new OptionInstance<?>[0]));
 
-                // Add item scaling options
                 this.list.addSmall(List.of(
                         Button.builder(
                                 ConfigScreenUtils.getOptionName("itemScalingFactors"),

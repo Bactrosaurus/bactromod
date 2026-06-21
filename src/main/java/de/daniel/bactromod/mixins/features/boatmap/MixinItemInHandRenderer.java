@@ -45,21 +45,19 @@ public class MixinItemInHandRenderer {
 
     @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/Mth;clamp(FFF)F", ordinal = 0))
     private float clampMainHandHeight(float value, float min, float max) {
-        assert getLocalPlayer() != null;
-        ItemStack itemStack = getLocalPlayer().getMainHandItem();
-        boolean mapInMainHand = this.mainHandItem.is(Items.FILLED_MAP);
-        if (isOptionDisabled() || !mapInMainHand) return Mth.clamp(value, min, max);
-        float i = getLocalPlayer().getAttackStrengthScale(1.0F);
+        LocalPlayer player = getLocalPlayer();
+        if (player == null || isOptionDisabled() || !this.mainHandItem.is(Items.FILLED_MAP)) return Mth.clamp(value, min, max);
+        ItemStack itemStack = player.getMainHandItem();
+        float i = player.getAttackStrengthScale(1.0F);
         return this.mainHandHeight +
                 Mth.clamp((this.mainHandItem == itemStack ? i * i * i : 0.0F) - this.mainHandHeight, -0.4F, 0.4F);
     }
 
     @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/Mth;clamp(FFF)F", ordinal = 1))
     private float clampOffHandHeight(float value, float min, float max) {
-        assert getLocalPlayer() != null;
-        ItemStack itemStack = getLocalPlayer().getOffhandItem();
-        boolean mapInOffhand = this.offHandItem.is(Items.FILLED_MAP);
-        if (isOptionDisabled() || !mapInOffhand) return Mth.clamp(value, min, max);
+        LocalPlayer player = getLocalPlayer();
+        if (player == null || isOptionDisabled() || !this.offHandItem.is(Items.FILLED_MAP)) return Mth.clamp(value, min, max);
+        ItemStack itemStack = player.getOffhandItem();
         return this.offHandHeight +
                 Mth.clamp((float) (this.offHandItem == itemStack ? 1 : 0) - this.offHandHeight, -0.4F, 0.4F);
     }

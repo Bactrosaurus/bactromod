@@ -2,7 +2,6 @@ package de.daniel.bactromod.config;
 
 import de.daniel.bactromod.config.optiontypes.BooleanOption;
 import de.daniel.bactromod.config.optiontypes.IntegerOption;
-import net.minecraft.network.chat.Component;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -21,7 +20,7 @@ public class ConfigData {
     @IntegerOption(intMin = 1, intMax = 15)
     public int gammaMultiplier = 15;
 
-    @BooleanOption()
+    @BooleanOption
     public boolean pumpkinBlur = false;
 
     @IntegerOption(intMin = -100, intMax = 100)
@@ -30,31 +29,31 @@ public class ConfigData {
     @IntegerOption(intMin = -100, intMax = 100)
     public int shieldOffset = -20;
 
-    @BooleanOption()
+    @BooleanOption
     public boolean blindnessFog = false;
 
-    @BooleanOption()
+    @BooleanOption
     public boolean darknessFog = false;
 
-    @BooleanOption()
+    @BooleanOption
     public boolean lavaFog = false;
 
-    @BooleanOption()
+    @BooleanOption
     public boolean powderSnowFog = false;
 
-    @BooleanOption()
+    @BooleanOption
     public boolean waterFog = false;
 
-    @BooleanOption()
+    @BooleanOption
     public boolean atmosphericFog = false;
 
-    @BooleanOption()
+    @BooleanOption
     public boolean showMapWhileInBoat = true;
 
-    @BooleanOption()
+    @BooleanOption
     public boolean fixShieldRiptideTrident = true;
 
-    @BooleanOption()
+    @BooleanOption
     public boolean nightVision = true;
 
     @BooleanOption

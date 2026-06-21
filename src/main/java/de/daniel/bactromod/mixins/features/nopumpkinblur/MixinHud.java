@@ -1,7 +1,6 @@
 package de.daniel.bactromod.mixins.features.nopumpkinblur;
 
 import de.daniel.bactromod.config.Config;
-import de.daniel.bactromod.config.ConfigData;
 import net.minecraft.client.gui.Hud;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -16,14 +15,11 @@ public class MixinHud {
 
     @Redirect(method = "extractCameraOverlays", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/LocalPlayer;getItemBySlot(Lnet/minecraft/world/entity/EquipmentSlot;)Lnet/minecraft/world/item/ItemStack;"))
     private ItemStack getEquippedStack(LocalPlayer instance, EquipmentSlot equipmentSlot) {
-        ConfigData config = Config.load();
-        if (!equipmentSlot.isArmor() || config.pumpkinBlur) return instance.getItemBySlot(equipmentSlot);
         ItemStack realItem = instance.getItemBySlot(equipmentSlot);
-        if (realItem.is(Items.CARVED_PUMPKIN)) {
-            return ItemStack.EMPTY;
-        } else {
+        if (!equipmentSlot.isArmor() || Config.load().pumpkinBlur || !realItem.is(Items.CARVED_PUMPKIN)) {
             return realItem;
         }
+        return ItemStack.EMPTY;
     }
 
 }

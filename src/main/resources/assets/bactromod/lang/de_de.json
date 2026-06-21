@@ -35,14 +35,8 @@
   "bactromod.options.waterFog": "Wassernebel",
   "bactromod.options.waterFog.desc": "Schaltet Nebel, welcher beim Eintauchen in Wasser angezeigt wird an oder aus.",
 
-  "bactromod.options.dimensionBossFog": "Dimensions- oder Boss-Nebel",
-  "bactromod.options.dimensionBossFog.desc": "Schaltet Dimensionsnebel (z.B. Nether-Nebel) oder Nebel der durch Bosse verursacht wird an oder aus.",
-
   "bactromod.options.atmosphericFog": "Atmosphärischer Nebel",
   "bactromod.options.atmosphericFog.desc": "Schaltet atmosphärischen Nebel an oder aus.",
-
-  "bactromod.options.renderDistanceFog": "Sichtweitennebel",
-  "bactromod.options.renderDistanceFog.desc": "Schaltet Nebel an der Sichtweitengrenze an oder aus.",
 
   "bactromod.options.fixShieldRiptideTrident": "Schildposition Sog-Dreizack",
   "bactromod.options.fixShieldRiptideTrident.desc": "Behebt fehlerhafte Schildposition bei Nutzung eines Sog-Dreizacks in Wasser oder Regen.",

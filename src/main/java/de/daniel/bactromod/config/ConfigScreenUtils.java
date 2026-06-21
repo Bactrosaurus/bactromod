@@ -10,20 +10,26 @@ import java.lang.reflect.Field;
 
 public class ConfigScreenUtils {
 
+    private static final String OPTION_KEY_PREFIX = "bactromod.options.";
+
     public static MutableComponent getOptionName(String fieldName) {
-        return Component.translatable("bactromod.options." + fieldName);
+        return Component.translatable(OPTION_KEY_PREFIX + fieldName);
     }
 
     public static MutableComponent getOptionDescKey(String fieldName) {
-        return Component.translatable("bactromod.options." + fieldName + ".desc");
+        return Component.translatable(OPTION_KEY_PREFIX + fieldName + ".desc");
+    }
+
+    private static String optionKey(String fieldName) {
+        return OPTION_KEY_PREFIX + fieldName;
     }
 
     public static OptionInstance<Boolean> createBooleanOption(Field field, ConfigData data) {
         try {
             boolean value = field.getBoolean(data);
             return OptionInstance.createBoolean(
-                    ConfigScreenUtils.getOptionName(field.getName()).getString(),
-                    OptionInstance.cachedConstantTooltip(ConfigScreenUtils.getOptionDescKey(field.getName())),
+                    optionKey(field.getName()),
+                    OptionInstance.cachedConstantTooltip(getOptionDescKey(field.getName())),
                     value,
                     val -> {
                         try {
@@ -44,8 +50,8 @@ public class ConfigScreenUtils {
             int value = field.getInt(data);
             IntegerOption integerOption = field.getAnnotation(IntegerOption.class);
             return new OptionInstance<>(
-                    ConfigScreenUtils.getOptionName(field.getName()).getString(),
-                    OptionInstance.cachedConstantTooltip(ConfigScreenUtils.getOptionDescKey(field.getName())),
+                    optionKey(field.getName()),
+                    OptionInstance.cachedConstantTooltip(getOptionDescKey(field.getName())),
                     Options::genericValueLabel,
                     new OptionInstance.IntRange(integerOption.intMin(), integerOption.intMax()),
                     value,
@@ -65,9 +71,9 @@ public class ConfigScreenUtils {
 
     public static OptionInstance<Integer> createItemScalingOption(String item, Integer currentScaling, ConfigData data) {
         return new OptionInstance<>(
-                Component.translatable(item).getString(),
+                item,
                 OptionInstance.cachedConstantTooltip(
-                        Component.literal(String.format(ConfigScreenUtils.getOptionName("itemScalingFactors.itemDesc").getString(), Component.translatable(item).getString()))
+                        Component.literal(String.format(getOptionName("itemScalingFactors.itemDesc").getString(), Component.translatable(item).getString()))
                 ),
                 Options::genericValueLabel,
                 new OptionInstance.IntRange(1, 100),
