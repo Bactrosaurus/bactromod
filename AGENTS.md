@@ -33,7 +33,7 @@ de.daniel.bactromod (entry point: BactroMod::init)
 ## Config Screen: Two Different Approaches
 
 - **Annotation-driven fields** (booleans + integers): `ConfigScreen` uses `@BooleanOption`/`@IntegerOption` + reflection to auto-discover ConfigData fields and build widgets. Adding a field + lang keys is enough; no screen code change needed.
-- **Map-based item scaling**: `ConfigData.itemScalingFactors` is a `Map<String, Integer>`. Wired manually in `ConfigScreen` + `ConfigScreenUtils.createItemScalingOption()`. Entries are NOT annotation-discovered — you must add them to the `Map.of(...)` default in ConfigData.
+- **Map-based item scaling**: `ConfigData.itemScalingFactors` is a `Map<String, Integer>`. Wired manually in `ConfigScreen` + `ConfigScreenUtils.createItemScalingOption()`. Entries are NOT annotation-discovered — you must add them to the `Stream.of(...)` list in ConfigData.
 - **Item scaling button**: Added as a `Button` widget in the main screen's `addOptions()` via `this.list.addSmall(List.of(...))`.
 
 ## Key Conventions
@@ -58,9 +58,7 @@ Adding a Map-based feature (like item scaling) requires manually wiring the scre
 ## ConfigData Fields (current)
 Boolean: `pumpkinBlur`, `blindnessFog`, `darknessFog`, `lavaFog`, `powderSnowFog`, `waterFog`, `atmosphericFog`, `showMapWhileInBoat`, `fixShieldRiptideTrident`, `nightVision`, `ignoreOpGamemodeSwitcher`
 Integer: `gammaMultiplier` (1–15), `fireOffset` (−100–100), `shieldOffset` (−100–100)
-Map: `itemScalingFactors` — keys are `Items` registry names in CONSTANT_CASE, values are percentages 1–100.
-
-`Map.of(...)` returns an **immutable map**. If the config screen needs to add/update entries at runtime, wrap in `new HashMap<>(Map.of(...))` in ConfigData.
+Map: `itemScalingFactors` — keys are item description IDs (e.g. `item.minecraft.totem_of_undying`, matching `Item.getDescriptionId()`), values are percentages 1–100. Backed by a mutable `TreeMap` via `Collectors.toMap(..., TreeMap::new)`.
 
 ## Registered Mixins (from `bactromod.mixins.json`)
 `features.boatmap`, `features.fog`, `features.fullbright`, `features.itemscaling`, `features.lowfire`, `features.lowshield`, `features.nightvision`, `features.noopgmswitcher` (2 mixins), `features.nopumpkinblur`, `features.riptidetridentshield`, `settingsbutton`.
