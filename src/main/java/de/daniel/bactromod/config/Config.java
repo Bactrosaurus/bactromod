@@ -55,7 +55,7 @@ public class Config {
     }
 
     public static ConfigData load() {
-        return configData != null ? configData : new ConfigData();
+        return configData;
     }
 
 }

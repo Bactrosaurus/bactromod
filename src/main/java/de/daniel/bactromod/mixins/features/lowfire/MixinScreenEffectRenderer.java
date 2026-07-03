@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ScreenEffectRenderer.class)
 public class MixinScreenEffectRenderer {
-    
+
     @Inject(method = "submitFire", at = @At("HEAD"))
     private static void submitFire(PoseStack poseStack, SubmitNodeCollector submitNodeCollector, TextureAtlasSprite sprite, CallbackInfo ci) {
         poseStack.translate(0, Config.load().fireOffset / 100F, 0);
