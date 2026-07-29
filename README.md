@@ -57,11 +57,3 @@ Build output: `build/libs/bactromod-<version>.jar`
 ![](https://i.imgur.com/CIdyeb7.png)
 
 ![](https://i.imgur.com/07NFlrz.png)
-
----
-
-<div align="center">
-
-Licensed under **LGPL-3.0-only** · Source on [Codeberg](https://codeberg.org/Bactrosaurus/bactromod)
-
-</div>
