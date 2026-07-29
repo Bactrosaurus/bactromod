@@ -28,12 +28,6 @@ BactroMod settings are generated from config annotations and can be changed in-g
 | **Credits screen** *(fallback)* | Injected "BactroMod Settings" button in `CreditsAndAttributionScreen`. |
 | **Config file** | `<gameDir>/config/bactromod.json` — JSON, editable by hand. |
 
-**Main options:**
-
-`gammaMultiplier` · `nightVision` · `pumpkinBlur` · `fireOffset` · `shieldOffset` · `blindnessFog` · `darknessFog` · `lavaFog` · `powderSnowFog` · `waterFog` · `atmosphericFog` · `showMapWhileInBoat` · `fixShieldRiptideTrident` · `ignoreOpGamemodeSwitcher`
-
-**Item scaling** factors (totems, potions, food, shields, etc.) are configured in a separate sub-screen accessible from the main settings screen.
-
 ## 📦 Installation
 
 1. Install **Fabric Loader** for the supported Minecraft version.
