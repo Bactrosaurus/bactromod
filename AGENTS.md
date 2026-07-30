@@ -51,7 +51,6 @@ de.daniel.bactromod (entry point: BactroMod::init)
 2. Add lang keys in all three lang files under `assets/bactromod/lang/`.
 3. Create a mixin class at `mixins/features/<featurename>/Mixin<TargetClass>.java`.
 4. Register it in `bactromod.mixins.json` under the `"client"` array.
-5. If the mixin needs access to private/protected members, add entries to `bactromod.accesswidener`.
 
 Adding a Map-based feature (like item scaling) requires manually wiring the screen in `ConfigScreen` + `ConfigScreenUtils`.
 
