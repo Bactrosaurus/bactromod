@@ -2,6 +2,7 @@
 /.gradle/
 /build/
 /run/
+/.serena/
 
 # Ignore Gradle project-specific cache directory
 .gradle

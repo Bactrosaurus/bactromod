@@ -1,3 +1,0 @@
-- Run `./gradlew build` for repository verification.
-- Preserve invalid-config recovery in `Config`: malformed JSON is moved to `bactromod_old_<epoch>.json` beside the config and defaults are recreated.
-- For a configurable feature, verify the field, all three language files, Mixin source, and `bactromod.mixins.json` registration before building.

@@ -1,3 +1,0 @@
-- Single-project, client-only Fabric Loom mod; Java entrypoint `de.daniel.bactromod.BactroMod::init`.
-- Gameplay changes are client Mixins listed in `src/main/resources/bactromod.mixins.json`; config UI also has ModMenu and Credits-screen entrypoints.
-- Build and config invariants: `mem:tech_stack`, `mem:suggested_commands`, `mem:conventions`, `mem:task_completion`.

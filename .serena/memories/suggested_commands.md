@@ -1,4 +1,0 @@
-- Build/verify: `./gradlew build`.
-- Launch development client: `./gradlew runClient`; it uses the project-local `run/` directory.
-- Use the wrapper rather than a system Gradle installation. A Java 25+ JDK must be selected on PATH/JAVA_HOME.
-- No repository test suite, lint task, or CI workflow was found.

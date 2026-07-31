@@ -1,5 +1,0 @@
-- Mixin classes are under `src/main/java/de/daniel/bactromod/mixins/features/<feature>/` and named `Mixin<ExactVanillaClassName>`; registered Mixins must have `@Mixin` because config requires annotations.
-- `Config.load()` is cached; Mixins should read current config at method execution, not cache settings at class initialization, and reuse one local load when a method needs multiple fields.
-- Annotated `ConfigData` booleans/integers are reflection-discovered. Add matching `bactromod.options.<field>` and `.desc` keys to `en_us.json`, `de_de.json`, and `ru_ru.json`.
-- `itemScalingFactors` is a manually wired map-based screen, not annotation-driven; item IDs/defaults live in `ConfigData` and screen code is in `ConfigScreen`/`ConfigScreenUtils`.
-- `fabric.mod.json` version/loader/Minecraft placeholders are Gradle-expanded from `gradle.properties`; edit the property source, not expanded JSON values.
