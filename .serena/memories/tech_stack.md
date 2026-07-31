@@ -1,0 +1,3 @@
+- Java 25 source/bytecode target (`build.gradle.kts`: `options.release = 25`); Minecraft `26.2`, Fabric Loader `0.19.3`, Loom `1.17-SNAPSHOT`, Fabric API `0.152.1+26.2`, ModMenu `20.0.0-beta.2` are pinned in `gradle.properties`.
+- Gradle wrapper is 9.5.1. Gradle uses `-Xmx1G`, parallel execution, and configuration cache disabled.
+- Client-only Fabric mod; ModMenu API is compile-time while runtime integration is optional.
