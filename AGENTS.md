@@ -21,6 +21,11 @@
 - `itemScalingFactors` is not annotation-driven. Its item description IDs and defaults are declared in `ConfigData`, and the screen iterates that map; change `ConfigScreen`/`ConfigScreenUtils` only when changing the item-scaling UI behavior.
 - Invalid JSON is moved beside the config as `bactromod_old_<epoch>.json`, then defaults are recreated. Preserve this recovery behavior when changing `Config`.
 
+## Known Gotchas
+
+- Config values are not range-validated at load: `Gson.fromJson` accepts hand-edited numbers outside declared ranges. `MixinItemInHandRenderer` divides map values by 100 and applies the result directly to a `PoseStack` scale, so a bad config value can crash rendering. Clamp/validate defensively when consuming config.
+- Several Mixins are fragile against Minecraft changes: fog behavior is keyed by `FOG_ENVIRONMENTS` list index, `MixinKeyboardHandler` targets `PermissionCheck.check` by ordinal 0/1, and `MixinItemInHandRenderer` (riptide) targets `PoseStack.translate` ordinal 12 and manually balances `popPose`. `./gradlew build` compiles but does not prove these injection points still apply at runtime, so re-verify them on any Minecraft upgrade.
+
 ## Adding Features
 
 1. Add the config field and translations if the feature is configurable.
