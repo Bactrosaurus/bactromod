@@ -1,9 +1,9 @@
 {
   "bactromod.options.title": "Настройки BactroMod",
 
-  "bactromod.options.itemScalingFactors": "Item scaling",
-  "bactromod.options.itemScalingFactors.desc": "Scales different items in size when rendered in hand to reduce coverage of view.",
-  "bactromod.options.itemScalingFactors.itemDesc": "Scale of item %s in hand in first person.",
+  "bactromod.options.itemScalingFactors": "Масштаб предметов",
+  "bactromod.options.itemScalingFactors.desc": "Изменяет размер предметов в руке, чтобы они меньше закрывали обзор.",
+  "bactromod.options.itemScalingFactors.itemDesc": "Масштаб предмета %s в первом лице.",
 
   "bactromod.options.gammaMultiplier": "Усиление яркости",
   "bactromod.options.gammaMultiplier.desc": "Усиливает яркость в несколько раз.",
@@ -35,17 +35,17 @@
   "bactromod.options.waterFog": "Туман в воде",
   "bactromod.options.waterFog.desc": "Отключает затуманенность при погружении в воду.",
 
-  "bactromod.options.atmosphericFog": "Туман на повехности",
-  "bactromod.options.atmosphericFog.desc": "Отключает туман на повехности.",
+  "bactromod.options.atmosphericFog": "Атмосферный туман",
+  "bactromod.options.atmosphericFog.desc": "Отключает атмосферный туман на поверхности.",
 
-  "bactromod.options.fixShieldRiptideTrident": "Исправить неправильно тягун-трезубец щит положение.",
-  "bactromod.options.fixShieldRiptideTrident.desc": "Исправить неправильно тягун-трезубец щит положение в воде или дожде.",
+  "bactromod.options.fixShieldRiptideTrident": "Щит при использовании трезубца",
+  "bactromod.options.fixShieldRiptideTrident.desc": "Исправляет положение щита при использовании трезубца с чарами «Тягун» в воде или под дождём.",
 
-  "bactromod.options.ignoreOpGamemodeSwitcher": "F3+F4 OP Ignore",
-  "bactromod.options.ignoreOpGamemodeSwitcher.desc": "Opens game-mode switcher when pressing F3+F4 regardless of OP status.",
+  "bactromod.options.ignoreOpGamemodeSwitcher": "F3+F4 без проверки OP",
+  "bactromod.options.ignoreOpGamemodeSwitcher.desc": "Открывает переключатель режима игры по F3+F4 независимо от статуса OP.",
 
-  "bactromod.options.nightVision": "Night Vision Effect",
-  "bactromod.options.nightVision.desc": "Toggles the Night Vision status effect.",
+  "bactromod.options.nightVision": "Эффект ночного зрения",
+  "bactromod.options.nightVision.desc": "Включает или отключает эффект ночного зрения.",
 
   "modmenu.summaryTranslation.bactromod": "Небольшой мод с новыми функциями и оптимизациями для игры.",
   "modmenu.descTranslation.bactromod": "Небольшой мод с новыми функциями и оптимизациями для игры."

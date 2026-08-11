@@ -1,5 +1,5 @@
 {
-  "required": true,
+  "required": false,
   "package": "de.daniel.bactromod.mixins",
   "compatibilityLevel": "JAVA_25",
   "client": [
@@ -17,7 +17,7 @@
     "settingsbutton.MixinCreditsAndAttributionScreen"
   ],
   "injectors": {
-    "defaultRequire": 1
+    "defaultRequire": 0
   },
   "overwrites": {
     "requireAnnotations": true

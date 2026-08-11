@@ -1,7 +1,7 @@
 # BactroMod
 
 BactroMod is a client-side Fabric mod for visual clarity and quality-of-life tweaks. It injects all behavior changes through **Mixins**, which means there is no server-side component.
-It works out of the box on any compatible Fabric installation.
+It supports Minecraft 26.2 with Fabric Loader 0.19.3 and Fabric API 0.152.1+26.2.
 
 ## ✨ Features
 
@@ -30,21 +30,21 @@ BactroMod settings are generated from config annotations and can be changed in-g
 
 ## 📦 Installation
 
-1. Install **Fabric Loader** for the supported Minecraft version.
+1. Install **Fabric Loader 0.19.3** for **Minecraft 26.2**.
 2. Place the BactroMod `.jar` into your Minecraft `mods/` folder.
-3. Ensure **Fabric API** is installed.
+3. Ensure **Fabric API 0.152.1+26.2** is installed.
 4. Launch Minecraft with the Fabric profile.
 
 ## 🛠️ Development
 
 ```bash
-./gradlew build       # produces build/libs/bactromod-<version>.jar
+./gradlew build       # produces the mod and sources jars in build/libs/
 ./gradlew runClient   # launches a dev Minecraft instance under run/
 ```
 
 > **Java 25+ JDK required** on the build PATH (`options.release = 25` in `build.gradle.kts`).
 
-Build output: `build/libs/bactromod-<version>.jar`
+Build output: `build/libs/bactromod-<version>.jar` and `build/libs/bactromod-<version>-sources.jar`
 
 ## 📸 Screenshots
 

@@ -33,8 +33,9 @@ public class ConfigScreenUtils {
                     value,
                     val -> {
                         try {
-                            field.setBoolean(data, val);
-                            Config.save(data);
+                            ConfigData updated = Config.copy(Config.load());
+                            field.setBoolean(updated, val);
+                            Config.save(updated);
                         } catch (IllegalAccessException e) {
                             throw new RuntimeException(e);
                         }
@@ -57,8 +58,9 @@ public class ConfigScreenUtils {
                     value,
                     val -> {
                         try {
-                            field.setInt(data, val);
-                            Config.save(data);
+                            ConfigData updated = Config.copy(Config.load());
+                            field.setInt(updated, val);
+                            Config.save(updated);
                         } catch (IllegalAccessException e) {
                             throw new RuntimeException(e);
                         }
@@ -79,8 +81,9 @@ public class ConfigScreenUtils {
                 new OptionInstance.IntRange(1, 100),
                 currentScaling,
                 newScaling -> {
-                    data.itemScalingFactors.put(item, newScaling);
-                    Config.save(data);
+                    ConfigData updated = Config.copy(Config.load());
+                    updated.itemScalingFactors.put(item, newScaling);
+                    Config.save(updated);
                 }
         );
     }
