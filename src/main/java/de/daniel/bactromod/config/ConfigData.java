@@ -5,47 +5,38 @@ import de.daniel.bactromod.config.optiontypes.IntegerOption;
 
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class ConfigData {
+public final class ConfigData {
 
-    /*
-        Options here must be named like {variableName} in language files with pattern:
-        bactromod.options.{variableName}
-        bactromod.options.{variableName}.desc
-     */
-
-    @IntegerOption(intMin = 1, intMax = 15)
+    @IntegerOption(min = 1, max = 15)
     public int gammaMultiplier = 15;
 
     @BooleanOption
-    public boolean pumpkinBlur = false;
+    public boolean pumpkinBlur;
 
-    @IntegerOption(intMin = -100, intMax = 100)
+    @IntegerOption(min = -100, max = 100)
     public int fireOffset = -30;
 
-    @IntegerOption(intMin = -100, intMax = 100)
+    @IntegerOption(min = -100, max = 100)
     public int shieldOffset = -20;
 
     @BooleanOption
-    public boolean blindnessFog = false;
+    public boolean blindnessFog;
 
     @BooleanOption
-    public boolean darknessFog = false;
+    public boolean darknessFog;
 
     @BooleanOption
-    public boolean lavaFog = false;
+    public boolean lavaFog;
 
     @BooleanOption
-    public boolean powderSnowFog = false;
+    public boolean powderSnowFog;
 
     @BooleanOption
-    public boolean waterFog = false;
+    public boolean waterFog;
 
     @BooleanOption
-    public boolean atmosphericFog = false;
+    public boolean atmosphericFog;
 
     @BooleanOption
     public boolean showMapWhileInBoat = true;
@@ -59,35 +50,5 @@ public class ConfigData {
     @BooleanOption
     public boolean ignoreOpGamemodeSwitcher = true;
 
-    /*
-        Map containing all item scaling options.
-        Please note that keys must be named like their item ids!
-     */
-    public Map<String, Integer> itemScalingFactors =
-            Stream.of(
-                    "totem_of_undying",
-                    "golden_apple",
-                    "enchanted_golden_apple",
-                    "potion",
-                    "splash_potion",
-                    "firework_rocket",
-                    "water_bucket",
-                    "lava_bucket",
-                    "ender_pearl",
-                    "end_crystal",
-                    "golden_carrot",
-                    "bread",
-                    "cooked_beef",
-                    "cooked_porkchop",
-                    "cooked_mutton",
-                    "cooked_chicken",
-                    "cooked_rabbit",
-                    "cooked_cod",
-                    "cooked_salmon",
-                    "pumpkin_pie",
-                    "shield"
-            )
-            .map(s -> "item.minecraft." + s)
-            .collect(Collectors.toMap(Function.identity(), _ -> 100, (a, _) -> a, TreeMap::new));
-
+    public Map<String, Integer> itemScalingFactors = new TreeMap<>();
 }

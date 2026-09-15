@@ -1,52 +1,53 @@
 {
   "bactromod.options.title": "Настройки BactroMod",
+  "bactromod.options.search": "Поиск...",
 
   "bactromod.options.itemScalingFactors": "Масштаб предметов",
-  "bactromod.options.itemScalingFactors.desc": "Изменяет размер предметов в руке, чтобы они меньше закрывали обзор.",
-  "bactromod.options.itemScalingFactors.itemDesc": "Масштаб предмета %s в первом лице.",
+  "bactromod.options.itemScalingFactors.desc": "Настраивает размер отдельных предметов в руке от первого лица, чтобы они меньше закрывали экран.",
+  "bactromod.options.itemScalingFactors.itemDesc": "Масштаб предмета «%s» от первого лица.",
 
   "bactromod.options.gammaMultiplier": "Усиление яркости",
-  "bactromod.options.gammaMultiplier.desc": "Усиливает яркость в несколько раз.",
+  "bactromod.options.gammaMultiplier.desc": "Умножает внутриигровую яркость на выбранный коэффициент.",
 
-  "bactromod.options.pumpkinBlur": "Текстура тыквы",
-  "bactromod.options.pumpkinBlur.desc": "Отключает чёрную текстуру, которая накладывается при надевании тыквы.",
+  "bactromod.options.pumpkinBlur": "Тыквенная маска",
+  "bactromod.options.pumpkinBlur.desc": "Показывает или скрывает затемняющую маску при ношении вырезанной тыквы.",
 
-  "bactromod.options.fireOffset": "Расположение огня",
-  "bactromod.options.fireOffset.desc": "Двигает текстуру огня по высоте. Вам нужно поставить отрицательное значение, чтобы опустить текстуру.",
+  "bactromod.options.fireOffset": "Высота огня",
+  "bactromod.options.fireOffset.desc": "Изменяет высоту огня на экране от первого лица. Отрицательные значения опускают его.",
 
-  "bactromod.options.shieldOffset": "Расположение щита",
-  "bactromod.options.shieldOffset.desc": "Двигает текстуру щита от первого лица по высоте. Вам нужно поставить отрицательное значение, чтобы опустить текстуру.",
+  "bactromod.options.shieldOffset": "Высота щита",
+  "bactromod.options.shieldOffset.desc": "Изменяет высоту щита от первого лица. Отрицательные значения опускают его.",
 
-  "bactromod.options.showMapWhileInBoat": "Карта в лодке",
-  "bactromod.options.showMapWhileInBoat.desc": "Позволяет видеть карты во время движения на лодке.",
+  "bactromod.options.showMapWhileInBoat": "Показывать карту в лодке",
+  "bactromod.options.showMapWhileInBoat.desc": "Не убирает карту из вида во время движения на лодке.",
 
   "bactromod.options.lavaFog": "Туман в лаве",
-  "bactromod.options.lavaFog.desc": "Отключает затуманенность при погружении в лаву.",
+  "bactromod.options.lavaFog.desc": "Показывает или скрывает туман при погружении в лаву.",
 
   "bactromod.options.powderSnowFog": "Туман в рыхлом снеге",
-  "bactromod.options.powderSnowFog.desc": "Отключает затуманенность при погружении в рыхлый снег.",
+  "bactromod.options.powderSnowFog.desc": "Показывает или скрывает туман при нахождении в рыхлом снегу.",
 
   "bactromod.options.blindnessFog": "Туман от слепоты",
-  "bactromod.options.blindnessFog.desc": "Отключает затуманенность от эффекта слепоты",
+  "bactromod.options.blindnessFog.desc": "Показывает или скрывает туман от эффекта слепоты.",
 
   "bactromod.options.darknessFog": "Туман от тьмы",
-  "bactromod.options.darknessFog.desc": "Отключает затуманенность от эффекта тьмы.",
+  "bactromod.options.darknessFog.desc": "Показывает или скрывает туман от эффекта тьмы.",
 
   "bactromod.options.waterFog": "Туман в воде",
-  "bactromod.options.waterFog.desc": "Отключает затуманенность при погружении в воду.",
+  "bactromod.options.waterFog.desc": "Показывает или скрывает туман при погружении в воду.",
 
   "bactromod.options.atmosphericFog": "Атмосферный туман",
-  "bactromod.options.atmosphericFog.desc": "Отключает атмосферный туман на поверхности.",
+  "bactromod.options.atmosphericFog.desc": "Показывает или скрывает атмосферный туман.",
 
-  "bactromod.options.fixShieldRiptideTrident": "Щит при использовании трезубца",
-  "bactromod.options.fixShieldRiptideTrident.desc": "Исправляет положение щита при использовании трезубца с чарами «Тягун» в воде или под дождём.",
+  "bactromod.options.fixShieldRiptideTrident": "Щит при рывке с трезубцем",
+  "bactromod.options.fixShieldRiptideTrident.desc": "Исправляет положение щита во второстепенной руке во время рывка с трезубцем, зачарованным на «Тягун».",
 
-  "bactromod.options.ignoreOpGamemodeSwitcher": "F3+F4 без проверки OP",
-  "bactromod.options.ignoreOpGamemodeSwitcher.desc": "Открывает переключатель режима игры по F3+F4 независимо от статуса OP.",
+  "bactromod.options.ignoreOpGamemodeSwitcher": "F3+F4 без полномочий",
+  "bactromod.options.ignoreOpGamemodeSwitcher.desc": "Позволяет открывать и использовать переключатель режима игры по F3+F4 без необходимых полномочий.",
 
-  "bactromod.options.nightVision": "Эффект ночного зрения",
-  "bactromod.options.nightVision.desc": "Включает или отключает эффект ночного зрения.",
+  "bactromod.options.nightVision": "Ночное зрение",
+  "bactromod.options.nightVision.desc": "Определяет, отображается ли усиление яркости от эффекта ночного зрения.",
 
-  "modmenu.summaryTranslation.bactromod": "Небольшой мод с новыми функциями и оптимизациями для игры.",
-  "modmenu.descTranslation.bactromod": "Небольшой мод с новыми функциями и оптимизациями для игры."
+  "modmenu.summaryTranslation.bactromod": "Лёгкий клиентский мод с полезными визуальными и игровыми улучшениями.",
+  "modmenu.descTranslation.bactromod": "Лёгкий клиентский мод с полезными визуальными и игровыми улучшениями."
 }

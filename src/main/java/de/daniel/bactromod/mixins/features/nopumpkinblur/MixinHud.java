@@ -12,14 +12,9 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(Hud.class)
 public class MixinHud {
-
     @Redirect(method = "extractCameraOverlays", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/player/LocalPlayer;getItemBySlot(Lnet/minecraft/world/entity/EquipmentSlot;)Lnet/minecraft/world/item/ItemStack;"))
     private ItemStack getEquippedStack(LocalPlayer instance, EquipmentSlot equipmentSlot) {
         ItemStack realItem = instance.getItemBySlot(equipmentSlot);
-        if (!equipmentSlot.isArmor() || Config.load().pumpkinBlur || !realItem.is(Items.CARVED_PUMPKIN)) {
-            return realItem;
-        }
-        return ItemStack.EMPTY;
+        return equipmentSlot.isArmor() && !Config.get().pumpkinBlur && realItem.is(Items.CARVED_PUMPKIN) ? ItemStack.EMPTY : realItem;
     }
-
 }

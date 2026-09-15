@@ -1,52 +1,53 @@
 {
-  "bactromod.options.title": "BactroMod Einstellungen",
+  "bactromod.options.title": "BactroMod-Einstellungen",
+  "bactromod.options.search": "Suchen...",
 
   "bactromod.options.itemScalingFactors": "Item-Skalierung",
-  "bactromod.options.itemScalingFactors.desc": "Skaliert verschiedene Items in der Hand um das Sichtfeld nicht einzuschränken.",
-  "bactromod.options.itemScalingFactors.itemDesc": "Skalierung des Items %s in der Hand.",
+  "bactromod.options.itemScalingFactors.desc": "Passt die Größe einzelner Items in der Egoperspektive an, damit sie weniger vom Bildschirm verdecken.",
+  "bactromod.options.itemScalingFactors.itemDesc": "Skalierung von %s in der Egoperspektive.",
 
-  "bactromod.options.gammaMultiplier": "Helligkeit",
-  "bactromod.options.gammaMultiplier.desc": "Erhöht die Helligkeit im Spiel um den eingestellten Faktor.",
+  "bactromod.options.gammaMultiplier": "Helligkeitsverstärkung",
+  "bactromod.options.gammaMultiplier.desc": "Multipliziert die Helligkeit im Spiel mit dem ausgewählten Faktor.",
 
-  "bactromod.options.pumpkinBlur": "Kürbismaske",
-  "bactromod.options.pumpkinBlur.desc": "Schaltet die Textur, welche beim Tragen eines geschnitzten Kürbisses das Sichtfeld des Spielers einschränkt ein oder aus.",
+  "bactromod.options.pumpkinBlur": "Kürbis-Overlay",
+  "bactromod.options.pumpkinBlur.desc": "Blendet das sichtbehindernde Overlay beim Tragen eines geschnitzten Kürbisses ein oder aus.",
 
   "bactromod.options.fireOffset": "Feuerhöhe",
-  "bactromod.options.fireOffset.desc": "Verschiebt die Feuer-Textur, welche man in der ersten Person sieht wenn man brennt, in der Höhe. Normalerweise wird ein negativer Wert gewählt, um das Sichtfeld zu erweitern.",
+  "bactromod.options.fireOffset.desc": "Passt die Höhe des Feuer-Overlays in der Egoperspektive an. Negative Werte verschieben es nach unten.",
 
   "bactromod.options.shieldOffset": "Schildhöhe",
-  "bactromod.options.shieldOffset.desc": "Verschiebt den Schild in der ersten Person in der Höhe. Normalerweise wird ein negativer Wert gewählt, um das Sichtfeld zu erweitern.",
+  "bactromod.options.shieldOffset.desc": "Passt die Höhe des Schilds in der Egoperspektive an. Negative Werte verschieben ihn nach unten.",
 
-  "bactromod.options.showMapWhileInBoat": "Zeige Karte in Boot",
-  "bactromod.options.showMapWhileInBoat.desc": "Zeigt Schatzkarten, obwohl man sich mit einem Boot in Bewegung befindet.",
+  "bactromod.options.showMapWhileInBoat": "Karte im Boot anzeigen",
+  "bactromod.options.showMapWhileInBoat.desc": "Hält Karten auch während der Fahrt in einem Boot sichtbar.",
 
   "bactromod.options.lavaFog": "Lavanebel",
-  "bactromod.options.lavaFog.desc": "Schaltet Nebel, welcher beim Eintauchen in Lava angezeigt wird an oder aus.",
+  "bactromod.options.lavaFog.desc": "Blendet den Nebel beim Eintauchen in Lava ein oder aus.",
 
   "bactromod.options.powderSnowFog": "Pulverschneenebel",
-  "bactromod.options.powderSnowFog.desc": "Schaltet Nebel, welcher beim Eintauchen in Pulverschnee angezeigt wird an oder aus.",
+  "bactromod.options.powderSnowFog.desc": "Blendet den Nebel im Pulverschnee ein oder aus.",
 
   "bactromod.options.blindnessFog": "Blindheitseffekt",
-  "bactromod.options.blindnessFog.desc": "Schaltet Nebel, welcher angezeigt wird, wenn der Spieler Blindheit als Effekt hat an oder aus.",
+  "bactromod.options.blindnessFog.desc": "Blendet den Nebel des Blindheitseffekts ein oder aus.",
 
   "bactromod.options.darknessFog": "Dunkelheitseffekt",
-  "bactromod.options.darknessFog.desc": "Schaltet Nebel, welcher angezeigt wird, wenn der Spieler Dunkelheit als Effekt hat an oder aus.",
+  "bactromod.options.darknessFog.desc": "Blendet den Nebel des Dunkelheitseffekts ein oder aus.",
 
   "bactromod.options.waterFog": "Wassernebel",
-  "bactromod.options.waterFog.desc": "Schaltet Nebel, welcher beim Eintauchen in Wasser angezeigt wird an oder aus.",
+  "bactromod.options.waterFog.desc": "Blendet den Nebel beim Eintauchen in Wasser ein oder aus.",
 
   "bactromod.options.atmosphericFog": "Atmosphärischer Nebel",
-  "bactromod.options.atmosphericFog.desc": "Schaltet atmosphärischen Nebel an oder aus.",
+  "bactromod.options.atmosphericFog.desc": "Blendet den atmosphärischen Nebel ein oder aus.",
 
-  "bactromod.options.fixShieldRiptideTrident": "Schildposition Sog-Dreizack",
-  "bactromod.options.fixShieldRiptideTrident.desc": "Behebt fehlerhafte Schildposition bei Nutzung eines Sog-Dreizacks in Wasser oder Regen.",
+  "bactromod.options.fixShieldRiptideTrident": "Schildposition bei Sog",
+  "bactromod.options.fixShieldRiptideTrident.desc": "Korrigiert die Position des Schilds in der Zweithand beim Einsatz eines Dreizacks mit Sog.",
 
-  "bactromod.options.ignoreOpGamemodeSwitcher": "Ignoriere OP F3+F4",
-  "bactromod.options.ignoreOpGamemodeSwitcher.desc": "Ignoriert den OP-Status beim Öffnen des Gamemode-Wechslers mit F3+F4.",
+  "bactromod.options.ignoreOpGamemodeSwitcher": "F3+F4 ohne Berechtigung",
+  "bactromod.options.ignoreOpGamemodeSwitcher.desc": "Erlaubt das Öffnen und Verwenden der Spielmodusauswahl mit F3+F4 ohne Berechtigung.",
 
-  "bactromod.options.nightVision": "Nachtsichteffekt",
-  "bactromod.options.nightVision.desc": "Schaltet den Nachtsichteffekt an oder aus.",
+  "bactromod.options.nightVision": "Nachtsicht",
+  "bactromod.options.nightVision.desc": "Legt fest, ob die Helligkeitsverstärkung des Nachtsichteffekts dargestellt wird.",
 
-  "modmenu.summaryTranslation.bactromod": "Eine kleine Mod mit nützlichen Spieloptimierungen.",
-  "modmenu.descTranslation.bactromod": "Eine kleine Mod mit nützlichen Spieloptimierungen."
+  "modmenu.summaryTranslation.bactromod": "Eine schlanke clientseitige Mod mit nützlichen Grafik- und Spielanpassungen.",
+  "modmenu.descTranslation.bactromod": "Eine schlanke clientseitige Mod mit nützlichen Grafik- und Spielanpassungen."
 }

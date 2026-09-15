@@ -3,17 +3,17 @@
   "package": "de.daniel.bactromod.mixins",
   "compatibilityLevel": "JAVA_25",
   "client": [
-    "features.boatmap.MixinItemInHandRenderer",
+    "features.boatmap.MixinFirstPersonHandsAndItems",
     "features.fog.MixinFogRenderer",
-    "features.fullbright.MixinLightTexture",
-    "features.itemscaling.MixinItemInHandRenderer",
+    "features.fullbright.MixinLightmap",
+    "features.itemscaling.MixinFirstPersonHandsAndItemsRenderer",
     "features.lowfire.MixinScreenEffectRenderer",
-    "features.lowshield.MixinItemInHandRenderer",
+    "features.lowshield.MixinFirstPersonHandsAndItemsRenderer",
     "features.nightvision.MixinGameRenderer",
     "features.noopgmswitcher.MixinGameModeSwitcherScreen",
     "features.noopgmswitcher.MixinKeyboardHandler",
     "features.nopumpkinblur.MixinHud",
-    "features.riptidetridentshield.MixinItemInHandRenderer",
+    "features.riptidetridentshield.MixinFirstPersonHandsAndItemsRenderer",
     "settingsbutton.MixinCreditsAndAttributionScreen"
   ],
   "injectors": {

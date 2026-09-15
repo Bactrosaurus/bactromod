@@ -1,52 +1,53 @@
 {
   "bactromod.options.title": "BactroMod Settings",
+  "bactromod.options.search": "Search...",
 
-  "bactromod.options.itemScalingFactors": "Item scaling",
-  "bactromod.options.itemScalingFactors.desc": "Scales different items in size when rendered in hand to reduce coverage of view.",
-  "bactromod.options.itemScalingFactors.itemDesc": "Scale of item %s in hand in first person.",
+  "bactromod.options.itemScalingFactors": "Item Scaling",
+  "bactromod.options.itemScalingFactors.desc": "Adjusts the size of individual items held in first person so they cover less of the screen.",
+  "bactromod.options.itemScalingFactors.itemDesc": "First-person scale for %s.",
 
   "bactromod.options.gammaMultiplier": "Brightness Boost",
-  "bactromod.options.gammaMultiplier.desc": "Boosts in-game Brightness by set factor.",
+  "bactromod.options.gammaMultiplier.desc": "Multiplies in-game brightness by the selected factor.",
 
-  "bactromod.options.nightVision": "Night Vision Effect",
-  "bactromod.options.nightVision.desc": "Toggles the Night Vision status effect.",
+  "bactromod.options.pumpkinBlur": "Pumpkin Overlay",
+  "bactromod.options.pumpkinBlur.desc": "Shows or hides the view-obscuring overlay displayed when wearing a carved pumpkin.",
 
-  "bactromod.options.pumpkinBlur": "Pumpkin Blur",
-  "bactromod.options.pumpkinBlur.desc": "Toggles the black texture overlay that strongly limits view when player wears a carved pumpkin.",
+  "bactromod.options.fireOffset": "Fire Height",
+  "bactromod.options.fireOffset.desc": "Adjusts the height of the first-person fire overlay. Negative values move it down.",
 
-  "bactromod.options.fireOffset": "Fire Offset",
-  "bactromod.options.fireOffset.desc": "Moves fire texture in height. Usually you would select a negative value to move the fire texture down and free up your view.",
-
-  "bactromod.options.shieldOffset": "Shield Offset",
-  "bactromod.options.shieldOffset.desc": "Moves shield in height when in first-person perspective. Usually you would select a negative value to move shield down and free up your view.",
+  "bactromod.options.shieldOffset": "Shield Height",
+  "bactromod.options.shieldOffset.desc": "Adjusts the height of the shield in first person. Negative values move it down.",
 
   "bactromod.options.showMapWhileInBoat": "Show Map in Boat",
-  "bactromod.options.showMapWhileInBoat.desc": "Allows maps to always be visible when moving in a boat.",
+  "bactromod.options.showMapWhileInBoat.desc": "Keeps maps visible while moving in a boat.",
 
   "bactromod.options.lavaFog": "Lava Fog",
-  "bactromod.options.lavaFog.desc": "Toggles fog caused by diving into lava.",
+  "bactromod.options.lavaFog.desc": "Shows or hides fog while submerged in lava.",
 
   "bactromod.options.powderSnowFog": "Powder Snow Fog",
-  "bactromod.options.powderSnowFog.desc": "Toggles fog caused by diving into powder snow.",
+  "bactromod.options.powderSnowFog.desc": "Shows or hides fog while inside powder snow.",
 
   "bactromod.options.blindnessFog": "Blindness Fog",
-  "bactromod.options.blindnessFog.desc": "Toggles fog caused by blindness effect.",
+  "bactromod.options.blindnessFog.desc": "Shows or hides fog caused by the Blindness effect.",
 
   "bactromod.options.darknessFog": "Darkness Fog",
-  "bactromod.options.darknessFog.desc": "Toggles fog caused by darkness effect.",
+  "bactromod.options.darknessFog.desc": "Shows or hides fog caused by the Darkness effect.",
 
   "bactromod.options.waterFog": "Water Fog",
-  "bactromod.options.waterFog.desc": "Toggles fog caused by diving into water.",
+  "bactromod.options.waterFog.desc": "Shows or hides fog while submerged in water.",
 
   "bactromod.options.atmosphericFog": "Atmospheric Fog",
-  "bactromod.options.atmosphericFog.desc": "Toggles atmospheric fog.",
+  "bactromod.options.atmosphericFog.desc": "Shows or hides atmospheric distance fog.",
 
-  "bactromod.options.fixShieldRiptideTrident": "Fix Riptide Trident Shield",
-  "bactromod.options.fixShieldRiptideTrident.desc": "Fixes the position of a shield in the offhand while using a riptide trident in water or rain.",
+  "bactromod.options.fixShieldRiptideTrident": "Riptide Shield Position",
+  "bactromod.options.fixShieldRiptideTrident.desc": "Fixes the position of a shield in the Off Hand while spinning with a Riptide trident.",
 
-  "bactromod.options.ignoreOpGamemodeSwitcher": "F3+F4 OP Ignore",
-  "bactromod.options.ignoreOpGamemodeSwitcher.desc": "Opens game-mode switcher when pressing F3+F4 regardless of OP status.",
+  "bactromod.options.ignoreOpGamemodeSwitcher": "F3+F4 Without Permission",
+  "bactromod.options.ignoreOpGamemodeSwitcher.desc": "Allows opening and using the F3+F4 game mode switcher without permission.",
 
-  "modmenu.summaryTranslation.bactromod": "A lightweight mod with some game optimizations and features.",
-  "modmenu.descTranslation.bactromod": "A lightweight mod with some game optimizations and features."
+  "bactromod.options.nightVision": "Night Vision",
+  "bactromod.options.nightVision.desc": "Controls whether the brightness boost from the Night Vision effect is rendered.",
+
+  "modmenu.summaryTranslation.bactromod": "A lightweight client-side mod with useful visual and gameplay tweaks.",
+  "modmenu.descTranslation.bactromod": "A lightweight client-side mod with useful visual and gameplay tweaks."
 }

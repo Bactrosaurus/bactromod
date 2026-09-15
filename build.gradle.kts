@@ -2,11 +2,13 @@ plugins {
     id("net.fabricmc.fabric-loom")
 }
 
-group = providers.gradleProperty("maven_group").get()
-version = providers.gradleProperty("mod_version").get()
+fun gradleProperty(name: String) = providers.gradleProperty(name).get()
+
+group = gradleProperty("maven_group")
+version = gradleProperty("mod_version")
 
 base {
-    archivesName = providers.gradleProperty("archives_base_name")
+    archivesName = gradleProperty("archives_base_name")
 }
 
 repositories {
@@ -14,30 +16,25 @@ repositories {
 }
 
 dependencies {
-    minecraft("com.mojang:minecraft:${providers.gradleProperty("minecraft_version").get()}")
-    implementation("net.fabricmc:fabric-loader:${providers.gradleProperty("loader_version").get()}")
-    implementation("net.fabricmc.fabric-api:fabric-api:${providers.gradleProperty("fabric_api_version").get()}")
-    compileOnly("com.terraformersmc:modmenu:${providers.gradleProperty("modmenu_version").get()}")
+    minecraft("com.mojang:minecraft:${gradleProperty("minecraft_version")}")
+    implementation("net.fabricmc:fabric-loader:${gradleProperty("loader_version")}")
+    implementation("net.fabricmc.fabric-api:fabric-api:${gradleProperty("fabric_api_version")}")
+    compileOnly("com.terraformersmc:modmenu:${gradleProperty("modmenu_version")}")
 }
 
 tasks.processResources {
-    inputs.property("version", version)
-    inputs.property("loader_version", providers.gradleProperty("loader_version"))
-    inputs.property("minecraft_version", providers.gradleProperty("minecraft_version"))
-    inputs.property("fabric_api_version", providers.gradleProperty("fabric_api_version"))
-    inputs.property("modmenu_version", providers.gradleProperty("modmenu_version"))
+    val properties = mapOf(
+        "version" to version,
+        "loader_version" to gradleProperty("loader_version"),
+        "minecraft_version" to gradleProperty("minecraft_version"),
+        "fabric_api_version" to gradleProperty("fabric_api_version"),
+        "modmenu_version" to gradleProperty("modmenu_version")
+    )
+    inputs.properties(properties)
     filteringCharset = "UTF-8"
 
     filesMatching("fabric.mod.json") {
-        expand(
-            mapOf(
-                "version" to version,
-                "loader_version" to providers.gradleProperty("loader_version").get(),
-                "minecraft_version" to providers.gradleProperty("minecraft_version").get(),
-                "fabric_api_version" to providers.gradleProperty("fabric_api_version").get(),
-                "modmenu_version" to providers.gradleProperty("modmenu_version").get()
-            )
-        )
+        expand(properties)
     }
 }
 

@@ -13,16 +13,10 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(CreditsAndAttributionScreen.class)
 public class MixinCreditsAndAttributionScreen {
-
     @Redirect(method = "init", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/layouts/LinearLayout;addChild(Lnet/minecraft/client/gui/layouts/LayoutElement;)Lnet/minecraft/client/gui/layouts/LayoutElement;", ordinal = 2))
-    public LayoutElement addChildAlt(LinearLayout instance, LayoutElement child) {
-        CreditsAndAttributionScreen inst = ((CreditsAndAttributionScreen) (Object) this);
+    private LayoutElement addSettingsButton(LinearLayout instance, LayoutElement child) {
+        CreditsAndAttributionScreen screen = (CreditsAndAttributionScreen) (Object) this;
         instance.addChild(child, instance.newCellSettings());
-        Button settingsButton = Button.builder(
-                Component.translatable("bactromod.options.title"),
-                _ -> Minecraft.getInstance().gui.setScreen(ConfigScreen.getConfigScreen(inst))
-        ).width(210).build();
-        return instance.addChild(settingsButton);
+        return instance.addChild(Button.builder(Component.translatable("bactromod.options.title"), _ -> Minecraft.getInstance().gui.setScreen(ConfigScreen.getConfigScreen(screen))).width(210).build());
     }
-
 }

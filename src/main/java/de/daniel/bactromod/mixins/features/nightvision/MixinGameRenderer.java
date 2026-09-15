@@ -6,13 +6,10 @@ import net.minecraft.client.renderer.GameRenderer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
-@Mixin(value = GameRenderer.class)
+@Mixin(GameRenderer.class)
 public class MixinGameRenderer {
-
     @ModifyReturnValue(method = "nightVisionScale", at = @At("RETURN"))
     private static float cleanerNightVision(float original) {
-        if (!Config.load().nightVision) return 0F;
-        return original;
+        return Config.get().nightVision ? original : 0;
     }
-
 }

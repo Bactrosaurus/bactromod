@@ -11,14 +11,8 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(GameModeSwitcherScreen.class)
 public class MixinGameModeSwitcherScreen {
-
     @WrapOperation(method = "switchToHoveredGameMode(Lnet/minecraft/client/Minecraft;Lnet/minecraft/client/gui/screens/debug/GameModeSwitcherScreen$GameModeIcon;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/permissions/PermissionCheck;check(Lnet/minecraft/server/permissions/PermissionSet;)Z"))
     private static boolean allows(PermissionCheck instance, PermissionSet permissionPredicate, Operation<Boolean> original) {
-        if (Config.load().ignoreOpGamemodeSwitcher) {
-            return true;
-        }
-
-        return original.call(instance, permissionPredicate);
+        return Config.get().ignoreOpGamemodeSwitcher || original.call(instance, permissionPredicate);
     }
-
 }
