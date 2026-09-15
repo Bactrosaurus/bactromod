@@ -1,0 +1,53 @@
+{
+  "bactromod.options.title": "Opciones de BactroMod",
+  "bactromod.options.search": "Buscar...",
+
+  "bactromod.options.itemScalingFactors": "Escala de objetos",
+  "bactromod.options.itemScalingFactors.desc": "Ajusta el tamaño de cada objeto sostenido en primera persona para que ocupe menos espacio en pantalla.",
+  "bactromod.options.itemScalingFactors.itemDesc": "Escala de %s en primera persona.",
+
+  "bactromod.options.gammaMultiplier": "Aumento de brillo",
+  "bactromod.options.gammaMultiplier.desc": "Multiplica el brillo del juego por el factor seleccionado.",
+
+  "bactromod.options.pumpkinBlur": "Superposición de calabaza",
+  "bactromod.options.pumpkinBlur.desc": "Muestra u oculta la superposición que limita la visión al llevar una Calabaza tallada.",
+
+  "bactromod.options.fireOffset": "Altura del fuego",
+  "bactromod.options.fireOffset.desc": "Ajusta la altura de la superposición de fuego en primera persona. Los valores negativos la desplazan hacia abajo.",
+
+  "bactromod.options.shieldOffset": "Altura del escudo",
+  "bactromod.options.shieldOffset.desc": "Ajusta la altura del Escudo en primera persona. Los valores negativos lo desplazan hacia abajo.",
+
+  "bactromod.options.showMapWhileInBoat": "Mostrar mapa en el bote",
+  "bactromod.options.showMapWhileInBoat.desc": "Mantiene el Mapa visible mientras el bote está en movimiento.",
+
+  "bactromod.options.lavaFog": "Niebla en la lava",
+  "bactromod.options.lavaFog.desc": "Muestra u oculta la niebla al estar sumergido en Lava.",
+
+  "bactromod.options.powderSnowFog": "Niebla en la nieve en polvo",
+  "bactromod.options.powderSnowFog.desc": "Muestra u oculta la niebla al estar dentro de Nieve en polvo.",
+
+  "bactromod.options.blindnessFog": "Niebla de ceguera",
+  "bactromod.options.blindnessFog.desc": "Muestra u oculta la niebla causada por el efecto de Ceguera.",
+
+  "bactromod.options.darknessFog": "Niebla de oscuridad",
+  "bactromod.options.darknessFog.desc": "Muestra u oculta la niebla causada por el efecto de Oscuridad.",
+
+  "bactromod.options.waterFog": "Niebla en el agua",
+  "bactromod.options.waterFog.desc": "Muestra u oculta la niebla al estar sumergido en Agua.",
+
+  "bactromod.options.atmosphericFog": "Niebla atmosférica",
+  "bactromod.options.atmosphericFog.desc": "Muestra u oculta la niebla atmosférica a distancia.",
+
+  "bactromod.options.fixShieldRiptideTrident": "Posición del escudo con Propulsión acuática",
+  "bactromod.options.fixShieldRiptideTrident.desc": "Corrige la posición del Escudo en la mano secundaria al impulsarse con un Tridente encantado con Propulsión acuática.",
+
+  "bactromod.options.ignoreOpGamemodeSwitcher": "F3+F4 sin permiso",
+  "bactromod.options.ignoreOpGamemodeSwitcher.desc": "Permite abrir y usar el Cambiador de modo de juego con F3+F4 sin permiso.",
+
+  "bactromod.options.nightVision": "Visión nocturna",
+  "bactromod.options.nightVision.desc": "Controla si se muestra el aumento de brillo del efecto de Visión nocturna.",
+
+  "modmenu.summaryTranslation.bactromod": "Un mod ligero para el cliente con ajustes visuales y de jugabilidad útiles.",
+  "modmenu.descTranslation.bactromod": "Un mod ligero para el cliente con ajustes visuales y de jugabilidad útiles."
+}

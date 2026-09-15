@@ -1,0 +1,53 @@
+{
+  "bactromod.options.title": "BactroMod 设置",
+  "bactromod.options.search": "搜索…",
+
+  "bactromod.options.itemScalingFactors": "物品缩放",
+  "bactromod.options.itemScalingFactors.desc": "调整第一人称视角下各个手持物品的大小，使其少遮挡屏幕。",
+  "bactromod.options.itemScalingFactors.itemDesc": "%s的第一人称缩放比例。",
+
+  "bactromod.options.gammaMultiplier": "亮度增强",
+  "bactromod.options.gammaMultiplier.desc": "将游戏内亮度乘以所选倍数。",
+
+  "bactromod.options.pumpkinBlur": "雕刻南瓜遮罩",
+  "bactromod.options.pumpkinBlur.desc": "显示或隐藏佩戴雕刻南瓜时遮挡视野的遮罩。",
+
+  "bactromod.options.fireOffset": "火焰高度",
+  "bactromod.options.fireOffset.desc": "调整第一人称火焰遮罩的高度。负值会将其下移。",
+
+  "bactromod.options.shieldOffset": "盾牌高度",
+  "bactromod.options.shieldOffset.desc": "调整第一人称视角下盾牌的高度。负值会将其下移。",
+
+  "bactromod.options.showMapWhileInBoat": "在船中显示地图",
+  "bactromod.options.showMapWhileInBoat.desc": "乘船移动时保持地图可见。",
+
+  "bactromod.options.lavaFog": "熔岩中的雾",
+  "bactromod.options.lavaFog.desc": "显示或隐藏浸没在熔岩中时的雾。",
+
+  "bactromod.options.powderSnowFog": "细雪中的雾",
+  "bactromod.options.powderSnowFog.desc": "显示或隐藏身处细雪中时的雾。",
+
+  "bactromod.options.blindnessFog": "失明效果雾",
+  "bactromod.options.blindnessFog.desc": "显示或隐藏失明效果产生的雾。",
+
+  "bactromod.options.darknessFog": "黑暗效果雾",
+  "bactromod.options.darknessFog.desc": "显示或隐藏黑暗效果产生的雾。",
+
+  "bactromod.options.waterFog": "水下雾",
+  "bactromod.options.waterFog.desc": "显示或隐藏浸没在水中时的雾。",
+
+  "bactromod.options.atmosphericFog": "大气雾",
+  "bactromod.options.atmosphericFog.desc": "显示或隐藏远处的大气雾。",
+
+  "bactromod.options.fixShieldRiptideTrident": "激流时的盾牌位置",
+  "bactromod.options.fixShieldRiptideTrident.desc": "修正使用附有“激流”魔咒的三叉戟旋转突进时副手盾牌的位置。",
+
+  "bactromod.options.ignoreOpGamemodeSwitcher": "F3+F4 无需权限",
+  "bactromod.options.ignoreOpGamemodeSwitcher.desc": "无需权限即可打开和使用 F3+F4 游戏模式切换器。",
+
+  "bactromod.options.nightVision": "夜视",
+  "bactromod.options.nightVision.desc": "控制是否显示夜视效果带来的亮度增强。",
+
+  "modmenu.summaryTranslation.bactromod": "一个轻量的客户端模组，提供实用的视觉与游戏体验调整。",
+  "modmenu.descTranslation.bactromod": "一个轻量的客户端模组，提供实用的视觉与游戏体验调整。"
+}

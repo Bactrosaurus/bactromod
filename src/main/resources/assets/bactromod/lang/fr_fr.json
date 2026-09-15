@@ -1,0 +1,53 @@
+{
+  "bactromod.options.title": "Options de BactroMod",
+  "bactromod.options.search": "Rechercher...",
+
+  "bactromod.options.itemScalingFactors": "Taille des objets",
+  "bactromod.options.itemScalingFactors.desc": "Ajuste la taille de chaque objet tenu à la première personne afin qu'il occupe moins de place à l'écran.",
+  "bactromod.options.itemScalingFactors.itemDesc": "Taille de %s à la première personne.",
+
+  "bactromod.options.gammaMultiplier": "Amplification de la luminosité",
+  "bactromod.options.gammaMultiplier.desc": "Multiplie la luminosité en jeu par le facteur sélectionné.",
+
+  "bactromod.options.pumpkinBlur": "Masque de citrouille",
+  "bactromod.options.pumpkinBlur.desc": "Affiche ou masque la superposition qui gêne la vision lorsque vous portez une Citrouille sculptée.",
+
+  "bactromod.options.fireOffset": "Hauteur du feu",
+  "bactromod.options.fireOffset.desc": "Ajuste la hauteur de la superposition de feu à la première personne. Les valeurs négatives la déplacent vers le bas.",
+
+  "bactromod.options.shieldOffset": "Hauteur du bouclier",
+  "bactromod.options.shieldOffset.desc": "Ajuste la hauteur du Bouclier à la première personne. Les valeurs négatives le déplacent vers le bas.",
+
+  "bactromod.options.showMapWhileInBoat": "Afficher la carte dans un bateau",
+  "bactromod.options.showMapWhileInBoat.desc": "Maintient la Carte visible lorsque le bateau est en mouvement.",
+
+  "bactromod.options.lavaFog": "Brouillard dans la lave",
+  "bactromod.options.lavaFog.desc": "Affiche ou masque le brouillard lorsque vous êtes immergé dans la Lave.",
+
+  "bactromod.options.powderSnowFog": "Brouillard dans la neige poudreuse",
+  "bactromod.options.powderSnowFog.desc": "Affiche ou masque le brouillard lorsque vous êtes dans la Neige poudreuse.",
+
+  "bactromod.options.blindnessFog": "Brouillard de cécité",
+  "bactromod.options.blindnessFog.desc": "Affiche ou masque le brouillard causé par l'effet Cécité.",
+
+  "bactromod.options.darknessFog": "Brouillard d'obscurité",
+  "bactromod.options.darknessFog.desc": "Affiche ou masque le brouillard causé par l'effet Obscurité.",
+
+  "bactromod.options.waterFog": "Brouillard sous l'eau",
+  "bactromod.options.waterFog.desc": "Affiche ou masque le brouillard lorsque vous êtes immergé dans l'Eau.",
+
+  "bactromod.options.atmosphericFog": "Brouillard atmosphérique",
+  "bactromod.options.atmosphericFog.desc": "Affiche ou masque le brouillard atmosphérique au loin.",
+
+  "bactromod.options.fixShieldRiptideTrident": "Position du bouclier avec Impulsion",
+  "bactromod.options.fixShieldRiptideTrident.desc": "Corrige la position du Bouclier dans la main secondaire lors d'une propulsion avec un Trident doté de l'enchantement Impulsion.",
+
+  "bactromod.options.ignoreOpGamemodeSwitcher": "F3+F4 sans permission",
+  "bactromod.options.ignoreOpGamemodeSwitcher.desc": "Permet d'ouvrir et d'utiliser le Sélecteur de mode de jeu avec F3+F4 sans permission.",
+
+  "bactromod.options.nightVision": "Vision nocturne",
+  "bactromod.options.nightVision.desc": "Détermine si l'augmentation de luminosité de l'effet Vision nocturne est affichée.",
+
+  "modmenu.summaryTranslation.bactromod": "Un mod client léger proposant des ajustements visuels et de jouabilité utiles.",
+  "modmenu.descTranslation.bactromod": "Un mod client léger proposant des ajustements visuels et de jouabilité utiles."
+}
