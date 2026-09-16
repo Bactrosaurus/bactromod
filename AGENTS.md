@@ -9,7 +9,7 @@
 ## Build and run
 
 - Use the checked-in Gradle wrapper, not a system Gradle installation.
-- The current toolchain is Java 25+, Minecraft 26.3, Fabric Loader 0.19.5, Fabric API `0.160.5+26.3`, ModMenu `21.0.0-beta.1`, Loom `1.17-SNAPSHOT`, and Gradle 9.7.0. The authoritative dependency/version values are in `gradle.properties` and the wrapper version is in `gradle/wrapper/gradle-wrapper.properties`.
+- The current toolchain is Java 25+, Minecraft 26.3, Fabric Loader 0.19.5, Fabric API `0.160.5+26.3`, ModMenu `21.0.0-beta.1`, Loom `1.17-SNAPSHOT`, and Gradle 9.7.1. The authoritative dependency/version values are in `gradle.properties` and the wrapper version is in `gradle/wrapper/gradle-wrapper.properties`.
 - `./gradlew build` is the repository verification command. It compiles the mod, processes resources, and creates the mod jar and sources jar in `build/libs/`.
 - `./gradlew runClient` launches the Minecraft development client using the project-local `run/` directory.
 - There is no test suite, lint task, or CI workflow in this repository. A successful build checks compilation and resource processing, but not whether every Mixin applies correctly at runtime.
@@ -18,7 +18,7 @@
 ## Metadata and Mixins
 
 - `src/main/resources/fabric.mod.json` is expanded by `processResources`. Keep `${version}`, `${loader_version}`, `${minecraft_version}`, `${fabric_api_version}`, and `${modmenu_version}` there; change their sources in `gradle.properties` instead of hardcoding expanded values in the metadata.
-- The mod depends on Fabric Loader, Minecraft, Java 25+, and Fabric API. ModMenu is `compileOnly` at build time and a suggested, optional runtime dependency.
+- The mod depends on Fabric Loader, Minecraft, Java 25+, and Fabric API. Fabric Loader and Fabric API use their configured versions as inclusive minimums so newer compatible releases are accepted; Minecraft remains constrained to the configured release line because Mixins require version-specific verification. ModMenu is `compileOnly` at build time, a suggested optional runtime dependency, and also uses its configured version as an inclusive minimum.
 - Register gameplay Mixins in `src/main/resources/bactromod.mixins.json`. It is a client mixin config with `compatibilityLevel` `JAVA_25`, `required: false`, and `injectors.defaultRequire: 0`.
 - Every registered mixin must have an `@Mixin` annotation. `overwrites.requireAnnotations` also requires explicit `@Overwrite` annotations if overwrite methods are added. Keep the registered name synchronized with the package and class name.
 - Feature Mixins live under `src/main/java/de/daniel/bactromod/mixins/features/<feature>/` and generally use the convention `Mixin<ExactVanillaClassName>`. Multiple classes with the same simple name are intentional because each feature remains isolated in its own package.
