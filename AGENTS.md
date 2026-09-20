@@ -28,7 +28,7 @@
 
 The registered feature packages and their configuration fields are:
 
-- `fullbright`: multiplies the lightmap gamma by `gammaMultiplier` (default 15, range 1–15).
+- `fullbright`: blends the lightmap's ambient color toward white on a cubic curve using `gammaMultiplier` (default 15, range 1–15); 1 preserves vanilla lighting and 15 provides full brightness.
 - `nightvision`: returns zero from `GameRenderer.nightVisionScale` when `nightVision` is disabled (default enabled).
 - `nopumpkinblur`: hides a carved pumpkin from the camera overlay when `pumpkinBlur` is disabled (default disabled).
 - `lowfire`: translates the first-person fire overlay by `fireOffset / 100` (default -30, range -100–100).
@@ -47,16 +47,17 @@ The registered feature packages and their configuration fields are:
 - A new setting requires matching `bactromod.options.<field>` and `bactromod.options.<field>.desc` translations in every file under `assets/bactromod/lang/`.
 - `itemScalingFactors` is a `Map<String, Integer>` keyed by item description IDs and is deliberately not annotation-driven. The item-scaling sub-screen enumerates registered items, excludes air, sorts by localized name, supports searching by localized name, registry path, or description ID, and persists each change immediately.
 - If the config file contains invalid JSON, `Config` moves it beside the config as `bactromod_old_<epoch>.json` (adding a suffix on collision), logs the backup location, and recreates defaults. Preserve this recovery behavior when changing config loading.
-- Gson does not enforce the UI ranges when loading hand-edited JSON. Consumers apply gamma, offsets, and item scale values directly, so validate or clamp values at the consumption boundary if changing those paths.
+- Gson does not enforce the UI ranges when loading hand-edited JSON. Fullbright clamps `gammaMultiplier`, while offsets and item scale values are consumed directly; validate or clamp values at the consumption boundary when changing those paths.
 
 ## Runtime-sensitive Mixins
 
 The following selectors are coupled to the current Minecraft 26.3 implementation and need runtime verification after a Minecraft or mapping upgrade:
 
 - `MixinFogRenderer` maps the order of `FOG_ENVIRONMENTS` by index: lava 0, powder snow 1, blindness 2, darkness 3, water 4, atmospheric 5.
+- `MixinLightmapRenderStateExtractor` adjusts the extracted ambient color after `LightmapRenderStateExtractor.extract`; keep it within its vanilla range and preserve the nonlinear curve that prevents intermediate settings from saturating.
 - `MixinKeyboardHandler` wraps both `PermissionCheck.check` calls in `handleDebugKeys`; `MixinGameModeSwitcherScreen` wraps the switcher's permission check.
 - `MixinFirstPersonHandsAndItemsRenderer` for the riptide shield fix targets `PoseStack.translate` at ordinal 12 and manually balances the pose stack with `popPose()`.
-- Several render Mixins depend on exact method descriptors and invocation targets in `FirstPersonHandsAndItems`, `FirstPersonHandsAndItemsRenderer`, `ScreenEffectRenderer`, `Lightmap`, `GameRenderer`, and `Hud`.
+- Several render Mixins depend on exact method descriptors and invocation targets in `FirstPersonHandsAndItems`, `FirstPersonHandsAndItemsRenderer`, `ScreenEffectRenderer`, `LightmapRenderStateExtractor`, `GameRenderer`, and `Hud`.
 
 When changing Minecraft versions or any target method, inspect the decompiled target and run the development client to verify each affected feature. Do not treat `./gradlew build` alone as proof that injections still apply.
 

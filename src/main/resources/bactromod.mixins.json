@@ -5,7 +5,7 @@
   "client": [
     "features.boatmap.MixinFirstPersonHandsAndItems",
     "features.fog.MixinFogRenderer",
-    "features.fullbright.MixinLightmap",
+    "features.fullbright.MixinLightmapRenderStateExtractor",
     "features.itemscaling.MixinFirstPersonHandsAndItemsRenderer",
     "features.lowfire.MixinScreenEffectRenderer",
     "features.lowshield.MixinFirstPersonHandsAndItemsRenderer",

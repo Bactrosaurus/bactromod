@@ -7,7 +7,7 @@
   "bactromod.options.itemScalingFactors.itemDesc": "Масштаб предмета «%s» от первого лица.",
 
   "bactromod.options.gammaMultiplier": "Усиление яркости",
-  "bactromod.options.gammaMultiplier.desc": "Умножает внутриигровую яркость на выбранный коэффициент.",
+  "bactromod.options.gammaMultiplier.desc": "Управляет дополнительной яркостью мира. 1 использует обычное освещение, а 15 — максимальную яркость.",
 
   "bactromod.options.pumpkinBlur": "Тыквенная маска",
   "bactromod.options.pumpkinBlur.desc": "Показывает или скрывает затемняющую маску при ношении вырезанной тыквы.",

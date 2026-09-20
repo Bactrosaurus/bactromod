@@ -7,7 +7,7 @@
   "bactromod.options.itemScalingFactors.itemDesc": "Taille de %s à la première personne.",
 
   "bactromod.options.gammaMultiplier": "Amplification de la luminosité",
-  "bactromod.options.gammaMultiplier.desc": "Multiplie la luminosité en jeu par le facteur sélectionné.",
+  "bactromod.options.gammaMultiplier.desc": "Contrôle la luminosité supplémentaire du monde. 1 utilise l’éclairage normal ; 15 fournit la luminosité maximale.",
 
   "bactromod.options.pumpkinBlur": "Masque de citrouille",
   "bactromod.options.pumpkinBlur.desc": "Affiche ou masque la superposition qui gêne la vision lorsque vous portez une Citrouille sculptée.",

@@ -7,7 +7,7 @@
   "bactromod.options.itemScalingFactors.itemDesc": "%s的第一人称缩放比例。",
 
   "bactromod.options.gammaMultiplier": "亮度增强",
-  "bactromod.options.gammaMultiplier.desc": "将游戏内亮度乘以所选倍数。",
+  "bactromod.options.gammaMultiplier.desc": "控制世界的额外亮度。1 使用原版光照，15 提供最大亮度。",
 
   "bactromod.options.pumpkinBlur": "雕刻南瓜遮罩",
   "bactromod.options.pumpkinBlur.desc": "显示或隐藏佩戴雕刻南瓜时遮挡视野的遮罩。",

@@ -7,7 +7,7 @@
   "bactromod.options.itemScalingFactors.itemDesc": "Escala de %s en primera persona.",
 
   "bactromod.options.gammaMultiplier": "Aumento de brillo",
-  "bactromod.options.gammaMultiplier.desc": "Multiplica el brillo del juego por el factor seleccionado.",
+  "bactromod.options.gammaMultiplier.desc": "Controla el brillo adicional del mundo. 1 usa la iluminación normal; 15 proporciona el brillo máximo.",
 
   "bactromod.options.pumpkinBlur": "Superposición de calabaza",
   "bactromod.options.pumpkinBlur.desc": "Muestra u oculta la superposición que limita la visión al llevar una Calabaza tallada.",

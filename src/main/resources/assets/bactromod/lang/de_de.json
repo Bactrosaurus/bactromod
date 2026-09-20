@@ -7,7 +7,7 @@
   "bactromod.options.itemScalingFactors.itemDesc": "Skalierung von %s in der Egoperspektive.",
 
   "bactromod.options.gammaMultiplier": "Helligkeitsverstärkung",
-  "bactromod.options.gammaMultiplier.desc": "Multipliziert die Helligkeit im Spiel mit dem ausgewählten Faktor.",
+  "bactromod.options.gammaMultiplier.desc": "Steuert die zusätzliche Helligkeit der Welt. 1 verwendet die normale Beleuchtung; 15 sorgt für maximale Helligkeit.",
 
   "bactromod.options.pumpkinBlur": "Kürbis-Overlay",
   "bactromod.options.pumpkinBlur.desc": "Blendet das sichtbehindernde Overlay beim Tragen eines geschnitzten Kürbisses ein oder aus.",

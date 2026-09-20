@@ -7,7 +7,7 @@
   "bactromod.options.itemScalingFactors.itemDesc": "First-person scale for %s.",
 
   "bactromod.options.gammaMultiplier": "Brightness Boost",
-  "bactromod.options.gammaMultiplier.desc": "Multiplies in-game brightness by the selected factor.",
+  "bactromod.options.gammaMultiplier.desc": "Controls additional world brightness. 1 uses vanilla lighting; 15 provides maximum brightness.",
 
   "bactromod.options.pumpkinBlur": "Pumpkin Overlay",
   "bactromod.options.pumpkinBlur.desc": "Shows or hides the view-obscuring overlay displayed when wearing a carved pumpkin.",

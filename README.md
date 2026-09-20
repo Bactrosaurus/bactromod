@@ -6,7 +6,7 @@ BactroMod is a client-side Fabric mod for visual clarity and quality-of-life twe
 
 | Feature                         | Description                                                                                           |
 |---------------------------------|-------------------------------------------------------------------------------------------------------|
-| 🌟 **Fullbright**               | Scales in-game brightness via a configurable multiplier.                                              |
+| 🌟 **Fullbright**               | Adjustable brightness boost ranging from vanilla lighting to full brightness.                         |
 | 👁️ **Night vision cleanup**    | Suppresses the night vision effect.                                                                   |
 | 🎃 **Pumpkin blur toggle**      | Disables the carved-pumpkin overlay blur.                                                             |
 | 🔥 **Low fire**                 | Configurable first-person fire overlay offset.                                                        |

@@ -7,7 +7,7 @@
   "bactromod.options.itemScalingFactors.itemDesc": "Escala de %s em primeira pessoa.",
 
   "bactromod.options.gammaMultiplier": "Aumento de brilho",
-  "bactromod.options.gammaMultiplier.desc": "Multiplica o brilho do jogo pelo fator selecionado.",
+  "bactromod.options.gammaMultiplier.desc": "Controla o brilho adicional do mundo. 1 usa a iluminação normal; 15 fornece o brilho máximo.",
 
   "bactromod.options.pumpkinBlur": "Sobreposição da abóbora",
   "bactromod.options.pumpkinBlur.desc": "Exibe ou oculta a sobreposição que limita a visão ao usar uma Abóbora Esculpida.",
