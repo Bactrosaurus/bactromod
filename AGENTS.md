@@ -22,17 +22,18 @@
 - Register gameplay Mixins in `src/main/resources/bactromod.mixins.json`. It is a client mixin config with `compatibilityLevel` `JAVA_25`, `required: false`, and `injectors.defaultRequire: 0`.
 - Every registered mixin must have an `@Mixin` annotation. `overwrites.requireAnnotations` also requires explicit `@Overwrite` annotations if overwrite methods are added. Keep the registered name synchronized with the package and class name.
 - Feature Mixins live under `src/main/java/de/daniel/bactromod/mixins/features/<feature>/` and generally use the convention `Mixin<ExactVanillaClassName>`. Multiple classes with the same simple name are intentional because each feature remains isolated in its own package.
+- Prefer composable Mixin Extras injectors such as `@WrapOperation` over `@Redirect`, and call the wrapped operation whenever the feature does not intentionally replace it.
 - The fallback settings access is a button injected into `CreditsAndAttributionScreen` by `MixinCreditsAndAttributionScreen`; it is not a Fabric entrypoint. Preserve it when changing the config UI.
 
 ## Current feature wiring
 
 The registered feature packages and their configuration fields are:
 
-- `fullbright`: blends the lightmap's ambient color toward white on a cubic curve using `gammaMultiplier` (default 15, range 1–15); 1 preserves vanilla lighting and 15 provides full brightness.
+- `fullbright`: blends the lightmap's ambient color toward white on a cubic curve using `gammaMultiplier` (default 15, range 1–15); 1 preserves vanilla lighting and 15 provides full brightness. Changing this setting marks the vanilla lightmap extractor dirty so the effect applies without touching Minecraft's brightness slider.
 - `nightvision`: returns zero from `GameRenderer.nightVisionScale` when `nightVision` is disabled (default enabled).
 - `nopumpkinblur`: hides a carved pumpkin from the camera overlay when `pumpkinBlur` is disabled (default disabled).
-- `lowfire`: translates the first-person fire overlay by `fireOffset / 100` (default -30, range -100–100).
-- `lowshield`: translates first-person shield rendering by `shieldOffset / 100` (default -20, range -100–100).
+- `lowfire`: translates the first-person fire overlay by `fireOffset / 100` (default -30, range -100–100) inside a balanced pose-stack scope.
+- `lowshield`: translates first-person shield rendering by `shieldOffset / 100` (default -20, range -100–100) before item scaling so position and scale remain independent.
 - `boatmap`: changes the first- and off-hand filled-map hand-height interpolation in `FirstPersonHandsAndItems.tick` when `showMapWhileInBoat` is enabled (default enabled).
 - `fog`: independently controls lava, powder snow, blindness, darkness, water, and atmospheric fog through `lavaFog`, `powderSnowFog`, `blindnessFog`, `darknessFog`, `waterFog`, and `atmosphericFog` (all default disabled).
 - `itemscaling`: applies per-item first-person scale values from `itemScalingFactors` (default 100 in the UI, range 1–100).
@@ -47,19 +48,21 @@ The registered feature packages and their configuration fields are:
 - A new setting requires matching `bactromod.options.<field>` and `bactromod.options.<field>.desc` translations in every file under `assets/bactromod/lang/`.
 - `itemScalingFactors` is a `Map<String, Integer>` keyed by item description IDs and is deliberately not annotation-driven. The item-scaling sub-screen enumerates registered items, excludes air, sorts by localized name, supports searching by localized name, registry path, or description ID, and persists each change immediately.
 - If the config file contains invalid JSON, `Config` moves it beside the config as `bactromod_old_<epoch>.json` (adding a suffix on collision), logs the backup location, and recreates defaults. Preserve this recovery behavior when changing config loading.
-- Gson does not enforce the UI ranges when loading hand-edited JSON. Fullbright clamps `gammaMultiplier`, while offsets and item scale values are consumed directly; validate or clamp values at the consumption boundary when changing those paths.
+- Gson does not enforce the UI ranges when loading hand-edited JSON. Fullbright, offsets, and item scale values are clamped at their consumption boundaries; preserve that validation when changing those paths.
 
 ## Runtime-sensitive Mixins
 
 The following selectors are coupled to the current Minecraft 26.3 implementation and need runtime verification after a Minecraft or mapping upgrade:
 
 - `MixinFogRenderer` maps the order of `FOG_ENVIRONMENTS` by index: lava 0, powder snow 1, blindness 2, darkness 3, water 4, atmospheric 5.
-- `MixinLightmapRenderStateExtractor` adjusts the extracted ambient color after `LightmapRenderStateExtractor.extract`; keep it within its vanilla range and preserve the nonlinear curve that prevents intermediate settings from saturating.
+- `MixinLightmapRenderStateExtractor` detects `gammaMultiplier` changes before extraction to request a vanilla lightmap refresh, then adjusts the freshly extracted ambient color; keep it within its vanilla range and preserve the nonlinear curve that prevents intermediate settings from saturating.
 - `MixinKeyboardHandler` wraps both `PermissionCheck.check` calls in `handleDebugKeys`; `MixinGameModeSwitcherScreen` wraps the switcher's permission check.
-- `MixinFirstPersonHandsAndItemsRenderer` for the riptide shield fix targets `PoseStack.translate` at ordinal 12 and manually balances the pose stack with `popPose()`.
+- The low-shield and item-scaling Mixins target the same two item submissions. Their explicit injector order must keep shield translation before scaling while the features remain in separate packages.
+- The riptide shield Mixin wraps the `AvatarRenderState.isAutoSpinAttack` field read in `submitArmWithItem`.
 - Several render Mixins depend on exact method descriptors and invocation targets in `FirstPersonHandsAndItems`, `FirstPersonHandsAndItemsRenderer`, `ScreenEffectRenderer`, `LightmapRenderStateExtractor`, `GameRenderer`, and `Hud`.
 
 When changing Minecraft versions or any target method, inspect the decompiled target and run the development client to verify each affected feature. Do not treat `./gradlew build` alone as proof that injections still apply.
+Run `JAVA_TOOL_OPTIONS='-Dmixin.debug.countInjections=true -Dmixin.debug.export=true' ./gradlew runClient` after changing selectors; every injector declares its expected match count.
 
 ## Adding or changing a feature
 

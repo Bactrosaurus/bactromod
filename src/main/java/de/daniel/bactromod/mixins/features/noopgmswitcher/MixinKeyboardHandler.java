@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(KeyboardHandler.class)
 public class MixinKeyboardHandler {
-    @WrapOperation(method = "handleDebugKeys", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/permissions/PermissionCheck;check(Lnet/minecraft/server/permissions/PermissionSet;)Z"))
+    @WrapOperation(method = "handleDebugKeys", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/permissions/PermissionCheck;check(Lnet/minecraft/server/permissions/PermissionSet;)Z"), expect = 2)
     private boolean allow(PermissionCheck instance, PermissionSet permissionPredicate, Operation<Boolean> original) {
         return Config.get().ignoreOpGamemodeSwitcher || original.call(instance, permissionPredicate);
     }
