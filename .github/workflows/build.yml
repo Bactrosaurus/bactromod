@@ -1,0 +1,57 @@
+name: Build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '25'
+      - uses: gradle/actions/setup-gradle@v6
+      - name: Build and test
+        run: ./gradlew build --no-daemon
+      - name: Install software rendering dependencies
+        run: sudo apt-get update && sudo apt-get install -y xvfb libgl1-mesa-dri mesa-vulkan-drivers libvulkan1
+      - name: Test client Mixins and fullbright
+        env:
+          LIBGL_ALWAYS_SOFTWARE: 'true'
+          SDL_VIDEO_DRIVER: x11
+          VK_DRIVER_FILES: /usr/share/vulkan/icd.d/lvp_icd.x86_64.json
+        run: xvfb-run -a ./gradlew runClientGameTest --no-daemon
+      - name: Upload mod jars
+        uses: actions/upload-artifact@v7
+        with:
+          name: bactromod-${{ github.sha }}
+          path: build/libs/*.jar
+          retention-days: 7
+          if-no-files-found: error
+      - name: Upload failure diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: diagnostics-${{ github.sha }}
+          path: |
+            build/reports/tests/
+            build/test-results/
+            build/run/clientGameTest/logs/
+            build/run/clientGameTest/crash-reports/
+            build/run/clientGameTest/screenshots/
+          retention-days: 3
+          if-no-files-found: ignore

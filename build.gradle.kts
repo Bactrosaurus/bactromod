@@ -20,6 +20,34 @@ dependencies {
     implementation("net.fabricmc:fabric-loader:${gradleProperty("loader_version")}")
     implementation("net.fabricmc.fabric-api:fabric-api:${gradleProperty("fabric_api_version")}")
     compileOnly("com.terraformersmc:modmenu:${gradleProperty("modmenu_version")}")
+    testImplementation(platform("org.junit:junit-bom:${gradleProperty("junit_version")}"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+tasks.test {
+    useJUnitPlatform()
+    dependsOn(tasks.jar)
+    inputs.file(tasks.jar.flatMap { it.archiveFile })
+    workingDir = layout.buildDirectory.dir("unit-test").get().asFile
+    doFirst { workingDir.mkdirs() }
+    systemProperty("bactromod.test.jar", tasks.jar.get().archiveFile.get().asFile.absolutePath)
+    systemProperty("bactromod.test.version", project.version.toString())
+}
+
+fabricApi {
+    configureTests {
+        createSourceSet = true
+        modId = "bactromod-test"
+        enableGameTests = false
+        enableClientGameTests = true
+    }
+}
+
+loom {
+    runConfigs.named("clientGameTest") {
+        systemProperties.put("mixin.debug.countInjections", "true")
+    }
 }
 
 tasks.processResources {

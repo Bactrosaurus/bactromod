@@ -1,73 +1,73 @@
-# BactroMod Agent Guide
+# Repository Guidelines
 
-## Project shape
+## Project Structure & Module Organization
 
-- BactroMod is a client-only Fabric mod. It has no server component and currently has no Fabric `client` entrypoint; behavior is implemented by client Mixins.
-- The only declared Java entrypoint is the optional ModMenu adapter: `de.daniel.bactromod.impl.ModMenuIntegration`.
-- The repository is a single Gradle/Loom project. Main source is under `src/main/java/de/daniel/bactromod/`; resources are under `src/main/resources/`.
+BactroMod is a single Gradle/Loom project: a client-only Fabric mod for Minecraft 26.3. Behavior runs through Mixins; there is no Fabric `client` entrypoint or server component. Fabric API is required; ModMenu is optional and its adapter is the only declared Java entrypoint.
 
-## Build and run
+Java sources live in `src/main/java/de/daniel/bactromod/`. Resources live in `src/main/resources/`: `fabric.mod.json` declares dependencies/entrypoints, `bactromod.mixins.json` registers injections, and `assets/bactromod/` contains the icon and translations.
 
-- Use the checked-in Gradle wrapper, not a system Gradle installation.
-- The current toolchain is Java 25+, Minecraft 26.3, Fabric Loader 0.19.5, Fabric API `0.160.5+26.3`, ModMenu `21.0.0-beta.1`, Loom `1.17-SNAPSHOT`, and Gradle 9.7.1. The authoritative dependency/version values are in `gradle.properties` and the wrapper version is in `gradle/wrapper/gradle-wrapper.properties`.
-- `./gradlew build` is the repository verification command. It compiles the mod, processes resources, and creates the mod jar and sources jar in `build/libs/`.
-- `./gradlew runClient` launches the Minecraft development client using the project-local `run/` directory.
-- There is no test suite, lint task, or CI workflow in this repository. A successful build checks compilation and resource processing, but not whether every Mixin applies correctly at runtime.
-- Gradle is configured with a 1 GiB heap, parallel execution, and configuration cache disabled. Preserve these settings unless the build setup itself is being changed.
+## Configuration & UI Flow
 
-## Metadata and Mixins
+- `config/ConfigData`: settings, defaults, and UI annotations. `config/optiontypes/` provides runtime field annotations for Boolean and Integer controls.
+- `config/Config`: loads once on class initialization; `Config.get()` returns the same mutable instance. Its package-private `ConfigFile` helper owns Gson persistence for `<gameDir>/config/bactromod.json` and accepts a path so tests can use temporary directories. UI callbacks mutate settings and call `Config.save()`; Mixins read them at use time. External file edits are not hot-reloaded.
+- `config/ConfigScreen`: discovers annotated fields through reflection, builds vanilla `OptionInstance` controls, and derives translation keys from field names. Its nested item-scaling screen lists registered items except air, includes saved entries, sorts by localized name, and searches names, registry paths, or description IDs. Each change saves immediately.
+- `impl/ModMenuIntegration` and `mixins/settingsbutton/MixinCreditsAndAttributionScreen`: two routes to the same config screen. Preserve settings access without ModMenu.
 
-- `src/main/resources/fabric.mod.json` is expanded by `processResources`. Keep `${version}`, `${loader_version}`, `${minecraft_version}`, `${fabric_api_version}`, and `${modmenu_version}` there; change their sources in `gradle.properties` instead of hardcoding expanded values in the metadata.
-- The mod depends on Fabric Loader, Minecraft, Java 25+, and Fabric API. Fabric Loader and Fabric API use their configured versions as inclusive minimums so newer compatible releases are accepted; Minecraft remains constrained to the configured release line because Mixins require version-specific verification. ModMenu is `compileOnly` at build time, a suggested optional runtime dependency, and also uses its configured version as an inclusive minimum.
-- Register gameplay Mixins in `src/main/resources/bactromod.mixins.json`. It is a client mixin config with `compatibilityLevel` `JAVA_25`, `required: false`, and `injectors.defaultRequire: 0`.
-- Every registered mixin must have an `@Mixin` annotation. `overwrites.requireAnnotations` also requires explicit `@Overwrite` annotations if overwrite methods are added. Keep the registered name synchronized with the package and class name.
-- Feature Mixins live under `src/main/java/de/daniel/bactromod/mixins/features/<feature>/` and generally use the convention `Mixin<ExactVanillaClassName>`. Multiple classes with the same simple name are intentional because each feature remains isolated in its own package.
-- Prefer composable Mixin Extras injectors such as `@WrapOperation` over `@Redirect`, and call the wrapped operation whenever the feature does not intentionally replace it.
-- The fallback settings access is a button injected into `CreditsAndAttributionScreen` by `MixinCreditsAndAttributionScreen`; it is not a Fabric entrypoint. Preserve it when changing the config UI.
+## Feature Map
 
-## Current feature wiring
+Each package below lives under `mixins/features/`. Targets name vanilla classes; Mixin classes use the same name prefixed with `Mixin`.
 
-The registered feature packages and their configuration fields are:
+| Package | Vanilla target | Settings and behavior |
+| --- | --- | --- |
+| `fullbright` | `LightmapRenderStateExtractor` | `gammaMultiplier`: cubic ambient-color blend; 1 is vanilla, 15 fullbright. |
+| `nightvision` | `GameRenderer` | `nightVision=false` suppresses night-vision intensity. |
+| `nopumpkinblur` | `Hud` | `pumpkinBlur=false` hides the carved-pumpkin overlay. |
+| `lowfire` | `ScreenEffectRenderer` | `fireOffset`: first-person fire translation. |
+| `lowshield` | `FirstPersonHandsAndItemsRenderer` | `shieldOffset`: first-person shield translation. |
+| `itemscaling` | `FirstPersonHandsAndItemsRenderer` | `itemScalingFactors`: per-item scale percentages, 1–100. |
+| `riptidetridentshield` | `FirstPersonHandsAndItemsRenderer` | `fixShieldRiptideTrident`: adjusts the spin-attack branch for shields. |
+| `boatmap` | `FirstPersonHandsAndItems` | `showMapWhileInBoat`: changes both hands' filled-map height interpolation. |
+| `fog` | `FogRenderer` | Six `*Fog` toggles: lava, powder snow, blindness, darkness, water, atmospheric. |
+| `noopgmswitcher` | `KeyboardHandler`, `GameModeSwitcherScreen` | `ignoreOpGamemodeSwitcher`: bypasses client permission checks; grants no server permissions. |
 
-- `fullbright`: blends the lightmap's ambient color toward white on a cubic curve using `gammaMultiplier` (default 15, range 1–15); 1 preserves vanilla lighting and 15 provides full brightness. Changing this setting marks the vanilla lightmap extractor dirty so the effect applies without touching Minecraft's brightness slider.
-- `nightvision`: returns zero from `GameRenderer.nightVisionScale` when `nightVision` is disabled (default enabled).
-- `nopumpkinblur`: hides a carved pumpkin from the camera overlay when `pumpkinBlur` is disabled (default disabled).
-- `lowfire`: translates the first-person fire overlay by `fireOffset / 100` (default -30, range -100–100) inside a balanced pose-stack scope.
-- `lowshield`: translates first-person shield rendering by `shieldOffset / 100` (default -20, range -100–100) before item scaling so position and scale remain independent.
-- `boatmap`: changes the first- and off-hand filled-map hand-height interpolation in `FirstPersonHandsAndItems.tick` when `showMapWhileInBoat` is enabled (default enabled).
-- `fog`: independently controls lava, powder snow, blindness, darkness, water, and atmospheric fog through `lavaFog`, `powderSnowFog`, `blindnessFog`, `darknessFog`, `waterFog`, and `atmosphericFog` (all default disabled).
-- `itemscaling`: applies per-item first-person scale values from `itemScalingFactors` (default 100 in the UI, range 1–100).
-- `riptidetridentshield`: replaces the affected shield transform during a riptide trident spin when `fixShieldRiptideTrident` is enabled (default enabled).
-- `noopgmswitcher`: bypasses the relevant permission checks for the F3+F4 game-mode switcher when `ignoreOpGamemodeSwitcher` is enabled (default enabled).
+## Build, Test, and Development Commands
 
-## Configuration and settings UI
+Use Java 25+ and the checked-in Gradle wrapper:
 
-- `Config.get()` returns the single cached `ConfigData` instance initialized from `<gameDir>/config/bactromod.json`. Mutate that instance and call `Config.save()`; saving writes the JSON through a temporary file and moves it into place.
-- Mixins must read the current config at use time; do not copy settings into static fields during class initialization. If one method needs several settings, call `Config.get()` once and reuse the returned `ConfigData`.
-- Main-screen settings use a type-specific annotation from `config.optiontypes`: `@BooleanOption` creates a toggle and `@IntegerOption(min, max)` creates an integer slider. Keep each data type in its own annotation and option builder; do not inspect field types to choose UI controls.
-- A new setting requires matching `bactromod.options.<field>` and `bactromod.options.<field>.desc` translations in every file under `assets/bactromod/lang/`.
-- `itemScalingFactors` is a `Map<String, Integer>` keyed by item description IDs and is deliberately not annotation-driven. The item-scaling sub-screen enumerates registered items, excludes air, sorts by localized name, supports searching by localized name, registry path, or description ID, and persists each change immediately.
-- If the config file contains invalid JSON, `Config` moves it beside the config as `bactromod_old_<epoch>.json` (adding a suffix on collision), logs the backup location, and recreates defaults. Preserve this recovery behavior when changing config loading.
-- Gson does not enforce the UI ranges when loading hand-edited JSON. Fullbright, offsets, and item scale values are clamped at their consumption boundaries; preserve that validation when changing those paths.
+- `./gradlew build`: compile, process resources, and produce jars in `build/libs/`.
+- `./gradlew test`: run JUnit config and packaged-resource tests; reports go to `build/reports/tests/test/`.
+- `./gradlew runClientGameTest`: run the automated fullbright/settings-screen regression in a disposable `build/run/clientGameTest/` directory, with injection counting enabled.
+- `./gradlew runClient`: launch the development client using `run/`.
+- `./gradlew genSources`: generate Minecraft sources for inspecting injection targets.
 
-## Runtime-sensitive Mixins
+Change versions in `gradle.properties`; retain expansion placeholders in `fabric.mod.json`, dependency minimums, and the Minecraft release-line constraint.
 
-The following selectors are coupled to the current Minecraft 26.3 implementation and need runtime verification after a Minecraft or mapping upgrade:
+## Coding Style & Naming Conventions
 
-- `MixinFogRenderer` maps the order of `FOG_ENVIRONMENTS` by index: lava 0, powder snow 1, blindness 2, darkness 3, water 4, atmospheric 5.
-- `MixinLightmapRenderStateExtractor` detects `gammaMultiplier` changes before extraction to request a vanilla lightmap refresh, then adjusts the freshly extracted ambient color; keep it within its vanilla range and preserve the nonlinear curve that prevents intermediate settings from saturating.
-- `MixinKeyboardHandler` wraps both `PermissionCheck.check` calls in `handleDebugKeys`; `MixinGameModeSwitcherScreen` wraps the switcher's permission check.
-- The low-shield and item-scaling Mixins target the same two item submissions. Their explicit injector order must keep shield translation before scaling while the features remain in separate packages.
-- The riptide shield Mixin wraps the `AvatarRenderState.isAutoSpinAttack` field read in `submitArmWithItem`.
-- Several render Mixins depend on exact method descriptors and invocation targets in `FirstPersonHandsAndItems`, `FirstPersonHandsAndItemsRenderer`, `ScreenEffectRenderer`, `LightmapRenderStateExtractor`, `GameRenderer`, and `Hud`.
+Use four-space indentation, PascalCase classes, and camelCase methods/fields. Follow neighboring code; no formatter or linter is configured. Keep feature Mixins separate, named `Mixin<ExactVanillaClassName>`, annotated with `@Mixin`, and registered in `bactromod.mixins.json`. Prefer composable `@WrapOperation` hooks; call the wrapped operation unless intentionally replacing its behavior.
 
-When changing Minecraft versions or any target method, inspect the decompiled target and run the development client to verify each affected feature. Do not treat `./gradlew build` alone as proof that injections still apply.
-Run `JAVA_TOOL_OPTIONS='-Dmixin.debug.countInjections=true -Dmixin.debug.export=true' ./gradlew runClient` after changing selectors; every injector declares its expected match count.
+## Configuration & Rendering Safeguards
 
-## Adding or changing a feature
+Read live settings through `Config.get()`; persist changes with `Config.save()`. Preserve temporary-file saves, malformed-JSON backups, and consumption-time clamping.
 
-1. Identify whether the behavior belongs in an existing feature package or a new client Mixin.
-2. For a configurable option, add an annotated field in `ConfigData`, then add its name and description to every language file. The field name becomes the translation-key suffix automatically. For item scaling, update the map/UI path instead.
-3. Add the exact Mixin class name to `bactromod.mixins.json` and ensure the class has `@Mixin`.
-4. Preserve the live `Config.get()` access pattern and safe config recovery behavior.
-5. Run `./gradlew build`; for injection-point or Minecraft-version changes, also run `./gradlew runClient` and exercise the affected feature.
+Add settings to `ConfigData` using `@BooleanOption` or `@IntegerOption(min, max)`; existing types need no manual UI registration. Keep separate annotations/builders for new data types rather than inspecting field types. Add `bactromod.options.<field>` and `bactromod.options.<field>.desc` translations in every language, matching official Minecraft terminology. Item scaling remains a separate map/UI path keyed by item description IDs.
+
+Preserve fullbright's change-triggered lightmap refresh before extraction and cubic blend afterward. Keep fire-overlay pose stacks balanced with `try/finally`. Shield translation (injector order 900) must precede item scaling (1000) at both item submissions. Recheck fog indices (0–5 in the table's listed order), ordinals, local captures, and exact selectors after Minecraft upgrades.
+
+## Testing Guidelines
+
+JUnit tests under `src/test/java/` cover config persistence/recovery, translations, and packaged metadata. Use `*Test` names and temporary directories. Client tests under `src/gametest/` exercise actual transformed Minecraft classes; their test mod is excluded from release jars. The fullbright test opens settings, pauses a world, and checks extraction after config changes without vanilla ticks or gamma changes. It checks render state, not final GPU pixels.
+
+`.github/workflows/build.yml` runs the build and client test on pushes/PRs and manual dispatch, using Java 25 and software rendering on a standard Ubuntu runner. Jars expire after seven days; failure diagnostics after three. No coverage target is enforced.
+
+Build success alone does not verify Mixin application; the Mixin configuration uses `required: false` and `defaultRequire: 0`. Run `./gradlew runClientGameTest` after Mixin changes. After selector or Minecraft-version changes, also inspect vanilla sources and manually exercise affected features:
+
+```bash
+JAVA_TOOL_OPTIONS='-Dmixin.debug.countInjections=true -Dmixin.debug.export=true' ./gradlew runClient
+```
+
+Declare expected injection counts and exercise affected features in-game. For brightness changes, test the mod slider independently while paused; check rendering changes on OpenGL and Vulkan where available.
+
+## Commit & Pull Request Guidelines
+
+Recent commits commonly use `fix:`, `docs:`, and `chore:` prefixes, sometimes referencing issues such as `(#25)`. Use concise, descriptive subjects. PRs should explain behavior changes, link relevant issues, report build/runtime checks, and include screenshots for visible changes.

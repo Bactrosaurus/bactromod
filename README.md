@@ -38,7 +38,35 @@ BactroMod settings can be changed in-game or edited directly in the config file.
 ```bash
 ./gradlew build       # produces the mod jar in build/libs/
 ./gradlew runClient   # launches a dev Minecraft instance under run/
+./gradlew test        # runs config and packaged-resource regression tests
+./gradlew runClientGameTest # tests settings access and fullbright in a disposable world
 ```
+
+Use Java 25 or newer. Unit tests use temporary directories; client tests use
+`build/run/clientGameTest/`, which is recreated on each run. Tests are not
+included in the released mod jar.
+
+### Automated checks
+
+The [Build workflow](.github/workflows/build.yml) runs on pushes, pull requests,
+and manual dispatch. It builds the mod, runs config/translation/metadata tests,
+then launches a Minecraft client with strict Mixin injection counting and
+software rendering. The client regression checks paused fullbright changes,
+intermediate values, clamping, and restoration of vanilla lighting. It does not
+replace visual checks on OpenGL and Vulkan before releases.
+
+To enable it, push the workflow and test files to GitHub. If Actions is disabled,
+enable it under **Settings → Actions → General**. View results under
+**Actions → Build**; successful runs provide downloadable jars for seven days,
+and failed runs retain diagnostic reports/logs for three days. No custom secrets,
+deployment service, or paid runner is required.
+
+Standard hosted runners are free for public repositories; private repositories
+use the account's included allowance. Keep artifact/cache storage within the
+free limits. If a payment method is configured, use an Actions budget with
+**Stop usage when budget limit is reached** to prevent paid overages; workflow
+YAML cannot enforce account billing settings. See
+[GitHub Actions billing](https://docs.github.com/en/billing/concepts/product-billing/github-actions).
 
 ## 📸 Screenshots
 
