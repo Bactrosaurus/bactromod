@@ -50,9 +50,10 @@ included in the released mod jar.
 
 The [Build workflow](.github/workflows/build.yml) runs on pushes to `dev` and
 `main`, pull requests targeting `main`, and manual dispatch. Commit directly to
-`dev`; merge it into the protected, default `main` branch through a pull request
-after the `build` check passes. `dev` does not require a passing check to accept
-commits. Keep `dev` in sync with `main` after each release merge.
+`dev`; merge it into the default `main` branch through a pull request after the
+`build` check passes. Protect `main` in GitHub settings by requiring a pull
+request and the `build` check; leave `dev` unprotected. Keep `dev` in sync with
+`main` after each release merge.
 
 The workflow builds the mod, runs config/translation/metadata tests,
 then launches a Minecraft client with strict Mixin injection counting and
