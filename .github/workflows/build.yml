@@ -28,13 +28,20 @@ jobs:
       - name: Build and test
         run: ./gradlew build --no-daemon
       - name: Install software rendering dependencies
-        run: sudo apt-get update && sudo apt-get install -y xvfb libgl1-mesa-dri mesa-vulkan-drivers libvulkan1
+        run: sudo apt-get update && sudo apt-get install -y xvfb libgl1-mesa-dri libglx-mesa0 mesa-vulkan-drivers libvulkan1 vulkan-tools
       - name: Test client Mixins and fullbright
         env:
           LIBGL_ALWAYS_SOFTWARE: 'true'
           SDL_VIDEO_DRIVER: x11
-          VK_DRIVER_FILES: /usr/share/vulkan/icd.d/lvp_icd.x86_64.json
-        run: xvfb-run -a ./gradlew runClientGameTest --no-daemon
+          # Let the Vulkan loader discover Lavapipe; Mesa's manifest filename varies by package version.
+          VK_LOADER_DRIVERS_SELECT: '*lvp*'
+        run: |
+          timeout --kill-after=15s 6m xvfb-run -a -s "-screen 0 1280x1024x24" bash -euo pipefail -c '
+            vulkaninfo --summary | tee build/vulkan-info.txt
+            grep -q VK_KHR_surface build/vulkan-info.txt
+            grep -Eq "llvmpipe|lavapipe" build/vulkan-info.txt
+            ./gradlew runClientGameTest --no-daemon --args="--graphicsBackend vulkan"
+          '
       - name: Upload mod jars
         uses: actions/upload-artifact@v7
         with:
@@ -50,6 +57,7 @@ jobs:
           path: |
             build/reports/tests/
             build/test-results/
+            build/vulkan-info.txt
             build/run/clientGameTest/logs/
             build/run/clientGameTest/crash-reports/
             build/run/clientGameTest/screenshots/

@@ -51,7 +51,9 @@ included in the released mod jar.
 The [Build workflow](.github/workflows/build.yml) runs on pushes, pull requests,
 and manual dispatch. It builds the mod, runs config/translation/metadata tests,
 then launches a Minecraft client with strict Mixin injection counting and
-software rendering. The client regression checks paused fullbright changes,
+software Vulkan rendering. A graphics preflight verifies Lavapipe and surface
+support; a six-minute timeout prevents graphics startup failures from hanging
+the entire job. The client regression checks paused fullbright changes,
 intermediate values, clamping, and restoration of vanilla lighting. It does not
 replace visual checks on OpenGL and Vulkan before releases.
 
