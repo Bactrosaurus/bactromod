@@ -6,7 +6,8 @@
   "environment": "client",
   "entrypoints": {
     "fabric-client-gametest": [
-      "de.daniel.bactromod.gametest.FullbrightTest"
+      "de.daniel.bactromod.gametest.FullbrightTest",
+      "de.daniel.bactromod.gametest.FogTest"
     ]
   },
   "depends": {

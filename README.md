@@ -39,7 +39,7 @@ BactroMod settings can be changed in-game or edited directly in the config file.
 ./gradlew build       # produces the mod jar in build/libs/
 ./gradlew runClient   # launches a dev Minecraft instance under run/
 ./gradlew test        # runs config and packaged-resource regression tests
-./gradlew runClientGameTest # tests settings access and fullbright in a disposable world
+./gradlew runClientGameTest # tests fullbright and fog in disposable client worlds
 ```
 
 Use Java 25 or newer. Unit tests use temporary directories; client tests use
@@ -48,14 +48,19 @@ included in the released mod jar.
 
 ### Automated checks
 
-The [Build workflow](.github/workflows/build.yml) runs on pushes, pull requests,
-and manual dispatch. It builds the mod, runs config/translation/metadata tests,
+The [Build workflow](.github/workflows/build.yml) runs on pushes to `dev` and
+`main`, pull requests targeting `main`, and manual dispatch. Commit directly to
+`dev`; merge it into the protected, default `main` branch through a pull request
+after the `build` check passes. `dev` does not require a passing check to accept
+commits. Keep `dev` in sync with `main` after each release merge.
+
+The workflow builds the mod, runs config/translation/metadata tests,
 then launches a Minecraft client with strict Mixin injection counting and
 software Vulkan rendering. A graphics preflight verifies Lavapipe and surface
 support; a six-minute timeout prevents graphics startup failures from hanging
-the entire job. The client regression checks paused fullbright changes,
-intermediate values, clamping, and restoration of vanilla lighting. It does not
-replace visual checks on OpenGL and Vulkan before releases.
+the entire job. Client regressions check paused fullbright changes, brightness
+clamping and restoration, and atmospheric fog toggling. They do not replace
+visual checks on OpenGL and Vulkan before releases.
 
 To enable it, push the workflow and test files to GitHub. If Actions is disabled,
 enable it under **Settings → Actions → General**. View results under
