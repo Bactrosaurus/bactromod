@@ -31,7 +31,7 @@ jobs:
         run: ./gradlew build --no-daemon
       - name: Install software rendering dependencies
         run: sudo apt-get update && sudo apt-get install -y xvfb libgl1-mesa-dri libglx-mesa0 mesa-vulkan-drivers libvulkan1 vulkan-tools
-      - name: Test client Mixins and fullbright
+      - name: Test client Mixins and rendering
         env:
           LIBGL_ALWAYS_SOFTWARE: 'true'
           SDL_VIDEO_DRIVER: x11
