@@ -46,36 +46,6 @@ Use Java 25 or newer. Unit tests use temporary directories; client tests use
 `build/run/clientGameTest/`, which is recreated on each run. Tests are not
 included in the released mod jar.
 
-### Automated checks
-
-The [Build workflow](.github/workflows/build.yml) runs on pushes to `dev` and
-`main`, pull requests targeting `main`, and manual dispatch. Commit directly to
-`dev`; merge it into the default `main` branch through a pull request after the
-`build` check passes. Protect `main` in GitHub settings by requiring a pull
-request and the `build` check; leave `dev` unprotected. Keep `dev` in sync with
-`main` after each release merge.
-
-The workflow builds the mod, runs config/translation/metadata tests,
-then launches a Minecraft client with strict Mixin injection counting and
-software Vulkan rendering. A graphics preflight verifies Lavapipe and surface
-support; a six-minute timeout prevents graphics startup failures from hanging
-the entire job. Client regressions check paused fullbright changes, brightness
-clamping and restoration, and atmospheric fog toggling. They do not replace
-visual checks on OpenGL and Vulkan before releases.
-
-To enable it, push the workflow and test files to GitHub. If Actions is disabled,
-enable it under **Settings → Actions → General**. View results under
-**Actions → Build**; successful runs provide downloadable jars for seven days,
-and failed runs retain diagnostic reports/logs for three days. No custom secrets,
-deployment service, or paid runner is required.
-
-Standard hosted runners are free for public repositories; private repositories
-use the account's included allowance. Keep artifact/cache storage within the
-free limits. If a payment method is configured, use an Actions budget with
-**Stop usage when budget limit is reached** to prevent paid overages; workflow
-YAML cannot enforce account billing settings. See
-[GitHub Actions billing](https://docs.github.com/en/billing/concepts/product-billing/github-actions).
-
 ## 📸 Screenshots
 
 ![](https://i.imgur.com/CIdyeb7.png)
