@@ -50,5 +50,8 @@ public final class ConfigData {
     @BooleanOption
     public boolean ignoreOpGamemodeSwitcher = true;
 
+    @IntegerOption(max = 100, min = 1)
+    public int totemOverlayPercentSize = 100;
+
     public Map<String, Integer> itemScalingFactors = new TreeMap<>();
 }

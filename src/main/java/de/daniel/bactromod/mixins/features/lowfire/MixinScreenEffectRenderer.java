@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.util.Mth;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(ScreenEffectRenderer.class)
 public class MixinScreenEffectRenderer {
@@ -22,5 +23,22 @@ public class MixinScreenEffectRenderer {
         } finally {
             poseStack.popPose();
         }
+    }
+
+    @Redirect(
+            method = "renderItemActivationAnimation",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lcom/mojang/blaze3d/vertex/PoseStack;scale(FFF)V"
+            )
+    )
+    private void redirectScale(PoseStack instance, float xScale, float yScale, float zScale) {
+        float multiple = ((float) Config.get().totemOverlayPercentSize) / 100f;
+
+        xScale *= multiple;
+        yScale *= multiple;
+        zScale *= multiple;
+
+        instance.scale(xScale, yScale, zScale);
     }
 }
