@@ -48,6 +48,9 @@
   "bactromod.options.nightVision": "夜视",
   "bactromod.options.nightVision.desc": "控制是否显示夜视效果带来的亮度增强。",
 
+  "bactromod.options.totemOverlayPercentSize": "不死图腾特效大小",
+  "bactromod.options.totemOverlayPercentSize.desc": "调整不死图腾生效时显示的特效大小。100 保持原版大小。",
+
   "modmenu.summaryTranslation.bactromod": "一个轻量的客户端模组，提供实用的视觉与游戏体验调整。",
   "modmenu.descTranslation.bactromod": "一个轻量的客户端模组，提供实用的视觉与游戏体验调整。"
 }

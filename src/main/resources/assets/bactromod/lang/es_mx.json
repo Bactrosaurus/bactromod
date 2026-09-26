@@ -48,6 +48,9 @@
   "bactromod.options.nightVision": "Visión nocturna",
   "bactromod.options.nightVision.desc": "Controla si se muestra el aumento de brillo del efecto de Visión nocturna.",
 
+  "bactromod.options.totemOverlayPercentSize": "Tamaño de la superposición del tótem",
+  "bactromod.options.totemOverlayPercentSize.desc": "Ajusta el tamaño de la animación del Tótem de la inmortalidad que aparece cuando un tótem te salva. 100 mantiene el tamaño normal.",
+
   "modmenu.summaryTranslation.bactromod": "Un mod ligero para el cliente con ajustes visuales y de jugabilidad útiles.",
   "modmenu.descTranslation.bactromod": "Un mod ligero para el cliente con ajustes visuales y de jugabilidad útiles."
 }

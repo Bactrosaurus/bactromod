@@ -48,6 +48,9 @@
   "bactromod.options.nightVision": "Night Vision",
   "bactromod.options.nightVision.desc": "Controls whether the brightness boost from the Night Vision effect is rendered.",
 
+  "bactromod.options.totemOverlayPercentSize": "Totem Overlay Size",
+  "bactromod.options.totemOverlayPercentSize.desc": "Scales the Totem of Undying animation shown after a totem saves you. 100 keeps the vanilla size.",
+
   "modmenu.summaryTranslation.bactromod": "A lightweight client-side mod with useful visual and gameplay tweaks.",
   "modmenu.descTranslation.bactromod": "A lightweight client-side mod with useful visual and gameplay tweaks."
 }
