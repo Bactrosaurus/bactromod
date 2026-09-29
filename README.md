@@ -16,6 +16,7 @@ BactroMod is a client-side Fabric mod for visual clarity and quality-of-life twe
 | 📐 **Item scaling**             | Scale individual items in first-person view via a dedicated sub-screen with search.                   |
 | 🌊 **Riptide + shield fix**     | Corrects shield rendering position during riptide use.                                                |
 | 🎮 **No-OP gamemode switcher**  | Enables the debug gamemode-switch screen without OP-level checks.                                     |
+| 🪅 **Totem overlay size**       | Scale down the Totem of Undying animation when a totem saves you.                                     |
 
 ## ⚙️ Configuration
 

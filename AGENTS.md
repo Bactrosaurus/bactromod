@@ -29,6 +29,7 @@ Each package below lives under `mixins/features/`. Targets name vanilla classes;
 | `boatmap` | `FirstPersonHandsAndItems` | `showMapWhileInBoat`: changes both hands' filled-map height interpolation. |
 | `fog` | `FogRenderer` | Six `*Fog` toggles: lava, powder snow, blindness, darkness, water, atmospheric. |
 | `noopgmswitcher` | `KeyboardHandler`, `GameModeSwitcherScreen` | `ignoreOpGamemodeSwitcher`: bypasses client permission checks; grants no server permissions. |
+| `totemoverlay` | `ScreenEffectRenderer` | `totemOverlayPercentSize`: scales the item activation animation, 1–100; only when the activated item is a Totem of Undying. |
 
 ## Build, Test, and Development Commands
 

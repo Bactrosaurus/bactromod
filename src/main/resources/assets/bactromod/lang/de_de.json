@@ -48,6 +48,9 @@
   "bactromod.options.nightVision": "Nachtsicht",
   "bactromod.options.nightVision.desc": "Legt fest, ob die Helligkeitsverstärkung des Nachtsichteffekts dargestellt wird.",
 
+  "bactromod.options.totemOverlayPercentSize": "Größe des Totem-Overlays",
+  "bactromod.options.totemOverlayPercentSize.desc": "Skaliert die Animation des Totems der Unsterblichkeit, die nach der Rettung durch ein Totem erscheint. 100 behält die normale Größe bei.",
+
   "modmenu.summaryTranslation.bactromod": "Eine schlanke clientseitige Mod mit nützlichen Grafik- und Spielanpassungen.",
   "modmenu.descTranslation.bactromod": "Eine schlanke clientseitige Mod mit nützlichen Grafik- und Spielanpassungen."
 }
