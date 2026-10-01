@@ -48,6 +48,9 @@
   "bactromod.options.nightVision": "Ночное зрение",
   "bactromod.options.nightVision.desc": "Определяет, отображается ли усиление яркости от эффекта ночного зрения.",
 
+  "bactromod.options.totemOverlayPercentSize": "Размер анимации тотема",
+  "bactromod.options.totemOverlayPercentSize.desc": "Изменяет размер анимации тотема бессмертия, которая появляется после спасения тотемом. 100 сохраняет обычный размер.",
+
   "modmenu.summaryTranslation.bactromod": "Лёгкий клиентский мод с полезными визуальными и игровыми улучшениями.",
   "modmenu.descTranslation.bactromod": "Лёгкий клиентский мод с полезными визуальными и игровыми улучшениями."
 }
