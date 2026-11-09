@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-BactroMod is a single Gradle/Loom project: a client-only Fabric mod for Minecraft 26.3. Behavior runs through Mixins; there is no Fabric `client` entrypoint or server component. Fabric API is required; ModMenu is optional and its adapter is the only declared Java entrypoint.
+BactroMod is a single Gradle/Loom project: a client-only Fabric mod for Minecraft 26.4 (currently built against snapshots). Behavior runs through Mixins; there is no Fabric `client` entrypoint or server component. Fabric API is required; ModMenu is optional and its adapter is the only declared Java entrypoint.
 
 Java sources live in `src/main/java/de/daniel/bactromod/`. Resources live in `src/main/resources/`: `fabric.mod.json` declares dependencies/entrypoints, `bactromod.mixins.json` registers injections, and `assets/bactromod/` contains the icon and translations.
 
@@ -39,7 +39,7 @@ Use Java 25+ and the checked-in Gradle wrapper:
 - `./gradlew runClient`: launch the development client using `run/`.
 - `./gradlew genSources`: generate Minecraft sources for inspecting injection targets.
 
-Change versions in `gradle.properties`; retain expansion placeholders in `fabric.mod.json`, dependency minimums, and the Minecraft release-line constraint.
+Change versions in `gradle.properties`; retain expansion placeholders in `fabric.mod.json`, dependency minimums, and the Minecraft release-line constraint. `build.gradle.kts` derives that constraint from `minecraft_version`: snapshots and pre-releases become `~26.4-` (Fabric Loader normalizes `26.4-snapshot-7` to `26.4-alpha.7`), releases stay `~26.4`. Use the Fabric API build for the same release line (`+26.4`, not `+26.3`).
 
 ## Coding Style & Naming Conventions
 

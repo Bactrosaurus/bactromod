@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(FirstPersonHandsAndItemsRenderer.class)
 public class MixinFirstPersonHandsAndItemsRenderer {
-    @WrapOperation(method = "submitArmWithItem", at = @At(value = "FIELD", target = "Lnet/minecraft/client/renderer/entity/state/AvatarRenderState;isAutoSpinAttack:Z", opcode = Opcodes.GETFIELD), expect = 1)
+    @WrapOperation(method = "submitArmWithItem", at = @At(value = "FIELD", target = "Lnet/minecraft/client/renderer/entity/state/AvatarRenderState;isAutoSpinAttack:Z", opcode = Opcodes.GETFIELD))
     private boolean fixShieldTransform(AvatarRenderState instance, Operation<Boolean> original) {
         return original.call(instance) && !(instance.leftHandItemStack.is(Items.SHIELD) && Config.get().fixShieldRiptideTrident);
     }

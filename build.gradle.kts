@@ -23,10 +23,14 @@ dependencies {
 }
 
 tasks.processResources {
+    // Fabric Loader normalizes snapshots (26.4-snapshot-7 -> 26.4-alpha.7), so pre-release builds
+    // depend on the whole release line ("~26.4-"); a release such as 26.4 keeps "~26.4".
+    val minecraftVersion = gradleProperty("minecraft_version")
+    val minecraftDependency = if ('-' in minecraftVersion) "~${minecraftVersion.substringBefore('-')}-" else "~$minecraftVersion"
     val properties = mapOf(
         "version" to version,
         "loader_version" to gradleProperty("loader_version"),
-        "minecraft_version" to gradleProperty("minecraft_version"),
+        "minecraft_dependency" to minecraftDependency,
         "fabric_api_version" to gradleProperty("fabric_api_version"),
         "modmenu_version" to gradleProperty("modmenu_version")
     )
