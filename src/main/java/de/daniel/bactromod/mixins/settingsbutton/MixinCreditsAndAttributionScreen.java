@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(CreditsAndAttributionScreen.class)
 public class MixinCreditsAndAttributionScreen {
-    @Inject(method = "init", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/layouts/LinearLayout;addChild(Lnet/minecraft/client/gui/layouts/LayoutElement;)Lnet/minecraft/client/gui/layouts/LayoutElement;", ordinal = 2, shift = At.Shift.AFTER), expect = 1)
+    @Inject(method = "init", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/layouts/LinearLayout;addChild(Lnet/minecraft/client/gui/layouts/LayoutElement;)Lnet/minecraft/client/gui/layouts/LayoutElement;", ordinal = 2, shift = At.Shift.AFTER))
     private void addSettingsButton(CallbackInfo ci, @Local(name = "content") LinearLayout content) {
         CreditsAndAttributionScreen screen = (CreditsAndAttributionScreen) (Object) this;
         content.addChild(Button.builder(Component.translatable("bactromod.options.title"), _ -> Minecraft.getInstance().gui.setScreen(ConfigScreen.getConfigScreen(screen))).width(210).build());

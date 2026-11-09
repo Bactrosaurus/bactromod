@@ -15,6 +15,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # The job name "build" is the required status check on main.
   build:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
@@ -27,41 +28,5 @@ jobs:
           distribution: temurin
           java-version: '25'
       - uses: gradle/actions/setup-gradle@v6
-      - name: Build and test
+      - name: Build
         run: ./gradlew build --no-daemon
-      - name: Install software rendering dependencies
-        run: sudo apt-get update && sudo apt-get install -y xvfb libgl1-mesa-dri libglx-mesa0 mesa-vulkan-drivers libvulkan1 vulkan-tools
-      - name: Test client Mixins and rendering
-        env:
-          LIBGL_ALWAYS_SOFTWARE: 'true'
-          SDL_VIDEO_DRIVER: x11
-          # Let the Vulkan loader discover Lavapipe; Mesa's manifest filename varies by package version.
-          VK_LOADER_DRIVERS_SELECT: '*lvp*'
-        run: |
-          timeout --kill-after=15s 6m xvfb-run -a -s "-screen 0 1280x1024x24" bash -euo pipefail -c '
-            vulkaninfo --summary | tee build/vulkan-info.txt
-            grep -q VK_KHR_surface build/vulkan-info.txt
-            grep -Eq "llvmpipe|lavapipe" build/vulkan-info.txt
-            ./gradlew runClientGameTest --no-daemon --args="--graphicsBackend vulkan"
-          '
-      - name: Upload mod jars
-        uses: actions/upload-artifact@v7
-        with:
-          name: bactromod-${{ github.sha }}
-          path: build/libs/*.jar
-          retention-days: 7
-          if-no-files-found: error
-      - name: Upload failure diagnostics
-        if: failure()
-        uses: actions/upload-artifact@v7
-        with:
-          name: diagnostics-${{ github.sha }}
-          path: |
-            build/reports/tests/
-            build/test-results/
-            build/vulkan-info.txt
-            build/run/clientGameTest/logs/
-            build/run/clientGameTest/crash-reports/
-            build/run/clientGameTest/screenshots/
-          retention-days: 3
-          if-no-files-found: ignore

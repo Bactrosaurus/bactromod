@@ -39,13 +39,9 @@ BactroMod settings can be changed in-game or edited directly in the config file.
 ```bash
 ./gradlew build       # produces the mod jar in build/libs/
 ./gradlew runClient   # launches a dev Minecraft instance under run/
-./gradlew test        # runs config and packaged-resource regression tests
-./gradlew runClientGameTest # tests fullbright and fog in disposable client worlds
 ```
 
-Use Java 25 or newer. Unit tests use temporary directories; client tests use
-`build/run/clientGameTest/`, which is recreated on each run. Tests are not
-included in the released mod jar.
+Use Java 25 or newer.
 
 ## 📸 Screenshots
 
