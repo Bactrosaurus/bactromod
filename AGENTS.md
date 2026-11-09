@@ -55,7 +55,7 @@ Preserve fullbright's change-triggered lightmap refresh before extraction and cu
 
 ## Verification
 
-There are no automated tests or CI workflows. Build success alone does not verify Mixin application; the Mixin configuration uses `required: false` and `defaultRequire: 0`. After Mixin, selector, or Minecraft-version changes, inspect vanilla sources and manually exercise affected features:
+There are no automated tests. `.github/workflows/build.yml` only runs `./gradlew build` (Java 25) on pushes to `dev`/`main`, PRs targeting `main`, and manual dispatch; its job name `build` is the required status check on `main`. Build success alone does not verify Mixin application; the Mixin configuration uses `required: false` and `defaultRequire: 0`. After Mixin, selector, or Minecraft-version changes, inspect vanilla sources and manually exercise affected features:
 
 ```bash
 JAVA_TOOL_OPTIONS='-Dmixin.debug.countInjections=true -Dmixin.debug.export=true' ./gradlew runClient
