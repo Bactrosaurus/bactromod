@@ -25,7 +25,7 @@ BactroMod settings can be changed in-game or edited directly in the config file.
 | Method | Description |
 | --- | --- |
 | **ModMenu** *(preferred)* | Config entry inside ModMenu (if installed). |
-| **Options screen** *(always shown)* | 20×20 BactroMod icon button beside `Done` in `OptionsScreen`. |
+| **Credits screen** *(fallback)* | Injected "BactroMod Settings" button in `CreditsAndAttributionScreen`. |
 | **Config file** | `<gameDir>/config/bactromod.json` (JSON, editable by hand) |
 
 ## 📦 Installation

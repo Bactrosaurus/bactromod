@@ -15,7 +15,7 @@
     "features.nopumpkinblur.MixinHud",
     "features.riptidetridentshield.MixinFirstPersonHandsAndItemsRenderer",
     "features.totemoverlay.MixinScreenEffectRenderer",
-    "settingsbutton.MixinOptionsScreen"
+    "settingsbutton.MixinCreditsAndAttributionScreen"
   ],
   "injectors": {
     "defaultRequire": 0
