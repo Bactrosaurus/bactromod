@@ -5,6 +5,7 @@
   "bactromod.options.itemScalingFactors": "Масштаб предметов",
   "bactromod.options.itemScalingFactors.desc": "Настраивает размер отдельных предметов в руке от первого лица, чтобы они меньше закрывали экран.",
   "bactromod.options.itemScalingFactors.itemDesc": "Масштаб предмета «%s» от первого лица.",
+  "bactromod.options.itemScalingFactors.resetAll": "Сбросить всё",
 
   "bactromod.options.gammaMultiplier": "Усиление яркости",
   "bactromod.options.gammaMultiplier.desc": "Управляет дополнительной яркостью мира. 1 использует обычное освещение, а 15 — максимальную яркость.",

@@ -5,6 +5,7 @@
   "bactromod.options.itemScalingFactors": "物品缩放",
   "bactromod.options.itemScalingFactors.desc": "调整第一人称视角下各个手持物品的大小，使其少遮挡屏幕。",
   "bactromod.options.itemScalingFactors.itemDesc": "%s的第一人称缩放比例。",
+  "bactromod.options.itemScalingFactors.resetAll": "全部重置",
 
   "bactromod.options.gammaMultiplier": "亮度增强",
   "bactromod.options.gammaMultiplier.desc": "控制世界的额外亮度。1 使用原版光照，15 提供最大亮度。",

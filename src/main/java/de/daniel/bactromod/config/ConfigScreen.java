@@ -14,6 +14,7 @@ import net.minecraft.client.gui.layouts.LinearLayout;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.options.OptionsSubScreen;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.item.Item;
@@ -95,7 +96,7 @@ public final class ConfigScreen extends OptionsSubScreen {
         );
     }
 
-    private static OptionInstance<Integer> itemScalingOption(String displayDescId, List<String> descriptionIds, int value, ConfigData data) {
+    private static OptionInstance<Integer> itemScalingOption(String displayDescId, List<String> descriptionIds, int value, ConfigData data, Runnable onChanged) {
         return new OptionInstance<>(
                 displayDescId,
                 OptionInstance.cachedConstantTooltip(Component.translatable(
@@ -109,6 +110,7 @@ public final class ConfigScreen extends OptionsSubScreen {
                         else data.itemScalingFactors.put(id, newValue);
                     }
                     Config.save();
+                    onChanged.run();
                 }
         );
     }
@@ -141,6 +143,7 @@ public final class ConfigScreen extends OptionsSubScreen {
     private static final class ItemScalingScreen extends OptionsSubScreen {
         private final List<ScalableItem> allItems = new ArrayList<>();
         private String searchFilter = "";
+        private Button resetButton;
 
         ItemScalingScreen(Screen parentScreen, Options options, Component title) {
             super(parentScreen, options, title);
@@ -164,7 +167,7 @@ public final class ConfigScreen extends OptionsSubScreen {
             });
 
             groups.values().stream()
-                    .map(group -> group.toScalableItem(data))
+                    .map(group -> group.toScalableItem(data, this::updateResetButton))
                     .sorted(Comparator.comparing(ScalableItem::localizedName, String.CASE_INSENSITIVE_ORDER))
                     .forEach(allItems::add);
         }
@@ -204,6 +207,31 @@ public final class ConfigScreen extends OptionsSubScreen {
             filterOptions(this.searchFilter);
         }
 
+        @Override
+        protected void addFooter() {
+            LinearLayout footer = this.layout.addToFooter(LinearLayout.horizontal().spacing(8));
+            this.resetButton = footer.addChild(Button.builder(text("itemScalingFactors.resetAll"), _ -> this.resetAll()).build());
+            footer.addChild(Button.builder(CommonComponents.GUI_DONE, _ -> this.onClose()).build());
+            this.updateResetButton();
+        }
+
+        private void resetAll() {
+            Config.get().itemScalingFactors.clear();
+            Config.save();
+            this.allItems.clear();
+            loadItems();
+            double scroll = this.list == null ? 0 : this.list.scrollAmount();
+            filterOptions(this.searchFilter);
+            if (this.list != null) this.list.setScrollAmount(scroll);
+            updateResetButton();
+        }
+
+        private void updateResetButton() {
+            if (this.resetButton != null) {
+                this.resetButton.active = !Config.get().itemScalingFactors.isEmpty();
+            }
+        }
+
         private void filterOptions(String query) {
             if (!(this.list instanceof ItemOptionsList itemList)) return;
 
@@ -235,13 +263,13 @@ public final class ConfigScreen extends OptionsSubScreen {
                     .append('\0').append(descId.toLowerCase(Locale.ROOT));
         }
 
-        ScalableItem toScalableItem(ConfigData data) {
+        ScalableItem toScalableItem(ConfigData data, Runnable onChanged) {
             int initialScaling = descriptionIds.stream()
                     .map(data.itemScalingFactors::get)
                     .filter(Objects::nonNull)
                     .findFirst()
                     .orElse(100);
-            OptionInstance<Integer> option = itemScalingOption(displayDescId, List.copyOf(descriptionIds), initialScaling, data);
+            OptionInstance<Integer> option = itemScalingOption(displayDescId, List.copyOf(descriptionIds), initialScaling, data, onChanged);
             return new ScalableItem(localizedName, searchText.toString(), option);
         }
     }

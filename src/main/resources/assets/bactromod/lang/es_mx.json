@@ -5,6 +5,7 @@
   "bactromod.options.itemScalingFactors": "Escala de objetos",
   "bactromod.options.itemScalingFactors.desc": "Ajusta el tamaño de cada objeto sostenido en primera persona para que ocupe menos espacio en pantalla.",
   "bactromod.options.itemScalingFactors.itemDesc": "Escala de %s en primera persona.",
+  "bactromod.options.itemScalingFactors.resetAll": "Restablecer todo",
 
   "bactromod.options.gammaMultiplier": "Aumento de brillo",
   "bactromod.options.gammaMultiplier.desc": "Controla el brillo adicional del mundo. 1 usa la iluminación normal; 15 proporciona el brillo máximo.",

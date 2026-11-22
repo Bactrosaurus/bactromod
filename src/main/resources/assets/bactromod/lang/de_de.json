@@ -5,6 +5,7 @@
   "bactromod.options.itemScalingFactors": "Item-Skalierung",
   "bactromod.options.itemScalingFactors.desc": "Passt die Größe einzelner Items in der Egoperspektive an, damit sie weniger vom Bildschirm verdecken.",
   "bactromod.options.itemScalingFactors.itemDesc": "Skalierung von %s in der Egoperspektive.",
+  "bactromod.options.itemScalingFactors.resetAll": "Alle zurücksetzen",
 
   "bactromod.options.gammaMultiplier": "Helligkeitsverstärkung",
   "bactromod.options.gammaMultiplier.desc": "Steuert die zusätzliche Helligkeit der Welt. 1 verwendet die normale Beleuchtung; 15 sorgt für maximale Helligkeit.",

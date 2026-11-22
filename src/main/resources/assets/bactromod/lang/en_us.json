@@ -5,6 +5,7 @@
   "bactromod.options.itemScalingFactors": "Item Scaling",
   "bactromod.options.itemScalingFactors.desc": "Adjusts the size of individual items held in first person so they cover less of the screen.",
   "bactromod.options.itemScalingFactors.itemDesc": "First-person scale for %s.",
+  "bactromod.options.itemScalingFactors.resetAll": "Reset All",
 
   "bactromod.options.gammaMultiplier": "Brightness Boost",
   "bactromod.options.gammaMultiplier.desc": "Controls additional world brightness. 1 uses vanilla lighting; 15 provides maximum brightness.",

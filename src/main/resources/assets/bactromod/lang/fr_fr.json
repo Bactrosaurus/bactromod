@@ -5,6 +5,7 @@
   "bactromod.options.itemScalingFactors": "Taille des objets",
   "bactromod.options.itemScalingFactors.desc": "Ajuste la taille de chaque objet tenu à la première personne afin qu'il occupe moins de place à l'écran.",
   "bactromod.options.itemScalingFactors.itemDesc": "Taille de %s à la première personne.",
+  "bactromod.options.itemScalingFactors.resetAll": "Tout réinitialiser",
 
   "bactromod.options.gammaMultiplier": "Amplification de la luminosité",
   "bactromod.options.gammaMultiplier.desc": "Contrôle la luminosité supplémentaire du monde. 1 utilise l’éclairage normal ; 15 fournit la luminosité maximale.",
