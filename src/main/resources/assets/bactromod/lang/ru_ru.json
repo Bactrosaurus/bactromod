@@ -2,6 +2,11 @@
   "bactromod.options.title": "Настройки BactroMod",
   "bactromod.options.search": "Поиск...",
 
+  "bactromod.options.category.visibility": "Видимость",
+  "bactromod.options.category.fog": "Туман",
+  "bactromod.options.category.scaling": "Масштаб",
+  "bactromod.options.category.other": "Прочее",
+
   "bactromod.options.itemScalingFactors": "Масштаб предметов",
   "bactromod.options.itemScalingFactors.desc": "Настраивает размер отдельных предметов в руке от первого лица, чтобы они меньше закрывали экран.",
   "bactromod.options.itemScalingFactors.itemDesc": "Масштаб предмета «%s» от первого лица.",

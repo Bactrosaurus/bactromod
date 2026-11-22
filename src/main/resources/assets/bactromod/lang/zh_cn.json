@@ -2,6 +2,11 @@
   "bactromod.options.title": "BactroMod 设置",
   "bactromod.options.search": "搜索…",
 
+  "bactromod.options.category.visibility": "可见性",
+  "bactromod.options.category.fog": "迷雾",
+  "bactromod.options.category.scaling": "缩放",
+  "bactromod.options.category.other": "其他",
+
   "bactromod.options.itemScalingFactors": "物品缩放",
   "bactromod.options.itemScalingFactors.desc": "调整第一人称视角下各个手持物品的大小，使其少遮挡屏幕。",
   "bactromod.options.itemScalingFactors.itemDesc": "%s的第一人称缩放比例。",

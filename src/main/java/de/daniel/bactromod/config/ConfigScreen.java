@@ -1,7 +1,9 @@
 package de.daniel.bactromod.config;
 
 import de.daniel.bactromod.config.optiontypes.BooleanOption;
+import de.daniel.bactromod.config.optiontypes.ConfigCategory;
 import de.daniel.bactromod.config.optiontypes.IntegerOption;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.OptionInstance;
 import net.minecraft.client.Options;
@@ -22,8 +24,8 @@ import net.minecraft.world.item.Items;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
+import java.util.EnumMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -33,21 +35,46 @@ import java.util.Objects;
 import java.util.Set;
 
 public final class ConfigScreen extends OptionsSubScreen {
-    private final OptionInstance<?>[] configOptions;
+    private final Map<ConfigCategory, List<OptionInstance<?>>> categorizedOptions = new EnumMap<>(ConfigCategory.class);
 
     public ConfigScreen(Screen parentScreen) {
         super(parentScreen, Minecraft.getInstance().options, text("title"));
         ConfigData data = Config.get();
-        this.configOptions = Arrays.stream(ConfigData.class.getDeclaredFields())
-                .map(field -> configOption(field, data))
-                .filter(Objects::nonNull)
-                .toArray(OptionInstance<?>[]::new);
+        for (Field field : ConfigData.class.getDeclaredFields()) {
+            BooleanOption boolOpt = field.getAnnotation(BooleanOption.class);
+            if (boolOpt != null) {
+                addOption(boolOpt.category(), booleanOption(field, data));
+                continue;
+            }
+            IntegerOption intOpt = field.getAnnotation(IntegerOption.class);
+            if (intOpt != null) {
+                addOption(intOpt.category(), integerOption(field, data, intOpt));
+            }
+        }
+    }
+
+    private void addOption(ConfigCategory category, OptionInstance<?> option) {
+        this.categorizedOptions.computeIfAbsent(category, _ -> new ArrayList<>()).add(option);
     }
 
     @Override
     protected void addOptions() {
         if (this.list == null) return;
-        Button itemScalingButton = Button.builder(
+        for (ConfigCategory category : ConfigCategory.values()) {
+            List<OptionInstance<?>> options = this.categorizedOptions.getOrDefault(category, List.of());
+            if (options.isEmpty() && category != ConfigCategory.SCALING) continue;
+
+            this.list.addHeader(text(category.key()).withStyle(ChatFormatting.UNDERLINE, ChatFormatting.BOLD));
+            if (category == ConfigCategory.SCALING) {
+                addOptionsWithButton(options, itemScalingButton());
+            } else {
+                this.list.addSmall(options.toArray(OptionInstance<?>[]::new));
+            }
+        }
+    }
+
+    private Button itemScalingButton() {
+        return Button.builder(
                 text("itemScalingFactors"),
                 _ -> this.minecraft.gui.setScreen(new ItemScalingScreen(
                         this,
@@ -55,22 +82,18 @@ public final class ConfigScreen extends OptionsSubScreen {
                         text("title").append(" - ").append(text("itemScalingFactors"))
                 ))
         ).tooltip(Tooltip.create(text("itemScalingFactors.desc"))).build();
-
-        int count = this.configOptions.length;
-        if (count % 2 == 1) {
-            this.list.addSmall(Arrays.copyOf(this.configOptions, count - 1));
-            OptionInstance<?> lastOption = this.configOptions[count - 1];
-            this.list.addSmall(lastOption.createButton(this.options), lastOption, itemScalingButton);
-        } else {
-            this.list.addSmall(this.configOptions);
-            this.list.addSmall(itemScalingButton, null);
-        }
     }
 
-    private static OptionInstance<?> configOption(Field field, ConfigData data) {
-        if (field.isAnnotationPresent(BooleanOption.class)) return booleanOption(field, data);
-        IntegerOption option = field.getAnnotation(IntegerOption.class);
-        return option == null ? null : integerOption(field, data, option);
+    private void addOptionsWithButton(List<OptionInstance<?>> options, Button button) {
+        int count = options.size();
+        if (count % 2 == 1) {
+            this.list.addSmall(options.subList(0, count - 1).toArray(OptionInstance<?>[]::new));
+            OptionInstance<?> last = options.get(count - 1);
+            this.list.addSmall(last.createButton(this.options), last, button);
+        } else {
+            this.list.addSmall(options.toArray(OptionInstance<?>[]::new));
+            this.list.addSmall(button, null);
+        }
     }
 
     private static OptionInstance<Boolean> booleanOption(Field field, ConfigData data) {

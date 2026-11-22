@@ -2,6 +2,11 @@
   "bactromod.options.title": "Options de BactroMod",
   "bactromod.options.search": "Rechercher...",
 
+  "bactromod.options.category.visibility": "Visibilité",
+  "bactromod.options.category.fog": "Brouillard",
+  "bactromod.options.category.scaling": "Taille",
+  "bactromod.options.category.other": "Autres",
+
   "bactromod.options.itemScalingFactors": "Taille des objets",
   "bactromod.options.itemScalingFactors.desc": "Ajuste la taille de chaque objet tenu à la première personne afin qu'il occupe moins de place à l'écran.",
   "bactromod.options.itemScalingFactors.itemDesc": "Taille de %s à la première personne.",

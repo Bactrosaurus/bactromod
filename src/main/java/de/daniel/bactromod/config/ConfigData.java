@@ -1,6 +1,7 @@
 package de.daniel.bactromod.config;
 
 import de.daniel.bactromod.config.optiontypes.BooleanOption;
+import de.daniel.bactromod.config.optiontypes.ConfigCategory;
 import de.daniel.bactromod.config.optiontypes.IntegerOption;
 
 import java.util.Map;
@@ -8,35 +9,38 @@ import java.util.TreeMap;
 
 public final class ConfigData {
 
-    @IntegerOption(min = 1, max = 15)
+    @IntegerOption(min = 1, max = 15, category = ConfigCategory.VISIBILITY)
     public int gammaMultiplier = 15;
 
-    @BooleanOption
+    @BooleanOption(category = ConfigCategory.VISIBILITY)
     public boolean pumpkinBlur;
 
-    @IntegerOption(min = -100, max = 100)
+    @IntegerOption(min = -100, max = 100, category = ConfigCategory.VISIBILITY)
     public int fireOffset = -30;
 
-    @IntegerOption(min = -100, max = 100)
+    @IntegerOption(min = -100, max = 100, category = ConfigCategory.VISIBILITY)
     public int shieldOffset = -20;
 
-    @BooleanOption
+    @BooleanOption(category = ConfigCategory.FOG)
     public boolean blindnessFog;
 
-    @BooleanOption
+    @BooleanOption(category = ConfigCategory.FOG)
     public boolean darknessFog;
 
-    @BooleanOption
+    @BooleanOption(category = ConfigCategory.FOG)
     public boolean lavaFog;
 
-    @BooleanOption
+    @BooleanOption(category = ConfigCategory.FOG)
     public boolean powderSnowFog;
 
-    @BooleanOption
+    @BooleanOption(category = ConfigCategory.FOG)
     public boolean waterFog;
 
-    @BooleanOption
+    @BooleanOption(category = ConfigCategory.FOG)
     public boolean atmosphericFog;
+
+    @IntegerOption(min = 1, max = 100, category = ConfigCategory.SCALING)
+    public int totemOverlayPercentSize = 100;
 
     @BooleanOption
     public boolean showMapWhileInBoat = true;
@@ -49,9 +53,6 @@ public final class ConfigData {
 
     @BooleanOption
     public boolean ignoreOpGamemodeSwitcher = true;
-
-    @IntegerOption(min = 1, max = 100)
-    public int totemOverlayPercentSize = 100;
 
     public Map<String, Integer> itemScalingFactors = new TreeMap<>();
 }

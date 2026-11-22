@@ -7,4 +7,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface BooleanOption {}
+public @interface BooleanOption {
+    ConfigCategory category() default ConfigCategory.OTHER;
+}

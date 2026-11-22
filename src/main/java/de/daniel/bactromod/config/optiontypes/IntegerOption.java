@@ -10,4 +10,5 @@ import java.lang.annotation.Target;
 public @interface IntegerOption {
     int min();
     int max();
+    ConfigCategory category() default ConfigCategory.OTHER;
 }

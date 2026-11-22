@@ -2,6 +2,11 @@
   "bactromod.options.title": "Opções do BactroMod",
   "bactromod.options.search": "Buscar...",
 
+  "bactromod.options.category.visibility": "Visibilidade",
+  "bactromod.options.category.fog": "Névoa",
+  "bactromod.options.category.scaling": "Escala",
+  "bactromod.options.category.other": "Outros",
+
   "bactromod.options.itemScalingFactors": "Escala de itens",
   "bactromod.options.itemScalingFactors.desc": "Ajusta o tamanho de cada item segurado em primeira pessoa para que ocupe menos espaço na tela.",
   "bactromod.options.itemScalingFactors.itemDesc": "Escala de %s em primeira pessoa.",

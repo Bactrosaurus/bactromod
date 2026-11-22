@@ -2,6 +2,11 @@
   "bactromod.options.title": "BactroMod Settings",
   "bactromod.options.search": "Search...",
 
+  "bactromod.options.category.visibility": "Visibility",
+  "bactromod.options.category.fog": "Fog",
+  "bactromod.options.category.scaling": "Scaling",
+  "bactromod.options.category.other": "Other",
+
   "bactromod.options.itemScalingFactors": "Item Scaling",
   "bactromod.options.itemScalingFactors.desc": "Adjusts the size of individual items held in first person so they cover less of the screen.",
   "bactromod.options.itemScalingFactors.itemDesc": "First-person scale for %s.",

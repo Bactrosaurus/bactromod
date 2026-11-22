@@ -2,6 +2,11 @@
   "bactromod.options.title": "BactroMod-Einstellungen",
   "bactromod.options.search": "Suchen...",
 
+  "bactromod.options.category.visibility": "Sichtbarkeit",
+  "bactromod.options.category.fog": "Nebel",
+  "bactromod.options.category.scaling": "Skalierung",
+  "bactromod.options.category.other": "Sonstiges",
+
   "bactromod.options.itemScalingFactors": "Item-Skalierung",
   "bactromod.options.itemScalingFactors.desc": "Passt die Größe einzelner Items in der Egoperspektive an, damit sie weniger vom Bildschirm verdecken.",
   "bactromod.options.itemScalingFactors.itemDesc": "Skalierung von %s in der Egoperspektive.",
