@@ -28,9 +28,9 @@ public class MixinLightmapRenderStateExtractor {
         needsUpdate = true;
     }
 
-    @Inject(method = "extract", at = @At("TAIL"), require = 1)
+    @Inject(method = "extract", at = @At("TAIL"))
     private void applyBrightnessBoost(LightmapRenderState renderState, float partialTicks, CallbackInfo ci) {
-        if (!renderState.needsUpdate) return;
+        if (!renderState.needsUpdate || needsUpdate) return;
 
         float strength = (bactromod$gammaMultiplier - 1) / 14.0F;
         strength *= strength * strength;

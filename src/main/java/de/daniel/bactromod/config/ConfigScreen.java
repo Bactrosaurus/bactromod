@@ -26,38 +26,35 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Set;
 
-public final class ConfigScreen {
-    private ConfigScreen() {}
+public final class ConfigScreen extends OptionsSubScreen {
+    private final OptionInstance<?>[] configOptions;
 
-    public static OptionsSubScreen getConfigScreen(Screen parentScreen) {
+    public ConfigScreen(Screen parentScreen) {
+        super(parentScreen, Minecraft.getInstance().options, text("title"));
         ConfigData data = Config.get();
-        OptionInstance<?>[] configOptions = Arrays.stream(ConfigData.class.getDeclaredFields())
+        this.configOptions = Arrays.stream(ConfigData.class.getDeclaredFields())
                 .map(field -> configOption(field, data))
-                .filter(java.util.Objects::nonNull)
+                .filter(Objects::nonNull)
                 .toArray(OptionInstance<?>[]::new);
+    }
 
-        return new OptionsSubScreen(
-                parentScreen,
-                Minecraft.getInstance().options,
-                text("title")
-        ) {
-            @Override
-            protected void addOptions() {
-                if (this.list == null) return;
-                this.list.addSmall(configOptions);
+    @Override
+    protected void addOptions() {
+        if (this.list == null) return;
+        this.list.addSmall(this.configOptions);
 
-                this.list.addSmall(List.of(
-                        Button.builder(
-                                text("itemScalingFactors"),
-                                _ -> Minecraft.getInstance().gui.setScreen(new ItemScalingScreen(this,
-                                        Minecraft.getInstance().options, text("title").append(" - ")
-                                        .append(text("itemScalingFactors"))))
-                        ).tooltip(Tooltip.create(text("itemScalingFactors.desc"))).build()
-                ));
-            }
-        };
+        Button itemScalingButton = Button.builder(
+                text("itemScalingFactors"),
+                _ -> this.minecraft.gui.setScreen(new ItemScalingScreen(
+                        this,
+                        this.options,
+                        text("title").append(" - ").append(text("itemScalingFactors"))
+                ))
+        ).tooltip(Tooltip.create(text("itemScalingFactors.desc"))).build();
+        this.list.addSmall(itemScalingButton, null);
     }
 
     private static OptionInstance<?> configOption(Field field, ConfigData data) {
@@ -68,61 +65,69 @@ public final class ConfigScreen {
 
     private static OptionInstance<Boolean> booleanOption(Field field, ConfigData data) {
         String name = field.getName();
-        try {
-            return OptionInstance.createBoolean(key(name),
-                    OptionInstance.cachedConstantTooltip(text(name + ".desc")), field.getBoolean(data),
-                    value -> updateBoolean(field, data, value));
-        } catch (IllegalAccessException e) {
-            throw new IllegalStateException("Cannot access config field " + name, e);
-        }
+        return OptionInstance.createBoolean(
+                key(name),
+                OptionInstance.cachedConstantTooltip(text(name + ".desc")),
+                (Boolean) readField(field, data),
+                value -> writeField(field, data, value)
+        );
     }
 
     private static OptionInstance<Integer> integerOption(Field field, ConfigData data, IntegerOption option) {
         String name = field.getName();
-        try {
-            return new OptionInstance<>(key(name),
-                    OptionInstance.cachedConstantTooltip(text(name + ".desc")), Options::genericValueLabel,
-                    new OptionInstance.IntRange(option.min(), option.max()), field.getInt(data),
-                    value -> updateInteger(field, data, value));
-        } catch (IllegalAccessException e) {
-            throw new IllegalStateException("Cannot access config field " + name, e);
-        }
+        int initialValue = Math.clamp((Integer) readField(field, data), option.min(), option.max());
+        return new OptionInstance<>(
+                key(name),
+                OptionInstance.cachedConstantTooltip(text(name + ".desc")),
+                Options::genericValueLabel,
+                new OptionInstance.IntRange(option.min(), option.max()),
+                initialValue,
+                value -> writeField(field, data, value)
+        );
     }
 
     private static OptionInstance<Integer> itemScalingOption(String descriptionId, int value, ConfigData data) {
-        return new OptionInstance<>(descriptionId, OptionInstance.cachedConstantTooltip(Component.translatable(
-                "bactromod.options.itemScalingFactors.itemDesc", Component.translatable(descriptionId))),
-                Options::genericValueLabel, new OptionInstance.IntRange(1, 100), value, newValue -> {
-            data.itemScalingFactors.put(descriptionId, newValue);
+        return new OptionInstance<>(
+                descriptionId,
+                OptionInstance.cachedConstantTooltip(Component.translatable(
+                        "bactromod.options.itemScalingFactors.itemDesc", Component.translatable(descriptionId))),
+                Options::genericValueLabel,
+                new OptionInstance.IntRange(1, 100),
+                Math.clamp(value, 1, 100),
+                newValue -> {
+                    if (newValue == 100) data.itemScalingFactors.remove(descriptionId);
+                    else data.itemScalingFactors.put(descriptionId, newValue);
+                    Config.save();
+                }
+        );
+    }
+
+    private static Object readField(Field field, ConfigData data) {
+        try {
+            return field.get(data);
+        } catch (IllegalAccessException e) {
+            throw new IllegalStateException("Cannot access config field " + field.getName(), e);
+        }
+    }
+
+    private static void writeField(Field field, ConfigData data, Object value) {
+        try {
+            field.set(data, value);
             Config.save();
-        });
+        } catch (IllegalAccessException e) {
+            throw new IllegalStateException("Cannot access config field " + field.getName(), e);
+        }
     }
 
     private static MutableComponent text(String name) {
         return Component.translatable(key(name));
     }
 
-    private static String key(String name) { return "bactromod.options." + name; }
-
-    private static void updateBoolean(Field field, ConfigData data, boolean value) {
-        try {
-            field.setBoolean(data, value);
-            Config.save();
-        } catch (IllegalAccessException e) {
-            throw new IllegalStateException("Cannot access config field " + field.getName(), e);
-        }
+    private static String key(String name) {
+        return "bactromod.options." + name;
     }
 
-    private static void updateInteger(Field field, ConfigData data, int value) {
-        try {
-            field.setInt(data, value);
-            Config.save();
-        } catch (IllegalAccessException e) {
-            throw new IllegalStateException("Cannot access config field " + field.getName(), e);
-        }
-    }
-
-    private static class ItemScalingScreen extends OptionsSubScreen {
+    private static final class ItemScalingScreen extends OptionsSubScreen {
         private final List<ScalableItem> allItems = new ArrayList<>();
         private String searchFilter = "";
 
@@ -138,17 +143,17 @@ public final class ConfigScreen {
                 if (item == Items.AIR) continue;
                 String descId = item.getDescriptionId();
                 String path = BuiltInRegistries.ITEM.getKey(item).getPath();
-                addItem(data, seen, descId, path, data.itemScalingFactors.getOrDefault(descId, 100));
+                addItem(data, seen, descId, path, data.itemScalingFactors.get(descId));
             }
             data.itemScalingFactors.forEach((descId, scaling) -> addItem(data, seen, descId, descId, scaling));
             allItems.sort(Comparator.comparing(ScalableItem::localizedName, String.CASE_INSENSITIVE_ORDER));
         }
 
-        private void addItem(ConfigData data, Set<String> seen, String descId, String path, int scaling) {
+        private void addItem(ConfigData data, Set<String> seen, String descId, String path, Integer scaling) {
             if (!seen.add(descId)) return;
-            OptionInstance<Integer> option = itemScalingOption(descId, scaling, data);
+            OptionInstance<Integer> option = itemScalingOption(descId, scaling == null ? 100 : scaling, data);
             String localizedName = Component.translatable(descId).getString();
-            allItems.add(new ScalableItem(descId, localizedName, path, option));
+            allItems.add(ScalableItem.of(descId, localizedName, path, option));
         }
 
         @Override
@@ -194,7 +199,7 @@ public final class ConfigScreen {
         }
     }
 
-    private static class ItemOptionsList extends OptionsList {
+    private static final class ItemOptionsList extends OptionsList {
         ItemOptionsList(Minecraft minecraft, int width, OptionsSubScreen screen) {
             super(minecraft, width, screen);
         }
@@ -204,12 +209,14 @@ public final class ConfigScreen {
         }
     }
 
-    private record ScalableItem(String descId, String localizedName, String path, OptionInstance<Integer> option) {
+    private record ScalableItem(String localizedName, String searchText, OptionInstance<Integer> option) {
+        static ScalableItem of(String descId, String localizedName, String path, OptionInstance<Integer> option) {
+            String searchText = (localizedName + "\0" + path + "\0" + descId).toLowerCase(Locale.ROOT);
+            return new ScalableItem(localizedName, searchText, option);
+        }
+
         boolean matches(String query) {
-            return localizedName.toLowerCase(Locale.ROOT).contains(query)
-                    || path.toLowerCase(Locale.ROOT).contains(query)
-                    || descId.toLowerCase(Locale.ROOT).contains(query);
+            return searchText.contains(query);
         }
     }
-
 }

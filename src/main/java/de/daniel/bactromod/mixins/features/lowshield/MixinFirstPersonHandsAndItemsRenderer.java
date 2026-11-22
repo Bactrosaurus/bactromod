@@ -8,7 +8,7 @@ import net.minecraft.client.renderer.state.level.FirstPersonHandsAndItemsRenderS
 import net.minecraft.client.renderer.state.level.PlayerRenderState;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.ShieldItem;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -18,6 +18,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinFirstPersonHandsAndItemsRenderer {
     @Inject(method = "submitArmWithItem", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/renderer/item/ItemStackRenderState;submit(Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/SubmitNodeCollector;III)V"), expect = 2, order = 900)
     private void offsetShield(PlayerRenderState playerState, FirstPersonHandsAndItemsRenderState state, float partialTicks, float xRot, InteractionHand hand, float attack, ItemStack itemStack, float inverseArmHeight, PoseStack poseStack, SubmitNodeCollector submitNodeCollector, int lightCoords, CallbackInfo ci) {
-        if (itemStack.is(Items.SHIELD)) poseStack.translate(0, Math.clamp(Config.get().shieldOffset, -100, 100) / 100F, 0);
+        if (!(itemStack.getItem() instanceof ShieldItem)) return;
+        int offset = Math.clamp(Config.get().shieldOffset, -100, 100);
+        if (offset != 0) poseStack.translate(0, offset / 100F, 0);
     }
 }

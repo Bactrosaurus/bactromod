@@ -1,26 +1,29 @@
 package de.daniel.bactromod.mixins.features.fog;
 
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import com.llamalad7.mixinextras.sugar.Local;
 import de.daniel.bactromod.config.Config;
-import org.objectweb.asm.Opcodes;
+import de.daniel.bactromod.config.ConfigData;
+import net.minecraft.client.Camera;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.fog.FogData;
+import net.minecraft.client.renderer.fog.FogRenderer;
+import net.minecraft.client.renderer.fog.environment.AtmosphericFogEnvironment;
+import net.minecraft.client.renderer.fog.environment.BlindnessFogEnvironment;
+import net.minecraft.client.renderer.fog.environment.DarknessFogEnvironment;
+import net.minecraft.client.renderer.fog.environment.FogEnvironment;
+import net.minecraft.client.renderer.fog.environment.LavaFogEnvironment;
+import net.minecraft.client.renderer.fog.environment.PowderedSnowFogEnvironment;
+import net.minecraft.client.renderer.fog.environment.WaterFogEnvironment;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.material.FogType;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.List;
-
-import net.minecraft.client.Camera;
-import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.renderer.fog.FogData;
-import net.minecraft.client.renderer.fog.FogRenderer;
-import net.minecraft.client.renderer.fog.environment.FogEnvironment;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.material.FogType;
 
 @Mixin(value = FogRenderer.class, priority = 1500)
 public abstract class MixinFogRenderer {
@@ -28,33 +31,37 @@ public abstract class MixinFogRenderer {
     @Final
     private static List<FogEnvironment> FOG_ENVIRONMENTS;
 
-    @Inject(method = "setupFog", at = @At(value = "FIELD", target = "Lnet/minecraft/client/renderer/fog/FogData;renderDistanceEnd:F", ordinal = 0, shift = At.Shift.AFTER, opcode = Opcodes.PUTFIELD))
-    private void postFogSetup(Camera camera, int renderDistanceInChunks, DeltaTracker deltaTracker, float darkenWorldAmount, ClientLevel level, boolean shouldCreateBossFog, CallbackInfoReturnable<FogData> cir, @Local(name = "fog") FogData fog, @Local(name = "fogType") FogType fogType, @Local(name = "entity") Entity entity, @Local(name = "renderDistanceInBlocks") float renderDistanceInBlocks) {
-        for (int i = 0; i < FOG_ENVIRONMENTS.size(); ++i) {
-            if (!FOG_ENVIRONMENTS.get(i).isApplicable(fogType, entity)) {
-                continue;
-            }
-
-            var config = Config.get();
-            boolean fogEnabled = switch (i) {
-                case 0 -> config.lavaFog;
-                case 1 -> config.powderSnowFog;
-                case 2 -> config.blindnessFog;
-                case 3 -> config.darknessFog;
-                case 4 -> config.waterFog;
-                case 5 -> config.atmosphericFog;
-                default -> true;
-            };
-            if (fogEnabled) return;
+    @ModifyReturnValue(method = "setupFog", at = @At("RETURN"))
+    private FogData applyFogToggles(FogData fog, @Local(argsOnly = true) Camera camera, @Local(argsOnly = true) int renderDistanceInChunks, @Local FogType fogType) {
+        Entity entity = camera.entity();
+        for (FogEnvironment environment : FOG_ENVIRONMENTS) {
+            if (!environment.isApplicable(fogType, entity)) continue;
+            if (bactromod$isFogEnabled(environment)) return fog;
 
             fog.environmentalStart = Float.MAX_VALUE;
             fog.environmentalEnd = Float.MAX_VALUE;
             fog.renderDistanceStart = Float.MAX_VALUE;
             fog.renderDistanceEnd = Float.MAX_VALUE;
 
-            fog.skyEnd = i == 5 ? Math.clamp(renderDistanceInBlocks, 2 * 16, 32 * 16) : Float.MAX_VALUE;
-            fog.cloudEnd = i == 5 ? Minecraft.getInstance().options.cloudRange().get() * 16 : Float.MAX_VALUE;
-            return;
+            boolean atmospheric = environment instanceof AtmosphericFogEnvironment;
+            fog.skyEnd = atmospheric ? Math.clamp(renderDistanceInChunks * 16F, 2 * 16, 32 * 16) : Float.MAX_VALUE;
+            fog.cloudEnd = atmospheric ? Minecraft.getInstance().options.cloudRange().get() * 16 : Float.MAX_VALUE;
+            return fog;
         }
+        return fog;
+    }
+
+    @Unique
+    private static boolean bactromod$isFogEnabled(FogEnvironment environment) {
+        ConfigData config = Config.get();
+        return switch (environment) {
+            case LavaFogEnvironment _ -> config.lavaFog;
+            case PowderedSnowFogEnvironment _ -> config.powderSnowFog;
+            case BlindnessFogEnvironment _ -> config.blindnessFog;
+            case DarknessFogEnvironment _ -> config.darknessFog;
+            case WaterFogEnvironment _ -> config.waterFog;
+            case AtmosphericFogEnvironment _ -> config.atmosphericFog;
+            default -> true;
+        };
     }
 }

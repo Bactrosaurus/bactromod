@@ -7,6 +7,6 @@ import de.daniel.bactromod.config.ConfigScreen;
 public final class ModMenuIntegration implements ModMenuApi {
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        return ConfigScreen::getConfigScreen;
+        return ConfigScreen::new;
     }
 }

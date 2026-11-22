@@ -9,7 +9,7 @@ Java sources live in `src/main/java/de/daniel/bactromod/`. Resources live in `sr
 ## Configuration & UI Flow
 
 - `config/ConfigData`: settings, defaults, and UI annotations. `config/optiontypes/` provides runtime field annotations for Boolean and Integer controls.
-- `config/Config`: loads once on class initialization; `Config.get()` returns the same mutable instance. Its package-private `ConfigFile` helper owns Gson persistence for `<gameDir>/config/bactromod.json`. UI callbacks mutate settings and call `Config.save()`; Mixins read them at use time. External file edits are not hot-reloaded.
+- `config/Config`: loads once on class initialization; `Config.get()` returns the same mutable instance and owns Gson persistence for `<gameDir>/config/bactromod.json`. UI callbacks mutate settings and call `Config.save()`; Mixins read them at use time. External file edits are not hot-reloaded.
 - `config/ConfigScreen`: discovers annotated fields through reflection, builds vanilla `OptionInstance` controls, and derives translation keys from field names. Its nested item-scaling screen lists registered items except air, includes saved entries, sorts by localized name, and searches names, registry paths, or description IDs. Each change saves immediately.
 - `impl/ModMenuIntegration` and `mixins/settingsbutton/MixinCreditsAndAttributionScreen`: two routes to the same config screen. Preserve settings access without ModMenu.
 
@@ -39,7 +39,7 @@ Use Java 25+ and the checked-in Gradle wrapper:
 - `./gradlew runClient`: launch the development client using `run/`.
 - `./gradlew genSources`: generate Minecraft sources for inspecting injection targets.
 
-Change versions in `gradle.properties`; retain expansion placeholders in `fabric.mod.json`, dependency minimums, and the Minecraft release-line constraint. `build.gradle.kts` derives that constraint from `minecraft_version`: snapshots and pre-releases become `~26.4-` (Fabric Loader normalizes `26.4-snapshot-7` to `26.4-alpha.7`), releases stay `~26.4`. Use the Fabric API build for the same release line (`+26.4`, not `+26.3`).
+Change versions in `gradle.properties`; retain expansion placeholders in `fabric.mod.json`, dependency minimums, and the Minecraft release-line constraint. `build.gradle.kts` derives that constraint from `minecraft_version`: snapshots and pre-releases become `~26.4-` (Fabric Loader normalizes `26.4-snapshot-10` to `26.4-alpha.10`), releases stay `~26.4`. Use the Fabric API build for the same release line (`+26.4`, not `+26.3`).
 
 ## Coding Style & Naming Conventions
 
@@ -51,7 +51,7 @@ Read live settings through `Config.get()`; persist changes with `Config.save()`.
 
 Add settings to `ConfigData` using `@BooleanOption` or `@IntegerOption(min, max)`; existing types need no manual UI registration. Keep separate annotations/builders for new data types rather than inspecting field types. Add `bactromod.options.<field>` and `bactromod.options.<field>.desc` translations in every language, matching official Minecraft terminology. Item scaling remains a separate map/UI path keyed by item description IDs.
 
-Preserve fullbright's change-triggered lightmap refresh before extraction and cubic blend afterward. Keep fire-overlay pose stacks balanced with `try/finally`. Shield translation (injector order 900) must precede item scaling (1000) at both item submissions. Recheck fog indices (0–5 in the table's listed order), ordinals, local captures, and exact selectors after Minecraft upgrades.
+Preserve fullbright's change-triggered lightmap refresh before extraction and cubic blend afterward. Keep fire-overlay pose stacks balanced with `try/finally`. Shield translation (injector order 900) must precede item scaling (1000) at both item submissions. Recheck `FogEnvironment` subclasses, ordinals, local captures, and exact selectors after Minecraft upgrades.
 
 ## Verification
 
