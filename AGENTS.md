@@ -11,7 +11,7 @@ Java sources live in `src/main/java/de/daniel/bactromod/`. Resources live in `sr
 - `config/ConfigData`: settings, defaults, and UI annotations. `config/optiontypes/` provides runtime field annotations for Boolean and Integer controls along with `ConfigCategory` (`VISIBILITY`, `FOG`, `SCALING`, `OTHER`).
 - `config/Config`: loads once on class initialization; `Config.get()` returns the same mutable instance and owns Gson persistence for `<gameDir>/config/bactromod.json`. UI callbacks mutate settings and call `Config.save()`; Mixins read them at use time. External file edits are not hot-reloaded.
 - `config/ConfigScreen`: discovers annotated fields through reflection, groups them under `OptionsList.addHeader` category sections, builds vanilla `OptionInstance` controls, and derives translation keys from field names. Its nested item-scaling screen lists registered items except air (grouping variants that share a localized name into a single slider affecting all variants), includes saved entries, sorts by localized name, searches names/registry paths/description IDs, and provides a Reset All footer button. Each change saves immediately.
-- `impl/ModMenuIntegration` and `mixins/settingsbutton/MixinCreditsAndAttributionScreen`: two routes to the same config screen. Preserve settings access without ModMenu.
+- `impl/ModMenuIntegration` and `mixins/settingsbutton/MixinOptionsScreen`: two routes to the same config screen (ModMenu and a 20×20 icon button beside `Done` in `OptionsScreen`). Preserve settings access without ModMenu.
 
 ## Feature Map
 
