@@ -1,0 +1,62 @@
+{
+  "bactromod.options.title": "Налаштування BactroMod",
+  "bactromod.options.search": "Пошук…",
+
+  "bactromod.options.category.visibility": "Видимість",
+  "bactromod.options.category.fog": "Туман",
+  "bactromod.options.category.scaling": "Масштаб",
+  "bactromod.options.category.other": "Інше",
+
+  "bactromod.options.itemScalingFactors": "Масштаб предметів",
+  "bactromod.options.itemScalingFactors.desc": "Налаштовує розмір окремих предметів у руці від першої особи, щоб вони менше перекривали екран.",
+  "bactromod.options.itemScalingFactors.itemDesc": "Масштаб предмета «%s» від першої особи.",
+  "bactromod.options.itemScalingFactors.resetAll": "Скинути все",
+
+  "bactromod.options.gammaMultiplier": "Підсилення яскравості",
+  "bactromod.options.gammaMultiplier.desc": "Керує додатковою яскравістю світу. 1 використовує стандартне освітлення; 15 забезпечує максимальну яскравість.",
+
+  "bactromod.options.pumpkinBlur": "Маска гарбуза",
+  "bactromod.options.pumpkinBlur.desc": "Показує або приховує затемнювальну маску під час носіння вирізаного гарбуза.",
+
+  "bactromod.options.fireOffset": "Висота вогню",
+  "bactromod.options.fireOffset.desc": "Налаштовує висоту накладення вогню від першої особи. Від'ємні значення опускають його вниз.",
+
+  "bactromod.options.shieldOffset": "Висота щита",
+  "bactromod.options.shieldOffset.desc": "Налаштовує висоту щита від першої особи. Від'ємні значення опускають його вниз.",
+
+  "bactromod.options.showMapWhileInBoat": "Показувати мапу в човні",
+  "bactromod.options.showMapWhileInBoat.desc": "Залишає мапу видимою під час руху в човні.",
+
+  "bactromod.options.lavaFog": "Туман у лаві",
+  "bactromod.options.lavaFog.desc": "Показує або приховує туман під час занурення в лаву.",
+
+  "bactromod.options.powderSnowFog": "Туман у сипкому снігу",
+  "bactromod.options.powderSnowFog.desc": "Показує або приховує туман під час перебування в сипкому снігу.",
+
+  "bactromod.options.blindnessFog": "Туман від сліпоти",
+  "bactromod.options.blindnessFog.desc": "Показує або приховує туман, спричинений ефектом сліпоти.",
+
+  "bactromod.options.darknessFog": "Туман від темряви",
+  "bactromod.options.darknessFog.desc": "Показує або приховує туман, спричинений ефектом темряви.",
+
+  "bactromod.options.waterFog": "Туман у воді",
+  "bactromod.options.waterFog.desc": "Показує або приховує туман під час занурення у воду.",
+
+  "bactromod.options.atmosphericFog": "Атмосферний туман",
+  "bactromod.options.atmosphericFog.desc": "Показує або приховує атмосферний туман удалині.",
+
+  "bactromod.options.fixShieldRiptideTrident": "Положення щита з Тягуном",
+  "bactromod.options.fixShieldRiptideTrident.desc": "Виправляє положення щита в другій руці під час ривка з тризубцем, зачарованим на «Тягун».",
+
+  "bactromod.options.ignoreOpGamemodeSwitcher": "F3+F4 без прав",
+  "bactromod.options.ignoreOpGamemodeSwitcher.desc": "Дозволяє відкривати й використовувати перемикач режиму гри за допомогою F3+F4 без прав.",
+
+  "bactromod.options.nightVision": "Нічне бачення",
+  "bactromod.options.nightVision.desc": "Визначає, чи відображається підсилення яскравості від ефекту нічного бачення.",
+
+  "bactromod.options.totemOverlayPercentSize": "Розмір анімації тотема",
+  "bactromod.options.totemOverlayPercentSize.desc": "Змінює розмір анімації тотема безсмертя, яка з'являється після порятунку тотемом. 100 зберігає стандартний розмір.",
+
+  "modmenu.summaryTranslation.bactromod": "Легкий клієнтський мод із корисними візуальними та ігровими налаштуваннями.",
+  "modmenu.descTranslation.bactromod": "Легкий клієнтський мод із корисними візуальними та ігровими налаштуваннями."
+}

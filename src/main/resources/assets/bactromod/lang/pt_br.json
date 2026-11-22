@@ -30,8 +30,8 @@
   "bactromod.options.lavaFog": "Névoa na lava",
   "bactromod.options.lavaFog.desc": "Exibe ou oculta a névoa ao ficar submerso em lava.",
 
-  "bactromod.options.powderSnowFog": "Névoa na neve fofa",
-  "bactromod.options.powderSnowFog.desc": "Exibe ou oculta a névoa ao ficar dentro de neve fofa.",
+  "bactromod.options.powderSnowFog": "Névoa na neve em pó",
+  "bactromod.options.powderSnowFog.desc": "Exibe ou oculta a névoa ao ficar dentro de neve em pó.",
 
   "bactromod.options.blindnessFog": "Névoa de cegueira",
   "bactromod.options.blindnessFog.desc": "Exibe ou oculta a névoa causada pelo efeito de Cegueira.",

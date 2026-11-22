@@ -46,7 +46,7 @@
   "bactromod.options.atmosphericFog.desc": "Показывает или скрывает атмосферный туман.",
 
   "bactromod.options.fixShieldRiptideTrident": "Щит при рывке с трезубцем",
-  "bactromod.options.fixShieldRiptideTrident.desc": "Исправляет положение щита во второстепенной руке во время рывка с трезубцем, зачарованным на «Тягун».",
+  "bactromod.options.fixShieldRiptideTrident.desc": "Исправляет положение щита во второй руке во время рывка с трезубцем, зачарованным на «Тягун».",
 
   "bactromod.options.ignoreOpGamemodeSwitcher": "F3+F4 без полномочий",
   "bactromod.options.ignoreOpGamemodeSwitcher.desc": "Позволяет открывать и использовать переключатель режима игры по F3+F4 без необходимых полномочий.",
