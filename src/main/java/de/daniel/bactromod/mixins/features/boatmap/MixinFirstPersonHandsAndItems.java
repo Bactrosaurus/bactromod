@@ -28,7 +28,7 @@ public class MixinFirstPersonHandsAndItems {
     private float offHandHeight;
 
     @WrapOperation(method = "tick", at = @At(value = "INVOKE", target = "Ljava/lang/Math;clamp(FFF)F", ordinal = 0))
-    private float clampMainHandHeight(float value, float min, float max, Operation<Float> original, @Local(argsOnly = true) LocalPlayer player) {
+    private float clampMainHandHeight(float value, float min, float max, Operation<Float> original, @Local(argsOnly = true, name = "player") LocalPlayer player) {
         if (!Config.get().showMapWhileInBoat || !mainHandItem.is(Items.FILLED_MAP)) {
             return original.call(value, min, max);
         }
@@ -38,7 +38,7 @@ public class MixinFirstPersonHandsAndItems {
     }
 
     @WrapOperation(method = "tick", at = @At(value = "INVOKE", target = "Ljava/lang/Math;clamp(FFF)F", ordinal = 1))
-    private float clampOffHandHeight(float value, float min, float max, Operation<Float> original, @Local(argsOnly = true) LocalPlayer player) {
+    private float clampOffHandHeight(float value, float min, float max, Operation<Float> original, @Local(argsOnly = true, name = "player") LocalPlayer player) {
         if (!Config.get().showMapWhileInBoat || !offHandItem.is(Items.FILLED_MAP)) {
             return original.call(value, min, max);
         }

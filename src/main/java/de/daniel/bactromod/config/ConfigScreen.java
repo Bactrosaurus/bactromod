@@ -85,6 +85,7 @@ public final class ConfigScreen extends OptionsSubScreen {
     }
 
     private void addOptionsWithButton(List<OptionInstance<?>> options, Button button) {
+        if (this.list == null) return;
         int count = options.size();
         if (count % 2 == 1) {
             this.list.addSmall(options.subList(0, count - 1).toArray(OptionInstance<?>[]::new));

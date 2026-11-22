@@ -20,7 +20,7 @@ public final class Config {
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static final Logger LOGGER = LoggerFactory.getLogger("BactroMod");
     private static final Path CONFIG_PATH = FabricLoader.getInstance().getConfigDir().resolve("bactromod.json");
-    private static final ConfigData DATA = load(CONFIG_PATH);
+    private static final ConfigData DATA = load();
 
     private Config() {}
 
@@ -29,16 +29,16 @@ public final class Config {
     }
 
     public static void save() {
-        write(CONFIG_PATH, DATA);
+        write(DATA);
     }
 
-    private static ConfigData load(Path path) {
+    private static ConfigData load() {
         try {
-            if (Files.notExists(path)) return createDefaults(path);
+            if (Files.notExists(Config.CONFIG_PATH)) return createDefaults();
 
             try {
-                ConfigData data = GSON.fromJson(Files.readString(path), ConfigData.class);
-                if (data == null) return createDefaults(path);
+                ConfigData data = GSON.fromJson(Files.readString(Config.CONFIG_PATH), ConfigData.class);
+                if (data == null) return createDefaults();
                 if (data.itemScalingFactors == null) {
                     data.itemScalingFactors = new TreeMap<>();
                 } else {
@@ -46,10 +46,10 @@ public final class Config {
                 }
                 return data;
             } catch (JsonParseException e) {
-                Path backup = nextBackupPath(path);
-                Files.move(path, backup);
+                Path backup = nextBackupPath();
+                Files.move(Config.CONFIG_PATH, backup);
                 LOGGER.warn("Invalid config replaced with defaults. Backup: {}", backup);
-                return createDefaults(path);
+                return createDefaults();
             }
         } catch (IOException e) {
             LOGGER.error("Could not load or create config file.", e);
@@ -57,32 +57,33 @@ public final class Config {
         }
     }
 
-    private static Path nextBackupPath(Path path) {
+    private static Path nextBackupPath() {
         String prefix = "bactromod_old_" + Instant.now().toEpochMilli();
-        Path backup = path.resolveSibling(prefix + ".json");
+        Path backup = Config.CONFIG_PATH.resolveSibling(prefix + ".json");
         for (int i = 1; Files.exists(backup); i++) {
-            backup = path.resolveSibling(prefix + "_" + i + ".json");
+            backup = Config.CONFIG_PATH.resolveSibling(prefix + "_" + i + ".json");
         }
         return backup;
     }
 
-    private static ConfigData createDefaults(Path path) {
+    private static ConfigData createDefaults() {
         ConfigData defaults = new ConfigData();
-        write(path, defaults);
+        write(defaults);
         return defaults;
     }
 
-    private static void write(Path path, ConfigData data) {
+    private static void write(ConfigData data) {
         Path temporary = null;
         try {
-            Path parent = path.getParent();
-            if (parent != null) Files.createDirectories(parent);
+            Path parent = Config.CONFIG_PATH.getParent();
+            if (parent == null) throw new IOException("No parent directory exists");
+            Files.createDirectories(parent);
             temporary = Files.createTempFile(parent, "bactromod", ".tmp");
             Files.writeString(temporary, GSON.toJson(data));
             try {
-                Files.move(temporary, path, StandardCopyOption.ATOMIC_MOVE, StandardCopyOption.REPLACE_EXISTING);
+                Files.move(temporary, Config.CONFIG_PATH, StandardCopyOption.ATOMIC_MOVE, StandardCopyOption.REPLACE_EXISTING);
             } catch (AtomicMoveNotSupportedException e) {
-                Files.move(temporary, path, StandardCopyOption.REPLACE_EXISTING);
+                Files.move(temporary, Config.CONFIG_PATH, StandardCopyOption.REPLACE_EXISTING);
             }
             temporary = null;
         } catch (IOException e) {
