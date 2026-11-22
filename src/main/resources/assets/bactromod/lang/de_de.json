@@ -33,10 +33,10 @@
   "bactromod.options.powderSnowFog": "Pulverschneenebel",
   "bactromod.options.powderSnowFog.desc": "Blendet den Nebel im Pulverschnee ein oder aus.",
 
-  "bactromod.options.blindnessFog": "Blindheitseffekt",
+  "bactromod.options.blindnessFog": "Blindheitsnebel",
   "bactromod.options.blindnessFog.desc": "Blendet den Nebel des Blindheitseffekts ein oder aus.",
 
-  "bactromod.options.darknessFog": "Dunkelheitseffekt",
+  "bactromod.options.darknessFog": "Dunkelheitsnebel",
   "bactromod.options.darknessFog.desc": "Blendet den Nebel des Dunkelheitseffekts ein oder aus.",
 
   "bactromod.options.waterFog": "Wassernebel",

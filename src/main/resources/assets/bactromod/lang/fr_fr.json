@@ -13,25 +13,25 @@
   "bactromod.options.itemScalingFactors.resetAll": "Tout réinitialiser",
 
   "bactromod.options.gammaMultiplier": "Amplification de la luminosité",
-  "bactromod.options.gammaMultiplier.desc": "Contrôle la luminosité supplémentaire du monde. 1 utilise l’éclairage normal ; 15 fournit la luminosité maximale.",
+  "bactromod.options.gammaMultiplier.desc": "Contrôle la luminosité supplémentaire du monde. 1 utilise l'éclairage normal ; 15 fournit la luminosité maximale.",
 
   "bactromod.options.pumpkinBlur": "Masque de citrouille",
-  "bactromod.options.pumpkinBlur.desc": "Affiche ou masque la superposition qui gêne la vision lorsque vous portez une Citrouille sculptée.",
+  "bactromod.options.pumpkinBlur.desc": "Affiche ou masque la superposition qui gêne la vision lorsque vous portez une citrouille sculptée.",
 
   "bactromod.options.fireOffset": "Hauteur du feu",
   "bactromod.options.fireOffset.desc": "Ajuste la hauteur de la superposition de feu à la première personne. Les valeurs négatives la déplacent vers le bas.",
 
   "bactromod.options.shieldOffset": "Hauteur du bouclier",
-  "bactromod.options.shieldOffset.desc": "Ajuste la hauteur du Bouclier à la première personne. Les valeurs négatives le déplacent vers le bas.",
+  "bactromod.options.shieldOffset.desc": "Ajuste la hauteur du bouclier à la première personne. Les valeurs négatives le déplacent vers le bas.",
 
   "bactromod.options.showMapWhileInBoat": "Afficher la carte dans un bateau",
-  "bactromod.options.showMapWhileInBoat.desc": "Maintient la Carte visible lorsque le bateau est en mouvement.",
+  "bactromod.options.showMapWhileInBoat.desc": "Maintient la carte visible lorsque le bateau est en mouvement.",
 
   "bactromod.options.lavaFog": "Brouillard dans la lave",
-  "bactromod.options.lavaFog.desc": "Affiche ou masque le brouillard lorsque vous êtes immergé dans la Lave.",
+  "bactromod.options.lavaFog.desc": "Affiche ou masque le brouillard lorsque vous êtes immergé dans la lave.",
 
   "bactromod.options.powderSnowFog": "Brouillard dans la neige poudreuse",
-  "bactromod.options.powderSnowFog.desc": "Affiche ou masque le brouillard lorsque vous êtes dans la Neige poudreuse.",
+  "bactromod.options.powderSnowFog.desc": "Affiche ou masque le brouillard lorsque vous êtes dans la neige poudreuse.",
 
   "bactromod.options.blindnessFog": "Brouillard de cécité",
   "bactromod.options.blindnessFog.desc": "Affiche ou masque le brouillard causé par l'effet Cécité.",
@@ -40,22 +40,22 @@
   "bactromod.options.darknessFog.desc": "Affiche ou masque le brouillard causé par l'effet Obscurité.",
 
   "bactromod.options.waterFog": "Brouillard sous l'eau",
-  "bactromod.options.waterFog.desc": "Affiche ou masque le brouillard lorsque vous êtes immergé dans l'Eau.",
+  "bactromod.options.waterFog.desc": "Affiche ou masque le brouillard lorsque vous êtes immergé dans l'eau.",
 
   "bactromod.options.atmosphericFog": "Brouillard atmosphérique",
   "bactromod.options.atmosphericFog.desc": "Affiche ou masque le brouillard atmosphérique au loin.",
 
   "bactromod.options.fixShieldRiptideTrident": "Position du bouclier avec Impulsion",
-  "bactromod.options.fixShieldRiptideTrident.desc": "Corrige la position du Bouclier dans la main secondaire lors d'une propulsion avec un Trident doté de l'enchantement Impulsion.",
+  "bactromod.options.fixShieldRiptideTrident.desc": "Corrige la position du bouclier dans la main secondaire lors d'une propulsion avec un trident doté de l'enchantement Impulsion.",
 
   "bactromod.options.ignoreOpGamemodeSwitcher": "F3+F4 sans permission",
-  "bactromod.options.ignoreOpGamemodeSwitcher.desc": "Permet d'ouvrir et d'utiliser le Sélecteur de mode de jeu avec F3+F4 sans permission.",
+  "bactromod.options.ignoreOpGamemodeSwitcher.desc": "Permet d'ouvrir et d'utiliser le sélecteur de mode de jeu avec F3+F4 sans permission.",
 
   "bactromod.options.nightVision": "Vision nocturne",
   "bactromod.options.nightVision.desc": "Détermine si l'augmentation de luminosité de l'effet Vision nocturne est affichée.",
 
   "bactromod.options.totemOverlayPercentSize": "Taille de la superposition du totem",
-  "bactromod.options.totemOverlayPercentSize.desc": "Ajuste la taille de l'animation du Totem d'immortalité affichée lorsqu'un totem vous sauve. 100 conserve la taille normale.",
+  "bactromod.options.totemOverlayPercentSize.desc": "Ajuste la taille de l'animation du totem d'immortalité affichée lorsqu'un totem vous sauve. 100 conserve la taille normale.",
 
   "modmenu.summaryTranslation.bactromod": "Un mod client léger proposant des ajustements visuels et de jouabilité utiles.",
   "modmenu.descTranslation.bactromod": "Un mod client léger proposant des ajustements visuels et de jouabilité utiles."

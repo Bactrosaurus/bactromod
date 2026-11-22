@@ -16,22 +16,22 @@
   "bactromod.options.gammaMultiplier.desc": "Controla o brilho adicional do mundo. 1 usa a iluminação normal; 15 fornece o brilho máximo.",
 
   "bactromod.options.pumpkinBlur": "Sobreposição da abóbora",
-  "bactromod.options.pumpkinBlur.desc": "Exibe ou oculta a sobreposição que limita a visão ao usar uma Abóbora Esculpida.",
+  "bactromod.options.pumpkinBlur.desc": "Exibe ou oculta a sobreposição que limita a visão ao usar uma abóbora esculpida.",
 
   "bactromod.options.fireOffset": "Altura do fogo",
   "bactromod.options.fireOffset.desc": "Ajusta a altura da sobreposição de fogo em primeira pessoa. Valores negativos a movem para baixo.",
 
   "bactromod.options.shieldOffset": "Altura do escudo",
-  "bactromod.options.shieldOffset.desc": "Ajusta a altura do Escudo em primeira pessoa. Valores negativos o movem para baixo.",
+  "bactromod.options.shieldOffset.desc": "Ajusta a altura do escudo em primeira pessoa. Valores negativos o movem para baixo.",
 
   "bactromod.options.showMapWhileInBoat": "Exibir mapa no bote",
-  "bactromod.options.showMapWhileInBoat.desc": "Mantém o Mapa visível enquanto o bote está em movimento.",
+  "bactromod.options.showMapWhileInBoat.desc": "Mantém o mapa visível enquanto o bote está em movimento.",
 
   "bactromod.options.lavaFog": "Névoa na lava",
-  "bactromod.options.lavaFog.desc": "Exibe ou oculta a névoa ao ficar submerso em Lava.",
+  "bactromod.options.lavaFog.desc": "Exibe ou oculta a névoa ao ficar submerso em lava.",
 
   "bactromod.options.powderSnowFog": "Névoa na neve fofa",
-  "bactromod.options.powderSnowFog.desc": "Exibe ou oculta a névoa ao ficar dentro de Neve Fofa.",
+  "bactromod.options.powderSnowFog.desc": "Exibe ou oculta a névoa ao ficar dentro de neve fofa.",
 
   "bactromod.options.blindnessFog": "Névoa de cegueira",
   "bactromod.options.blindnessFog.desc": "Exibe ou oculta a névoa causada pelo efeito de Cegueira.",
@@ -40,22 +40,22 @@
   "bactromod.options.darknessFog.desc": "Exibe ou oculta a névoa causada pelo efeito de Escuridão.",
 
   "bactromod.options.waterFog": "Névoa na água",
-  "bactromod.options.waterFog.desc": "Exibe ou oculta a névoa ao ficar submerso em Água.",
+  "bactromod.options.waterFog.desc": "Exibe ou oculta a névoa ao ficar submerso em água.",
 
   "bactromod.options.atmosphericFog": "Névoa atmosférica",
   "bactromod.options.atmosphericFog.desc": "Exibe ou oculta a névoa atmosférica à distância.",
 
   "bactromod.options.fixShieldRiptideTrident": "Posição do escudo com Correnteza",
-  "bactromod.options.fixShieldRiptideTrident.desc": "Corrige a posição do Escudo na mão secundária ao avançar girando com um Tridente encantado com Correnteza.",
+  "bactromod.options.fixShieldRiptideTrident.desc": "Corrige a posição do escudo na mão secundária ao avançar girando com um tridente encantado com Correnteza.",
 
   "bactromod.options.ignoreOpGamemodeSwitcher": "F3+F4 sem permissão",
-  "bactromod.options.ignoreOpGamemodeSwitcher.desc": "Permite abrir e usar o Seletor de modo de jogo com F3+F4 sem permissão.",
+  "bactromod.options.ignoreOpGamemodeSwitcher.desc": "Permite abrir e usar o seletor de modo de jogo com F3+F4 sem permissão.",
 
-  "bactromod.options.nightVision": "Visão Noturna",
+  "bactromod.options.nightVision": "Visão noturna",
   "bactromod.options.nightVision.desc": "Controla se o aumento de brilho do efeito de Visão Noturna é exibido.",
 
   "bactromod.options.totemOverlayPercentSize": "Tamanho da sobreposição do totem",
-  "bactromod.options.totemOverlayPercentSize.desc": "Ajusta o tamanho da animação do Totem da Imortalidade exibida quando um totem te salva. 100 mantém o tamanho normal.",
+  "bactromod.options.totemOverlayPercentSize.desc": "Ajusta o tamanho da animação do totem da imortalidade exibida quando um totem te salva. 100 mantém o tamanho normal.",
 
   "modmenu.summaryTranslation.bactromod": "Um mod leve para cliente com ajustes visuais e de jogabilidade úteis.",
   "modmenu.descTranslation.bactromod": "Um mod leve para cliente com ajustes visuais e de jogabilidade úteis."

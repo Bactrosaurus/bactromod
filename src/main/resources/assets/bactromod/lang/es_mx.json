@@ -16,22 +16,22 @@
   "bactromod.options.gammaMultiplier.desc": "Controla el brillo adicional del mundo. 1 usa la iluminación normal; 15 proporciona el brillo máximo.",
 
   "bactromod.options.pumpkinBlur": "Superposición de calabaza",
-  "bactromod.options.pumpkinBlur.desc": "Muestra u oculta la superposición que limita la visión al llevar una Calabaza tallada.",
+  "bactromod.options.pumpkinBlur.desc": "Muestra u oculta la superposición que limita la visión al llevar una calabaza tallada.",
 
   "bactromod.options.fireOffset": "Altura del fuego",
   "bactromod.options.fireOffset.desc": "Ajusta la altura de la superposición de fuego en primera persona. Los valores negativos la desplazan hacia abajo.",
 
   "bactromod.options.shieldOffset": "Altura del escudo",
-  "bactromod.options.shieldOffset.desc": "Ajusta la altura del Escudo en primera persona. Los valores negativos lo desplazan hacia abajo.",
+  "bactromod.options.shieldOffset.desc": "Ajusta la altura del escudo en primera persona. Los valores negativos lo desplazan hacia abajo.",
 
   "bactromod.options.showMapWhileInBoat": "Mostrar mapa en el bote",
-  "bactromod.options.showMapWhileInBoat.desc": "Mantiene el Mapa visible mientras el bote está en movimiento.",
+  "bactromod.options.showMapWhileInBoat.desc": "Mantiene el mapa visible mientras el bote está en movimiento.",
 
   "bactromod.options.lavaFog": "Niebla en la lava",
-  "bactromod.options.lavaFog.desc": "Muestra u oculta la niebla al estar sumergido en Lava.",
+  "bactromod.options.lavaFog.desc": "Muestra u oculta la niebla al estar sumergido en lava.",
 
   "bactromod.options.powderSnowFog": "Niebla en la nieve en polvo",
-  "bactromod.options.powderSnowFog.desc": "Muestra u oculta la niebla al estar dentro de Nieve en polvo.",
+  "bactromod.options.powderSnowFog.desc": "Muestra u oculta la niebla al estar dentro de nieve en polvo.",
 
   "bactromod.options.blindnessFog": "Niebla de ceguera",
   "bactromod.options.blindnessFog.desc": "Muestra u oculta la niebla causada por el efecto de Ceguera.",
@@ -40,22 +40,22 @@
   "bactromod.options.darknessFog.desc": "Muestra u oculta la niebla causada por el efecto de Oscuridad.",
 
   "bactromod.options.waterFog": "Niebla en el agua",
-  "bactromod.options.waterFog.desc": "Muestra u oculta la niebla al estar sumergido en Agua.",
+  "bactromod.options.waterFog.desc": "Muestra u oculta la niebla al estar sumergido en agua.",
 
   "bactromod.options.atmosphericFog": "Niebla atmosférica",
   "bactromod.options.atmosphericFog.desc": "Muestra u oculta la niebla atmosférica a distancia.",
 
   "bactromod.options.fixShieldRiptideTrident": "Posición del escudo con Propulsión acuática",
-  "bactromod.options.fixShieldRiptideTrident.desc": "Corrige la posición del Escudo en la mano secundaria al impulsarse con un Tridente encantado con Propulsión acuática.",
+  "bactromod.options.fixShieldRiptideTrident.desc": "Corrige la posición del escudo en la mano secundaria al impulsarse con un tridente encantado con Propulsión acuática.",
 
   "bactromod.options.ignoreOpGamemodeSwitcher": "F3+F4 sin permiso",
-  "bactromod.options.ignoreOpGamemodeSwitcher.desc": "Permite abrir y usar el Cambiador de modo de juego con F3+F4 sin permiso.",
+  "bactromod.options.ignoreOpGamemodeSwitcher.desc": "Permite abrir y usar el cambiador de modo de juego con F3+F4 sin permiso.",
 
   "bactromod.options.nightVision": "Visión nocturna",
   "bactromod.options.nightVision.desc": "Controla si se muestra el aumento de brillo del efecto de Visión nocturna.",
 
   "bactromod.options.totemOverlayPercentSize": "Tamaño de la superposición del tótem",
-  "bactromod.options.totemOverlayPercentSize.desc": "Ajusta el tamaño de la animación del Tótem de la inmortalidad que aparece cuando un tótem te salva. 100 mantiene el tamaño normal.",
+  "bactromod.options.totemOverlayPercentSize.desc": "Ajusta el tamaño de la animación del tótem de la inmortalidad que aparece cuando un tótem te salva. 100 mantiene el tamaño normal.",
 
   "modmenu.summaryTranslation.bactromod": "Un mod ligero para el cliente con ajustes visuales y de jugabilidad útiles.",
   "modmenu.descTranslation.bactromod": "Un mod ligero para el cliente con ajustes visuales y de jugabilidad útiles."
