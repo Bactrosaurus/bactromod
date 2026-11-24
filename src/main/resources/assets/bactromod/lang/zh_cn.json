@@ -57,6 +57,12 @@
   "bactromod.options.totemOverlayPercentSize": "不死图腾特效大小",
   "bactromod.options.totemOverlayPercentSize.desc": "调整不死图腾生效时显示的特效大小。100 保持原版大小。",
 
+  "bactromod.options.spyglassOverlay": "望远镜遮罩",
+  "bactromod.options.spyglassOverlay.desc": "显示或隐藏使用望远镜时的黑色边框遮罩。",
+
+  "bactromod.options.elderGuardianOverlay": "远古守卫者特效",
+  "bactromod.options.elderGuardianOverlay.desc": "显示或隐藏受到挖掘疲劳效果时出现的远古守卫者幻影。",
+
   "modmenu.summaryTranslation.bactromod": "一个轻量的客户端模组，提供实用的视觉与游戏体验调整。",
   "modmenu.descTranslation.bactromod": "一个轻量的客户端模组，提供实用的视觉与游戏体验调整。"
 }

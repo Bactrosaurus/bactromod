@@ -57,6 +57,12 @@
   "bactromod.options.totemOverlayPercentSize": "Größe des Totem-Overlays",
   "bactromod.options.totemOverlayPercentSize.desc": "Skaliert die Animation des Totems der Unsterblichkeit, die nach der Rettung durch ein Totem erscheint. 100 behält die normale Größe bei.",
 
+  "bactromod.options.spyglassOverlay": "Fernrohr-Overlay",
+  "bactromod.options.spyglassOverlay.desc": "Blendet das schwarze Rahmen-Overlay beim Blick durch ein Fernrohr ein oder aus.",
+
+  "bactromod.options.elderGuardianOverlay": "Großwächter-Overlay",
+  "bactromod.options.elderGuardianOverlay.desc": "Blendet die Großwächter-Erscheinung beim Erhalten von Abbaulähmung ein oder aus.",
+
   "modmenu.summaryTranslation.bactromod": "Eine schlanke clientseitige Mod mit nützlichen Grafik- und Spielanpassungen.",
   "modmenu.descTranslation.bactromod": "Eine schlanke clientseitige Mod mit nützlichen Grafik- und Spielanpassungen."
 }

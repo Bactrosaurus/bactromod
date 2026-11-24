@@ -57,6 +57,12 @@
   "bactromod.options.totemOverlayPercentSize": "Tamaño de la superposición del tótem",
   "bactromod.options.totemOverlayPercentSize.desc": "Ajusta el tamaño de la animación del tótem de inmortalidad que aparece cuando un tótem te salva. 100 mantiene el tamaño normal.",
 
+  "bactromod.options.spyglassOverlay": "Superposición del catalejo",
+  "bactromod.options.spyglassOverlay.desc": "Muestra u oculta el borde negro al mirar a través de un catalejo.",
+
+  "bactromod.options.elderGuardianOverlay": "Superposición del guardián anciano",
+  "bactromod.options.elderGuardianOverlay.desc": "Muestra u oculta la aparición del guardián anciano al recibir el efecto de Fatiga minera.",
+
   "modmenu.summaryTranslation.bactromod": "Un mod ligero para el cliente con ajustes visuales y de jugabilidad útiles.",
   "modmenu.descTranslation.bactromod": "Un mod ligero para el cliente con ajustes visuales y de jugabilidad útiles."
 }

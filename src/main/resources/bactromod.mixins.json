@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_25",
   "client": [
     "features.boatmap.MixinFirstPersonHandsAndItems",
+    "features.elderguardianoverlay.MixinElderGuardianParticleGroup",
     "features.fog.MixinFogRenderer",
     "features.fullbright.MixinLightmapRenderStateExtractor",
     "features.itemscaling.MixinFirstPersonHandsAndItemsRenderer",
@@ -14,6 +15,7 @@
     "features.noopgmswitcher.MixinKeyboardHandler",
     "features.nopumpkinblur.MixinHud",
     "features.riptidetridentshield.MixinFirstPersonHandsAndItemsRenderer",
+    "features.spyglassoverlay.MixinHud",
     "features.totemoverlay.MixinScreenEffectRenderer",
     "settingsbutton.MixinAccessibilityOptionsScreen"
   ],

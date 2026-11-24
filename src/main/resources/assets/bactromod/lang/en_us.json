@@ -57,6 +57,12 @@
   "bactromod.options.totemOverlayPercentSize": "Totem Overlay Size",
   "bactromod.options.totemOverlayPercentSize.desc": "Scales the Totem of Undying animation shown after a totem saves you. 100 keeps the vanilla size.",
 
+  "bactromod.options.spyglassOverlay": "Spyglass Overlay",
+  "bactromod.options.spyglassOverlay.desc": "Shows or hides the black border overlay while looking through a spyglass.",
+
+  "bactromod.options.elderGuardianOverlay": "Elder Guardian Overlay",
+  "bactromod.options.elderGuardianOverlay.desc": "Shows or hides the Elder Guardian ghost overlay triggered when receiving Mining Fatigue.",
+
   "modmenu.summaryTranslation.bactromod": "A lightweight client-side mod with useful visual and gameplay tweaks.",
   "modmenu.descTranslation.bactromod": "A lightweight client-side mod with useful visual and gameplay tweaks."
 }

@@ -42,6 +42,12 @@ public final class ConfigData {
     @BooleanOption(category = ConfigCategory.OVERLAYS_AND_ITEMS)
     public boolean pumpkinBlur;
 
+    @BooleanOption(category = ConfigCategory.OVERLAYS_AND_ITEMS)
+    public boolean spyglassOverlay = true;
+
+    @BooleanOption(category = ConfigCategory.OVERLAYS_AND_ITEMS)
+    public boolean elderGuardianOverlay = true;
+
     @IntegerOption(min = 1, max = 100, category = ConfigCategory.OVERLAYS_AND_ITEMS)
     public int totemOverlayPercentSize = 100;
 

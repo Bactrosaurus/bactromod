@@ -30,6 +30,8 @@ Each package below lives under `mixins/features/`. Targets name vanilla classes;
 | `fog` | `FogRenderer` | Six `*Fog` toggles: lava, powder snow, blindness, darkness, water, atmospheric. |
 | `noopgmswitcher` | `KeyboardHandler`, `GameModeSwitcherScreen` | `ignoreOpGamemodeSwitcher`: bypasses client permission checks; grants no server permissions. |
 | `totemoverlay` | `ScreenEffectRenderer` | `totemOverlayPercentSize`: scales the item activation animation, 1–100; only when the activated item is a Totem of Undying. |
+| `spyglassoverlay` | `Hud` | `spyglassOverlay=false` hides the spyglass vignette overlay while scoping. |
+| `elderguardianoverlay` | `ElderGuardianParticleGroup` | `elderGuardianOverlay=false` hides the Elder Guardian ghost overlay. |
 
 ## Build and Development Commands
 

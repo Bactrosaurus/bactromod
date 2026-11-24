@@ -17,6 +17,8 @@ BactroMod is a client-side Fabric mod for visual clarity and quality-of-life twe
 | 🌊 **Riptide + shield fix**     | Corrects shield rendering position during riptide use.                                                |
 | 🎮 **No-OP gamemode switcher**  | Enables the debug gamemode-switch screen without OP-level checks.                                     |
 | 🪅 **Totem overlay size**       | Scale down the Totem of Undying animation when a totem saves you.                                     |
+| 🔭 **Spyglass overlay toggle**  | Hides the black vignette border while scoping with a spyglass.                                        |
+| 👁️ **Elder Guardian overlay**  | Disables the Elder Guardian ghost animation when receiving Mining Fatigue.                            |
 
 ## ⚙️ Configuration
 

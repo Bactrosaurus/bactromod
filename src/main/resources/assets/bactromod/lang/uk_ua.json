@@ -57,6 +57,12 @@
   "bactromod.options.totemOverlayPercentSize": "Розмір анімації тотема",
   "bactromod.options.totemOverlayPercentSize.desc": "Змінює розмір анімації тотема безсмертя, яка з'являється після порятунку тотемом. 100 зберігає стандартний розмір.",
 
+  "bactromod.options.spyglassOverlay": "Рамка підзорної труби",
+  "bactromod.options.spyglassOverlay.desc": "Показує або приховує чорну рамку під час перегляду через підзорну трубу.",
+
+  "bactromod.options.elderGuardianOverlay": "Ефект стародавнього вартового",
+  "bactromod.options.elderGuardianOverlay.desc": "Показує або приховує примарний образ стародавнього вартового під час отримання ефекту утоми.",
+
   "modmenu.summaryTranslation.bactromod": "Легкий клієнтський мод із корисними візуальними та ігровими налаштуваннями.",
   "modmenu.descTranslation.bactromod": "Легкий клієнтський мод із корисними візуальними та ігровими налаштуваннями."
 }

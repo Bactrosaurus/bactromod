@@ -57,6 +57,12 @@
   "bactromod.options.totemOverlayPercentSize": "Tamanho da sobreposição do totem",
   "bactromod.options.totemOverlayPercentSize.desc": "Ajusta o tamanho da animação do totem da imortalidade exibida quando um totem te salva. 100 mantém o tamanho normal.",
 
+  "bactromod.options.spyglassOverlay": "Sobreposição da luneta",
+  "bactromod.options.spyglassOverlay.desc": "Exibe ou oculta a borda preta ao olhar através de uma luneta.",
+
+  "bactromod.options.elderGuardianOverlay": "Sobreposição do guardião-mestre",
+  "bactromod.options.elderGuardianOverlay.desc": "Exibe ou oculta a aparição do guardião-mestre ao receber o efeito de Exaustão.",
+
   "modmenu.summaryTranslation.bactromod": "Um mod leve para cliente com ajustes visuais e de jogabilidade úteis.",
   "modmenu.descTranslation.bactromod": "Um mod leve para cliente com ajustes visuais e de jogabilidade úteis."
 }
