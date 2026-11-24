@@ -30,7 +30,8 @@ public abstract class MixinAccessibilityOptionsScreen extends OptionsSubScreen {
         ).build();
 
         if (options.length % 2 == 1) {
-            original.call(list, Arrays.copyOf(options, options.length - 1));
+            OptionInstance<?>[] paired = Arrays.copyOf(options, options.length - 1);
+            original.call(list, paired);
             OptionInstance<?> last = options[options.length - 1];
             list.addSmall(last.createButton(this.options), last, settingsButton);
         } else {

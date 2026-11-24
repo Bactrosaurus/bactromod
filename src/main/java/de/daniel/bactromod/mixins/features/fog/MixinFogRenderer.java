@@ -34,8 +34,8 @@ public abstract class MixinFogRenderer {
     @ModifyReturnValue(method = "setupFog", at = @At("RETURN"))
     private FogData applyFogToggles(FogData fog, @Local(argsOnly = true, name = "camera") Camera camera, @Local(argsOnly = true, name = "renderDistanceInChunks") int renderDistanceInChunks, @Local(name = "fogType") FogType fogType) {
         Entity entity = camera.entity();
+        if (entity == null) return fog;
         for (FogEnvironment environment : FOG_ENVIRONMENTS) {
-            if (entity == null) return fog;
             if (!environment.isApplicable(fogType, entity)) continue;
             if (bactromod$isFogEnabled(environment)) return fog;
 
