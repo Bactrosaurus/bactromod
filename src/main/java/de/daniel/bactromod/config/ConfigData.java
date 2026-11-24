@@ -9,23 +9,17 @@ import java.util.TreeMap;
 
 public final class ConfigData {
 
-    @IntegerOption(min = 1, max = 15, category = ConfigCategory.VISIBILITY)
+    @IntegerOption(min = 1, max = 15, category = ConfigCategory.LIGHTING)
     public int gammaMultiplier = 15;
 
-    @BooleanOption(category = ConfigCategory.VISIBILITY)
-    public boolean pumpkinBlur;
-
-    @IntegerOption(min = -100, max = 100, category = ConfigCategory.VISIBILITY)
-    public int fireOffset = -30;
-
-    @IntegerOption(min = -100, max = 100, category = ConfigCategory.VISIBILITY)
-    public int shieldOffset = -20;
+    @BooleanOption(category = ConfigCategory.LIGHTING)
+    public boolean nightVision = true;
 
     @BooleanOption(category = ConfigCategory.FOG)
-    public boolean blindnessFog;
+    public boolean atmosphericFog;
 
     @BooleanOption(category = ConfigCategory.FOG)
-    public boolean darknessFog;
+    public boolean waterFog;
 
     @BooleanOption(category = ConfigCategory.FOG)
     public boolean lavaFog;
@@ -34,12 +28,21 @@ public final class ConfigData {
     public boolean powderSnowFog;
 
     @BooleanOption(category = ConfigCategory.FOG)
-    public boolean waterFog;
+    public boolean blindnessFog;
 
     @BooleanOption(category = ConfigCategory.FOG)
-    public boolean atmosphericFog;
+    public boolean darknessFog;
 
-    @IntegerOption(min = 1, max = 100, category = ConfigCategory.SCALING)
+    @IntegerOption(min = -100, max = 100, category = ConfigCategory.OVERLAYS_AND_ITEMS)
+    public int fireOffset = -30;
+
+    @IntegerOption(min = -100, max = 100, category = ConfigCategory.OVERLAYS_AND_ITEMS)
+    public int shieldOffset = -20;
+
+    @BooleanOption(category = ConfigCategory.OVERLAYS_AND_ITEMS)
+    public boolean pumpkinBlur;
+
+    @IntegerOption(min = 1, max = 100, category = ConfigCategory.OVERLAYS_AND_ITEMS)
     public int totemOverlayPercentSize = 100;
 
     @BooleanOption
@@ -47,9 +50,6 @@ public final class ConfigData {
 
     @BooleanOption
     public boolean fixShieldRiptideTrident = true;
-
-    @BooleanOption
-    public boolean nightVision = true;
 
     @BooleanOption
     public boolean ignoreOpGamemodeSwitcher = true;

@@ -62,10 +62,10 @@ public final class ConfigScreen extends OptionsSubScreen {
         if (this.list == null) return;
         for (ConfigCategory category : ConfigCategory.values()) {
             List<OptionInstance<?>> options = this.categorizedOptions.getOrDefault(category, List.of());
-            if (options.isEmpty() && category != ConfigCategory.SCALING) continue;
+            if (options.isEmpty() && category != ConfigCategory.OVERLAYS_AND_ITEMS) continue;
 
             this.list.addHeader(text(category.key()).withStyle(ChatFormatting.UNDERLINE, ChatFormatting.BOLD));
-            if (category == ConfigCategory.SCALING) {
+            if (category == ConfigCategory.OVERLAYS_AND_ITEMS) {
                 addOptionsWithButton(options, itemScalingButton());
             } else {
                 this.list.addSmall(options.toArray(OptionInstance<?>[]::new));

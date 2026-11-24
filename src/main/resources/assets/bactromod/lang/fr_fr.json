@@ -2,9 +2,9 @@
   "bactromod.options.title": "Options de BactroMod",
   "bactromod.options.search": "Rechercher...",
 
-  "bactromod.options.category.visibility": "Visibilité",
+  "bactromod.options.category.lighting": "Éclairage",
   "bactromod.options.category.fog": "Brouillard",
-  "bactromod.options.category.scaling": "Taille",
+  "bactromod.options.category.overlays_and_items": "Superpositions et objets",
   "bactromod.options.category.other": "Autres",
 
   "bactromod.options.itemScalingFactors": "Taille des objets",

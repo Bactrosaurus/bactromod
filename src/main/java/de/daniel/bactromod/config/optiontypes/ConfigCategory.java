@@ -3,9 +3,9 @@ package de.daniel.bactromod.config.optiontypes;
 import java.util.Locale;
 
 public enum ConfigCategory {
-    VISIBILITY,
+    LIGHTING,
     FOG,
-    SCALING,
+    OVERLAYS_AND_ITEMS,
     OTHER;
 
     public String key() {

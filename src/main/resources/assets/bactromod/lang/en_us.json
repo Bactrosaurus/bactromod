@@ -2,9 +2,9 @@
   "bactromod.options.title": "BactroMod Settings",
   "bactromod.options.search": "Search...",
 
-  "bactromod.options.category.visibility": "Visibility",
+  "bactromod.options.category.lighting": "Lighting",
   "bactromod.options.category.fog": "Fog",
-  "bactromod.options.category.scaling": "Scaling",
+  "bactromod.options.category.overlays_and_items": "Overlays & Items",
   "bactromod.options.category.other": "Other",
 
   "bactromod.options.itemScalingFactors": "Item Scaling",

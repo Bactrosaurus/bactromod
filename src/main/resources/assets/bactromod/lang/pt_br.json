@@ -2,9 +2,9 @@
   "bactromod.options.title": "Opções do BactroMod",
   "bactromod.options.search": "Buscar...",
 
-  "bactromod.options.category.visibility": "Visibilidade",
+  "bactromod.options.category.lighting": "Iluminação",
   "bactromod.options.category.fog": "Névoa",
-  "bactromod.options.category.scaling": "Escala",
+  "bactromod.options.category.overlays_and_items": "Sobreposições e itens",
   "bactromod.options.category.other": "Outros",
 
   "bactromod.options.itemScalingFactors": "Escala de itens",

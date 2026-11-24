@@ -2,9 +2,9 @@
   "bactromod.options.title": "Налаштування BactroMod",
   "bactromod.options.search": "Пошук…",
 
-  "bactromod.options.category.visibility": "Видимість",
+  "bactromod.options.category.lighting": "Освітлення",
   "bactromod.options.category.fog": "Туман",
-  "bactromod.options.category.scaling": "Масштаб",
+  "bactromod.options.category.overlays_and_items": "Накладення та предмети",
   "bactromod.options.category.other": "Інше",
 
   "bactromod.options.itemScalingFactors": "Масштаб предметів",

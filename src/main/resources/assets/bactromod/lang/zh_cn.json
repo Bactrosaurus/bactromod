@@ -2,9 +2,9 @@
   "bactromod.options.title": "BactroMod 设置",
   "bactromod.options.search": "搜索…",
 
-  "bactromod.options.category.visibility": "可见性",
+  "bactromod.options.category.lighting": "光照",
   "bactromod.options.category.fog": "迷雾",
-  "bactromod.options.category.scaling": "缩放",
+  "bactromod.options.category.overlays_and_items": "遮罩与物品",
   "bactromod.options.category.other": "其他",
 
   "bactromod.options.itemScalingFactors": "物品缩放",
